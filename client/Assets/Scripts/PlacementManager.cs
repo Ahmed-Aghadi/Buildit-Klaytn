@@ -46,6 +46,16 @@ public class PlacementManager : MonoBehaviour
         temporaryRoadobjects.Add(position, structure);
     }
 
+    internal List<Vector3Int> GetPathBetween(Vector3Int startPosition, Vector3Int position)
+    {
+        throw new NotImplementedException();
+    }
+
+    internal void RemoveAllTemporaryStructures()
+    {
+        throw new NotImplementedException();
+    }
+
     internal List<Vector3Int> GetNeighboursOfTypeFor(Vector3Int position, CellType type)
     {
         var neighbourVertices = placementGrid.GetAdjacentCellsOfType(position.x, position.z, type);
@@ -65,6 +75,11 @@ public class PlacementManager : MonoBehaviour
         var structureModel = structure.AddComponent<StructureModel>();
         structureModel.CreateModel(structurePrefab);
         return structureModel;
+    }
+
+    internal void AddtemporaryStructuresToStructureDictionary()
+    {
+        throw new NotImplementedException();
     }
 
     public void ModifyStructureModel(Vector3Int position, GameObject newModel, Quaternion rotation)
