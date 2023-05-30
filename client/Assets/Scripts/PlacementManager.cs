@@ -15,6 +15,11 @@ public class PlacementManager : MonoBehaviour
         placementGrid = new Grid(width, height);
     }
 
+    internal CellType[] GetNeighbourtTypesFor(Vector3Int position)
+    {
+        return placementGrid.GetAllAdjacentCellTypes(position.x, position.y);
+    }
+
     internal bool CheckIfPositionInBound(Vector3Int position)
     {
         if(position.x >= 0 && position.x < width && position.z >=0 && position.z < height)
