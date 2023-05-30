@@ -306,6 +306,7 @@
     <Compile Include="Assets\Scripts\StructureModel.cs" />
     <Compile Include="Assets\Scripts\RoadFixer.cs" />
     <Compile Include="Assets\Scripts\UIController.cs" />
+    <Compile Include="Assets\Scripts\StructureManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Shaders\TMPro.cginc" />

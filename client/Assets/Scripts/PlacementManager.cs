@@ -30,6 +30,11 @@ public class PlacementManager : MonoBehaviour
         return false;
     }
 
+    internal void PlaceObjectOnTheMap(Vector3Int position, GameObject prefab, CellType structure)
+    {
+        throw new NotImplementedException();
+    }
+
     internal bool CheckIfPositionIsFree(Vector3Int position)
     {
         return CheckIfPositionIsOfType(position, CellType.Empty);
