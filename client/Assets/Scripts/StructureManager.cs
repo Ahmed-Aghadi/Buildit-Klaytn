@@ -28,6 +28,16 @@ public class StructureManager : MonoBehaviour
         }
     }
 
+    public void PlaceSpecial(Vector3Int position)
+    {
+        if (CheckPositionBeforePlacement(position))
+        {
+            int randomIndex = GetRandomWeightedIndex(specialWeights);
+            placementManager.PlaceObjectOnTheMap(position, specialPrefabs[randomIndex].prefab, CellType.Structure);
+            AudioPlayer.instance.PlayPlacementSound();
+        }
+    }
+
     private int GetRandomWeightedIndex(float[] weights)
     {
         float sum = 0f;
