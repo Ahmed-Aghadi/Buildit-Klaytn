@@ -34,26 +34,84 @@ public class RoadFixer : MonoBehaviour
 
     private void Create4Way(PlacementManager placementManager, CellType[] result, Vector3Int temporaryPosition)
     {
-        throw new NotImplementedException();
+        placementManager.ModifyStructureModel(temporaryPosition, fourWay, Quaternion.identity);
     }
 
+    //[left, up, right, down]
     private void Create3Way(PlacementManager placementManager, CellType[] result, Vector3Int temporaryPosition)
     {
-        throw new NotImplementedException();
+        if(result[1] == CellType.Road && result[2] == CellType.Road && result[3] == CellType.Road)
+        {
+            placementManager.ModifyStructureModel(temporaryPosition, threeWay, Quaternion.identity);
+        }else if (result[2] == CellType.Road && result[3] == CellType.Road && result[0] == CellType.Road)
+        {
+            placementManager.ModifyStructureModel(temporaryPosition, threeWay, Quaternion.Euler(0,90,0));
+        }
+        else if (result[3] == CellType.Road && result[0] == CellType.Road && result[1] == CellType.Road)
+        {
+            placementManager.ModifyStructureModel(temporaryPosition, threeWay, Quaternion.Euler(0, 180, 0));
+        }
+        else if (result[0] == CellType.Road && result[1] == CellType.Road && result[2] == CellType.Road)
+        {
+            placementManager.ModifyStructureModel(temporaryPosition, threeWay, Quaternion.Euler(0, 270, 0));
+        }
+
     }
 
+    //[left, up, right, down]
     private void CreateCorner(PlacementManager placementManager, CellType[] result, Vector3Int temporaryPosition)
     {
-        throw new NotImplementedException();
+        if (result[1] == CellType.Road && result[2] == CellType.Road )
+        {
+            placementManager.ModifyStructureModel(temporaryPosition, corner, Quaternion.Euler(0, 90, 0));
+        }
+        else if (result[2] == CellType.Road && result[3] == CellType.Road )
+        {
+            placementManager.ModifyStructureModel(temporaryPosition, corner, Quaternion.Euler(0, 180, 0));
+        }
+        else if (result[3] == CellType.Road && result[0] == CellType.Road )
+        {
+            placementManager.ModifyStructureModel(temporaryPosition, corner, Quaternion.Euler(0, 270, 0));
+        }
+        else if (result[0] == CellType.Road && result[1] == CellType.Road )
+        {
+            placementManager.ModifyStructureModel(temporaryPosition, corner, Quaternion.identity);
+        }
     }
 
+    //[left, up, right, down]
     private bool CreateStraightRoad(PlacementManager placementManager, CellType[] result, Vector3Int temporaryPosition)
     {
-        throw new NotImplementedException();
+        if (result[0] == CellType.Road && result[2] == CellType.Road)
+        {
+            placementManager.ModifyStructureModel(temporaryPosition, roadStraight, Quaternion.identity);
+            return true;
+        }else if (result[1] == CellType.Road && result[3] == CellType.Road)
+        {
+            placementManager.ModifyStructureModel(temporaryPosition, roadStraight, Quaternion.Euler(0,90,0));
+            return true;
+        }
+        return false;
     }
 
+    //[left, up, right, down]
     private void CreateDeadEnd(PlacementManager placementManager, CellType[] result, Vector3Int temporaryPosition)
     {
-        throw new NotImplementedException();
+        if (result[1] == CellType.Road )
+        {
+            placementManager.ModifyStructureModel(temporaryPosition, corner, Quaternion.Euler(0, 270, 0));
+        }
+        else if (result[2] == CellType.Road )
+        {
+            placementManager.ModifyStructureModel(temporaryPosition, corner, Quaternion.identity);
+        }
+        else if (result[3] == CellType.Road )
+        {
+            placementManager.ModifyStructureModel(temporaryPosition, corner, Quaternion.Euler(0, 90, 0));
+        }
+        else if (result[0] == CellType.Road )
+        {
+            placementManager.ModifyStructureModel(temporaryPosition, corner, Quaternion.Euler(0, 180, 0));
+        }
     }
 }
