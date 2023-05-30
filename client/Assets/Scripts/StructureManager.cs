@@ -18,6 +18,15 @@ public class StructureManager : MonoBehaviour
         specialWeights = specialPrefabs.Select(prefabStats => prefabStats.weight).ToArray();
     }
 
+    public void DeleteItem(Vector3Int position)
+    {
+        if (placementManager.CheckIfPositionIsFree(position) == false)
+        {
+            placementManager.RemoveItem(position);
+            AudioPlayer.instance.PlayPlacementSound();
+        }
+    }
+
     public void PlaceHouse(Vector3Int position)
     {
         if (CheckPositionBeforePlacement(position))
@@ -72,11 +81,11 @@ public class StructureManager : MonoBehaviour
             Debug.Log("This position is not EMPTY");
             return false;
         }
-        if(placementManager.GetNeighboursOfTypeFor(position,CellType.Road).Count <= 0)
+        /*if(placementManager.GetNeighboursOfTypeFor(position,CellType.Road).Count <= 0)
         {
             Debug.Log("Must be placed near a road");
             return false;
-        }
+        }*/
         return true;
     }
 }

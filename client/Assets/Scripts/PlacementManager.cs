@@ -107,6 +107,16 @@ public class PlacementManager : MonoBehaviour
         temporaryRoadobjects.Clear();
     }
 
+    internal void RemoveItem(Vector3Int position)
+    {
+        var structure = structureDictionary.GetValueOrDefault(position);
+        // var position = Vector3Int.RoundToInt(structure.transform.position);
+        placementGrid[position.x, position.z] = CellType.Empty;
+        Destroy(structure.gameObject);
+        structureDictionary.Remove(position);
+        temporaryRoadobjects.Remove(position);
+    }
+
     internal void AddtemporaryStructuresToStructureDictionary()
     {
         foreach (var structure in temporaryRoadobjects)

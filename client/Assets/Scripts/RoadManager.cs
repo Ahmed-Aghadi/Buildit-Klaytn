@@ -68,6 +68,15 @@ public class RoadManager : MonoBehaviour
 
     }
 
+    public void FixRoadPrefabsAfterDelete(Vector3Int position)
+    {
+        var neighbours = placementManager.GetNeighboursOfTypeFor(position, CellType.Road);
+        foreach (var roadposition in neighbours)
+        {
+            roadFixer.FixRoadAtPosition(placementManager, roadposition);
+        }
+    }
+
     private void FixRoadPrefabs()
     {
         foreach (var temporaryPosition in temporaryPlacementPositions)

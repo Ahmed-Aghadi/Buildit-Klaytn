@@ -19,7 +19,14 @@ public class GameManager : MonoBehaviour
         uiController.OnRoadPlacement += RoadPlacementHandler;
         uiController.OnHousePlacement += HousePlacementHandler;
         uiController.OnSpecialPlacement += SpecialPlacementHandler;
-        
+        uiController.OnDeleteItem += DeleteItem;
+    }
+
+    private void DeleteItem()
+    {
+        ClearInputActions();
+        inputManager.OnMouseClick += structureManager.DeleteItem;
+        inputManager.OnMouseClick += roadManager.FixRoadPrefabsAfterDelete;
     }
 
     private void SpecialPlacementHandler()
