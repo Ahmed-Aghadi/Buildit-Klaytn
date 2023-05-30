@@ -25385,8 +25385,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25b01563a8066a4db4058ad88bc11bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  housesPrefabe: []
-  specialPrefabs: []
+  housesPrefabe:
+  - prefab: {fileID: 2769822920355022703, guid: 7102e40a9ba863a44838c4fd828cc22b,
+      type: 3}
+    weight: 0
+  specialPrefabs:
+  - prefab: {fileID: 3702253504043930072, guid: 838f9b485bb510747a4b89e3cb91e1bd,
+      type: 3}
+    weight: 0
   placementManager: {fileID: 540532163}
 --- !u!4 &2018001664
 Transform:
