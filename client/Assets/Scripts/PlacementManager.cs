@@ -15,9 +15,9 @@ public class PlacementManager : MonoBehaviour
         placementGrid = new Grid(width, height);
     }
 
-    internal CellType[] GetNeighbourtTypesFor(Vector3Int position)
+    internal CellType[] GetNeighbourTypesFor(Vector3Int position)
     {
-        return placementGrid.GetAllAdjacentCellTypes(position.x, position.y);
+        return placementGrid.GetAllAdjacentCellTypes(position.x, position.z);
     }
 
     internal bool CheckIfPositionInBound(Vector3Int position)
@@ -44,6 +44,17 @@ public class PlacementManager : MonoBehaviour
         placementGrid[position.x, position.z] = type;
         StructureModel structure = CreateANewStructureModel(position, structurePrefab, type);
         temporaryRoadobjects.Add(position, structure);
+    }
+
+    internal List<Vector3Int> GetNeighboursOfTypeFor(Vector3Int position, CellType type)
+    {
+        var neighbourVertices = placementGrid.GetAdjacentCellsOfType(position.x, position.z, type);
+        List<Vector3Int> neighbours = new List<Vector3Int>();
+        foreach (var point in neighbourVertices)
+        {
+            neighbours.Add(new Vector3Int(point.X, 0, point.Y));
+        }
+        return neighbours;
     }
 
     private StructureModel CreateANewStructureModel(Vector3Int position, GameObject structurePrefab, CellType type)

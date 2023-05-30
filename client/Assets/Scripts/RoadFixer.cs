@@ -11,7 +11,7 @@ public class RoadFixer : MonoBehaviour
     public void FixRoadAtPosition(PlacementManager placementManager, Vector3Int temporaryPosition)
     {
         //[right, up, left, down]
-        var result = placementManager.GetNeighbourtTypesFor(temporaryPosition);
+        var result = placementManager.GetNeighbourTypesFor(temporaryPosition);
         int roadCount = 0;
         roadCount = result.Where(x => x == CellType.Road).Count();
         if(roadCount == 0 || roadCount == 1)
@@ -99,19 +99,19 @@ public class RoadFixer : MonoBehaviour
     {
         if (result[1] == CellType.Road )
         {
-            placementManager.ModifyStructureModel(temporaryPosition, corner, Quaternion.Euler(0, 270, 0));
+            placementManager.ModifyStructureModel(temporaryPosition, deadEnd, Quaternion.Euler(0, 270, 0));
         }
         else if (result[2] == CellType.Road )
         {
-            placementManager.ModifyStructureModel(temporaryPosition, corner, Quaternion.identity);
+            placementManager.ModifyStructureModel(temporaryPosition, deadEnd, Quaternion.identity);
         }
         else if (result[3] == CellType.Road )
         {
-            placementManager.ModifyStructureModel(temporaryPosition, corner, Quaternion.Euler(0, 90, 0));
+            placementManager.ModifyStructureModel(temporaryPosition, deadEnd, Quaternion.Euler(0, 90, 0));
         }
         else if (result[0] == CellType.Road )
         {
-            placementManager.ModifyStructureModel(temporaryPosition, corner, Quaternion.Euler(0, 180, 0));
+            placementManager.ModifyStructureModel(temporaryPosition, deadEnd, Quaternion.Euler(0, 180, 0));
         }
     }
 }

@@ -16,7 +16,7 @@ public class StructureModel : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            Destroy(child);
+            Destroy(child.gameObject);
         }
         var structure = Instantiate(model, transform);
         structure.transform.localPosition = new Vector3(0, yHeight, 0);
