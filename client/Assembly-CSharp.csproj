@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\Bin\Debug\</OutputPath>
-    <DefineConstants>UNITY_2021_3_18;UNITY_2021_3;UNITY_2021;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>UNITY_2021_3_18;UNITY_2021_3;UNITY_2021;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;RH_SerializedDictionary;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -57,6 +57,315 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Rotary Heart\SerializableDictionaryLite\Example\DataBaseExample.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\DNSResolverService.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Events\IEvent.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\TokenERC1155\TokenERC1155Service.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\DropERC721\DropERC721Service.cs" />
+    <Compile Include="Assets\Thirdweb\Examples\Scripts\Prefabs\Prefab_Events.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\Ethereum\Types\EvmTypeAttribute.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\Forwarder\ForwarderService.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.NEthereum\Account\WalletConnectTransactionManager.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\AsyncAwaitUtil\Source\AwaitExtensions.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\InternalEvent.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\BaseRegistrarImplementation\ContractDefinition\BaseRegistrarImplementationDefinition.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\Utils\WaitForTask.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\TokenERC20\ContractDefinition\MintRequest.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnect.Unity\Demo\Full Session\Scripts\DemoSignTypedData.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\DropERC721\ContractDefinition\AllowlistProof.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Network\MessageReceivedEventArgs.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Extensions\DictionaryExtensions.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\MetaMask.NEthereum\Account\MetaMaskAccount.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\Ethereum\Types\EvmIgnoreAttribute.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\EnglishAuctionsLogic\ContractDefinition\AuctionParameters.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnect.Unity\Demo\SSS (Single Sign Session)\Scripts\MessageSigner.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\ErrorResponse.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\MetaMask\Samples\Main\Scripts\Visuals\LookAtCamera.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\DropERC1155\ContractDefinition\AllowlistProof.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Scripts\ERC1155.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnect.Unity\Demo\Full Session\Scripts\DemoActions.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Network\DefaultBridge.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\TokenERC20\ContractDefinition\TokenERC20Definition.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Scripts\Storage.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\Ethereum\EthPersonalSign.cs" />
+    <Compile Include="Assets\Thirdweb\Examples\Scripts\Prefabs\Prefab_NFT.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\ETHRegistrarControllerService.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\FIFSRegistrar\ContractDefinition\FIFSRegistrarDefinition.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\ShortNameClaimsService.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Rotary Heart\SerializableDictionaryLite\IDAttribute.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\TokenERC1155\ContractDefinition\TokenERC1155Definition.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\Forwarder\ContractDefinition\ForwardRequest.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\Deed\ContractDefinition\DeedDefinition.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\MetaMask.NEthereum\Account\MetaMaskTransactionManager.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\Models\DeepLink\AppColors.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\TokenERC721\TokenERC721Service.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\Pack\ContractDefinition\Token.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Rotary Heart\SerializableDictionaryLite\ReorderableList\ReorderableList.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Events\EventFactory.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Utils\Sha3Keccack.cs" />
+    <Compile Include="Assets\Thirdweb\Examples\Scripts\Prefabs\Prefab_Reading.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\Network\NativeWebSocketTransport.cs" />
+    <Compile Include="Assets\Thirdweb\Examples\Scripts\Prefabs\Prefab_Storage.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\MetaMask.NEthereum\MetaMaskClient.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\Forwarder\ContractDefinition\ForwarderDefinition.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\DefaultReverseResolverService.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Events\EventHandlerMap.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\MetaMask\Samples\Main\Scripts\ModalData.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\WalletException.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\AsyncAwaitUtil\Source\Awaiters.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\StablePriceOracle\ContractDefinition\StablePriceOracleDefinition.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\DirectListingsLogic\ContractDefinition\DirectListingsLogicDefinition.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Network\ICipher.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\Ethereum\Types\EIP712Domain.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\DropERC721\ContractDefinition\DropERC721Definition.cs" />
+    <Compile Include="Assets\Thirdweb\Examples\Scripts\Utils\LoadingSpinner.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\DefaultReverseResolver\ContractDefinition\DefaultReverseResolverDefinition.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\EncryptedPayload.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\AsyncAwaitUtil\Tests\AsyncUtilTests.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\ReverseRegistrar\ContractDefinition\ReverseRegistrarDefinition.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\FIFSRegistrarService.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Scripts\EIP712.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\DropERC1155\DropERC1155Service.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\WalletConnectProvider.cs" />
+    <Compile Include="Assets\Thirdweb\Examples\Scripts\Prefabs\Prefab_NFTLoader.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\DNSRegisterService.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\ENSRegistryWithFallbackService.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\magic-unity\link.magic.unity.sdk\Prefabs\Scripts\MagicUnityButton.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\AsyncAwaitUtil\Tests\Util\TestButtonHandler.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\Ethereum\EthSignTransaction.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\MetaMask\Samples\Main\Scripts\CanvasScaler.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\EnglishAuctionsLogic\ContractDefinition\Auction.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\Utils\WaitForTaskResult.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\BaseRegistrarImplementationService.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\ValidJsonRpcRequestMethods.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.NEthereum\WalletConnectNEthereumExtensions.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Utils\RpcPayloadId.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\Ethereum\EthSendRawTransaction.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\Ethereum\Types\EvmTypedData.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.NEthereum\Client\WalletConnectClient.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Scripts\ERC721.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\EthTLSService.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\EnglishAuctionsLogic\ContractDefinition\EnglishAuctionsLogicDefinition.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\MetaMask\Samples\Main\Scripts\UIModalManager.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\Ethereum\TransactionData.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\MetaMask\Samples\Main\Scripts\ModalPrefabData.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\Properties\AssemblyInfo.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Utils\UriSchemes.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\TokenERC20\ContractDefinition\Checkpoint.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.NEthereum\Model\NEthSignTypedData.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\EthRegistrarSubdomainRegistrarService.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\DirectListingsLogic\ContractDefinition\Listing.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\TextDataKeyExtensions.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\MetaMask\Samples\Main\Scripts\Visuals\TweenIn.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Rotary Heart\SerializableDictionaryLite\DrawKeyAsPropertyAttribute.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\WCSessionRequestRequest.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\TokenERC20\TokenERC20Service.cs" />
+    <Compile Include="Assets\Thirdweb\Examples\Scripts\Prefabs\Prefab_ConnectWallet.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Scripts\Contract.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\Models\WCMessageSigned.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\TokenERC721\ContractDefinition\MintRequest.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\PublicResolverService.cs" />
+    <Compile Include="Assets\Thirdweb\Examples\Scripts\Prefabs\Prefab_Writing.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\Models\DeepLink\Wallets.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\OffersLogic\ContractDefinition\OfferParams.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Scripts\Pack.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\Ethereum\EthSign.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Events\Model\GenericEvent.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\AsyncAwaitUtil\Source\TaskExtensions.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Events\IEventProvider.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Utils\DisposableBase.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Scripts\Deployer.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\ENSRegistry\ContractDefinition\ENSRegistryDefinition.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\MetaMask\Samples\Main\Scripts\VisualController.cs" />
+    <Compile Include="Assets\Thirdweb\Examples\Scripts\Utils\SpriteSwap.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\Ethereum\Types\EvmTypeInfo.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Scripts\ThirdwebSDK.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\NetworkMessage.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\OffersLogic\ContractDefinition\OffersLogicDefinition.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\Pack\PackService.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\Models\DeepLink\MobileAppData.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\SavedSession.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Scripts\ThirdwebInterceptor.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\magic-unity\link.magic.unity.sdk\Prefabs\Scripts\EthereumButton.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\WCSessionRequestResponse.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Network\AESCipher.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\RootService.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\Network\WebGLAESCipher.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Rotary Heart\SerializableDictionaryLite\Example\NestedDB.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\DropERC20\ContractDefinition\AllowlistProof.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Scripts\Types.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Scripts\Marketplace.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\MetaMask.NEthereum\MetaMaskNEthereumExtensions.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\DropERC20\DropERC20Service.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Scripts\Wallet.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\MetaMask\Samples\Main\Scripts\Visuals\ButtonEffect.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\WalletConnectProtocol.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\PublicResolver\ContractDefinition\PublicResolverDefinition.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\Models\DeepLink\AppEntry.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\ENSRegistryService.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Events\Model\JsonRpcResponseEvent.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Chains.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\DropERC20\ContractDefinition\ClaimCondition.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\UI\WalletConnectQRImage.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\JsonRpcResponse.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\Ethereum\WalletAddEthChain.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\StablePriceOracleService.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\Ethereum\WalletSwitchEthChain.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\AbiTypeContentType.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\ETHRegistrarController\ContractDefinition\ETHRegistrarControllerDefinition.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\DNSRegister\ContractDefinition\DNSRegisterDefinition.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\ClientMeta.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Scripts\Events.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\TokenERC721\ContractDefinition\TokenERC721Definition.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\OffersLogic\ContractDefinition\Offer.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\DropERC1155\ContractDefinition\DropERC1155Definition.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\Ethereum\EthSendTransaction.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\WalletConnectUnitySession.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.NEthereum\Client\FallbackProvider.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Events\Model\JsonRpcRequestEvent.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\AsyncAwaitUtil\Source\WaitForBackgroundThread.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\Ethereum\NativeCurrency.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Rotary Heart\SerializableDictionaryLite\SerializableDictionaryBase.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\WalletConnectStates.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Scripts\Multicall.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\ENSRegistryWithFallback\ContractDefinition\ENSRegistryWithFallbackDefinition.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Rotary Heart\SerializableDictionaryLite\References\RequiredReferences.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\Utils\UnityBinder.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\Ethereum\EthResponse.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\ShortNameClaims\ContractDefinition\ShortNameClaimsDefinition.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\Ethereum\EthGenericRequest.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\JsonRpcPayload.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\WCSessionData.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\Address.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\Ethereum\EthChain.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\DeedService.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Scripts\TransactionManager.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\DropERC20\ContractDefinition\Checkpoint.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\TextDataKey.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\WalletConnectSession.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\Ethereum\EthChainData.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Scripts\Common.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Extensions\JsonRequestMethodExtension.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\TestRegistrarService.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\AsyncAwaitUtil\Source\Internal\SyncContextUtil.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\MetaMask\Samples\Main\Scripts\UIModal.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\DirectListingsLogic\ContractDefinition\ListingParameters.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Scripts\Utils.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\JsonRpcRequest.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\UI\ChooseWalletScreen.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\Root\ContractDefinition\RootDefinition.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\TestRegistrar\ContractDefinition\TestRegistrarDefinition.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\WalletConnect.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\magic-unity\link.magic.unity.sdk\Prefabs\Scripts\MagicUnity.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Scripts\Bridge.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\ReverseRegistrarService.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\DropERC20\ContractDefinition\DropERC20Definition.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\Models\DeepLink\AppMetadata.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\DropERC721\ContractDefinition\ClaimCondition.cs" />
+    <Compile Include="Assets\Thirdweb\Examples\Scripts\Prefabs\Prefab_Marketplace.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Scripts\ThirdwebManager.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\WCSessionUpdate.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\JsonRpcRequestMethod.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\RegistrarService.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnect.Unity\Demo\SSS (Single Sign Session)\Scripts\ResultScreen.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.NEthereum\Account\WalletConnectAccount.cs" />
+    <Compile Include="Assets\Thirdweb\Examples\Scripts\Prefabs\Prefab_Miscellaneous.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Network\TransportFactory.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\Models\DeepLink\AppInfo.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\TokenERC1155\ContractDefinition\MintRequest.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\MetaMask\Samples\Main\Scripts\ModalPrefabs.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\Models\NFTTokenData.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\Ethereum\EthSignTypedData.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Scripts\ThirdwebSession.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\Pack\ContractDefinition\PackDefinition.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Utils\Hex.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Contract Definitions\DropERC1155\ContractDefinition\ClaimCondition.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\Registrar\ContractDefinition\RegistrarDefinition.cs" />
+    <Compile Include="Assets\Thirdweb\Examples\Scripts\Utils\Debugger.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\DNSResolver\ContractDefinition\DNSResolverDefinition.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\WcSessionRequest.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\AsyncAwaitUtil\Source\WaitForUpdate.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\AsyncAwaitUtil\Source\IEnumeratorAwaitExtensions.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\EthRegistrarSubdomainRegistrar\ContractDefinition\EthRegistrarSubdomainRegistrarDefinition.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Network\ITransport.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Events\EventDelegator.cs" />
+    <Compile Include="Assets\Thirdweb\Core\Scripts\ERC20.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.NEthereum\Model\NEthSignTransaction.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\AsyncAwaitUtil\Source\Internal\AsyncCoroutineRunner.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Events\EventManager.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\MetaMask\Samples\Main\Scripts\Visuals\BackgroundShape.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\IEventSource.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Shaders\TMPro.cginc" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.GnosisSafe.dll" />
+    <None Include="Assets\Thirdweb\Plugins\MetaMask\Third Party Notices\Indivdiual Licenses\Bouncy Castle MIT License.txt" />
+    <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.KeyStore.dll" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\BouncyCastle.Crypto.dll" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.Accounts.dll" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.JsonRpc.WebSocketClient.dll" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.JsonRpc.RpcClient.dll" />
+    <None Include="Assets\Thirdweb\Plugins\WalletConnect.Unity\Packages\QRCoder.1.3.4\lib\net35\QRCoder.dll" />
+    <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\Thirdweb\Plugins\MetaMask\Plugins\Libraries\zxing.unity.dll" />
+    <None Include="Assets\Thirdweb\Plugins\MetaMask\Third Party Notices\Indivdiual Licenses\Text Mesh Pro.txt" />
+    <None Include="Assets\Thirdweb\Plugins\MetaMask\Third Party Notices\Indivdiual Licenses\Socket.io Unity MIT License.txt" />
+    <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\Thirdweb\Plugins\MetaMask\Third Party Notices\Indivdiual Licenses\Native Web Socket Apache 2.0.txt" />
+    <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.Parity.dll" />
+    <None Include="Assets\Thirdweb\Plugins\MetaMask\Third Party Notices\Indivdiual Licenses\Zxing Unity Apache 2.0 License.txt" />
+    <None Include="Assets\Thirdweb\Plugins\Newtonsoft 3.0.2\Runtime\Newtonsoft.Json.dll" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.Signer.EIP712.dll" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.Web3.dll" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.RPC.dll" />
+    <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.RLP.dll" />
+    <None Include="Assets\Thirdweb\Plugins\MetaMask\Third Party Notices\Indivdiual Licenses\Starscream Apache 2.0.txt" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.Besu.dll" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.Hex.dll" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.JsonRpc.IpcClient.dll" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.Model.dll" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.Signer.dll" />
+    <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.Geth.dll" />
+    <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+    <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.Merkle.dll" />
+    <None Include="Assets\Thirdweb\Plugins\Newtonsoft 3.0.2\link.xml" />
+    <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\Thirdweb\Plugins\MetaMask\Third Party Notices\Indivdiual Licenses\Ecies Go MIT License.txt" />
+    <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.Util.dll" />
+    <None Include="Assets\Thirdweb\Plugins\WalletConnect.Unity\Packages\QRCoder.Unity.1.0.2\lib\net35\QRCoder.Unity.dll" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.Quorum.dll" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.Optimism.dll" />
+    <None Include="Assets\Thirdweb\Plugins\MetaMask\Third Party Notices\Indivdiual Licenses\okhttp Apache 2.0.txt" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.Contracts.dll" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.JsonRpc.Client.dll" />
+    <None Include="Assets\Thirdweb\Plugins\MetaMask\Plugins\Libraries\ECIES\Windows\ecies.dll" />
+    <None Include="Assets\Thirdweb\Plugins\MetaMask\Third Party Notices\Indivdiual Licenses\Socket IO Javascript.txt" />
+    <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.BlockchainProcessing.dll" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.Merkle.Patricia.dll" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Microsoft.Extensions.Logging.Abstractions.dll" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ABI.dll" />
+    <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\Thirdweb\Plugins\MetaMask\Third Party Notices\Third Party Notices.txt" />
+    <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\Thirdweb\Plugins\MetaMask\Third Party Notices\Indivdiual Licenses\Ecies JS MIT license.txt" />
+    <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.Siwe.dll" />
+    <None Include="Assets\Thirdweb\Plugins\Newtonsoft 3.0.2\Runtime\AOT\Newtonsoft.Json.dll" />
+    <None Include="Assets\Thirdweb\Plugins\WalletConnect.Unity\Packages\System.Drawing.Common\netstandard2.0\System.Drawing.Common.dll" />
+    <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Shaders\TMP_Sprite.shader" />
+    <None Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.Siwe.Core.dll" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -319,6 +628,123 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Util">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.RPC">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.RPC.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Optimism">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.Optimism.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.unity">
+      <HintPath>Assets\Thirdweb\Plugins\MetaMask\Plugins\Libraries\zxing.unity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web">
+      <HintPath>Assets\Thirdweb\Plugins\MetaMask\Plugins\Libraries\SocketIOUnity\Runtime\libs\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Hex">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.Hex.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Quorum">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.Quorum.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.BlockchainProcessing">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.BlockchainProcessing.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Assets\Thirdweb\Plugins\MetaMask\Plugins\Libraries\SocketIOUnity\Runtime\libs\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Merkle.Patricia">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.Merkle.Patricia.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.JsonRpc.RpcClient">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.JsonRpc.RpcClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.JsonRpc.WebSocketClient">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.JsonRpc.WebSocketClient.dll</HintPath>
+    </Reference>
+    <Reference Include="QRCoder">
+      <HintPath>Assets\Thirdweb\Plugins\WalletConnect.Unity\Packages\QRCoder.1.3.4\lib\net35\QRCoder.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Signer.EIP712">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.Signer.EIP712.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets\Thirdweb\Plugins\Newtonsoft 3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Siwe">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.Siwe.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.JsonRpc.Client">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.JsonRpc.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Model">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Signer">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.Signer.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Web3">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.Web3.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.ABI">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.ABI.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.JsonRpc.IpcClient">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.JsonRpc.IpcClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Common">
+      <HintPath>Assets\Thirdweb\Plugins\WalletConnect.Unity\Packages\System.Drawing.Common\netstandard2.0\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+      <HintPath>Assets\Thirdweb\Plugins\MetaMask\Plugins\Libraries\SocketIOUnity\Runtime\libs\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Accounts">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.Accounts.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.KeyStore">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.KeyStore.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive">
+      <HintPath>Assets\Thirdweb\Plugins\MetaMask\Plugins\Libraries\SocketIOUnity\Runtime\libs\System.Reactive.dll</HintPath>
+    </Reference>
+    <Reference Include="QRCoder.Unity">
+      <HintPath>Assets\Thirdweb\Plugins\WalletConnect.Unity\Packages\QRCoder.Unity.1.0.2\lib\net35\QRCoder.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.GnosisSafe">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.GnosisSafe.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Merkle">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.Merkle.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Contracts">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json">
+      <HintPath>Assets\Thirdweb\Plugins\MetaMask\Plugins\Libraries\SocketIOUnity\Runtime\libs\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Siwe.Core">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.Siwe.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Besu">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.Besu.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.RLP">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.RLP.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Geth">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.Geth.dll</HintPath>
+    </Reference>
+    <Reference Include="Nethereum.Parity">
+      <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.Parity.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Android.Types">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.18f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
@@ -793,6 +1219,38 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="RotaryHeart.csproj">
+      <Project>{F04D1617-C663-14B3-C87E-CD62FB78A769}</Project>
+      <Name>RotaryHeart</Name>
+    </ProjectReference>
+    <ProjectReference Include="link.magic.unity.sdk.csproj">
+      <Project>{79E2ACC9-4D6F-31A0-8E82-F1C0E1B2F90B}</Project>
+      <Name>link.magic.unity.sdk</Name>
+    </ProjectReference>
+    <ProjectReference Include="MetaMaskUnity.Editor.csproj">
+      <Project>{C283B190-6365-F77D-D17F-5FF9D86B4353}</Project>
+      <Name>MetaMaskUnity.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="MetaMaskUnity.Runtime.csproj">
+      <Project>{06D6BBAC-436E-3ECF-2391-ADD8D0DFACF5}</Project>
+      <Name>MetaMaskUnity.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="MetaMask.NativeWebSocket.csproj">
+      <Project>{DA2CE7CF-ECDD-1911-8E41-416EA0C27A12}</Project>
+      <Name>MetaMask.NativeWebSocket</Name>
+    </ProjectReference>
+    <ProjectReference Include="endel.nativewebsocket.csproj">
+      <Project>{18A3EA3D-3EB3-93D6-A4D3-8B48E28960E6}</Project>
+      <Name>endel.nativewebsocket</Name>
+    </ProjectReference>
+    <ProjectReference Include="MetaMask.SocketIOUnity.csproj">
+      <Project>{17D172DC-C524-3033-4696-1EAF5B511225}</Project>
+      <Name>MetaMask.SocketIOUnity</Name>
+    </ProjectReference>
+    <ProjectReference Include="MetaMask.Runtime.csproj">
+      <Project>{ED342FBC-0510-31C8-A7C0-92D47A466CD9}</Project>
+      <Name>MetaMask.Runtime</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
