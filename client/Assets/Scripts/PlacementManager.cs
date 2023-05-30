@@ -9,6 +9,7 @@ public class PlacementManager : MonoBehaviour
     Grid placementGrid;
 
     private Dictionary<Vector3Int, StructureModel> temporaryRoadobjects = new Dictionary<Vector3Int, StructureModel>();
+    private Dictionary<Vector3Int, StructureModel> structureDictionary = new Dictionary<Vector3Int, StructureModel>();
 
     private void Start()
     {
@@ -46,16 +47,6 @@ public class PlacementManager : MonoBehaviour
         temporaryRoadobjects.Add(position, structure);
     }
 
-    internal List<Vector3Int> GetPathBetween(Vector3Int startPosition, Vector3Int position)
-    {
-        throw new NotImplementedException();
-    }
-
-    internal void RemoveAllTemporaryStructures()
-    {
-        throw new NotImplementedException();
-    }
-
     internal List<Vector3Int> GetNeighboursOfTypeFor(Vector3Int position, CellType type)
     {
         var neighbourVertices = placementGrid.GetAdjacentCellsOfType(position.x, position.z, type);
@@ -77,14 +68,42 @@ public class PlacementManager : MonoBehaviour
         return structureModel;
     }
 
+    internal List<Vector3Int> GetPathBetween(Vector3Int startPosition, Vector3Int endPosition)
+    {
+        var resultPath = GridSearch.AStarSearch(placementGrid, new Point(startPosition.x, startPosition.z), new Point(endPosition.x, endPosition.z));
+        List<Vector3Int> path = new List<Vector3Int>();
+        foreach (Point point in resultPath)
+        {
+            path.Add(new Vector3Int(point.X, 0, point.Y));
+        }
+        return path;
+    }
+
+    internal void RemoveAllTemporaryStructures()
+    {
+        foreach (var structure in temporaryRoadobjects.Values)
+        {
+            var position = Vector3Int.RoundToInt(structure.transform.position);
+            placementGrid[position.x, position.z] = CellType.Empty;
+            Destroy(structure.gameObject);
+        }
+        temporaryRoadobjects.Clear();
+    }
+
     internal void AddtemporaryStructuresToStructureDictionary()
     {
-        throw new NotImplementedException();
+        foreach (var structure in temporaryRoadobjects)
+        {
+            structureDictionary.Add(structure.Key, structure.Value);
+        }
+        temporaryRoadobjects.Clear();
     }
 
     public void ModifyStructureModel(Vector3Int position, GameObject newModel, Quaternion rotation)
     {
         if (temporaryRoadobjects.ContainsKey(position))
             temporaryRoadobjects[position].SwapModel(newModel, rotation);
+        else if (structureDictionary.ContainsKey(position))
+            structureDictionary[position].SwapModel(newModel, rotation);
     }
 }

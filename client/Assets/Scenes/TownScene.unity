@@ -6257,6 +6257,7 @@ GameObject:
   - component: {fileID: 681313532}
   - component: {fileID: 681313531}
   - component: {fileID: 681313530}
+  - component: {fileID: 681313529}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6264,6 +6265,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &681313529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681313528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e70a10840aa5e40833719b578def1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placeRoadButton: {fileID: 504028732}
+  placeHouseButton: {fileID: 1325324658}
+  placeSpecialButton: {fileID: 1405492519}
+  outlineColor: {r: 0.8931636, g: 0.0047169924, b: 1, a: 1}
 --- !u!114 &681313530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21337,6 +21354,7 @@ MonoBehaviour:
   cameraMovement: {fileID: 2044889014}
   roadManager: {fileID: 2093395483}
   inputManager: {fileID: 1916978682}
+  uiController: {fileID: 681313529}
 --- !u!4 &2039921796
 Transform:
   m_ObjectHideFlags: 0
@@ -21886,7 +21904,6 @@ MonoBehaviour:
   placementManager: {fileID: 540532163}
   temporaryPlacementPositions: []
   roadPositionsToRecheck: []
-  roadStraight: {fileID: 5661862354351878554, guid: 0cf01c743836d154eb47042e1bc62afd, type: 3}
   roadFixer: {fileID: 0}
 --- !u!4 &2093395484
 Transform:

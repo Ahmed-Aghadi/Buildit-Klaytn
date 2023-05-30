@@ -43,12 +43,23 @@ public class RoadManager : MonoBehaviour
         {
             placementManager.RemoveAllTemporaryStructures();
             temporaryPlacementPositions.Clear();
+
+            foreach (var positionsToFix in roadPositionsToRecheck)
+            {
+                roadFixer.FixRoadAtPosition(placementManager, positionsToFix);
+            }
+
             roadPositionsToRecheck.Clear();
 
             temporaryPlacementPositions = placementManager.GetPathBetween(startPosition, position);
 
             foreach (var temporaryPosition in temporaryPlacementPositions)
             {
+                if (placementManager.CheckIfPositionIsFree(temporaryPosition) == false)
+                {
+                    roadPositionsToRecheck.Add(temporaryPosition);
+                    continue;
+                }  
                 placementManager.PlaceTemporaryStructure(temporaryPosition, roadFixer.deadEnd, CellType.Road);
             }
         }
