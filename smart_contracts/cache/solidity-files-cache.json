@@ -1,0 +1,270 @@
+{
+  "_format": "ethers-rs-sol-cache-3",
+  "paths": {
+    "artifacts": "out",
+    "build_infos": "out/build-info",
+    "sources": "src",
+    "tests": "test",
+    "scripts": "script",
+    "libraries": [
+      "lib"
+    ]
+  },
+  "files": {
+    "lib/solmate/src/auth/Owned.sol": {
+      "lastModificationDate": 1685359736567,
+      "contentHash": "11fec455b72d2743b77d783d6017e1e9",
+      "sourceName": "lib/solmate/src/auth/Owned.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": ">=0.8.0",
+      "artifacts": {
+        "Owned": {
+          "0.8.19+commit.7dd6d404.Linux.gcc": "Owned.sol/Owned.json"
+        }
+      }
+    },
+    "lib/solmate/src/tokens/ERC1155.sol": {
+      "lastModificationDate": 1685359736885,
+      "contentHash": "558676409e429f6c4f2deef39106e3c0",
+      "sourceName": "lib/solmate/src/tokens/ERC1155.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": ">=0.8.0",
+      "artifacts": {
+        "ERC1155": {
+          "0.8.19+commit.7dd6d404.Linux.gcc": "ERC1155.sol/ERC1155.json"
+        },
+        "ERC1155TokenReceiver": {
+          "0.8.19+commit.7dd6d404.Linux.gcc": "ERC1155.sol/ERC1155TokenReceiver.json"
+        }
+      }
+    },
+    "lib/solmate/src/tokens/ERC721.sol": {
+      "lastModificationDate": 1685359736902,
+      "contentHash": "ecc06cefc5404b9e1adbc2e459d5757e",
+      "sourceName": "lib/solmate/src/tokens/ERC721.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": ">=0.8.0",
+      "artifacts": {
+        "ERC721": {
+          "0.8.19+commit.7dd6d404.Linux.gcc": "ERC721.sol/ERC721.json"
+        },
+        "ERC721TokenReceiver": {
+          "0.8.19+commit.7dd6d404.Linux.gcc": "ERC721.sol/ERC721TokenReceiver.json"
+        }
+      }
+    },
+    "lib/solmate/src/utils/LibString.sol": {
+      "lastModificationDate": 1685359736939,
+      "contentHash": "3c7096e3b2ef0e75360bd6f130e3bedb",
+      "sourceName": "lib/solmate/src/utils/LibString.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": ">=0.8.0",
+      "artifacts": {
+        "LibString": {
+          "0.8.19+commit.7dd6d404.Linux.gcc": "LibString.sol/LibString.json"
+        }
+      }
+    },
+    "src/Map.sol": {
+      "lastModificationDate": 1685382857265,
+      "contentHash": "f8f68398ad72aac7521417bb4eb9539a",
+      "sourceName": "src/Map.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "lib/solmate/src/auth/Owned.sol",
+        "lib/solmate/src/tokens/ERC1155.sol",
+        "lib/solmate/src/tokens/ERC721.sol",
+        "lib/solmate/src/utils/LibString.sol"
+      ],
+      "versionRequirement": "^0.8.13",
+      "artifacts": {
+        "Map": {
+          "0.8.19+commit.7dd6d404.Linux.gcc": "Map.sol/Map.json"
+        }
+      }
+    },
+    "src/Utils.sol": {
+      "lastModificationDate": 1685385688353,
+      "contentHash": "43afc2b90fbea7f0a34127cf1e7d586c",
+      "sourceName": "src/Utils.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "lib/solmate/src/auth/Owned.sol",
+        "lib/solmate/src/tokens/ERC1155.sol",
+        "lib/solmate/src/utils/LibString.sol"
+      ],
+      "versionRequirement": "^0.8.13",
+      "artifacts": {
+        "Utils": {
+          "0.8.19+commit.7dd6d404.Linux.gcc": "Utils.sol/Utils.json"
+        }
+      }
+    }
+  }
+}
