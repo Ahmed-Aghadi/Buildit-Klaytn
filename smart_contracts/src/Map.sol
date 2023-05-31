@@ -19,10 +19,10 @@ error InvalidLength();
 
 contract Map is ERC721, Owned {
     // // rectangular land with coordinates of corners as (x,y), (x,y+perSize), (x+perSize,y), (x+perSize,y+perSize)
-    // struct Land {
-    //     uint256 x;
-    //     uint256 y;
-    // }
+    struct Land {
+        uint256 xIndex;
+        uint256 yIndex;
+    }
     uint256 public size;
     uint256 public perSize;
     uint256 public landCount;
@@ -30,9 +30,11 @@ contract Map is ERC721, Owned {
     uint256 public utilCount;
     address public utilsAddress;
 
-    // mapping(uint256 => Land) public land;
+    // x/perSize,y/perSize to LandId
     // [ (x/perSize,y/perSize) to LandId ] of rectangular land with coordinates of corners as (x,y), (x,y+perSize), (x+perSize,y), (x+perSize,y+perSize)
-    mapping(uint256 => mapping(uint256 => uint256)) landIds;
+    mapping(uint256 => mapping(uint256 => uint256)) public landIds;
+    // mapping of LandId to Land (xIndex, yIndex)
+    mapping(uint256 => Land) public land;
 
     // x,y to utilId
     mapping(uint256 => mapping(uint256 => uint256)) public map;
@@ -59,6 +61,7 @@ contract Map is ERC721, Owned {
         landCount += 1;
         // land[id] = Land(x, y);
         landIds[xIndex][yIndex] = landCount;
+        land[landCount] = Land(xIndex, yIndex);
         _mint(msg.sender, landCount);
         return landCount;
     }

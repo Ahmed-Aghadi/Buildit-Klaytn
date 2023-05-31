@@ -15,8 +15,14 @@ public class PlacementManager : MonoBehaviour
 
     private void Start()
     {
+        // placementGrid = new Grid(size, size);
+        // mapManager.updateGridSize(size);
+    }
+
+    public void InitializeMap(int size)
+    {
+        this.size = size;
         placementGrid = new Grid(size, size);
-        mapManager.updateGridSize(size);
     }
 
     internal CellType[] GetNeighbourTypesFor(Vector3Int position)

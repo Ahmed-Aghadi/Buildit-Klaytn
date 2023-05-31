@@ -151,6 +151,7 @@
     <Compile Include="Assets\Thirdweb\Plugins\MetaMask\Samples\Main\Scripts\Visuals\ButtonEffect.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\Models\DeepLink\AppEntry.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Events\Model\JsonRpcResponseEvent.cs" />
+    <Compile Include="Assets\Scripts\ContractManager.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\Ethereum\WalletAddEthChain.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\AbiTypeContentType.cs" />
     <Compile Include="Assets\Thirdweb\Core\Contract Definitions\TokenERC721\ContractDefinition\TokenERC721Definition.cs" />
@@ -309,7 +310,6 @@
     <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\EthRegistrarSubdomainRegistrar\ContractDefinition\EthRegistrarSubdomainRegistrarDefinition.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\AsyncAwaitUtil\Source\WaitForUpdate.cs" />
     <Compile Include="Assets\Thirdweb\Core\Scripts\ERC20.cs" />
-    <Compile Include="Assets\Scripts\ContractManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Shaders\TMPro.cginc" />
