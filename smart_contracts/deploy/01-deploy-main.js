@@ -9,17 +9,22 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   const size = 15;
   const perSize = 5;
 
-  log("----------------------------------------------------");
+  // log("----------------------------------------------------");
   const utilsArg = [utilsBaseUri];
-  const utils = await deploy("Utils", {
-    from: deployer,
-    args: utilsArg,
-    log: true,
-    waitConfirmations: waitBlockConfirmations,
-  });
-  console.log("utils deployed to:", utils.address);
+  // const utils = await deploy("Utils", {
+  //   from: deployer,
+  //   args: utilsArg,
+  //   log: true,
+  //   waitConfirmations: waitBlockConfirmations,
+  // });
+  // console.log("utils deployed to:", utils.address);
   log("----------------------------------------------------");
-  const mapArg = [size, perSize, mapBaseUri, utils.address];
+  const mapArg = [
+    size,
+    perSize,
+    mapBaseUri,
+    "0x4b22e4f5cfCb3e648a6F42Fa9D4E55985f9647D1",
+  ];
   const map = await deploy("Map", {
     from: deployer,
     args: mapArg,
@@ -28,8 +33,8 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   });
   console.log("map deployed to:", map.address);
   log("----------------------------------------------------");
-  console.log("Verifying for Utils...");
-  await verify(utils.address, utilsArg);
+  // console.log("Verifying for Utils...");
+  // await verify(utils.address, utilsArg);
   console.log("Verifying for Map...");
   await verify(map.address, mapArg);
   log("----------------------------------------------------");
