@@ -16,6 +16,7 @@ public class UIController : MonoBehaviour
     private void Start()
     {
         buttonList = new List<Button> { placeHouseButton, placeRoadButton, placeSpecialButton, deleteItem };
+        AddEventListeners();
     }
 
     private void AddEventListeners()

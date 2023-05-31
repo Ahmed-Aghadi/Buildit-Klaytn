@@ -56,15 +56,15 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\Editor\WalletConnectEditor.cs" />
-    <Compile Include="Assets\Thirdweb\Plugins\Rotary Heart\SerializableDictionaryLite\Editor\Constants.cs" />
-    <Compile Include="Assets\Thirdweb\Plugins\Rotary Heart\SerializableDictionaryLite\Editor\DictionaryPropertyDrawer.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\Rotary Heart\SerializableDictionaryLite\Editor\Definer.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\MetaMask\Installer\Editor\MetaMaskInstallerWindow.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\MetaMask\Installer\Editor\VspAttribution.cs" />
+    <Compile Include="Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Rotary Heart\SerializableDictionaryLite\Editor\Constants.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\Rotary Heart\SerializableDictionaryLite\Editor\DictionaryPropertyDrawer.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\Rotary Heart\SerializableDictionaryLite\Editor\SupportWindow.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\Rotary Heart\SerializableDictionaryLite\Editor\PreferencesWindow.cs" />
-    <Compile Include="Assets\Thirdweb\Plugins\MetaMask\Installer\Editor\VspAttribution.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\MetaMask\Installer\Editor\MetaMaskUnityAnalytics.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -340,42 +340,6 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.18f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Plastic.Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.0.0\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Plastic.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.0.0\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.YamlDotNet">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Cecil.Mdb">
-      <HintPath>Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.TextureAssets">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.IonicZip">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
-    </Reference>
-    <Reference Include="unityplastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.0.0\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Cecil.Pdb">
-      <HintPath>Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Cecil">
-      <HintPath>Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
-    </Reference>
-    <Reference Include="log4netPlastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.0.0\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Cecil.Rocks">
-      <HintPath>Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="Nethereum.Util">
       <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.Util.dll</HintPath>
     </Reference>
@@ -397,6 +361,9 @@
     <Reference Include="Nethereum.Quorum">
       <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.Quorum.dll</HintPath>
     </Reference>
+    <Reference Include="log4netPlastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.0.0\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
+    </Reference>
     <Reference Include="Nethereum.BlockchainProcessing">
       <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.BlockchainProcessing.dll</HintPath>
     </Reference>
@@ -409,8 +376,14 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
       <HintPath>Assets\Thirdweb\Plugins\MetaMask\Plugins\Libraries\SocketIOUnity\Runtime\libs\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Plastic.Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.0.0\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Extensions.Logging.Abstractions">
       <HintPath>Assets\Thirdweb\Plugins\Nethereum\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Plastic.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.0.0\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Nethereum.Merkle.Patricia">
       <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.Merkle.Patricia.dll</HintPath>
@@ -418,11 +391,17 @@
     <Reference Include="Google.VersionHandlerImpl">
       <HintPath>Assets\Thirdweb\Plugins\ExternalDependencyManager\Editor\1.2.175\Google.VersionHandlerImpl.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.VisualScripting.TextureAssets">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+    </Reference>
     <Reference Include="Google.JarResolver">
       <HintPath>Assets\Thirdweb\Plugins\ExternalDependencyManager\Editor\1.2.175\Google.JarResolver.dll</HintPath>
     </Reference>
     <Reference Include="Nethereum.JsonRpc.RpcClient">
       <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.JsonRpc.RpcClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Nethereum.JsonRpc.WebSocketClient">
       <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.JsonRpc.WebSocketClient.dll</HintPath>
@@ -460,6 +439,12 @@
     <Reference Include="Nethereum.JsonRpc.IpcClient">
       <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.JsonRpc.IpcClient.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.VisualScripting.IonicZip">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Pdb">
+      <HintPath>Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing.Common">
       <HintPath>Assets\Thirdweb\Plugins\WalletConnect.Unity\Packages\System.Drawing.Common\netstandard2.0\System.Drawing.Common.dll</HintPath>
     </Reference>
@@ -490,14 +475,29 @@
     <Reference Include="System.Text.Json">
       <HintPath>Assets\Thirdweb\Plugins\MetaMask\Plugins\Libraries\SocketIOUnity\Runtime\libs\System.Text.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.VisualScripting.YamlDotNet">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+    </Reference>
     <Reference Include="Nethereum.Siwe.Core">
       <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.Siwe.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Mdb">
+      <HintPath>Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="unityplastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.0.0\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
     </Reference>
     <Reference Include="Nethereum.Besu">
       <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.Besu.dll</HintPath>
     </Reference>
     <Reference Include="Nethereum.RLP">
       <HintPath>Assets\Thirdweb\Plugins\Nethereum\Nethereum.RLP.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil">
+      <HintPath>Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Rocks">
+      <HintPath>Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="Google.VersionHandler">
       <HintPath>Assets\Thirdweb\Plugins\ExternalDependencyManager\Editor\Google.VersionHandler.dll</HintPath>
@@ -931,11 +931,11 @@
     <Reference Include="Unity.VisualScripting.State.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Burst.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Searcher.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
@@ -949,9 +949,6 @@
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
@@ -960,6 +957,9 @@
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.PlasticSCM.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
@@ -1003,22 +1003,6 @@
       <Project>{A2859A56-AB4A-51F9-60BB-1B6FC96E8C70}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
-    <ProjectReference Include="RotaryHeart.csproj">
-      <Project>{F04D1617-C663-14B3-C87E-CD62FB78A769}</Project>
-      <Name>RotaryHeart</Name>
-    </ProjectReference>
-    <ProjectReference Include="link.magic.unity.sdk.csproj">
-      <Project>{79E2ACC9-4D6F-31A0-8E82-F1C0E1B2F90B}</Project>
-      <Name>link.magic.unity.sdk</Name>
-    </ProjectReference>
-    <ProjectReference Include="MetaMaskUnity.Editor.csproj">
-      <Project>{C283B190-6365-F77D-D17F-5FF9D86B4353}</Project>
-      <Name>MetaMaskUnity.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="MetaMaskUnity.Runtime.csproj">
-      <Project>{06D6BBAC-436E-3ECF-2391-ADD8D0DFACF5}</Project>
-      <Name>MetaMaskUnity.Runtime</Name>
-    </ProjectReference>
     <ProjectReference Include="MetaMask.NativeWebSocket.csproj">
       <Project>{DA2CE7CF-ECDD-1911-8E41-416EA0C27A12}</Project>
       <Name>MetaMask.NativeWebSocket</Name>
@@ -1034,6 +1018,22 @@
     <ProjectReference Include="MetaMask.Runtime.csproj">
       <Project>{ED342FBC-0510-31C8-A7C0-92D47A466CD9}</Project>
       <Name>MetaMask.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="MetaMaskUnity.Runtime.csproj">
+      <Project>{06D6BBAC-436E-3ECF-2391-ADD8D0DFACF5}</Project>
+      <Name>MetaMaskUnity.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="RotaryHeart.csproj">
+      <Project>{F04D1617-C663-14B3-C87E-CD62FB78A769}</Project>
+      <Name>RotaryHeart</Name>
+    </ProjectReference>
+    <ProjectReference Include="link.magic.unity.sdk.csproj">
+      <Project>{79E2ACC9-4D6F-31A0-8E82-F1C0E1B2F90B}</Project>
+      <Name>link.magic.unity.sdk</Name>
+    </ProjectReference>
+    <ProjectReference Include="MetaMaskUnity.Editor.csproj">
+      <Project>{C283B190-6365-F77D-D17F-5FF9D86B4353}</Project>
+      <Name>MetaMaskUnity.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

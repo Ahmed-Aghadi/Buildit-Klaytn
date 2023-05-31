@@ -5,15 +5,18 @@ using UnityEngine;
 
 public class PlacementManager : MonoBehaviour
 {
-    public int width, height;
+    public int size;
     Grid placementGrid;
 
     private Dictionary<Vector3Int, StructureModel> temporaryRoadobjects = new Dictionary<Vector3Int, StructureModel>();
     private Dictionary<Vector3Int, StructureModel> structureDictionary = new Dictionary<Vector3Int, StructureModel>();
 
+    public MapManager mapManager;
+
     private void Start()
     {
-        placementGrid = new Grid(width, height);
+        placementGrid = new Grid(size, size);
+        mapManager.updateGridSize(size);
     }
 
     internal CellType[] GetNeighbourTypesFor(Vector3Int position)
@@ -23,7 +26,7 @@ public class PlacementManager : MonoBehaviour
 
     internal bool CheckIfPositionInBound(Vector3Int position)
     {
-        if(position.x >= 0 && position.x < width && position.z >=0 && position.z < height)
+        if(position.x >= 0 && position.x < size && position.z >=0 && position.z < size)
         {
             return true;
         }
