@@ -9,7 +9,7 @@ public class UIController : MonoBehaviour
 {
     public Action OnRoadPlacement, OnHousePlacement, OnSpecialPlacement, OnDeleteItem;
     public Button placeRoadButton, placeHouseButton, placeSpecialButton, deleteItem;
-    public TextMeshProUGUI connectWalletText;
+    public TextMeshProUGUI connectWalletText, mapBalanceText;
 
     public Color outlineColor;
     List<Button> buttonList;
@@ -74,6 +74,11 @@ public class UIController : MonoBehaviour
         {
             button.GetComponent<Outline>().enabled = false;
         }
+    }
+
+    public void updateMapBalance(int balance)
+    {
+        mapBalanceText.text = "Land Owned: " + balance.ToString();
     }
 
     /*public void OnWalletConnect()

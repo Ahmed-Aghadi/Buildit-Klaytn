@@ -76,6 +76,7 @@ public class ContractManager : MonoBehaviour
     {
         walletAddress = await ThirdwebManager.Instance.SDK.wallet.GetAddress();
         mapBalance = await getMapBalance();
+        uiController.updateMapBalance(mapBalance);
     }
     private async Task setData()
     {
@@ -89,6 +90,7 @@ public class ContractManager : MonoBehaviour
         uiController.RemoveEventListeners();
         walletAddress = "";
         mapBalance = 0;
+        uiController.updateMapBalance(mapBalance);
     }
 
     public async void OnWalletConnect()
