@@ -15,6 +15,11 @@ public class ContractManager : MonoBehaviour
     public static ContractManager Instance { get; private set; }
     public MapManager mapManager;
     public PlacementManager placementManager;
+    public UIController uiController;
+    public GameManager gameManager;
+    Contract mapContract, utilsContract;
+    string walletAddress;
+    int mapBalance;
     private void Awake()
     {
         // Single persistent instance at all times.
@@ -35,6 +40,8 @@ public class ContractManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mapContract = ThirdwebManager.Instance.SDK.GetContract(mapContractAddress, mapContractABI);
+        utilsContract = ThirdwebManager.Instance.SDK.GetContract(utilsContractAddress, utilsContractABI);
         InitializeMap();
     }
 
@@ -51,26 +58,54 @@ public class ContractManager : MonoBehaviour
         mapManager.updateGridSize(size);
     }
 
-    public void OnWalletConnect()
+    private async Task<int> getMapSize()
     {
-
-    }
-
-    public async Task<int> getMapSize()
-    {
-        Contract mapContract = ThirdwebManager.Instance.SDK.GetContract(mapContractAddress, mapContractABI);
+        
         var size = await mapContract.Read<int>("size");
         Debug.Log("Size: " + size);
         return size;
     }
+    private async Task<int> getMapBalance()
+    {
+        var balance = await mapContract.Read<int>("balanceOf", walletAddress);
+        Debug.Log("map balance of user: " + balance);
+        return balance;
+    }
+
+    private async Task setUserData()
+    {
+        walletAddress = await ThirdwebManager.Instance.SDK.wallet.GetAddress();
+        mapBalance = await getMapBalance();
+    }
+    private async Task setData()
+    {
+        await setUserData();
+        uiController.AddEventListeners();
+    }
+
+    private void ResetData()
+    {
+        gameManager.ClearInputActions();
+        uiController.RemoveEventListeners();
+        walletAddress = "";
+        mapBalance = 0;
+    }
+
+    public async void OnWalletConnect()
+    {
+        uiController.connectWalletText.enabled = false;
+        await setData();
+    }
 
     public void OnWalletDisconnect()
     {
-
+        uiController.connectWalletText.enabled = true;
+        ResetData();
     }
 
-    public void OnSwitchNetwork()
+    public async void OnSwitchNetwork()
     {
-
+        ResetData();
+        await setData();
     }
 }

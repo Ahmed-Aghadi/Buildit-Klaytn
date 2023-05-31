@@ -3893,7 +3893,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -7719,7 +7719,7 @@ MonoBehaviour:
   placeHouseButton: {fileID: 1325324658}
   placeSpecialButton: {fileID: 1405492519}
   deleteItem: {fileID: 1792814833}
-  overlay: {fileID: 256802344}
+  connectWalletText: {fileID: 352039071}
   outlineColor: {r: 0.8931636, g: 0.0047169924, b: 1, a: 1}
 --- !u!114 &681313530
 MonoBehaviour:
@@ -14524,6 +14524,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapManager: {fileID: 803335005}
   placementManager: {fileID: 540532163}
+  uiController: {fileID: 681313529}
+  gameManager: {fileID: 2039921795}
 --- !u!1001 &1176995688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23610,12 +23612,12 @@ PrefabInstance:
     - target: {fileID: 1335404546467394145, guid: a6218c0a90161f349bc6bc87fbc624da,
         type: 3}
       propertyPath: OnConnectedCallback.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1335404546467394145, guid: a6218c0a90161f349bc6bc87fbc624da,
         type: 3}
       propertyPath: OnDisconnectedCallback.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1335404546467394145, guid: a6218c0a90161f349bc6bc87fbc624da,
         type: 3}
@@ -23636,12 +23638,12 @@ PrefabInstance:
         type: 3}
       propertyPath: OnConnectedCallback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 681313529}
+      objectReference: {fileID: 1168794749}
     - target: {fileID: 1335404546467394145, guid: a6218c0a90161f349bc6bc87fbc624da,
         type: 3}
       propertyPath: OnConnectedCallback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1168794749}
+      objectReference: {fileID: 681313529}
     - target: {fileID: 1335404546467394145, guid: a6218c0a90161f349bc6bc87fbc624da,
         type: 3}
       propertyPath: OnDisconnectedCallback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -23671,12 +23673,12 @@ PrefabInstance:
         type: 3}
       propertyPath: OnDisconnectedCallback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 681313529}
+      objectReference: {fileID: 1168794749}
     - target: {fileID: 1335404546467394145, guid: a6218c0a90161f349bc6bc87fbc624da,
         type: 3}
       propertyPath: OnDisconnectedCallback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 2039921795}
+      objectReference: {fileID: 681313529}
     - target: {fileID: 1335404546467394145, guid: a6218c0a90161f349bc6bc87fbc624da,
         type: 3}
       propertyPath: OnConnectedCallback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -23691,7 +23693,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnSwitchNetworkCallback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 681313529}
+      objectReference: {fileID: 1168794749}
     - target: {fileID: 1335404546467394145, guid: a6218c0a90161f349bc6bc87fbc624da,
         type: 3}
       propertyPath: OnDisconnectedCallback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -23710,7 +23712,7 @@ PrefabInstance:
     - target: {fileID: 1335404546467394145, guid: a6218c0a90161f349bc6bc87fbc624da,
         type: 3}
       propertyPath: OnDisconnectedCallback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ClearInputActions
+      value: OnWalletDisconnect
       objectReference: {fileID: 0}
     - target: {fileID: 1335404546467394145, guid: a6218c0a90161f349bc6bc87fbc624da,
         type: 3}
@@ -23725,27 +23727,27 @@ PrefabInstance:
     - target: {fileID: 1335404546467394145, guid: a6218c0a90161f349bc6bc87fbc624da,
         type: 3}
       propertyPath: OnConnectedCallback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UIController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1335404546467394145, guid: a6218c0a90161f349bc6bc87fbc624da,
-        type: 3}
-      propertyPath: OnConnectedCallback.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: ContractManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1335404546467394145, guid: a6218c0a90161f349bc6bc87fbc624da,
         type: 3}
-      propertyPath: OnDisconnectedCallback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      propertyPath: OnConnectedCallback.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1335404546467394145, guid: a6218c0a90161f349bc6bc87fbc624da,
+        type: 3}
+      propertyPath: OnDisconnectedCallback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ContractManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1335404546467394145, guid: a6218c0a90161f349bc6bc87fbc624da,
         type: 3}
       propertyPath: OnDisconnectedCallback.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: GameManager, Assembly-CSharp
+      value: UIController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1335404546467394145, guid: a6218c0a90161f349bc6bc87fbc624da,
         type: 3}
       propertyPath: OnSwitchNetworkCallback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UIController, Assembly-CSharp
+      value: ContractManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1335404546467394145, guid: a6218c0a90161f349bc6bc87fbc624da,
         type: 3}

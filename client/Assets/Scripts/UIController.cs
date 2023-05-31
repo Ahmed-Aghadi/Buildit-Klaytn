@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,7 @@ public class UIController : MonoBehaviour
 {
     public Action OnRoadPlacement, OnHousePlacement, OnSpecialPlacement, OnDeleteItem;
     public Button placeRoadButton, placeHouseButton, placeSpecialButton, deleteItem;
-    public Image overlay;
+    public TextMeshProUGUI connectWalletText;
 
     public Color outlineColor;
     List<Button> buttonList;
@@ -16,10 +17,10 @@ public class UIController : MonoBehaviour
     private void Start()
     {
         buttonList = new List<Button> { placeHouseButton, placeRoadButton, placeSpecialButton, deleteItem };
-        AddEventListeners();
+        // AddEventListeners();
     }
 
-    private void AddEventListeners()
+    public void AddEventListeners()
     {
         placeRoadButton.onClick.AddListener(() =>
         {
@@ -51,7 +52,7 @@ public class UIController : MonoBehaviour
         });
     }
 
-    private void RemoveEventListeners()
+    public void RemoveEventListeners()
     {
         ResetButtonColor();
         placeRoadButton.onClick.RemoveAllListeners();
@@ -75,20 +76,20 @@ public class UIController : MonoBehaviour
         }
     }
 
-    public void OnWalletConnect()
+    /*public void OnWalletConnect()
     {
-        /*overlay.enabled = false;*/
+        *//*overlay.enabled = false;*//*
         AddEventListeners();
     }
 
     public void OnWalletDisconnect()
     {
-        /*overlay.enabled = true;*/
+        *//*overlay.enabled = true;*//*
         RemoveEventListeners();
     }
 
     public void OnSwitchNetwork()
     {
 
-    }
+    }*/
 }
