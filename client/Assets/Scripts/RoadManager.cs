@@ -21,13 +21,15 @@ public class RoadManager : MonoBehaviour
         roadFixer = GetComponent<RoadFixer>();
     }
 
-    public void PlaceRoad(Vector3Int position)
+    public void PlaceRoad(Vector3Int position, bool fromUser = true)
     {
         if (placementManager.CheckIfPositionInBound(position) == false)
             return;
         if (placementManager.CheckIfPositionIsFree(position) == false)
             return;
-        if (placementMode == false)
+        if (fromUser && placementManager.CheckIfPositionIsOwned(position) == false)
+            return;
+        if (!fromUser || placementMode == false)
         {
             temporaryPlacementPositions.Clear();
             roadPositionsToRecheck.Clear();
@@ -68,8 +70,11 @@ public class RoadManager : MonoBehaviour
 
     }
 
-    public void FixRoadPrefabsAfterDelete(Vector3Int position)
+    public void FixRoadPrefabsAfterDelete(Vector3Int position, bool fromUser = true)
     {
+        // no need to check whether user owns or not as it just fixes the road
+        /*if (fromUser && placementManager.CheckIfPositionIsOwned(position) == false)
+            return;*/
         var neighbours = placementManager.GetNeighboursOfTypeFor(position, CellType.Road);
         foreach (var roadposition in neighbours)
         {

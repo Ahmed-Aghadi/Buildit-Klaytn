@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlacementManager : MonoBehaviour
 {
     public int size;
-    Grid placementGrid;
+    public Grid placementGrid;
 
     private Dictionary<Vector3Int, StructureModel> temporaryRoadobjects = new Dictionary<Vector3Int, StructureModel>();
     private Dictionary<Vector3Int, StructureModel> structureDictionary = new Dictionary<Vector3Int, StructureModel>();
@@ -39,6 +39,14 @@ public class PlacementManager : MonoBehaviour
         return false;
     }
 
+    internal GameObject PlaceObjectOnTheMapHighlight(Vector3Int position, GameObject structurePrefab)
+    {
+        var structure = GameObject.Instantiate(structurePrefab);
+        structure.transform.SetParent(transform);
+        structure.transform.localPosition = new Vector3(position.x, 0.001f, position.z);
+        return structure;
+    }
+
     internal void PlaceObjectOnTheMap(Vector3Int position, GameObject structurePrefab, CellType type)
     {
         placementGrid[position.x, position.z] = type;
@@ -59,6 +67,11 @@ public class PlacementManager : MonoBehaviour
     internal bool CheckIfPositionIsFree(Vector3Int position)
     {
         return CheckIfPositionIsOfType(position, CellType.Empty);
+    }
+
+    internal bool CheckIfPositionIsOwned(Vector3Int position)
+    {
+        return ContractManager.Instance.userOwnsIndex(position.x, position.z);
     }
 
     private bool CheckIfPositionIsOfType(Vector3Int position, CellType type)

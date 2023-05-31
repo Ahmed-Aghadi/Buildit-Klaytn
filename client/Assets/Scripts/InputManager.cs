@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class InputManager : MonoBehaviour
 {
-    public Action<Vector3Int> OnMouseClick, OnMouseHold;
+    public Action<Vector3Int,bool> OnMouseClick, OnMouseHold;
     public Action OnMouseUp;
 	private Vector2 cameraMovementVector;
 
@@ -36,7 +36,7 @@ public class InputManager : MonoBehaviour
 		{
 			Vector3Int positionInt = Vector3Int.RoundToInt(hit.point);
 			return positionInt;
-		}
+        }
 		return null;
 	}
 
@@ -51,7 +51,7 @@ public class InputManager : MonoBehaviour
 		{
 			var position = RaycastGround();
 			if (position != null)
-				OnMouseHold?.Invoke(position.Value);
+				OnMouseHold?.Invoke(position.Value, true);
 
 		}
 	}
@@ -71,7 +71,7 @@ public class InputManager : MonoBehaviour
 		{
 			var position = RaycastGround();
 			if (position != null)
-				OnMouseClick?.Invoke(position.Value);
+				OnMouseClick?.Invoke(position.Value, true);
 
 		}
 	}

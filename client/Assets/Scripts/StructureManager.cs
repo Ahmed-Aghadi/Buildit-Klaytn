@@ -18,8 +18,10 @@ public class StructureManager : MonoBehaviour
         specialWeights = specialPrefabs.Select(prefabStats => prefabStats.weight).ToArray();
     }
 
-    public void DeleteItem(Vector3Int position)
+    public void DeleteItem(Vector3Int position, bool fromUser = true)
     {
+        if (fromUser && placementManager.CheckIfPositionIsOwned(position) == false)
+            return;
         if (placementManager.CheckIfPositionIsFree(position) == false)
         {
             placementManager.RemoveItem(position);
@@ -27,9 +29,9 @@ public class StructureManager : MonoBehaviour
         }
     }
 
-    public void PlaceHouse(Vector3Int position)
+    public void PlaceHouse(Vector3Int position, bool fromUser = true)
     {
-        if (CheckPositionBeforePlacement(position))
+        if (CheckPositionBeforePlacement(position, fromUser))
         {
             int randomIndex = GetRandomWeightedIndex(houseWeights);
             placementManager.PlaceObjectOnTheMap(position, housesPrefabe[randomIndex].prefab, CellType.Structure);
@@ -37,9 +39,9 @@ public class StructureManager : MonoBehaviour
         }
     }
 
-    public void PlaceSpecial(Vector3Int position)
+    public void PlaceSpecial(Vector3Int position, bool fromUser = true)
     {
-        if (CheckPositionBeforePlacement(position))
+        if (CheckPositionBeforePlacement(position, fromUser))
         {
             int randomIndex = GetRandomWeightedIndex(specialWeights);
             placementManager.PlaceObjectOnTheMap(position, specialPrefabs[randomIndex].prefab, CellType.Structure);
@@ -60,7 +62,7 @@ public class StructureManager : MonoBehaviour
         for (int i = 0; i < weights.Length; i++)
         {
             //0->weihg[0] weight[0]->weight[1]
-            if(randomValue >= tempSum && randomValue < tempSum + weights[i])
+            if (randomValue >= tempSum && randomValue < tempSum + weights[i])
             {
                 return i;
             }
@@ -69,7 +71,7 @@ public class StructureManager : MonoBehaviour
         return 0;
     }
 
-    private bool CheckPositionBeforePlacement(Vector3Int position)
+    private bool CheckPositionBeforePlacement(Vector3Int position, bool fromUser = true)
     {
         if (placementManager.CheckIfPositionInBound(position) == false)
         {
@@ -86,6 +88,11 @@ public class StructureManager : MonoBehaviour
             Debug.Log("Must be placed near a road");
             return false;
         }*/
+        if (fromUser && placementManager.CheckIfPositionIsOwned(position) == false)
+        {
+            Debug.Log("This land is not owned");
+            return false;
+        }
         return true;
     }
 }
@@ -94,6 +101,6 @@ public class StructureManager : MonoBehaviour
 public struct StructurePrefabWeighted
 {
     public GameObject prefab;
-    [Range(0,1)]
+    [Range(0, 1)]
     public float weight;
 }
