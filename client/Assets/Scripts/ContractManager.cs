@@ -89,7 +89,7 @@ public class ContractManager : MonoBehaviour
         mapContract = ThirdwebManager.Instance.SDK.GetContract(mapContractAddress, mapContractABI);
         utilsContract = ThirdwebManager.Instance.SDK.GetContract(utilsContractAddress, utilsContractABI);
         initializeMapTask = InitializeMap();
-        // OnWalletConnect();
+        OnWalletConnect();
         // Test();
     }
 
@@ -325,9 +325,9 @@ public class ContractManager : MonoBehaviour
     private async Task setUserData()
     {
         Debug.Log("TEST666!!!");
-        walletAddress = await ThirdwebManager.Instance.SDK.wallet.GetAddress();
+        // walletAddress = await ThirdwebManager.Instance.SDK.wallet.GetAddress();
         //
-        // walletAddress = "0x0de82DCC40B8468639251b089f8b4A4400022e04";
+        walletAddress = "0x0de82DCC40B8468639251b089f8b4A4400022e04";
         //
         Debug.Log("TEST777!!!");
         await setItemBalances();
@@ -340,18 +340,18 @@ public class ContractManager : MonoBehaviour
         landOwnedIds = await getLandOwnedIDs();
         Debug.Log("TEST141414!!!");
         Debug.Log("landOwnedIndexes");
-        landOwnedIndexes = await getLandOwnedIndexes();
+        // landOwnedIndexes = await getLandOwnedIndexes();
         await initializeMapTask; // wait for map to be initialized if not already
         //
-        // landOwnedIndexes = new Land[2];
-        // landOwnedIndexes[0] = new Land { xIndex = 0, yIndex = 1 };
-        // landOwnedIndexes[1] = new Land { xIndex = 2, yIndex = 2 };
+        landOwnedIndexes = new Land[2];
+        landOwnedIndexes[0] = new Land { xIndex = 0, yIndex = 1 };
+        landOwnedIndexes[1] = new Land { xIndex = 2, yIndex = 2 };
         //
         mapManager.highlightOwnedLands(landOwnedIndexes, perSize);
         updateLandOwned(size, perSize, landOwnedIndexes);
-        await updateMap(size);
+        // await updateMap(size);
         //
-        /*map[0, 0] = 1;
+        map[0, 0] = 1;
         map[1, 0] = 1;
         map[2, 0] = 1;
         map[3, 0] = 1;
@@ -363,7 +363,7 @@ public class ContractManager : MonoBehaviour
         map[5, 5] = 3;
         map[1, 5] = 3;
         map[2, 5] = 2;
-        map[3, 7] = 1;*/
+        map[3, 7] = 1;
         //
         initializeMapItems();
     }
