@@ -31,6 +31,7 @@ public class RoadManager : MonoBehaviour
             return;
         if (!fromUser || placementMode == false)
         {
+            ContractManager.Instance.updateEditedMap(position,CellType.Road);
             temporaryPlacementPositions.Clear();
             roadPositionsToRecheck.Clear();
 

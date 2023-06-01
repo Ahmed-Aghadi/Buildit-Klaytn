@@ -24,6 +24,7 @@ public class StructureManager : MonoBehaviour
             return;
         if (placementManager.CheckIfPositionIsFree(position) == false)
         {
+            ContractManager.Instance.updateEditedMap(position, CellType.Empty);
             placementManager.RemoveItem(position);
             AudioPlayer.instance.PlayPlacementSound();
         }
@@ -33,6 +34,7 @@ public class StructureManager : MonoBehaviour
     {
         if (CheckPositionBeforePlacement(position, fromUser))
         {
+            ContractManager.Instance.updateEditedMap(position, CellType.Structure);
             int randomIndex = GetRandomWeightedIndex(houseWeights);
             placementManager.PlaceObjectOnTheMap(position, housesPrefabe[randomIndex].prefab, CellType.Structure);
             AudioPlayer.instance.PlayPlacementSound();
@@ -43,8 +45,9 @@ public class StructureManager : MonoBehaviour
     {
         if (CheckPositionBeforePlacement(position, fromUser))
         {
+            ContractManager.Instance.updateEditedMap(position, CellType.SpecialStructure);
             int randomIndex = GetRandomWeightedIndex(specialWeights);
-            placementManager.PlaceObjectOnTheMap(position, specialPrefabs[randomIndex].prefab, CellType.Structure);
+            placementManager.PlaceObjectOnTheMap(position, specialPrefabs[randomIndex].prefab, CellType.SpecialStructure);
             AudioPlayer.instance.PlayPlacementSound();
         }
     }

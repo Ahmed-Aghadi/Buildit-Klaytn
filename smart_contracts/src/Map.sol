@@ -87,6 +87,14 @@ contract Map is ERC721, Owned {
         map[x][y] = 0;
     }
 
+    function updateItem(uint256 x, uint256 y, uint256 utilId) public {
+        if (utilId == 0) {
+            removeItem(x, y);
+        } else {
+            placeItem(x, y, utilId);
+        }
+    }
+
     function placeItems(
         uint256[] memory x,
         uint256[] memory y,
@@ -96,6 +104,18 @@ contract Map is ERC721, Owned {
         if (x.length != utilId.length) revert InvalidLength();
         for (uint256 i = 0; i < x.length; i++) {
             placeItem(x[i], y[i], utilId[i]);
+        }
+    }
+
+    function updateItems(
+        uint256[] memory x,
+        uint256[] memory y,
+        uint256[] memory utilId
+    ) public {
+        if (x.length != y.length) revert InvalidLength();
+        if (x.length != utilId.length) revert InvalidLength();
+        for (uint256 i = 0; i < x.length; i++) {
+            updateItem(x[i], y[i], utilId[i]);
         }
     }
 
