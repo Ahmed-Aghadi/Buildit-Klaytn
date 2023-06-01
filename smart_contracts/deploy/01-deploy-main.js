@@ -10,7 +10,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   const perSize = 5;
 
   // log("----------------------------------------------------");
-  const utilsArg = [utilsBaseUri];
+  // const utilsArg = [utilsBaseUri];
   // const utils = await deploy("Utils", {
   //   from: deployer,
   //   args: utilsArg,
@@ -18,25 +18,36 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   //   waitConfirmations: waitBlockConfirmations,
   // });
   // console.log("utils deployed to:", utils.address);
+  // log("----------------------------------------------------");
+  // const mapArg = [
+  //   size,
+  //   perSize,
+  //   mapBaseUri,
+  //   "0x4b22e4f5cfCb3e648a6F42Fa9D4E55985f9647D1",
+  // ];
+  // const map = await deploy("Map", {
+  //   from: deployer,
+  //   args: mapArg,
+  //   log: true,
+  //   waitConfirmations: waitBlockConfirmations,
+  // });
+  // console.log("map deployed to:", map.address);
   log("----------------------------------------------------");
-  const mapArg = [
-    size,
-    perSize,
-    mapBaseUri,
-    "0x4b22e4f5cfCb3e648a6F42Fa9D4E55985f9647D1",
-  ];
-  const map = await deploy("Map", {
+  const faucetArg = [];
+  const faucet = await deploy("Faucet", {
     from: deployer,
-    args: mapArg,
+    args: faucetArg,
     log: true,
     waitConfirmations: waitBlockConfirmations,
   });
-  console.log("map deployed to:", map.address);
+  console.log("faucet deployed to:", faucet.address);
   log("----------------------------------------------------");
   // console.log("Verifying for Utils...");
   // await verify(utils.address, utilsArg);
-  console.log("Verifying for Map...");
-  await verify(map.address, mapArg);
+  // console.log("Verifying for Map...");
+  // await verify(map.address, mapArg);
+  console.log("Verifying for Faucet...");
+  await verify(faucet.address, faucetArg);
   log("----------------------------------------------------");
 };
 
