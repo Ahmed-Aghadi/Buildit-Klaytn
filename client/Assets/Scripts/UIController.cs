@@ -10,6 +10,7 @@ public class UIController : MonoBehaviour
     public Action OnRoadPlacement, OnHousePlacement, OnSpecialPlacement, OnDeleteItem;
     public Button placeRoadButton, placeHouseButton, placeSpecialButton, deleteItem;
     public TextMeshProUGUI connectWalletText, mapBalanceText;
+    public Text roadText, houseText, specialText;
 
     public Color outlineColor;
     List<Button> buttonList;
@@ -79,6 +80,24 @@ public class UIController : MonoBehaviour
     public void updateMapBalance(int balance)
     {
         mapBalanceText.text = "Land Owned: " + balance.ToString();
+    }
+
+    public void updateRoadBalance(int balance)
+    {
+        roadText.text = "Road (" + balance + ")";
+        Debug.Log("update road balance: " + balance);
+    }
+
+    public void updateHouseBalance(int balance)
+    {
+        houseText.text = "House (" + balance + ")";
+        Debug.Log("update house balance: " + balance);
+    }
+
+    public void updateSpecialBalance(int balance)
+    {
+        specialText.text = "Special (" + balance + ")";
+        Debug.Log("update special balance: " + balance);
     }
 
     /*public void OnWalletConnect()

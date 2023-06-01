@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,6 +38,7 @@ public class CanvasManager : MonoBehaviour
     {
         editButton.onClick.AddListener(OnEditClicked);
         cancelButton.onClick.AddListener(OnCancelClicked);
+        confirmButton.onClick.AddListener(OnConfirmClicked);
     }
 
     public void RemoveClickListeners()
@@ -63,5 +65,14 @@ public class CanvasManager : MonoBehaviour
         editButton.gameObject.SetActive(true);
         confirmButton.gameObject.SetActive(false);
         cancelButton.gameObject.SetActive(false);
+        ContractManager.Instance.CancelClicked();
+    }
+
+    async void OnConfirmClicked()
+    {
+        Debug.Log("updating...");
+        await ContractManager.Instance.confirmMapUpdates();
+        Debug.Log("updated!!!");
+        OnCancelClicked();
     }
 }

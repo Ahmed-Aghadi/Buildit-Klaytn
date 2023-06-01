@@ -41,6 +41,8 @@ public class ThirdwebManager : MonoBehaviour
         new ChainData("arbitrum-goerli", "421613", null),
         new ChainData("binance", "56", null),
         new ChainData("binance-testnet", "97", null),
+        new ChainData("okexchain-testnet", "65", null),
+        new ChainData("thundercore-testnet", "18", null),
     };
 
     [Header("APP METADATA")]

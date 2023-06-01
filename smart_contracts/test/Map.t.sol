@@ -24,10 +24,10 @@ contract MapTest is Test {
     function setUp() public {
         mapBaseUri = "https://example1.com/";
         utilsBaseUri = "https://example2.com/";
-        size = 100;
+        size = 15;
         perSize = 5;
-        utilCount = 5;
-        utilAmount = 10;
+        utilCount = 3;
+        utilAmount = 1000;
         utils = new Utils(utilsBaseUri);
         map = new Map(size, 5, mapBaseUri, address(utils));
         for (uint256 i = 0; i < utilCount; i++) {
@@ -110,5 +110,32 @@ contract MapTest is Test {
     function testBaseUri(uint256 tokenId) public {
         string memory uri = map.tokenURI(tokenId);
         assertEq(uri, string.concat(mapBaseUri, vm.toString(tokenId)));
+    }
+
+    function testPlaceItems() public {
+        map.mint(0, 1);
+        uint256[] memory x = new uint256[](3);
+        x[0] = 2;
+        x[1] = 3;
+        x[2] = 4;
+        uint256[] memory y = new uint256[](3);
+        y[0] = 7;
+        y[1] = 8;
+        y[2] = 9;
+        uint256[] memory utilId = new uint256[](3);
+        utilId[0] = 3;
+        utilId[1] = 2;
+        utilId[2] = 1;
+        console.log("first x: ", x[0] / perSize);
+        console.log("first y: ", y[0] / perSize);
+        console.log("second x: ", x[1] / perSize);
+        console.log("second y: ", y[1] / perSize);
+        console.log("third x: ", x[2] / perSize);
+        console.log("third y: ", y[2] / perSize);
+        utils.setApprovalForAll(address(map), true);
+        map.updateItems(x, y, utilId);
+        assertEq(map.map(2, 7), 3);
+        assertEq(map.map(3, 8), 2);
+        assertEq(map.map(4, 9), 1);
     }
 }
