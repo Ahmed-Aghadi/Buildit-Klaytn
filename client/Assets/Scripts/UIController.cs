@@ -85,19 +85,19 @@ public class UIController : MonoBehaviour
     public void updateRoadBalance(int balance)
     {
         roadText.text = "Road (" + balance + ")";
-        Debug.Log("update road balance: " + balance);
+        // Debug.Log("update road balance: " + balance);
     }
 
     public void updateHouseBalance(int balance)
     {
         houseText.text = "House (" + balance + ")";
-        Debug.Log("update house balance: " + balance);
+        // Debug.Log("update house balance: " + balance);
     }
 
     public void updateSpecialBalance(int balance)
     {
         specialText.text = "Special (" + balance + ")";
-        Debug.Log("update special balance: " + balance);
+        // Debug.Log("update special balance: " + balance);
     }
 
     /*public void OnWalletConnect()

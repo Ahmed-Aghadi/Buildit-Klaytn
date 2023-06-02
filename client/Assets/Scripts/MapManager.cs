@@ -11,9 +11,11 @@ public class MapManager : MonoBehaviour
 
     public PlacementManager placementManager;
     public GameObject blueHighlightPrefab;
+    List<GameObject> blueHighlights;
     // Start is called before the first frame update
     void Start()
     {
+        blueHighlights= new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -43,12 +45,22 @@ public class MapManager : MonoBehaviour
             {
                 while (y1 <= y2)
                 {
-                    placementManager.PlaceObjectOnTheMapHighlight(new Vector3Int(x1, 0, y1), blueHighlightPrefab);
+                    GameObject current = placementManager.PlaceObjectOnTheMapHighlight(new Vector3Int(x1, 0, y1), blueHighlightPrefab);
+                    blueHighlights.Add(current);
                     y1++;
                 }
                 y1 = tmpY1;
                 x1++;
             }
         }
+    }
+
+    public void destroyHighlights()
+    {
+        foreach (var highlight in blueHighlights)
+        {
+            Destroy(highlight);
+        }
+        blueHighlights.Clear();
     }
 }

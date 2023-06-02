@@ -27,22 +27,11 @@ public class ThirdwebManager : MonoBehaviour
     [Tooltip("Support any chain by adding it to this list from the inspector")]
     public List<ChainData> supportedChains = new List<ChainData>()
     {
-        new ChainData("ethereum", "1", null),
-        new ChainData("goerli", "5", null),
-        new ChainData("polygon", "137", null),
         new ChainData("mumbai", "80001", null),
-        new ChainData("fantom", "250", null),
         new ChainData("fantom-testnet", "4002", null),
-        new ChainData("avalanche", "43114", null),
-        new ChainData("avalanche-fuji", "43113", null),
-        new ChainData("optimism", "10", null),
-        new ChainData("optimism-goerli", "420", null),
-        new ChainData("arbitrum", "42161", null),
-        new ChainData("arbitrum-goerli", "421613", null),
-        new ChainData("binance", "56", null),
-        new ChainData("binance-testnet", "97", null),
         new ChainData("okexchain-testnet", "65", null),
         new ChainData("thundercore-testnet", "18", null),
+        new ChainData("theta-testnet", "365", null),
     };
 
     [Header("APP METADATA")]

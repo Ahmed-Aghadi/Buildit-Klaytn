@@ -5,6 +5,7 @@ require("hardhat-deploy");
 // require("solidity-coverage")
 // require("hardhat-gas-reporter")
 // require("hardhat-contract-sizer")
+require("@nomiclabs/hardhat-ethers");
 require("dotenv").config();
 
 const MUMBAI_RPC_URL =
@@ -108,6 +109,24 @@ module.exports = {
       saveDeployments: true,
       chainId: 4002,
       gas: 500000,
+    },
+    thetatest: {
+      chainId: 365,
+      url: "https://eth-rpc-api-testnet.thetatoken.org/rpc",
+      accounts: [PRIVATE_KEY],
+      timeout: 300000, // 300 seconds
+    },
+    okextest: {
+      chainId: 65,
+      url: "https://exchaintestrpc.okex.org",
+      accounts: [PRIVATE_KEY],
+      timeout: 300000, // 300 seconds
+    },
+    xdcapothem: {
+      chainId: 51,
+      url: "https://rpc.apothem.network",
+      accounts: [PRIVATE_KEY],
+      timeout: 300000, // 300 seconds
     },
   },
   etherscan: {

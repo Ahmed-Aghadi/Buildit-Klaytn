@@ -29,7 +29,7 @@ public class RoadManager : MonoBehaviour
             return;
         if (fromUser && placementManager.CheckIfPositionIsOwned(position) == false)
             return;
-        if (ContractManager.Instance.AddRoad() == false)
+        if (fromUser && ContractManager.Instance.AddRoad() == false)
             return;
         ContractManager.Instance.updateEditedMap(position, CellType.Road);
         if (!fromUser || placementMode == false)

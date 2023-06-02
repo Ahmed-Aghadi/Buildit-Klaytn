@@ -7,12 +7,12 @@ using UnityEngine;
 using Newtonsoft.Json;
 using System.Text.Json;
 using System.Numerics;
-using UnityEngine.UIElements;
 using Nethereum.Contracts.QueryHandlers.MultiCall;
 using System.Linq;
 using System.Threading;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.UI;
 
 public struct Land
 {
@@ -31,6 +31,7 @@ public class ContractManager : MonoBehaviour
     string utilsContractAddress = "0x4b22e4f5cfCb3e648a6F42Fa9D4E55985f9647D1";
     string utilsContractABI = "[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_baseUri\",\"type\":\"string\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"approved\",\"type\":\"bool\"}],\"name\":\"ApprovalForAll\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256[]\",\"name\":\"ids\",\"type\":\"uint256[]\"},{\"indexed\":false,\"internalType\":\"uint256[]\",\"name\":\"amounts\",\"type\":\"uint256[]\"}],\"name\":\"TransferBatch\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"TransferSingle\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"value\",\"type\":\"string\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"URI\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address[]\",\"name\":\"owners\",\"type\":\"address[]\"},{\"internalType\":\"uint256[]\",\"name\":\"ids\",\"type\":\"uint256[]\"}],\"name\":\"balanceOfBatch\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"balances\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"baseUri\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"isApprovedForAll\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"mint\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256[]\",\"name\":\"ids\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"amounts\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"safeBatchTransferFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"safeTransferFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"approved\",\"type\":\"bool\"}],\"name\":\"setApprovalForAll\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes4\",\"name\":\"interfaceId\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"uri\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"utilCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]";
     string faucetContractAddress = "0x688cc7B35CcD9ccF55402517c83270c22a7650AC";
+    string faucetContractABI = "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC1155BatchReceived\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC1155Received\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]";
 
     public static ContractManager Instance { get; private set; }
     public MapManager mapManager;
@@ -41,7 +42,8 @@ public class ContractManager : MonoBehaviour
     public StructureManager structureManager;
     public RoadManager roadManager;
     public TextMeshProUGUI loadingText;
-    Contract mapContract, utilsContract;
+    public Button utilsFaucetButton, landFaucetButton;
+    Contract mapContract, utilsContract, faucetContract;
     Task initializeMapTask;
     string walletAddress;
     int roadBalance = 0;
@@ -59,6 +61,10 @@ public class ContractManager : MonoBehaviour
     bool[,] landOwned = null;
     int[,] map = null;
     int[,] editedMap = null;
+    bool isError = false;
+    string errorText = "ERROR!!!";
+    float timePassed = 0;
+    float errorDuration = 5f;
 
     public struct Index
     {
@@ -86,22 +92,43 @@ public class ContractManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        utilsFaucetButton.gameObject.SetActive(false);
+        landFaucetButton.gameObject.SetActive(false);
         loadingText.enabled = false;
         mapContract = ThirdwebManager.Instance.SDK.GetContract(mapContractAddress, mapContractABI);
         utilsContract = ThirdwebManager.Instance.SDK.GetContract(utilsContractAddress, utilsContractABI);
+        faucetContract = ThirdwebManager.Instance.SDK.GetContract(faucetContractAddress, faucetContractABI);
         initializeMapTask = InitializeMap();
-        OnWalletConnect();
+        // OnWalletConnect();
         // Test();
     }
+    /*private async void Main()
+    {
+
+    }*/
 
     // Update is called once per frame
     void Update()
     {
-
+        if (isError)
+        {
+            loadingText.enabled = true;
+            loadingText.text = errorText;
+            timePassed += Time.deltaTime;
+            if (timePassed >= errorDuration)
+            {
+                isError = false;
+                timePassed = 0;
+                errorText = "ERROR!!!";
+                loadingText.text = "LOADING: 0%";
+                loadingText.enabled = false;
+            }
+        }
     }
 
     private async Task InitializeMap()
     {
+        mapManager.destroyHighlights();
         size = await getSize();
         landOwned = new bool[size, size];
         map = new int[size, size];
@@ -138,7 +165,7 @@ public class ContractManager : MonoBehaviour
 
     private async Task setItemBalances()
     {
-        
+
         Debug.Log("ROAD BALANCE QUERYING...");
         string roadBalanceString = await utilsContract.ERC1155.BalanceOf(walletAddress, ROAD.ToString());
         Debug.Log("ROAD BALANCE STRING " + roadBalanceString);
@@ -147,6 +174,16 @@ public class ContractManager : MonoBehaviour
         houseBalance = await utilsContract.Read<int>("balanceOf", walletAddress, HOUSE);
         specialBalance = await utilsContract.Read<int>("balanceOf", walletAddress, SPECIAL);
         Debug.Log("item balances: " + roadBalance + " " + houseBalance + " " + specialBalance);
+        if (roadBalance == 0 || houseBalance == 0 || specialBalance == 0)
+        {
+            Debug.Log("INSUFFICIENT UTILS BALANCE");
+            utilsFaucetButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("SUFFICIENT UTILS BALANCE");
+            utilsFaucetButton.gameObject.SetActive(false);
+        }
         roadEditedBalance = roadBalance;
         houseEditedBalance = houseBalance;
         specialEditedBalance = specialBalance;
@@ -161,6 +198,16 @@ public class ContractManager : MonoBehaviour
         int balance = await mapContract.Read<int>("balanceOf", walletAddress);
         Debug.Log("TEST111111!!!");
         Debug.Log("map balance of user: " + balance);
+        if (balance == 0)
+        {
+            Debug.Log("INSUFFICIENT MAP BALANCE");
+            landFaucetButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("SUFFICIENT MAP BALANCE");
+            landFaucetButton.gameObject.SetActive(false);
+        }
         return balance;
     }
 
@@ -294,7 +341,7 @@ public class ContractManager : MonoBehaviour
         {
             for (int j = 0; j < size; j++)
             {
-                // Debug.Log("add: " + i + "," + j + "," + map[i, j]);
+                Debug.Log("add: " + i + "," + j + "," + map[i, j]);
                 int item = map[i, j];
                 Vector3Int position = new Vector3Int(i, 0, j);
                 if (item == EMPTY)
@@ -323,12 +370,13 @@ public class ContractManager : MonoBehaviour
         }
     }
 
-    private async Task setUserData()
+    private async Task setUserData(bool queryMap = true)
     {
+        mapManager.destroyHighlights();
         Debug.Log("TEST666!!!");
-        // walletAddress = await ThirdwebManager.Instance.SDK.wallet.GetAddress();
+        walletAddress = await ThirdwebManager.Instance.SDK.wallet.GetAddress();
         //
-        walletAddress = "0x0de82DCC40B8468639251b089f8b4A4400022e04";
+        // walletAddress = "0x4CA5FE129837E965e49b507cfE36c0dc574e8864";
         //
         Debug.Log("TEST777!!!");
         await setItemBalances();
@@ -341,32 +389,52 @@ public class ContractManager : MonoBehaviour
         landOwnedIds = await getLandOwnedIDs();
         Debug.Log("TEST141414!!!");
         Debug.Log("landOwnedIndexes");
-        // landOwnedIndexes = await getLandOwnedIndexes();
+        landOwnedIndexes = await getLandOwnedIndexes();
         await initializeMapTask; // wait for map to be initialized if not already
         //
-        landOwnedIndexes = new Land[2];
+        /*landOwnedIndexes = new Land[1];
+        landOwnedIndexes[0] = new Land { xIndex = 0, yIndex = 0 };*/
+        /*landOwnedIndexes = new Land[2];
         landOwnedIndexes[0] = new Land { xIndex = 0, yIndex = 1 };
-        landOwnedIndexes[1] = new Land { xIndex = 2, yIndex = 2 };
+        landOwnedIndexes[1] = new Land { xIndex = 2, yIndex = 2 };*/
         //
         mapManager.highlightOwnedLands(landOwnedIndexes, perSize);
         updateLandOwned(size, perSize, landOwnedIndexes);
-        // await updateMap(size);
-        //
-        map[0, 0] = 1;
-        map[1, 0] = 1;
-        map[2, 0] = 1;
-        map[3, 0] = 1;
-        map[4, 0] = 2;
-        map[5, 0] = 2;
-        map[6, 0] = 2;
-        map[3, 3] = 3;
-        map[4, 4] = 3;
-        map[5, 5] = 3;
-        map[1, 5] = 3;
-        map[2, 5] = 2;
-        map[3, 7] = 1;
-        //
-        initializeMapItems();
+        if (queryMap)
+        {
+            await updateMap(size);
+            //
+            /*map[2, 7] = 3;
+            map[3, 8] = 2;
+            map[4, 9] = 1;*/
+            /*map[0, 0] = 1;
+            map[1, 0] = 1;
+            map[2, 0] = 1;
+            map[3, 0] = 1;
+            map[4, 0] = 2;
+            map[5, 0] = 2;
+            map[6, 0] = 2;
+            map[3, 3] = 3;
+            map[4, 4] = 3;
+            map[5, 5] = 3;
+            map[1, 5] = 3;
+            map[2, 5] = 2;
+            map[3, 7] = 1;*/
+            //
+            initializeMapItems();
+            // DebugMap();
+        }
+    }
+
+    private void DebugMap()
+    {
+        for (int i = 0; i < size; i++)
+        {
+            for (int j = 0; j < size; j++)
+            {
+                Debug.Log("map(" + i + "," + j + ") = " + map[i, j] + " | " + "editedMap(" + i + "," + j + ") = " + editedMap[i, j]);
+            }
+        }
     }
 
     public void updateEditedMap(Vector3Int position, CellType cell)
@@ -439,7 +507,7 @@ public class ContractManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("NO MATCH: " + editedMap[x,y] + " , " + x + " , " + y);
+            Debug.Log("NO MATCH: " + editedMap[x, y] + " , " + x + " , " + y);
         }
     }
 
@@ -453,7 +521,20 @@ public class ContractManager : MonoBehaviour
         uiController.updateHouseBalance(houseEditedBalance);
         uiController.updateSpecialBalance(specialEditedBalance);
         editedMap = new int[size, size];
+        copyMapToEditedMap();
         initializeMapItems();
+        // DebugMap();
+    }
+
+    private void copyMapToEditedMap()
+    {
+        for (int i = 0; i < size; i++)
+        {
+            for (int j = 0; j < size; j++)
+            {
+                editedMap[i,j] = map[i,j];
+            }
+        }
     }
 
     public async Task confirmMapUpdates()
@@ -498,17 +579,26 @@ public class ContractManager : MonoBehaviour
             }
         }
         loadingText.text = "Loading: 10%";
-        bool result = await utilsContract.Read<bool>("isApprovedForAll", walletAddress, mapContractAddress);
-        if (!result)
+        try
         {
-            loadingText.text = "Loading: 20%";
-            await utilsContract.Write("setApprovalForAll", mapContractAddress, true);
+            bool result = await utilsContract.Read<bool>("isApprovedForAll", walletAddress, mapContractAddress);
+            if (!result)
+            {
+                loadingText.text = "Loading: 20%";
+                await utilsContract.Write("setApprovalForAll", mapContractAddress, true);
+            }
+            loadingText.text = "Loading: 65%";
+            await mapContract.Write("updateItems", x, y, utilId);
+            loadingText.text = "Loading: 100%";
+            loadingText.enabled = false;
+            await setUserData();
         }
-        loadingText.text = "Loading: 65%";
-        await mapContract.Write("updateItems", x, y, utilId);
-        loadingText.text = "Loading: 100%";
-        loadingText.enabled = false;
-        await setUserData();
+        catch(Exception e)
+        {
+            loadingText.text = "ERROR!!!";
+            isError = true;
+            Debug.LogError(e);
+        }
         canvasManager.AttachClickListeners();
     }
 
@@ -531,6 +621,95 @@ public class ContractManager : MonoBehaviour
         walletAddress = "";
         mapBalance = 0;
         uiController.updateMapBalance(mapBalance);
+    }
+
+    public async void GetUtilsFaucet()
+    {
+        loadingText.enabled = true;
+        loadingText.text = "Loading: 0%";
+        try
+        {
+            await faucetContract.Write("getToken", utilsContractAddress, ROAD);
+            loadingText.text = "Loading: 30%";
+            await faucetContract.Write("getToken", utilsContractAddress, HOUSE);
+            loadingText.text = "Loading:60%";
+            await faucetContract.Write("getToken", utilsContractAddress, SPECIAL);
+            loadingText.text = "Loading: 90%";
+            await setItemBalances();
+            loadingText.text = "Loading: 100%";
+        }
+        catch (Exception ex)
+        {
+            loadingText.text = "ERROR!!!";
+            isError = true;
+            Debug.LogError(ex);
+            await setItemBalances();
+        }
+        loadingText.enabled = false;
+    }
+
+    public async void GetLandFaucet()
+    {
+        loadingText.enabled = true;
+        loadingText.text = "Loading: 0%";
+        try
+        {
+            if (landCount >= ((size / perSize) * (size / perSize)))
+            {
+                errorText = "NO LAND LEFT";
+                isError = true;
+                return;
+            }
+            List<Land> landsUnavailable = new List<Land>();
+            for (int i = 1; i <= landCount; i++)
+            {
+                List<object> result = await mapContract.Read<List<object>>("land", i);
+                Debug.Log("xIndex: " + result[0].ToString());
+                Debug.Log("yIndex: " + result[1].ToString());
+                Land myLandResult = new Land();
+                myLandResult.xIndex = BigInteger.Parse(result[0].ToString());
+                myLandResult.yIndex = BigInteger.Parse(result[1].ToString());
+                landsUnavailable.Add(myLandResult);
+                loadingText.text = "Loading: " + (i * 50 / landCount) + "%";
+            }
+            loadingText.text = "Loading: 50%";
+            int xAvailable = 0, yAvailable = 0;
+            for (int x = 0; x < size / perSize; x++)
+            {
+                bool isAvailable = false;
+                for (int y = 0; y < size / perSize; y++)
+                {
+                    Land currentLand = new Land();
+                    currentLand.xIndex = x;
+                    currentLand.yIndex = y;
+                    if (!landsUnavailable.Contains(currentLand))
+                    {
+                        xAvailable = x;
+                        yAvailable = y;
+                        isAvailable = true;
+                        break;
+                    }
+                }
+                if (isAvailable)
+                {
+                    break;
+                }
+            }
+            loadingText.text = "Loading: 60%";
+            await mapContract.Write("mint", xAvailable, yAvailable);
+            loadingText.text = "Loading: 90%";
+            landCount = await getLandCount();
+            loadingText.text = "Loading: 91%";
+            await setUserData(false);
+            loadingText.text = "Loading: 100%";
+        }
+        catch (Exception ex)
+        {
+            loadingText.text = "ERROR!!!";
+            isError = true;
+            Debug.LogError(ex);
+        }
+        loadingText.enabled = false;
     }
 
     public async void OnWalletConnect()
