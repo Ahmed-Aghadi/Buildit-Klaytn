@@ -63,11 +63,11 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   log("----------------------------------------------------");
   try {
     console.log("Verifying for Utils...");
-    await verify("0xCA34FF4068f042203087D475805c4DD8347cE958", utilsArg);
+    await verify(utils.address, utilsArg);
     console.log("Verifying for Map...");
-    await verify("0x11DA0f57086a19977E46B548b64166411d839a30", mapArg);
+    await verify(map.address, mapArg);
     console.log("Verifying for Faucet...");
-    await verify("0xdF78D5A57DCFf31Ca18978b56760867010AEBC2E", faucetArg);
+    await verify(faucet.address, faucetArg);
   } catch (error) {
     console.log(error);
   }

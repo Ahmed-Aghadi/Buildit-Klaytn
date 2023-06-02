@@ -100,7 +100,7 @@ module.exports = {
       accounts: [PRIVATE_KEY],
       saveDeployments: true,
       chainId: 80001,
-      gas: 100000000000,
+      // gas: 100000000000,
     },
     // fantom testnet
     fantomtest: {
@@ -108,7 +108,7 @@ module.exports = {
       accounts: [PRIVATE_KEY],
       saveDeployments: true,
       chainId: 4002,
-      gas: 500000,
+      // gas: 500000,
     },
     thetatest: {
       chainId: 365,
