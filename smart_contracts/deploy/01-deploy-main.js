@@ -16,56 +16,51 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   const utilsMintAmount = 1000;
   const transferUtilsAmount = 500;
 
-  // log("----------------------------------------------------");
+  log("----------------------------------------------------");
   const utilsArg = [utilsBaseUri];
-  // const utils = await deploy("Utils", {
-  //   from: deployer,
-  //   args: utilsArg,
-  //   log: true,
-  //   waitConfirmations: waitBlockConfirmations,
-  // });
-  // console.log("utils deployed to:", utils.address);
-  // log("----------------------------------------------------");
+  const utils = await deploy("Utils", {
+    from: deployer,
+    args: utilsArg,
+    log: true,
+    waitConfirmations: waitBlockConfirmations,
+  });
+  console.log("utils deployed to:", utils.address);
+  log("----------------------------------------------------");
   const mapArg = [
     size,
     perSize,
     mapBaseUri,
     "0x4b22e4f5cfCb3e648a6F42Fa9D4E55985f9647D1",
   ];
-  // const map = await deploy("Map", {
-  //   from: deployer,
-  //   args: mapArg,
-  //   log: true,
-  //   waitConfirmations: waitBlockConfirmations,
-  // });
-  // console.log("map deployed to:", map.address);
-  // log("----------------------------------------------------");
+  const map = await deploy("Map", {
+    from: deployer,
+    args: mapArg,
+    log: true,
+    waitConfirmations: waitBlockConfirmations,
+  });
+  console.log("map deployed to:", map.address);
+  log("----------------------------------------------------");
   const faucetArg = [];
-  // const faucet = await deploy("Faucet", {
-  //   from: deployer,
-  //   args: faucetArg,
-  //   log: true,
-  //   waitConfirmations: waitBlockConfirmations,
-  // });
-  // console.log("faucet deployed to:", faucet.address);
-  // log("----------------------------------------------------");
-  // console.log("Minting Utils...");
-  // await mintUtils(
-  //   account,
-  //   "0xCA34FF4068f042203087D475805c4DD8347cE958",
-  //   utilsMintCount,
-  //   utilsMintAmount
-  // );
-  // log("----------------------------------------------------");
-  // console.log("Transfering Utils to Faucet...");
-  // await transferToFaucet(
-  //   account,
-  //   "0xCA34FF4068f042203087D475805c4DD8347cE958",
-  //   "0xdF78D5A57DCFf31Ca18978b56760867010AEBC2E",
-  //   utilsMintCount,
-  //   transferUtilsAmount
-  // );
-  // log("----------------------------------------------------");
+  const faucet = await deploy("Faucet", {
+    from: deployer,
+    args: faucetArg,
+    log: true,
+    waitConfirmations: waitBlockConfirmations,
+  });
+  console.log("faucet deployed to:", faucet.address);
+  log("----------------------------------------------------");
+  console.log("Minting Utils...");
+  await mintUtils(account, utils.address, utilsMintCount, utilsMintAmount);
+  log("----------------------------------------------------");
+  console.log("Transfering Utils to Faucet...");
+  await transferToFaucet(
+    account,
+    utils.address,
+    faucet.address,
+    utilsMintCount,
+    transferUtilsAmount
+  );
+  log("----------------------------------------------------");
   try {
     console.log("Verifying for Utils...");
     await verify("0xCA34FF4068f042203087D475805c4DD8347cE958", utilsArg);
