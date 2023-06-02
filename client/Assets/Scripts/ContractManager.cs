@@ -26,6 +26,12 @@ public class ContractManager : MonoBehaviour
     const int ROAD = 1;
     const int HOUSE = 2;
     const int SPECIAL = 3;
+    string mapContractAddressTheta = "0x11DA0f57086a19977E46B548b64166411d839a30";
+    string utilsContractAddressTheta = "0xCA34FF4068f042203087D475805c4DD8347cE958";
+    string faucetContractAddressTheta = "0xdF78D5A57DCFf31Ca18978b56760867010AEBC2E";
+    string mapContractAddressMumbai = "0x368B340E99b43d39aE1f748E08bfEf405b0603AB";
+    string utilsContractAddressMumbai = "0x4b22e4f5cfCb3e648a6F42Fa9D4E55985f9647D1";
+    string faucetContractAddressMumbai = "0x688cc7B35CcD9ccF55402517c83270c22a7650AC";
     string mapContractAddress = "0x368B340E99b43d39aE1f748E08bfEf405b0603AB";
     string mapContractABI = "[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_size\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_perSize\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_baseUri\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"_utilsAddress\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"InvalidLength\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidXIndex\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidYIndex\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"LandAlreadyOwned\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotOwner\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"SizeNotDivisibleByPerSize\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ZeroPerSize\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ZeroSize\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"approved\",\"type\":\"bool\"}],\"name\":\"ApprovalForAll\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"baseUri\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"getApproved\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"isApprovedForAll\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"land\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"xIndex\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"yIndex\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"landCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"landIds\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"map\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"xIndex\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"yIndex\",\"type\":\"uint256\"}],\"name\":\"mint\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC1155BatchReceived\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC1155Received\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"ownerOf\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"perSize\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"x\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"y\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"utilId\",\"type\":\"uint256\"}],\"name\":\"placeItem\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"x\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"y\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"utilId\",\"type\":\"uint256[]\"}],\"name\":\"placeItems\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"x\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"y\",\"type\":\"uint256\"}],\"name\":\"removeItem\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"safeTransferFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"safeTransferFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"approved\",\"type\":\"bool\"}],\"name\":\"setApprovalForAll\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"size\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes4\",\"name\":\"interfaceId\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"tokenURI\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"x\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"y\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"utilId\",\"type\":\"uint256\"}],\"name\":\"updateItem\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"x\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"y\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"utilId\",\"type\":\"uint256[]\"}],\"name\":\"updateItems\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"utilCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"utilsAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]";
     string utilsContractAddress = "0x4b22e4f5cfCb3e648a6F42Fa9D4E55985f9647D1";
@@ -95,17 +101,28 @@ public class ContractManager : MonoBehaviour
         utilsFaucetButton.gameObject.SetActive(false);
         landFaucetButton.gameObject.SetActive(false);
         loadingText.enabled = false;
+        // OnWalletConnect();
+        // Test();
+    }
+    private async Task Initialize()
+    {
+        var chainId = await ThirdwebManager.Instance.SDK.wallet.GetChainId();
+        if(chainId == 80001)
+        {
+            mapContractAddress = mapContractAddressMumbai;
+            utilsContractAddress = utilsContractAddressMumbai;
+            faucetContractAddress = faucetContractAddressMumbai;
+        }else if(chainId == 365)
+        {
+            mapContractAddress = mapContractAddressTheta;
+            utilsContractAddress = utilsContractAddressTheta;
+            faucetContractAddress = faucetContractAddressTheta;
+        }
         mapContract = ThirdwebManager.Instance.SDK.GetContract(mapContractAddress, mapContractABI);
         utilsContract = ThirdwebManager.Instance.SDK.GetContract(utilsContractAddress, utilsContractABI);
         faucetContract = ThirdwebManager.Instance.SDK.GetContract(faucetContractAddress, faucetContractABI);
         initializeMapTask = InitializeMap();
-        // OnWalletConnect();
-        // Test();
     }
-    /*private async void Main()
-    {
-
-    }*/
 
     // Update is called once per frame
     void Update()
@@ -364,7 +381,8 @@ public class ContractManager : MonoBehaviour
                 }
                 else
                 {
-                    // SHOULDN't COME HERE AS I'VE NOT MINTED MORE ITEMS IN UTILS CONTRACT
+                    // SHOULDN'T COME HERE AS I'VE NOT MINTED MORE ITEMS IN UTILS CONTRACT
+                    Debug.Log("SHOULDN'T COME HERE AS I'VE NOT MINTED MORE ITEMS IN UTILS CONTRACT: " + i + "," + j + "," + map[i,j]);
                 }
             }
         }
@@ -393,8 +411,8 @@ public class ContractManager : MonoBehaviour
         await initializeMapTask; // wait for map to be initialized if not already
         //
         /*landOwnedIndexes = new Land[1];
-        landOwnedIndexes[0] = new Land { xIndex = 0, yIndex = 0 };*/
-        /*landOwnedIndexes = new Land[2];
+        landOwnedIndexes[0] = new Land { xIndex = 0, yIndex = 0 };
+        landOwnedIndexes = new Land[2];
         landOwnedIndexes[0] = new Land { xIndex = 0, yIndex = 1 };
         landOwnedIndexes[1] = new Land { xIndex = 2, yIndex = 2 };*/
         //
@@ -608,6 +626,7 @@ public class ContractManager : MonoBehaviour
     }
     private async Task setData()
     {
+        await Initialize();
         Debug.Log("TEST444!!!");
         await setUserData();
         Debug.Log("TEST555!!!");
@@ -620,6 +639,9 @@ public class ContractManager : MonoBehaviour
         canvasManager.RemoveClickListeners();
         walletAddress = "";
         mapBalance = 0;
+        map = new int[size,size];
+        editedMap = new int[size, size];
+        initializeMapItems();
         uiController.updateMapBalance(mapBalance);
     }
 
@@ -732,12 +754,5 @@ public class ContractManager : MonoBehaviour
         ResetData();
         Start();
         await setData();
-    }
-    public async void Test()
-    {
-        Debug.Log("TEST!!!");
-        int balance1 = await mapContract.Read<int>("balanceOf", await ThirdwebManager.Instance.SDK.wallet.GetAddress());
-        // var data = await mapContract.ERC721.BalanceOf("0x51fE4b69eC53d0A4288566a969826b33406Ee4B4");
-        Debug.Log("BALANCE: " + balance1);
     }
 }

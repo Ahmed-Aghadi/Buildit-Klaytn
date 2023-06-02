@@ -16,58 +16,63 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   const utilsMintAmount = 1000;
   const transferUtilsAmount = 500;
 
-  log("----------------------------------------------------");
+  // log("----------------------------------------------------");
   const utilsArg = [utilsBaseUri];
-  const utils = await deploy("Utils", {
-    from: deployer,
-    args: utilsArg,
-    log: true,
-    waitConfirmations: waitBlockConfirmations,
-  });
-  console.log("utils deployed to:", utils.address);
-  log("----------------------------------------------------");
+  // const utils = await deploy("Utils", {
+  //   from: deployer,
+  //   args: utilsArg,
+  //   log: true,
+  //   waitConfirmations: waitBlockConfirmations,
+  // });
+  // console.log("utils deployed to:", utils.address);
+  // log("----------------------------------------------------");
   const mapArg = [
     size,
     perSize,
     mapBaseUri,
     "0x4b22e4f5cfCb3e648a6F42Fa9D4E55985f9647D1",
   ];
-  const map = await deploy("Map", {
-    from: deployer,
-    args: mapArg,
-    log: true,
-    waitConfirmations: waitBlockConfirmations,
-  });
-  console.log("map deployed to:", map.address);
-  log("----------------------------------------------------");
+  // const map = await deploy("Map", {
+  //   from: deployer,
+  //   args: mapArg,
+  //   log: true,
+  //   waitConfirmations: waitBlockConfirmations,
+  // });
+  // console.log("map deployed to:", map.address);
+  // log("----------------------------------------------------");
   const faucetArg = [];
-  const faucet = await deploy("Faucet", {
-    from: deployer,
-    args: faucetArg,
-    log: true,
-    waitConfirmations: waitBlockConfirmations,
-  });
-  console.log("faucet deployed to:", faucet.address);
-  log("----------------------------------------------------");
-  console.log("Minting Utils...");
-  await mintUtils(deployer, utils.address, utilsMintCount, utilsMintAmount);
-  log("----------------------------------------------------");
-  console.log("Transfering Utils to Faucet...");
-  await transferToFaucet(
-    deployer,
-    utils.address,
-    faucet.address,
-    utilsMintCount,
-    transferUtilsAmount
-  );
-  log("----------------------------------------------------");
+  // const faucet = await deploy("Faucet", {
+  //   from: deployer,
+  //   args: faucetArg,
+  //   log: true,
+  //   waitConfirmations: waitBlockConfirmations,
+  // });
+  // console.log("faucet deployed to:", faucet.address);
+  // log("----------------------------------------------------");
+  // console.log("Minting Utils...");
+  // await mintUtils(
+  //   account,
+  //   "0xCA34FF4068f042203087D475805c4DD8347cE958",
+  //   utilsMintCount,
+  //   utilsMintAmount
+  // );
+  // log("----------------------------------------------------");
+  // console.log("Transfering Utils to Faucet...");
+  // await transferToFaucet(
+  //   account,
+  //   "0xCA34FF4068f042203087D475805c4DD8347cE958",
+  //   "0xdF78D5A57DCFf31Ca18978b56760867010AEBC2E",
+  //   utilsMintCount,
+  //   transferUtilsAmount
+  // );
+  // log("----------------------------------------------------");
   try {
     console.log("Verifying for Utils...");
-    await verify(utils.address, utilsArg);
+    await verify("0xCA34FF4068f042203087D475805c4DD8347cE958", utilsArg);
     console.log("Verifying for Map...");
-    await verify(map.address, mapArg);
+    await verify("0x11DA0f57086a19977E46B548b64166411d839a30", mapArg);
     console.log("Verifying for Faucet...");
-    await verify(faucet.address, faucetArg);
+    await verify("0xdF78D5A57DCFf31Ca18978b56760867010AEBC2E", faucetArg);
   } catch (error) {
     console.log(error);
   }
@@ -99,8 +104,9 @@ const mintUtils = async (account, utilsContractAddress, count, amount) => {
   );
   for (let i = 1; i <= count; i++) {
     const tx = await utilsContract.mint(amount);
+    console.log("Minted Utils " + i + " TX:", tx.hash);
     const receipt = await tx.wait();
-    console.log("Minted Utils " + i + " :", receipt);
+    console.log("Minted Utils " + i + " RECEIPT:", receipt.transactionHash);
   }
 };
 
@@ -121,10 +127,12 @@ const transferToFaucet = async (
       account.address,
       faucetContractAddress,
       i,
-      amount
+      amount,
+      "0x"
     );
+    console.log("Transfered Utils " + i + " TX:", tx.hash);
     const receipt = await tx.wait();
-    console.log("Transfered Utils " + i + ": ", receipt);
+    console.log("Transfered Utils " + i + " RECEIPT:", receipt.transactionHash);
   }
 };
 

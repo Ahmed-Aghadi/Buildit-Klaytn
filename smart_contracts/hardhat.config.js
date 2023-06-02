@@ -130,6 +130,8 @@ module.exports = {
     },
   },
   etherscan: {
+    // To list networks supported by default: npx hardhat verify --list-networks
+    // You can manually add support for it by following these instructions: https://hardhat.org/verify-custom-networks
     // npx hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
     apiKey: {
       goerli: ETHERSCAN_API_KEY,
