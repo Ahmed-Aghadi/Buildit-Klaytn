@@ -104,7 +104,7 @@ public class ContractManager : MonoBehaviour
         utilsFaucetButton.gameObject.SetActive(false);
         landFaucetButton.gameObject.SetActive(false);
         loadingText.enabled = false;
-        OnWalletConnect();
+        // OnWalletConnect();
         // Test();
     }
     private async Task Initialize()
@@ -400,9 +400,9 @@ public class ContractManager : MonoBehaviour
     {
         mapManager.destroyHighlights();
         Debug.Log("TEST666!!!");
-        // walletAddress = await ThirdwebManager.Instance.SDK.wallet.GetAddress();
+        walletAddress = await ThirdwebManager.Instance.SDK.wallet.GetAddress();
         //
-        walletAddress = "0x4CA5FE129837E965e49b507cfE36c0dc574e8864";
+        // walletAddress = "0x4CA5FE129837E965e49b507cfE36c0dc574e8864";
         //
         Debug.Log("TEST777!!!");
         await setItemBalances();
@@ -415,24 +415,24 @@ public class ContractManager : MonoBehaviour
         landOwnedIds = await getLandOwnedIDs();
         Debug.Log("TEST141414!!!");
         Debug.Log("landOwnedIndexes");
-        // landOwnedIndexes = await getLandOwnedIndexes();
+        landOwnedIndexes = await getLandOwnedIndexes();
         await initializeMapTask; // wait for map to be initialized if not already
         //
-        landOwnedIndexes = new Land[1];
+        /*landOwnedIndexes = new Land[1];
         landOwnedIndexes[0] = new Land { xIndex = 0, yIndex = 0 };
         landOwnedIndexes = new Land[2];
         landOwnedIndexes[0] = new Land { xIndex = 0, yIndex = 1 };
-        landOwnedIndexes[1] = new Land { xIndex = 2, yIndex = 2 };
+        landOwnedIndexes[1] = new Land { xIndex = 2, yIndex = 2 };*/
         //
         mapManager.highlightOwnedLands(landOwnedIndexes, perSize);
         updateLandOwned(size, perSize, landOwnedIndexes);
         if (queryMap)
         {
-            // await updateMap(size);
+            await updateMap(size);
             //
-            map[2, 7] = 3;
+            /*map[2, 7] = 3;
             map[3, 8] = 2;
-            map[4, 9] = 1;
+            map[4, 9] = 1;*/
             /*map[0, 0] = 1;
             map[1, 0] = 1;
             map[2, 0] = 1;
