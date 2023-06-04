@@ -26,12 +26,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   });
   console.log("utils deployed to:", utils.address);
   log("----------------------------------------------------");
-  const mapArg = [
-    size,
-    perSize,
-    mapBaseUri,
-    "0x4b22e4f5cfCb3e648a6F42Fa9D4E55985f9647D1",
-  ];
+  const mapArg = [size, perSize, mapBaseUri, utils.address];
   const map = await deploy("Map", {
     from: deployer,
     args: mapArg,

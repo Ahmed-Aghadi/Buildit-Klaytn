@@ -37,6 +37,8 @@ const POLYGONSCAN_API_KEY =
   process.env.POLYGONSCAN_API_KEY || "Your polygonscan API key";
 const FANTOMSCAN_API_KEY =
   process.env.FANTOMSCAN_API_KEY || "Your polygonscan API key";
+const POLYGONZKEVM_TESTNET_API_KEY =
+  process.env.POLYGONZKEVM_TESTNET_API_KEY || "Your polygonscan API key";
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -128,6 +130,12 @@ module.exports = {
       accounts: [PRIVATE_KEY],
       timeout: 300000, // 300 seconds
     },
+    polygonzkevmtest: {
+      chainId: 1442,
+      url: "https://rpc.public.zkevm-test.net",
+      accounts: [PRIVATE_KEY],
+      timeout: 300000, // 300 seconds
+    },
   },
   etherscan: {
     // To list networks supported by default: npx hardhat verify --list-networks
@@ -138,7 +146,18 @@ module.exports = {
       polygonMumbai: POLYGONSCAN_API_KEY,
       fantomtest: FANTOMSCAN_API_KEY,
       ftmTestnet: FANTOMSCAN_API_KEY,
+      polygonzkevmtest: POLYGONZKEVM_TESTNET_API_KEY,
     },
+    customChains: [
+      {
+        network: "polygonzkevmtest",
+        chainId: 1442,
+        urls: {
+          apiURL: "https://explorer.public.zkevm-test.net/api",
+          browserURL: "https://explorer.public.zkevm-test.net",
+        },
+      },
+    ],
   },
   // gasReporter: {
   //   enabled: REPORT_GAS,

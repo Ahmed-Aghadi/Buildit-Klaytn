@@ -1019,6 +1019,48 @@
         }
       }
     },
+    "src/Faucet.sol": {
+      "lastModificationDate": 1685648702567,
+      "contentHash": "b203506556d7edfb65f079e93767488b",
+      "sourceName": "src/Faucet.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "lib/solmate/src/tokens/ERC1155.sol"
+      ],
+      "versionRequirement": "^0.8.13",
+      "artifacts": {
+        "Faucet": {
+          "0.8.19+commit.7dd6d404.Linux.gcc": "Faucet.sol/Faucet.json"
+        }
+      }
+    },
     "src/Map.sol": {
       "lastModificationDate": 1685579646275,
       "contentHash": "a004a9581bf4744df869229c5f3f6ca6",
@@ -1109,8 +1151,8 @@
       }
     },
     "test/Map.t.sol": {
-      "lastModificationDate": 1685632267075,
-      "contentHash": "95abbd88a2cf71751f53ec618b03422f",
+      "lastModificationDate": 1685733549252,
+      "contentHash": "2e3eb4ef60aedebbeaaaf881862ba064",
       "sourceName": "test/Map.t.sol",
       "solcConfig": {
         "settings": {
