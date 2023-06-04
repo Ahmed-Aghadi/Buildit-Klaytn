@@ -26,6 +26,9 @@ public class ContractManager : MonoBehaviour
     const int ROAD = 1;
     const int HOUSE = 2;
     const int SPECIAL = 3;
+    string mapContractAddressPolygonZKEVMTestnet = "0x11DA0f57086a19977E46B548b64166411d839a30";
+    string utilsContractAddressPolygonZKEVMTestnet = "0xCA34FF4068f042203087D475805c4DD8347cE958";
+    string faucetContractAddressPolygonZKEVMTestnet = "0xdF78D5A57DCFf31Ca18978b56760867010AEBC2E";
     string mapContractAddressTheta = "0x9c0549334fbCDF0AFc85B83B2Bb4b422Ba38960f";
     string utilsContractAddressTheta = "0x3EC31e8B991FF0b3FfffD480e2A5F259B51DdF5c";
     string faucetContractAddressTheta = "0xc32Fb0cb3D6CcfD111146a2CA26A3FC774F3ECd2";
@@ -60,7 +63,7 @@ public class ContractManager : MonoBehaviour
     int specialEditedBalance = 0;
     int mapBalance = 0;
     int size = 0;
-    int perSize = 0;
+    public int perSize = 0;
     int landCount = 0;
     int[] landOwnedIds = null;
     Land[] landOwnedIndexes = null;
@@ -117,6 +120,11 @@ public class ContractManager : MonoBehaviour
             mapContractAddress = mapContractAddressTheta;
             utilsContractAddress = utilsContractAddressTheta;
             faucetContractAddress = faucetContractAddressTheta;
+        }else if(chainId == 1442)
+        {
+            mapContractAddress = mapContractAddressPolygonZKEVMTestnet;
+            utilsContractAddress = utilsContractAddressPolygonZKEVMTestnet;
+            faucetContractAddress = faucetContractAddressPolygonZKEVMTestnet;
         }
         mapContract = ThirdwebManager.Instance.SDK.GetContract(mapContractAddress, mapContractABI);
         utilsContract = ThirdwebManager.Instance.SDK.GetContract(utilsContractAddress, utilsContractABI);
@@ -622,6 +630,10 @@ public class ContractManager : MonoBehaviour
 
     public bool userOwnsIndex(int x, int y)
     {
+        if(landOwned == null)
+        {
+            return false;
+        }
         return landOwned[x, y];
     }
     private async Task setData()
