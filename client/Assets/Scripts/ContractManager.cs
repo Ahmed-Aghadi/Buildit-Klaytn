@@ -26,6 +26,12 @@ public class ContractManager : MonoBehaviour
     const int ROAD = 1;
     const int HOUSE = 2;
     const int SPECIAL = 3;
+    string mapContractAddressXDCApothem = "0x06ce5b276a53e072dc3144d3746e57fd2ca6a1b4";
+    string utilsContractAddressXDCApothem = "0x489d47e592639ba11107e84dd6cca08f0892e27d";
+    string faucetContractAddressXDCApothem = "0xe2c149c4cb26f137e7eab87e7675be71e53d7071";
+    string mapContractAddressOkexTestnet = "0x11DA0f57086a19977E46B548b64166411d839a30";
+    string utilsContractAddressOkexTestnet = "0xCA34FF4068f042203087D475805c4DD8347cE958";
+    string faucetContractAddressOkexTestnet = "0xdF78D5A57DCFf31Ca18978b56760867010AEBC2E";
     string mapContractAddressPolygonZKEVMTestnet = "0x11DA0f57086a19977E46B548b64166411d839a30";
     string utilsContractAddressPolygonZKEVMTestnet = "0xCA34FF4068f042203087D475805c4DD8347cE958";
     string faucetContractAddressPolygonZKEVMTestnet = "0xdF78D5A57DCFf31Ca18978b56760867010AEBC2E";
@@ -125,6 +131,16 @@ public class ContractManager : MonoBehaviour
             mapContractAddress = mapContractAddressPolygonZKEVMTestnet;
             utilsContractAddress = utilsContractAddressPolygonZKEVMTestnet;
             faucetContractAddress = faucetContractAddressPolygonZKEVMTestnet;
+        }else if(chainId == 65)
+        {
+            mapContractAddress = mapContractAddressOkexTestnet;
+            utilsContractAddress = utilsContractAddressOkexTestnet;
+            faucetContractAddress = faucetContractAddressOkexTestnet;
+        }else if(chainId == 51)
+        {
+            mapContractAddress = mapContractAddressXDCApothem;
+            utilsContractAddress = utilsContractAddressXDCApothem;
+            faucetContractAddress = faucetContractAddressXDCApothem;
         }
         mapContract = ThirdwebManager.Instance.SDK.GetContract(mapContractAddress, mapContractABI);
         utilsContract = ThirdwebManager.Instance.SDK.GetContract(utilsContractAddress, utilsContractABI);

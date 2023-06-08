@@ -30,7 +30,7 @@ public class ThirdwebManager : MonoBehaviour
         new ChainData("mumbai", "80001", null),
         new ChainData("fantom-testnet", "4002", null),
         new ChainData("okexchain-testnet", "65", null),
-        new ChainData("thundercore-testnet", "18", null),
+        new ChainData("xdc-apothem-network", "51", null),
         new ChainData("theta-testnet", "365", null),
         new ChainData("polygon-zkevm-testnet", "1442", null),
     };
