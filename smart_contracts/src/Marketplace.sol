@@ -3,11 +3,27 @@ pragma solidity ^0.8.13;
 
 import {ERC1155TokenReceiver} from "solmate/tokens/ERC1155.sol";
 import {ERC721TokenReceiver} from "solmate/tokens/ERC721.sol";
+import "solmate/utils/LibString.sol";
 import "chainlink/v0.8/interfaces/AggregatorV3Interface.sol";
 import "./Map.sol";
 import "./Utils.sol";
-import {AutomationRegistryInterface, State, Config} from "chainlink/v0.8/interfaces/AutomationRegistryInterface1_2.sol";
+import {KeeperRegistryInterface, State, Config} from "chainlink/v0.8/interfaces/KeeperRegistryInterface1_2.sol";
 import {LinkTokenInterface} from "chainlink/v0.8/interfaces/LinkTokenInterface.sol";
+import "chainlink/v0.8/interfaces/AutomationCompatibleInterface.sol";
+
+interface KeeperRegistrarInterface {
+    function register(
+        string memory name,
+        bytes calldata encryptedEmail,
+        address upkeepContract,
+        uint32 gasLimit,
+        address adminAddress,
+        bytes calldata checkData,
+        uint96 amount,
+        uint8 source,
+        address sender
+    ) external;
+}
 
 contract Marketplace {
     error InvalidTokenId();
@@ -48,15 +64,90 @@ contract Marketplace {
     mapping(address => uint256) public balances;
     mapping(uint256 => Bid) public highestBid;
     mapping(address => uint256) public auctionBalance;
+    mapping(uint256 => uint256) public listingToUpkeepID;
+
+    LinkTokenInterface public immutable i_link;
+    address public immutable registrar;
+    KeeperRegistryInterface public immutable i_registry;
+    bytes4 registerSig = KeeperRegistrarInterface.register.selector;
+
+    uint256 public gasLimit;
 
     constructor(
         address eth_usd_priceFeedAddress,
         address mapAddress,
-        address utilsAddress
+        address utilsAddress,
+        address _linkAddress,
+        address _registrar,
+        address _registryAddress,
+        uint256 _gasLimit
     ) {
         eth_usd_priceFeed = AggregatorV3Interface(eth_usd_priceFeedAddress);
         map = Map(mapAddress);
         utils = Utils(utilsAddress);
+        i_link = LinkTokenInterface(_linkAddress);
+        registrar = _registrar;
+        i_registry = KeeperRegistryInterface(_registryAddress);
+        gasLimit = _gasLimit;
+    }
+
+    function registerAndPredictID(uint256 listingId, uint96 amount) private {
+        i_link.transferFrom(msg.sender, address(this), amount);
+        (State memory state, , ) = i_registry.getState();
+        uint256 oldNonce = state.nonce;
+        bytes memory checkData = abi.encodePacked(listingId);
+        bytes memory payload = abi.encode(
+            LibString.toString(listingId),
+            "0x",
+            address(this),
+            gasLimit,
+            address(msg.sender),
+            checkData,
+            amount,
+            0,
+            address(this)
+        );
+
+        i_link.transferAndCall(
+            registrar,
+            amount,
+            bytes.concat(registerSig, payload)
+        );
+        (state, , ) = i_registry.getState();
+        uint256 newNonce = state.nonce;
+        if (newNonce == oldNonce + 1) {
+            uint256 upkeepID = uint256(
+                keccak256(
+                    abi.encodePacked(
+                        blockhash(block.number - 1),
+                        address(i_registry),
+                        uint32(oldNonce)
+                    )
+                )
+            );
+            // DEV - Use the upkeepID however you see fit
+            listingToUpkeepID[listingId] = upkeepID;
+        } else {
+            revert("auto-approve disabled");
+        }
+    }
+
+    function checkUpkeep(
+        bytes calldata checkData
+    ) external view returns (bool upkeepNeeded, bytes memory performData) {
+        uint256 listingId = abi.decode(checkData, (uint256));
+
+        upkeepNeeded =
+            block.timestamp >
+            listings[listingId].timestamp + listings[listingId].aucionTime &&
+            (listings[listingId].isValid || highestBid[listingId].amount > 0);
+        performData = checkData;
+    }
+
+    function performUpkeep(bytes calldata performData) external {
+        uint256 listingId = abi.decode(performData, (uint256));
+
+        calculateWinner(listingId);
     }
 
     /*
@@ -64,13 +155,15 @@ contract Marketplace {
      * @dev auctionTime is the time in seconds for which the auction will run, so timestamp + auctionTime is the end time
      * @dev If isAuction is false, the price is the fixed price and auctionTime is ignored
      * @dev For auction, isUSD should be false
+     * @dev if isAuction is true, the amount is the amount of LINK to be transferred to the upkeep contract else it is ignored
      */
     function createListing(
         bool inUSD,
         uint256 tokenId,
         uint256 price,
         bool isAuction,
-        uint256 auctionTime
+        uint256 auctionTime,
+        uint96 amount
     ) public {
         if (price <= 0) revert InvalidPrice();
         if (tokenId <= 0) revert InvalidTokenId();
@@ -87,6 +180,9 @@ contract Marketplace {
             isAuction,
             auctionTime
         );
+        if (isAuction) {
+            registerAndPredictID(listingCount, amount);
+        }
     }
 
     function deleteListing(uint listingId) public {
@@ -140,7 +236,6 @@ contract Marketplace {
             block.timestamp <=
             listings[listingId].timestamp + listings[listingId].aucionTime
         ) revert AuctionNotOver();
-        if (highestBid[listingId].amount <= 0) revert NotEnoughFunds();
         if (listings[listingId].isValid == false) {
             if (highestBid[listingId].amount > 0) {
                 _invalidateAuctionBid(listingId);
@@ -148,11 +243,17 @@ contract Marketplace {
                 revert InvalidListing();
             }
         }
+
+        if (highestBid[listingId].amount <= 0) {
+            listings[listingId].isValid = false;
+            return;
+        }
         if (
             map.isApprovedForAll(listings[listingId].seller, address(this)) ==
             false
         ) {
             _invalidateAuctionBid(listingId);
+            listings[listingId].isValid = false;
         } else {
             if (listings[listingId].isValid == false) revert InvalidListing();
             balances[listings[listingId].seller] += highestBid[listingId]

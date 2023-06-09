@@ -59,7 +59,11 @@ contract MarketplaceTest is Test {
         marketplace = new Marketplace(
             address(mockAggregatorV3),
             address(map),
-            address(utils)
+            address(utils),
+            address(0x0),
+            address(0x0),
+            address(0x0),
+            999999
         );
         uint i = 0;
         uint j = 0;
@@ -117,7 +121,7 @@ contract MarketplaceTest is Test {
         bool _inUSD = true;
         uint _price = 2000;
         vm.assume(_tokenId != 0 && _tokenId <= mapCount);
-        marketplace.createListing(_inUSD, _tokenId, _price, false, 60);
+        marketplace.createListing(_inUSD, _tokenId, _price, false, 60, 0);
         (
             address seller,
             bool inUSD,
@@ -143,11 +147,12 @@ contract MarketplaceTest is Test {
     function testCreateListing(
         bool _inUSD,
         uint256 _tokenId,
-        uint256 _price,
-        bool _isAuction,
-        uint256 _auctionTime
+        uint256 _price // bool _isAuction, // uint256 _auctionTime, // uint96 _amount
     ) public {
-        vm.assume(!(_isAuction && _inUSD));
+        // vm.assume(!(_isAuction && _inUSD));
+        bool _isAuction = false;
+        uint256 _auctionTime = 0;
+        uint96 _amount = 0;
         uint256 MAX_UINT256 = 2 ** 256 - 1;
         _price = bound(_price, 0, MAX_UINT256 / 10 ** (18 + decimals));
         vm.assume(_tokenId != 0 && _tokenId <= mapCount && _price != 0);
@@ -156,7 +161,8 @@ contract MarketplaceTest is Test {
             _tokenId,
             _price,
             _isAuction,
-            _auctionTime
+            _auctionTime,
+            _amount
         );
         (
             address seller,
@@ -193,18 +199,20 @@ contract MarketplaceTest is Test {
     function testDeleteListing(
         bool _inUSD,
         uint256 _tokenId,
-        uint256 _price,
-        bool _isAuction,
-        uint256 _auctionTime
+        uint256 _price // bool _isAuction, // uint256 _auctionTime, // uint96 _amount
     ) public {
-        vm.assume(!(_isAuction && _inUSD));
+        // vm.assume(!(_isAuction && _inUSD));
+        bool _isAuction = false;
+        uint256 _auctionTime = 0;
+        uint96 _amount = 0;
         vm.assume(_tokenId != 0 && _tokenId <= mapCount && _price != 0);
         marketplace.createListing(
             _inUSD,
             _tokenId,
             _price,
             _isAuction,
-            _auctionTime
+            _auctionTime,
+            _amount
         );
         marketplace.deleteListing(1);
         (, , , , , bool isValid, , ) = marketplace.listings(1);
@@ -219,7 +227,7 @@ contract MarketplaceTest is Test {
         uint256 MAX_UINT256 = 2 ** 256 - 1;
         _price = bound(_price, 0, MAX_UINT256 / 10 ** (18 + decimals));
         vm.assume(_tokenId != 0 && _tokenId <= mapCount && _price != 0);
-        marketplace.createListing(_inUSD, _tokenId, _price, false, 0);
+        marketplace.createListing(_inUSD, _tokenId, _price, false, 0, 0);
         map.approve(address(marketplace), _tokenId);
         vm.deal(address(this), marketplace.getPrice(1));
         marketplace.buyListing{value: marketplace.getPrice(1)}(1);
