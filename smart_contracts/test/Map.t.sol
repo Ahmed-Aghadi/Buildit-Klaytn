@@ -126,12 +126,12 @@ contract MapTest is Test {
         utilId[0] = 3;
         utilId[1] = 2;
         utilId[2] = 1;
-        console.log("first x: ", x[0] / perSize);
-        console.log("first y: ", y[0] / perSize);
-        console.log("second x: ", x[1] / perSize);
-        console.log("second y: ", y[1] / perSize);
-        console.log("third x: ", x[2] / perSize);
-        console.log("third y: ", y[2] / perSize);
+        // console.log("first x: ", x[0] / perSize);
+        // console.log("first y: ", y[0] / perSize);
+        // console.log("second x: ", x[1] / perSize);
+        // console.log("second y: ", y[1] / perSize);
+        // console.log("third x: ", x[2] / perSize);
+        // console.log("third y: ", y[2] / perSize);
         utils.setApprovalForAll(address(map), true);
         map.updateItems(x, y, utilId);
         assertEq(map.map(2, 7), 3);
