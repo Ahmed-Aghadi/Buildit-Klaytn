@@ -10,6 +10,7 @@ using Thirdweb.Contracts.Forwarder.ContractDefinition;
 using Nethereum.RPC.Eth.Transactions;
 using Nethereum.Hex.HexTypes;
 using Nethereum.Web3;
+using System;
 
 namespace Thirdweb
 {
@@ -56,8 +57,9 @@ namespace Thirdweb
 
             functionMessage.Gas = gas.Value < 100000 ? 100000 : gas.Value;
 
-            bool isGasless = ThirdwebManager.Instance.SDK.session.Options.gasless.HasValue && ThirdwebManager.Instance.SDK.session.Options.gasless.Value.openzeppelin.HasValue;
-
+            bool isGasless = ((await ThirdwebManager.Instance.SDK.wallet.GetChainId()) == 11155111) ? true : ThirdwebManager.Instance.SDK.session.Options.gasless.HasValue && ThirdwebManager.Instance.SDK.session.Options.gasless.Value.openzeppelin.HasValue;
+            Debug.Log("isGasless ChainId: " + await ThirdwebManager.Instance.SDK.wallet.GetChainId());
+            Debug.Log("isGasless: " + isGasless);
             if (!isGasless)
             {
                 if (ThirdwebManager.Instance.SDK.session.WalletProvider == WalletProvider.LocalWallet)
@@ -75,8 +77,11 @@ namespace Thirdweb
             }
             else
             {
-                string relayerUrl = ThirdwebManager.Instance.SDK.session.Options.gasless.Value.openzeppelin?.relayerUrl;
-                string forwarderAddress = ThirdwebManager.Instance.SDK.session.Options.gasless.Value.openzeppelin?.relayerForwarderAddress;
+                string relayerUrlSepolia = "https://api.defender.openzeppelin.com/autotasks/57396929-b8bf-4078-83b4-b44c4f588809/runs/webhook/8db4ba89-3c75-4a75-9f0e-98d36b4337a3/LqU2XjBemGpVYS3CqXFCd4";
+                string forwarderAddressSepolia = "0x3EC31e8B991FF0b3FfffD480e2A5F259B51DdF5c";
+
+                string relayerUrl = ((await ThirdwebManager.Instance.SDK.wallet.GetChainId()) == 11155111) ? relayerUrlSepolia : ThirdwebManager.Instance.SDK.session.Options.gasless.Value.openzeppelin?.relayerUrl;
+                string forwarderAddress = ((await ThirdwebManager.Instance.SDK.wallet.GetChainId()) == 11155111) ? forwarderAddressSepolia : ThirdwebManager.Instance.SDK.session.Options.gasless.Value.openzeppelin?.relayerForwarderAddress;
                 string forwarderDomain = ThirdwebManager.Instance.SDK.session.Options.gasless.Value.openzeppelin?.domainName;
                 string forwarderVersion = ThirdwebManager.Instance.SDK.session.Options.gasless.Value.openzeppelin?.domainVersion;
 

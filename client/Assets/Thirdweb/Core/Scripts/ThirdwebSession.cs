@@ -22,6 +22,8 @@ namespace Thirdweb
         #region Properties
 
         public ThirdwebSDK.Options Options { get; private set; }
+        public ThirdwebSDK.Options OptionsWithoutGasless { get; private set; }
+        public ThirdwebSDK.Options OptionsWithGasless { get; private set; }
         public int ChainId { get; private set; }
         public string RPC { get; private set; }
         public SiweMessageService SiweSession { get; private set; }
@@ -46,7 +48,28 @@ namespace Thirdweb
 
         public ThirdwebSession(ThirdwebSDK.Options options, int chainId, string rpcUrl)
         {
+            OptionsWithoutGasless = options;
             Options = options;
+            Debug.Log("ChainId Check");
+            if (chainId == 11155111)
+            {
+                Debug.Log("ChainId Sepolia");
+                string relayerUrlSepolia = "https://api.defender.openzeppelin.com/autotasks/57396929-b8bf-4078-83b4-b44c4f588809/runs/webhook/8db4ba89-3c75-4a75-9f0e-98d36b4337a3/LqU2XjBemGpVYS3CqXFCd4";
+                string forwarderAddressSepolia = "0x3EC31e8B991FF0b3FfffD480e2A5F259B51DdF5c";
+
+                options.gasless = new ThirdwebSDK.GaslessOptions()
+                {
+                    openzeppelin = new ThirdwebSDK.OZDefenderOptions()
+                    {
+                        relayerUrl = relayerUrlSepolia,
+                        relayerForwarderAddress = forwarderAddressSepolia,
+                        domainName = "GSNv2 Forwarder",
+                        domainVersion = "0.0.1"
+                    }
+                };
+                OptionsWithGasless = options;
+                Options = options;
+            }
             ChainId = chainId;
             RPC = rpcUrl;
             SiweSession = new SiweMessageService();
@@ -131,6 +154,16 @@ namespace Thirdweb
                     break;
             }
 
+            Debug.Log("ChainId Check");
+            if (ChainId == 11155111)
+            {
+                Debug.Log("ChainId Sepolia");
+                Options = OptionsWithGasless;
+            }
+            else
+            {
+                Options = OptionsWithoutGasless;
+            }
             ThirdwebManager.Instance.SDK.session = new ThirdwebSession(Options, ChainId, RPC);
         }
 
@@ -174,6 +207,16 @@ namespace Thirdweb
         {
             await Request<object>("wallet_switchEthereumChain", new object[] { newChain });
             CurrentChainData.chainId = newChain.chainId;
+            Debug.Log("ChainId Check");
+            if (newChain.chainId == "11155111")
+            {
+                Debug.Log("ChainId Sepolia");
+                Options = OptionsWithGasless;
+            }
+            else
+            {
+                Options = OptionsWithoutGasless;
+            }
         }
 
         private async Task AddNetwork(ThirdwebChainData newChainData)

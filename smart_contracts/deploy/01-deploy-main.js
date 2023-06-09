@@ -42,7 +42,16 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   }
 
   log("----------------------------------------------------");
-  const utilsArg = [utilsBaseUri];
+  const forwarderArg = [];
+  const forwarder = await deploy("Forwarder", {
+    from: deployer,
+    args: forwarderArg,
+    log: true,
+    waitConfirmations: waitBlockConfirmations,
+  });
+  console.log("forwarder deployed to:", forwarder.address);
+  log("----------------------------------------------------");
+  const utilsArg = [utilsBaseUri, forwarder.address];
   const utils = await deploy("Utils", {
     from: deployer,
     args: utilsArg,
@@ -51,7 +60,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   });
   console.log("utils deployed to:", utils.address);
   log("----------------------------------------------------");
-  const mapArg = [size, perSize, mapBaseUri, utils.address];
+  const mapArg = [size, perSize, mapBaseUri, utils.address, forwarder.address];
   const map = await deploy("Map", {
     from: deployer,
     args: mapArg,
@@ -60,7 +69,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   });
   console.log("map deployed to:", map.address);
   log("----------------------------------------------------");
-  const faucetArg = [];
+  const faucetArg = [forwarder.address];
   const faucet = await deploy("Faucet", {
     from: deployer,
     args: faucetArg,
@@ -77,6 +86,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     registrarAddress,
     registryAddress,
     gasLimit,
+    forwarder.address,
   ];
   const marketplace = await deploy("Marketplace", {
     from: deployer,
@@ -99,6 +109,8 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   );
   log("----------------------------------------------------");
   try {
+    console.log("Verifying for Forwarder...");
+    await verify(forwarder.address, forwarderArg);
     console.log("Verifying for Utils...");
     await verify(utils.address, utilsArg);
     console.log("Verifying for Map...");
