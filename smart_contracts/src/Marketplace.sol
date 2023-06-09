@@ -1,13 +1,16 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
-import {ERC1155TokenReceiver, ERC1155} from "solmate/tokens/ERC1155.sol";
-import {ERC721TokenReceiver, ERC721} from "solmate/tokens/ERC721.sol";
+import {ERC1155TokenReceiver} from "solmate/tokens/ERC1155.sol";
+import "openzeppelin/token/ERC1155/IERC1155.sol";
+import {ERC721TokenReceiver} from "solmate/tokens/ERC721.sol";
+import "openzeppelin/token/ERC721/IERC721.sol";
 import "solmate/utils/LibString.sol";
 import "chainlink/v0.8/interfaces/AggregatorV3Interface.sol";
 import {KeeperRegistryInterface, State, Config} from "chainlink/v0.8/interfaces/KeeperRegistryInterface1_2.sol";
 import {LinkTokenInterface} from "chainlink/v0.8/interfaces/LinkTokenInterface.sol";
 import "chainlink/v0.8/interfaces/AutomationCompatibleInterface.sol";
+import "openzeppelin/metatx/ERC2771Context.sol";
 
 interface KeeperRegistrarInterface {
     function register(
@@ -23,7 +26,7 @@ interface KeeperRegistrarInterface {
     ) external;
 }
 
-contract Marketplace {
+contract Marketplace is ERC2771Context {
     error InvalidTokenId();
     error InvalidListingId();
     error InvalidListing();
@@ -54,8 +57,8 @@ contract Marketplace {
         uint256 amount;
     }
     AggregatorV3Interface internal eth_usd_priceFeed;
-    ERC721 internal map;
-    ERC1155 internal utils;
+    IERC721 internal map;
+    IERC1155 internal utils;
     uint public listingCount = 0;
 
     mapping(uint256 => Listing) public listings;
@@ -78,11 +81,12 @@ contract Marketplace {
         address _linkAddress,
         address _registrar,
         address _registryAddress,
-        uint256 _gasLimit
-    ) {
+        uint256 _gasLimit,
+        address trustedForwarder
+    ) ERC2771Context(trustedForwarder) {
         eth_usd_priceFeed = AggregatorV3Interface(eth_usd_priceFeedAddress);
-        map = ERC721(mapAddress);
-        utils = ERC1155(utilsAddress);
+        map = IERC721(mapAddress);
+        utils = IERC1155(utilsAddress);
         i_link = LinkTokenInterface(_linkAddress);
         registrar = _registrar;
         i_registry = KeeperRegistryInterface(_registryAddress);
@@ -90,7 +94,7 @@ contract Marketplace {
     }
 
     function registerAndPredictID(uint256 listingId, uint96 amount) private {
-        i_link.transferFrom(msg.sender, address(this), amount);
+        i_link.transferFrom(_msgSender(), address(this), amount);
         (State memory state, , ) = i_registry.getState();
         uint256 oldNonce = state.nonce;
         bytes memory checkData = abi.encodePacked(listingId);
@@ -99,7 +103,7 @@ contract Marketplace {
             "0x",
             address(this),
             gasLimit,
-            address(msg.sender),
+            address(_msgSender()),
             checkData,
             amount,
             0,
@@ -165,11 +169,11 @@ contract Marketplace {
     ) public {
         if (price <= 0) revert InvalidPrice();
         if (tokenId <= 0) revert InvalidTokenId();
-        if (map.ownerOf(tokenId) != msg.sender) revert NotTokenOwner();
+        if (map.ownerOf(tokenId) != _msgSender()) revert NotTokenOwner();
         if (isAuction && inUSD) revert USDNotSupportedForAuction();
         listingCount++;
         listings[listingCount] = Listing(
-            msg.sender,
+            _msgSender(),
             inUSD,
             tokenId,
             price,
@@ -185,7 +189,7 @@ contract Marketplace {
 
     function deleteListing(uint listingId) public {
         if (isListingValid(listingId) == false) revert InvalidListing();
-        if (map.ownerOf(listings[listingId].tokenId) != msg.sender)
+        if (map.ownerOf(listings[listingId].tokenId) != _msgSender())
             revert NotListingOwner();
         listings[listingId].isValid = false;
     }
@@ -197,12 +201,12 @@ contract Marketplace {
         if (msg.value < price) revert NotEnoughFunds();
         uint excess = msg.value - price;
         if (excess > 0) {
-            balances[msg.sender] += excess;
+            balances[_msgSender()] += excess;
         }
         balances[listings[listingId].seller] += price;
         map.safeTransferFrom(
             listings[listingId].seller,
-            msg.sender,
+            _msgSender(),
             listings[listingId].tokenId
         );
         listings[listingId].isValid = false;
@@ -219,8 +223,8 @@ contract Marketplace {
                 listingId
             ].amount;
         }
-        auctionBalance[msg.sender] += msg.value;
-        highestBid[listingId] = Bid(msg.sender, msg.value);
+        auctionBalance[_msgSender()] += msg.value;
+        highestBid[listingId] = Bid(_msgSender(), msg.value);
     }
 
     /*
@@ -302,10 +306,10 @@ contract Marketplace {
     }
 
     function withdraw() public {
-        uint amount = balances[msg.sender];
+        uint amount = balances[_msgSender()];
         if (amount <= 0) revert NotEnoughFunds();
-        balances[msg.sender] = 0;
-        payable(msg.sender).transfer(amount);
+        balances[_msgSender()] = 0;
+        payable(_msgSender()).transfer(amount);
     }
 
     /*

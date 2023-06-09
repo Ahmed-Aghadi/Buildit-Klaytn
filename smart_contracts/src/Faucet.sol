@@ -1,13 +1,17 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
-import "solmate/tokens/ERC1155.sol";
+import {ERC1155TokenReceiver} from "solmate/tokens/ERC1155.sol";
+import "openzeppelin/token/ERC1155/IERC1155.sol";
+import "openzeppelin/metatx/ERC2771Context.sol";
 
-contract Faucet {
+contract Faucet is ERC2771Context {
+    constructor(address trustedForwarder) ERC2771Context(trustedForwarder) {}
+
     function getToken(address tokenAddress, uint256 tokenId) public {
-        ERC1155(tokenAddress).safeTransferFrom(
+        IERC1155(tokenAddress).safeTransferFrom(
             address(this),
-            msg.sender,
+            _msgSender(),
             tokenId,
             10,
             ""

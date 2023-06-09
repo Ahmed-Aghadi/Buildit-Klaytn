@@ -9,12 +9,12 @@ import "../src/Utils.sol";
 contract UtilsScript is Script {
     function setUp() public {}
 
-    function run() public {
-        // vm.recordLogs();
-        vm.startBroadcast();
-        Utils util = new Utils("https://example.com/");
-        vm.stopBroadcast();
-        console.log("address(util): %s", address(util));
-        // console.log("rpc URL mumbai", vm.rpcUrl("mumbai"));
-    }
+    // function run() public {
+    //     // vm.recordLogs();
+    //     vm.startBroadcast();
+    //     Utils util = new Utils("https://example.com/");
+    //     vm.stopBroadcast();
+    //     console.log("address(util): %s", address(util));
+    //     // console.log("rpc URL mumbai", vm.rpcUrl("mumbai"));
+    // }
 }

@@ -6,11 +6,13 @@ import "forge-std/console.sol";
 import "../src/Map.sol";
 import "../src/Utils.sol";
 import "../src/Marketplace.sol";
+import "../src/Forwarder.sol";
 
 import {ERC1155TokenReceiver} from "solmate/tokens/ERC1155.sol";
 import {ERC721TokenReceiver} from "solmate/tokens/ERC721.sol";
 
 contract MarketplaceTest is Test {
+    Forwarder forwarder;
     Marketplace marketplace;
     MockAggregatorV3 mockAggregatorV3;
     Map map;
@@ -46,6 +48,7 @@ contract MarketplaceTest is Test {
         mapCount = 3;
         utilCount = 3;
         utilAmount = 1000;
+        forwarder = new Forwarder();
         mockAggregatorV3 = new MockAggregatorV3(
             roundId,
             answer,
@@ -54,8 +57,8 @@ contract MarketplaceTest is Test {
             answeredInRound,
             decimals
         );
-        utils = new Utils(utilsBaseUri);
-        map = new Map(size, 5, mapBaseUri, address(utils));
+        utils = new Utils(utilsBaseUri, address(forwarder));
+        map = new Map(size, 5, mapBaseUri, address(utils), address(forwarder));
         marketplace = new Marketplace(
             address(mockAggregatorV3),
             address(map),
@@ -63,7 +66,8 @@ contract MarketplaceTest is Test {
             address(0x0),
             address(0x0),
             address(0x0),
-            999999
+            999999,
+            address(forwarder)
         );
         uint i = 0;
         uint j = 0;

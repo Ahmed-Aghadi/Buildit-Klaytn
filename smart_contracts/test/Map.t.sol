@@ -5,12 +5,14 @@ import "forge-std/Test.sol";
 import "forge-std/console.sol";
 import "../src/Map.sol";
 import "../src/Utils.sol";
+import "../src/Forwarder.sol";
 
 import {ERC1155TokenReceiver} from "solmate/tokens/ERC1155.sol";
 
 contract MapTest is Test {
     Map public map;
     Utils public utils;
+    Forwarder public forwarder;
     string public mapBaseUri;
     string public utilsBaseUri;
     uint256 size;
@@ -28,8 +30,9 @@ contract MapTest is Test {
         perSize = 5;
         utilCount = 3;
         utilAmount = 1000;
-        utils = new Utils(utilsBaseUri);
-        map = new Map(size, 5, mapBaseUri, address(utils));
+        forwarder = new Forwarder();
+        utils = new Utils(utilsBaseUri, address(forwarder));
+        map = new Map(size, 5, mapBaseUri, address(utils), address(forwarder));
         for (uint256 i = 0; i < utilCount; i++) {
             utils.mint(utilAmount);
         }
