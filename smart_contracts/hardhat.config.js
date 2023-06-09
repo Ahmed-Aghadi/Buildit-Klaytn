@@ -128,7 +128,7 @@ module.exports = {
     },
     xdcapothem: {
       chainId: 51,
-      url: "https://rpc.apothem.network",
+      url: "https://erpc.apothem.network",
       accounts: [PRIVATE_KEY],
       timeout: 300000, // 300 seconds
     },
