@@ -1,0 +1,137 @@
+{
+  "address": "0xdF78D5A57DCFf31Ca18978b56760867010AEBC2E",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tokenAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getToken",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "onERC1155BatchReceived",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "onERC1155Received",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xa05321905228e1a4b79de9218b90101a4824af21b78a25d94608ee5fcc028041",
+  "receipt": {
+    "to": null,
+    "from": "0x0de82DCC40B8468639251b089f8b4A4400022e04",
+    "contractAddress": "0xdF78D5A57DCFf31Ca18978b56760867010AEBC2E",
+    "transactionIndex": 73,
+    "gasUsed": "272427",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xd3d3f7654512a4f4ae0fe3bdcb462e1e257b1d6b0e9a2ee0485aec66024c6c6a",
+    "transactionHash": "0xa05321905228e1a4b79de9218b90101a4824af21b78a25d94608ee5fcc028041",
+    "logs": [],
+    "blockNumber": 3657332,
+    "cumulativeGasUsed": "11586004",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "479bd514209e88aad7b52b085e9ff57f",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.13+commit.abaa5c0e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC1155BatchReceived\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC1155Received\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/Faucet.sol\":\"Faucet\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":chainlink-brownie-contracts/=lib/chainlink-brownie-contracts/\",\":chainlink/=lib/chainlink-brownie-contracts/contracts/src/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\",\":solmate/=lib/solmate/src/\"]},\"sources\":{\"lib/solmate/src/tokens/ERC1155.sol\":{\"content\":\"// SPDX-License-Identifier: AGPL-3.0-only\\npragma solidity >=0.8.0;\\n\\n/// @notice Minimalist and gas efficient standard ERC1155 implementation.\\n/// @author Solmate (https://github.com/transmissions11/solmate/blob/main/src/tokens/ERC1155.sol)\\nabstract contract ERC1155 {\\n    /*//////////////////////////////////////////////////////////////\\n                                 EVENTS\\n    //////////////////////////////////////////////////////////////*/\\n\\n    event TransferSingle(\\n        address indexed operator,\\n        address indexed from,\\n        address indexed to,\\n        uint256 id,\\n        uint256 amount\\n    );\\n\\n    event TransferBatch(\\n        address indexed operator,\\n        address indexed from,\\n        address indexed to,\\n        uint256[] ids,\\n        uint256[] amounts\\n    );\\n\\n    event ApprovalForAll(address indexed owner, address indexed operator, bool approved);\\n\\n    event URI(string value, uint256 indexed id);\\n\\n    /*//////////////////////////////////////////////////////////////\\n                             ERC1155 STORAGE\\n    //////////////////////////////////////////////////////////////*/\\n\\n    mapping(address => mapping(uint256 => uint256)) public balanceOf;\\n\\n    mapping(address => mapping(address => bool)) public isApprovedForAll;\\n\\n    /*//////////////////////////////////////////////////////////////\\n                             METADATA LOGIC\\n    //////////////////////////////////////////////////////////////*/\\n\\n    function uri(uint256 id) public view virtual returns (string memory);\\n\\n    /*//////////////////////////////////////////////////////////////\\n                              ERC1155 LOGIC\\n    //////////////////////////////////////////////////////////////*/\\n\\n    function setApprovalForAll(address operator, bool approved) public virtual {\\n        isApprovedForAll[msg.sender][operator] = approved;\\n\\n        emit ApprovalForAll(msg.sender, operator, approved);\\n    }\\n\\n    function safeTransferFrom(\\n        address from,\\n        address to,\\n        uint256 id,\\n        uint256 amount,\\n        bytes calldata data\\n    ) public virtual {\\n        require(msg.sender == from || isApprovedForAll[from][msg.sender], \\\"NOT_AUTHORIZED\\\");\\n\\n        balanceOf[from][id] -= amount;\\n        balanceOf[to][id] += amount;\\n\\n        emit TransferSingle(msg.sender, from, to, id, amount);\\n\\n        require(\\n            to.code.length == 0\\n                ? to != address(0)\\n                : ERC1155TokenReceiver(to).onERC1155Received(msg.sender, from, id, amount, data) ==\\n                    ERC1155TokenReceiver.onERC1155Received.selector,\\n            \\\"UNSAFE_RECIPIENT\\\"\\n        );\\n    }\\n\\n    function safeBatchTransferFrom(\\n        address from,\\n        address to,\\n        uint256[] calldata ids,\\n        uint256[] calldata amounts,\\n        bytes calldata data\\n    ) public virtual {\\n        require(ids.length == amounts.length, \\\"LENGTH_MISMATCH\\\");\\n\\n        require(msg.sender == from || isApprovedForAll[from][msg.sender], \\\"NOT_AUTHORIZED\\\");\\n\\n        // Storing these outside the loop saves ~15 gas per iteration.\\n        uint256 id;\\n        uint256 amount;\\n\\n        for (uint256 i = 0; i < ids.length; ) {\\n            id = ids[i];\\n            amount = amounts[i];\\n\\n            balanceOf[from][id] -= amount;\\n            balanceOf[to][id] += amount;\\n\\n            // An array can't have a total length\\n            // larger than the max uint256 value.\\n            unchecked {\\n                ++i;\\n            }\\n        }\\n\\n        emit TransferBatch(msg.sender, from, to, ids, amounts);\\n\\n        require(\\n            to.code.length == 0\\n                ? to != address(0)\\n                : ERC1155TokenReceiver(to).onERC1155BatchReceived(msg.sender, from, ids, amounts, data) ==\\n                    ERC1155TokenReceiver.onERC1155BatchReceived.selector,\\n            \\\"UNSAFE_RECIPIENT\\\"\\n        );\\n    }\\n\\n    function balanceOfBatch(address[] calldata owners, uint256[] calldata ids)\\n        public\\n        view\\n        virtual\\n        returns (uint256[] memory balances)\\n    {\\n        require(owners.length == ids.length, \\\"LENGTH_MISMATCH\\\");\\n\\n        balances = new uint256[](owners.length);\\n\\n        // Unchecked because the only math done is incrementing\\n        // the array index counter which cannot possibly overflow.\\n        unchecked {\\n            for (uint256 i = 0; i < owners.length; ++i) {\\n                balances[i] = balanceOf[owners[i]][ids[i]];\\n            }\\n        }\\n    }\\n\\n    /*//////////////////////////////////////////////////////////////\\n                              ERC165 LOGIC\\n    //////////////////////////////////////////////////////////////*/\\n\\n    function supportsInterface(bytes4 interfaceId) public view virtual returns (bool) {\\n        return\\n            interfaceId == 0x01ffc9a7 || // ERC165 Interface ID for ERC165\\n            interfaceId == 0xd9b67a26 || // ERC165 Interface ID for ERC1155\\n            interfaceId == 0x0e89341c; // ERC165 Interface ID for ERC1155MetadataURI\\n    }\\n\\n    /*//////////////////////////////////////////////////////////////\\n                        INTERNAL MINT/BURN LOGIC\\n    //////////////////////////////////////////////////////////////*/\\n\\n    function _mint(\\n        address to,\\n        uint256 id,\\n        uint256 amount,\\n        bytes memory data\\n    ) internal virtual {\\n        balanceOf[to][id] += amount;\\n\\n        emit TransferSingle(msg.sender, address(0), to, id, amount);\\n\\n        require(\\n            to.code.length == 0\\n                ? to != address(0)\\n                : ERC1155TokenReceiver(to).onERC1155Received(msg.sender, address(0), id, amount, data) ==\\n                    ERC1155TokenReceiver.onERC1155Received.selector,\\n            \\\"UNSAFE_RECIPIENT\\\"\\n        );\\n    }\\n\\n    function _batchMint(\\n        address to,\\n        uint256[] memory ids,\\n        uint256[] memory amounts,\\n        bytes memory data\\n    ) internal virtual {\\n        uint256 idsLength = ids.length; // Saves MLOADs.\\n\\n        require(idsLength == amounts.length, \\\"LENGTH_MISMATCH\\\");\\n\\n        for (uint256 i = 0; i < idsLength; ) {\\n            balanceOf[to][ids[i]] += amounts[i];\\n\\n            // An array can't have a total length\\n            // larger than the max uint256 value.\\n            unchecked {\\n                ++i;\\n            }\\n        }\\n\\n        emit TransferBatch(msg.sender, address(0), to, ids, amounts);\\n\\n        require(\\n            to.code.length == 0\\n                ? to != address(0)\\n                : ERC1155TokenReceiver(to).onERC1155BatchReceived(msg.sender, address(0), ids, amounts, data) ==\\n                    ERC1155TokenReceiver.onERC1155BatchReceived.selector,\\n            \\\"UNSAFE_RECIPIENT\\\"\\n        );\\n    }\\n\\n    function _batchBurn(\\n        address from,\\n        uint256[] memory ids,\\n        uint256[] memory amounts\\n    ) internal virtual {\\n        uint256 idsLength = ids.length; // Saves MLOADs.\\n\\n        require(idsLength == amounts.length, \\\"LENGTH_MISMATCH\\\");\\n\\n        for (uint256 i = 0; i < idsLength; ) {\\n            balanceOf[from][ids[i]] -= amounts[i];\\n\\n            // An array can't have a total length\\n            // larger than the max uint256 value.\\n            unchecked {\\n                ++i;\\n            }\\n        }\\n\\n        emit TransferBatch(msg.sender, from, address(0), ids, amounts);\\n    }\\n\\n    function _burn(\\n        address from,\\n        uint256 id,\\n        uint256 amount\\n    ) internal virtual {\\n        balanceOf[from][id] -= amount;\\n\\n        emit TransferSingle(msg.sender, from, address(0), id, amount);\\n    }\\n}\\n\\n/// @notice A generic interface for a contract which properly accepts ERC1155 tokens.\\n/// @author Solmate (https://github.com/transmissions11/solmate/blob/main/src/tokens/ERC1155.sol)\\nabstract contract ERC1155TokenReceiver {\\n    function onERC1155Received(\\n        address,\\n        address,\\n        uint256,\\n        uint256,\\n        bytes calldata\\n    ) external virtual returns (bytes4) {\\n        return ERC1155TokenReceiver.onERC1155Received.selector;\\n    }\\n\\n    function onERC1155BatchReceived(\\n        address,\\n        address,\\n        uint256[] calldata,\\n        uint256[] calldata,\\n        bytes calldata\\n    ) external virtual returns (bytes4) {\\n        return ERC1155TokenReceiver.onERC1155BatchReceived.selector;\\n    }\\n}\\n\",\"keccak256\":\"0x00502c7d7671d9dce495858572943999633ac298f20dbb70476280a93720d412\",\"license\":\"AGPL-3.0-only\"},\"src/Faucet.sol\":{\"content\":\"// SPDX-License-Identifier: UNLICENSED\\npragma solidity ^0.8.13;\\n\\nimport \\\"solmate/tokens/ERC1155.sol\\\";\\n\\ncontract Faucet {\\n    function getToken(address tokenAddress, uint256 tokenId) public {\\n        ERC1155(tokenAddress).safeTransferFrom(\\n            address(this),\\n            msg.sender,\\n            tokenId,\\n            10,\\n            \\\"\\\"\\n        );\\n    }\\n\\n    function onERC1155Received(\\n        address,\\n        address,\\n        uint256,\\n        uint256,\\n        bytes memory\\n    ) public virtual returns (bytes4) {\\n        return ERC1155TokenReceiver.onERC1155Received.selector;\\n    }\\n\\n    function onERC1155BatchReceived(\\n        address,\\n        address,\\n        uint256[] memory,\\n        uint256[] memory,\\n        bytes memory\\n    ) public virtual returns (bytes4) {\\n        return ERC1155TokenReceiver.onERC1155BatchReceived.selector;\\n    }\\n}\\n\",\"keccak256\":\"0x3b75a8ed539395fe1b5e41224bddfc279a1c6d16147115081e70db6a295b0a13\",\"license\":\"UNLICENSED\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506103f7806100206000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c806343d7cce614610046578063bc197c811461005b578063f23a6e6114610097575b600080fd5b610059610054366004610151565b6100b6565b005b61007a6100693660046102b2565b63bc197c8160e01b95945050505050565b6040516001600160e01b0319909116815260200160405180910390f35b61007a6100a536600461035c565b63f23a6e6160e01b95945050505050565b604051637921219560e11b815230600482015233602482015260448101829052600a606482015260a06084820152600060a48201526001600160a01b0383169063f242432a9060c401600060405180830381600087803b15801561011957600080fd5b505af115801561012d573d6000803e3d6000fd5b505050505050565b80356001600160a01b038116811461014c57600080fd5b919050565b6000806040838503121561016457600080fd5b61016d83610135565b946020939093013593505050565b634e487b7160e01b600052604160045260246000fd5b604051601f8201601f1916810167ffffffffffffffff811182821017156101ba576101ba61017b565b604052919050565b600082601f8301126101d357600080fd5b8135602067ffffffffffffffff8211156101ef576101ef61017b565b8160051b6101fe828201610191565b928352848101820192828101908785111561021857600080fd5b83870192505b848310156102375782358252918301919083019061021e565b979650505050505050565b600082601f83011261025357600080fd5b813567ffffffffffffffff81111561026d5761026d61017b565b610280601f8201601f1916602001610191565b81815284602083860101111561029557600080fd5b816020850160208301376000918101602001919091529392505050565b600080600080600060a086880312156102ca57600080fd5b6102d386610135565b94506102e160208701610135565b9350604086013567ffffffffffffffff808211156102fe57600080fd5b61030a89838a016101c2565b9450606088013591508082111561032057600080fd5b61032c89838a016101c2565b9350608088013591508082111561034257600080fd5b5061034f88828901610242565b9150509295509295909350565b600080600080600060a0868803121561037457600080fd5b61037d86610135565b945061038b60208701610135565b93506040860135925060608601359150608086013567ffffffffffffffff8111156103b557600080fd5b61034f8882890161024256fea26469706673582212209124f1e77c01a8a1a8ddc1b24937bc1aaa27117a26e758ae44ff6c836528f8f564736f6c634300080d0033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c806343d7cce614610046578063bc197c811461005b578063f23a6e6114610097575b600080fd5b610059610054366004610151565b6100b6565b005b61007a6100693660046102b2565b63bc197c8160e01b95945050505050565b6040516001600160e01b0319909116815260200160405180910390f35b61007a6100a536600461035c565b63f23a6e6160e01b95945050505050565b604051637921219560e11b815230600482015233602482015260448101829052600a606482015260a06084820152600060a48201526001600160a01b0383169063f242432a9060c401600060405180830381600087803b15801561011957600080fd5b505af115801561012d573d6000803e3d6000fd5b505050505050565b80356001600160a01b038116811461014c57600080fd5b919050565b6000806040838503121561016457600080fd5b61016d83610135565b946020939093013593505050565b634e487b7160e01b600052604160045260246000fd5b604051601f8201601f1916810167ffffffffffffffff811182821017156101ba576101ba61017b565b604052919050565b600082601f8301126101d357600080fd5b8135602067ffffffffffffffff8211156101ef576101ef61017b565b8160051b6101fe828201610191565b928352848101820192828101908785111561021857600080fd5b83870192505b848310156102375782358252918301919083019061021e565b979650505050505050565b600082601f83011261025357600080fd5b813567ffffffffffffffff81111561026d5761026d61017b565b610280601f8201601f1916602001610191565b81815284602083860101111561029557600080fd5b816020850160208301376000918101602001919091529392505050565b600080600080600060a086880312156102ca57600080fd5b6102d386610135565b94506102e160208701610135565b9350604086013567ffffffffffffffff808211156102fe57600080fd5b61030a89838a016101c2565b9450606088013591508082111561032057600080fd5b61032c89838a016101c2565b9350608088013591508082111561034257600080fd5b5061034f88828901610242565b9150509295509295909350565b600080600080600060a0868803121561037457600080fd5b61037d86610135565b945061038b60208701610135565b93506040860135925060608601359150608086013567ffffffffffffffff8111156103b557600080fd5b61034f8882890161024256fea26469706673582212209124f1e77c01a8a1a8ddc1b24937bc1aaa27117a26e758ae44ff6c836528f8f564736f6c634300080d0033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}
