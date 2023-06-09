@@ -10,6 +10,8 @@ require("dotenv").config();
 
 const MUMBAI_RPC_URL =
   process.env.MUMBAI_RPC_URL || "https://rpc-mumbai.matic.today";
+const SEPOLIA_RPC_URL =
+  process.env.SEPOLIA_RPC_URL || "https://rpc-mumbai.matic.today";
 const FANTOM_TESTNET_RPC_URL =
   process.env.FANTOM_TESTNET_RPC_URL || "https://rpc.testnet.fantom.network";
 const GOERLI_RPC_URL =
@@ -136,6 +138,12 @@ module.exports = {
       accounts: [PRIVATE_KEY],
       timeout: 300000, // 300 seconds
     },
+    sepolia: {
+      url: SEPOLIA_RPC_URL,
+      accounts: [PRIVATE_KEY],
+      saveDeployments: true,
+      chainId: 11155111,
+    },
   },
   etherscan: {
     // To list networks supported by default: npx hardhat verify --list-networks
@@ -147,6 +155,7 @@ module.exports = {
       fantomtest: FANTOMSCAN_API_KEY,
       ftmTestnet: FANTOMSCAN_API_KEY,
       polygonzkevmtest: POLYGONZKEVM_TESTNET_API_KEY,
+      sepolia: ETHERSCAN_API_KEY,
     },
     customChains: [
       {

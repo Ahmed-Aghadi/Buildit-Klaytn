@@ -1,12 +1,10 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
-import {ERC1155TokenReceiver} from "solmate/tokens/ERC1155.sol";
-import {ERC721TokenReceiver} from "solmate/tokens/ERC721.sol";
+import {ERC1155TokenReceiver, ERC1155} from "solmate/tokens/ERC1155.sol";
+import {ERC721TokenReceiver, ERC721} from "solmate/tokens/ERC721.sol";
 import "solmate/utils/LibString.sol";
 import "chainlink/v0.8/interfaces/AggregatorV3Interface.sol";
-import "./Map.sol";
-import "./Utils.sol";
 import {KeeperRegistryInterface, State, Config} from "chainlink/v0.8/interfaces/KeeperRegistryInterface1_2.sol";
 import {LinkTokenInterface} from "chainlink/v0.8/interfaces/LinkTokenInterface.sol";
 import "chainlink/v0.8/interfaces/AutomationCompatibleInterface.sol";
@@ -56,8 +54,8 @@ contract Marketplace {
         uint256 amount;
     }
     AggregatorV3Interface internal eth_usd_priceFeed;
-    Map internal map;
-    Utils internal utils;
+    ERC721 internal map;
+    ERC1155 internal utils;
     uint public listingCount = 0;
 
     mapping(uint256 => Listing) public listings;
@@ -83,8 +81,8 @@ contract Marketplace {
         uint256 _gasLimit
     ) {
         eth_usd_priceFeed = AggregatorV3Interface(eth_usd_priceFeedAddress);
-        map = Map(mapAddress);
-        utils = Utils(utilsAddress);
+        map = ERC721(mapAddress);
+        utils = ERC1155(utilsAddress);
         i_link = LinkTokenInterface(_linkAddress);
         registrar = _registrar;
         i_registry = KeeperRegistryInterface(_registryAddress);

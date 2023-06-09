@@ -4,6 +4,7 @@ const hre = require("hardhat");
 module.exports = async ({ getNamedAccounts, deployments }) => {
   const { deploy, log } = deployments;
   const { deployer } = await getNamedAccounts();
+  const chainId = network.config.chainId;
   const accounts = await hre.ethers.getSigners();
   const account = accounts[0];
   const waitBlockConfirmations = 6;
@@ -15,6 +16,30 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   const utilsMintCount = 3;
   const utilsMintAmount = 1000;
   const transferUtilsAmount = 500;
+
+  // marketplace can only be deployed on goerli or sepolia testnet. As price feed is not available on other testnets
+  let registryAddress = "0xE16Df59B887e3Caa439E0b29B42bA2e7976FD8b2"; // mumbai
+  let registrarAddress = "0x57A4a13b35d25EE78e084168aBaC5ad360252467"; // mumbai
+  let eth_usd_priceFeedAddress = "0x694AA1769357215DE4FAC081bf1f309aDC325306"; // sepolia
+  let linkAddress = "0x326C977E6efc84E512bB9C30f76E30c160eD06FB"; // mumbai
+  let gasLimit = 999999;
+  if (chainId == 80001) {
+    // mumbai
+    registryAddress = "0xE16Df59B887e3Caa439E0b29B42bA2e7976FD8b2";
+    registrarAddress = "0x57A4a13b35d25EE78e084168aBaC5ad360252467";
+    linkAddress = "0x326C977E6efc84E512bB9C30f76E30c160eD06FB";
+  } else if (chainId == 4002) {
+    // fantom testnet
+    registryAddress = "0xE16Df59B887e3Caa439E0b29B42bA2e7976FD8b2";
+    registrarAddress = "0x57A4a13b35d25EE78e084168aBaC5ad360252467";
+    linkAddress = "0xfaFedb041c0DD4fA2Dc0d87a6B0979Ee6FA7af5F";
+  } else if (chainId == 11155111) {
+    // sepolia
+    registryAddress = "0xE16Df59B887e3Caa439E0b29B42bA2e7976FD8b2";
+    registrarAddress = "0x9a811502d843E5a03913d5A2cfb646c11463467A";
+    eth_usd_priceFeedAddress = "0x694AA1769357215DE4FAC081bf1f309aDC325306";
+    linkAddress = "0x779877A7B0D9E8603169DdbD7836e478b4624789";
+  }
 
   log("----------------------------------------------------");
   const utilsArg = [utilsBaseUri];
@@ -44,6 +69,23 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   });
   console.log("faucet deployed to:", faucet.address);
   log("----------------------------------------------------");
+  const marketplaceArg = [
+    eth_usd_priceFeedAddress,
+    map.address,
+    utils.address,
+    linkAddress,
+    registrarAddress,
+    registryAddress,
+    gasLimit,
+  ];
+  const marketplace = await deploy("Marketplace", {
+    from: deployer,
+    args: marketplaceArg,
+    log: true,
+    waitConfirmations: waitBlockConfirmations,
+  });
+  console.log("marketplace deployed to:", marketplace.address);
+  log("----------------------------------------------------");
   console.log("Minting Utils...");
   await mintUtils(account, utils.address, utilsMintCount, utilsMintAmount);
   log("----------------------------------------------------");
@@ -63,6 +105,8 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     await verify(map.address, mapArg);
     console.log("Verifying for Faucet...");
     await verify(faucet.address, faucetArg);
+    console.log("Verifying for Marketplace...");
+    await verify(marketplace.address, marketplaceArg);
   } catch (error) {
     console.log(error);
   }
