@@ -1,6 +1,7 @@
 using UnityEngine;
 using Thirdweb;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class ChainData
@@ -19,6 +20,10 @@ public class ChainData
 
 public class ThirdwebManager : MonoBehaviour
 {
+    [Header("For gasless custom options")]
+    [Tooltip("The gasless option to initialize the SDK with")]
+    public Toggle gaslessToggle;
+
     [Header("REQUIRED SETTINGS")]
     [Tooltip("The chain to initialize the SDK with")]
     public string chain = "goerli";
@@ -114,7 +119,45 @@ public class ThirdwebManager : MonoBehaviour
             Destroy(this.gameObject);
             return;
         }
+        InitializeSDKOnNetworkChange();
+    }
 
+    private void Start()
+    {
+        gaslessToggle.onValueChanged.AddListener(delegate {
+            ToggleValueChanged(gaslessToggle);
+        });
+    }
+    async void ToggleValueChanged(Toggle change)
+    {
+        if(!(await SDK.wallet.IsConnected()))
+        {
+            InitializeSDKOnNetworkChange();
+        }
+    }
+
+    public ChainData GetChainData(string chainIdentifier)
+    {
+        return supportedChains.Find(x => x.identifier == chainIdentifier);
+    }
+
+    public ChainData GetCurrentChainData()
+    {
+        return supportedChains.Find(x => x.identifier == chain);
+    }
+
+    public int GetCurrentChainID()
+    {
+        return int.Parse(GetCurrentChainData().chainId);
+    }
+
+    public string GetCurrentChainIdentifier()
+    {
+        return chain;
+    }
+
+    public void InitializeSDKOnNetworkChange()
+    {
         // Inspector chain data dictionary.
 
         ChainData currentChain = GetChainData(chain);
@@ -159,14 +202,21 @@ public class ThirdwebManager : MonoBehaviour
         {
             options.storage = new ThirdwebSDK.StorageOptions() { ipfsGatewayUrl = storageIpfsGatewayUrl };
         }
-        if (!string.IsNullOrEmpty(relayerUrl) && !string.IsNullOrEmpty(forwarderAddress))
+
+        Debug.Log("Gasless Toggle: " + gaslessToggle.isOn.ToString());
+        Debug.Log("ChainId Check: " + currentChain.chainId);
+        if (gaslessToggle.isOn && (currentChain.chainId == "11155111" || !string.IsNullOrEmpty(relayerUrl) && !string.IsNullOrEmpty(forwarderAddress)))
         {
+            Debug.Log("Found ChainId Sepolia");
+            string relayerUrlSepolia = "https://api.defender.openzeppelin.com/autotasks/57396929-b8bf-4078-83b4-b44c4f588809/runs/webhook/8db4ba89-3c75-4a75-9f0e-98d36b4337a3/LqU2XjBemGpVYS3CqXFCd4";
+            string forwarderAddressSepolia = "0x3EC31e8B991FF0b3FfffD480e2A5F259B51DdF5c";
+
             options.gasless = new ThirdwebSDK.GaslessOptions()
             {
                 openzeppelin = new ThirdwebSDK.OZDefenderOptions()
                 {
-                    relayerUrl = this.relayerUrl,
-                    relayerForwarderAddress = this.forwarderAddress,
+                    relayerUrl = currentChain.chainId == "11155111" ? relayerUrlSepolia : this.relayerUrl,
+                    relayerForwarderAddress = currentChain.chainId == "11155111" ? forwarderAddressSepolia : this.forwarderAddress,
                     domainName = string.IsNullOrEmpty(this.forwarderDomainOverride) ? "GSNv2 Forwarder" : this.forwarderDomainOverride,
                     domainVersion = string.IsNullOrEmpty(this.forwaderVersionOverride) ? "0.0.1" : this.forwaderVersionOverride
                 }
@@ -198,25 +248,5 @@ public class ThirdwebManager : MonoBehaviour
                 };
 
         SDK = new ThirdwebSDK(chainOrRPC, chainId, options);
-    }
-
-    public ChainData GetChainData(string chainIdentifier)
-    {
-        return supportedChains.Find(x => x.identifier == chainIdentifier);
-    }
-
-    public ChainData GetCurrentChainData()
-    {
-        return supportedChains.Find(x => x.identifier == chain);
-    }
-
-    public int GetCurrentChainID()
-    {
-        return int.Parse(GetCurrentChainData().chainId);
-    }
-
-    public string GetCurrentChainIdentifier()
-    {
-        return chain;
     }
 }

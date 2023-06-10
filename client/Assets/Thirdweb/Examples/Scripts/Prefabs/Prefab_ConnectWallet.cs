@@ -162,6 +162,7 @@ public class Prefab_ConnectWallet : MonoBehaviour
         {
             exportButton.SetActive(_wallet == WalletProvider.LocalWallet);
 
+            ThirdwebManager.Instance.InitializeSDKOnNetworkChange();
             address = await ThirdwebManager.Instance.SDK.wallet.Connect(new WalletConnection(_wallet, ThirdwebManager.Instance.GetCurrentChainID(), password, email));
 
             wallet = _wallet;
@@ -213,6 +214,7 @@ public class Prefab_ConnectWallet : MonoBehaviour
         try
         {
             ThirdwebManager.Instance.chain = _chain;
+            ThirdwebManager.Instance.InitializeSDKOnNetworkChange();
             await ThirdwebManager.Instance.SDK.wallet.SwitchNetwork(int.Parse(ThirdwebManager.Instance.GetCurrentChainData().chainId));
             OnConnected();
             OnSwitchNetworkCallback?.Invoke();
