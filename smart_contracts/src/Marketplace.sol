@@ -36,7 +36,7 @@ contract Marketplace is ERC2771Context {
     error NotListingOwner();
     error NotEnoughFunds();
     error NotAuction();
-    error InvalidBid();
+    error BidNotHighEnough();
     error AuctionNotOver();
     error AuctionOver();
     error USDNotSupportedForAuction();
@@ -215,7 +215,9 @@ contract Marketplace is ERC2771Context {
     function bid(uint listingId) public payable {
         if (listings[listingId].isValid == false) revert InvalidListing();
         if (listings[listingId].isAuction == false) revert NotAuction();
-        if (msg.value <= highestBid[listingId].amount) revert InvalidBid();
+        if (msg.value < listings[listingId].price) revert BidNotHighEnough();
+        if (msg.value <= highestBid[listingId].amount)
+            revert BidNotHighEnough();
         if (highestBid[listingId].amount > 0) {
             balances[highestBid[listingId].bidder] += highestBid[listingId]
                 .amount;
@@ -328,7 +330,7 @@ contract Marketplace is ERC2771Context {
 
             ) = eth_usd_priceFeed.latestRoundData();
             uint256 priceInEth = (listings[listingId].price *
-                10 ** (18 + decimals)) / uint(answer);
+                10 ** (decimals)) / uint(answer);
             return priceInEth;
         } else {
             return listings[listingId].price;

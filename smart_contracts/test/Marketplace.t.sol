@@ -123,7 +123,7 @@ contract MarketplaceTest is Test {
 
     function testCreateListing1(uint256 _tokenId) public {
         bool _inUSD = true;
-        uint _price = 2000;
+        uint _price = 2000 ether; // answer/decimals * 10 ** 18 = 2000 ether
         vm.assume(_tokenId != 0 && _tokenId <= mapCount);
         marketplace.createListing(_inUSD, _tokenId, _price, false, 60, 0);
         (
@@ -187,8 +187,7 @@ contract MarketplaceTest is Test {
         assertEq(isAuction, _isAuction, "isAuction is not correct");
         assertEq(auctionTime, _auctionTime, "auctionEndTime is not correct");
         uint256 priceInETH = marketplace.getPrice(1);
-        uint256 expectedPriceInETH = (_price * 10 ** (18 + decimals)) /
-            uint(answer);
+        uint256 expectedPriceInETH = (_price * 10 ** (decimals)) / uint(answer);
         if (_inUSD) {
             assertEq(
                 priceInETH,
