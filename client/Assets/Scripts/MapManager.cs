@@ -12,10 +12,13 @@ public class MapManager : MonoBehaviour
     public PlacementManager placementManager;
     public GameObject blueHighlightPrefab;
     List<GameObject> blueHighlights;
+    public GameObject blueCubeHighlightPrefab;
+    List<GameObject> blueCubeHighlights;
     // Start is called before the first frame update
     void Start()
     {
-        blueHighlights= new List<GameObject>();
+        blueHighlights = new List<GameObject>();
+        blueCubeHighlights = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -45,13 +48,24 @@ public class MapManager : MonoBehaviour
             {
                 while (y1 <= y2)
                 {
-                    GameObject current = placementManager.PlaceObjectOnTheMapHighlight(new Vector3Int(x1, 0, y1), blueHighlightPrefab);
+                    GameObject current = placementManager.PlaceObjectOnTheMapHighlight(new Vector3Int(x1, 0, y1), blueHighlightPrefab, 0.001f);
                     blueHighlights.Add(current);
                     y1++;
                 }
                 y1 = tmpY1;
                 x1++;
             }
+        }
+    }
+
+    public void highlightListings(Land[] listings, int size)
+    {
+        foreach (var land in listings)
+        {
+            float x1 = (float)((int)land.xIndex * size) + ((((float)size) / 2f) - 0.5f);
+            float y1 = (float)((int)land.yIndex * size) + ((((float)size) / 2f) - 0.5f);
+            GameObject current = placementManager.PlaceScaledObjectOnTheMapHighlight(new Vector3(x1, 0, y1), blueCubeHighlightPrefab, 0.5f, size);
+            blueCubeHighlights.Add(current);
         }
     }
 
@@ -62,5 +76,14 @@ public class MapManager : MonoBehaviour
             Destroy(highlight);
         }
         blueHighlights.Clear();
+    }
+
+    public void destroyListingHighlights()
+    {
+        foreach (var highlight in blueCubeHighlights)
+        {
+            Destroy(highlight);
+        }
+        blueCubeHighlights.Clear();
     }
 }

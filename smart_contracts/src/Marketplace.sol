@@ -36,6 +36,7 @@ contract Marketplace is ERC2771Context {
     error NotListingOwner();
     error NotEnoughFunds();
     error NotAuction();
+    error NoBids();
     error BidNotHighEnough();
     error AuctionNotOver();
     error AuctionOver();
@@ -140,8 +141,10 @@ contract Marketplace is ERC2771Context {
         uint256 listingId = abi.decode(checkData, (uint256));
 
         upkeepNeeded =
-            block.timestamp >
-            listings[listingId].timestamp + listings[listingId].aucionTime &&
+            (block.timestamp >
+                listings[listingId].timestamp +
+                    listings[listingId].aucionTime) &&
+            highestBid[listingId].bidder != address(0) &&
             (listings[listingId].isValid || highestBid[listingId].amount > 0);
         performData = checkData;
     }
@@ -240,6 +243,7 @@ contract Marketplace is ERC2771Context {
             block.timestamp <=
             listings[listingId].timestamp + listings[listingId].aucionTime
         ) revert AuctionNotOver();
+        if (highestBid[listingId].bidder == address(0)) revert NoBids();
         if (listings[listingId].isValid == false) {
             if (highestBid[listingId].amount > 0) {
                 _invalidateAuctionBid(listingId);

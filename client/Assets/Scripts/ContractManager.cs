@@ -13,11 +13,30 @@ using System.Threading;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.UI;
+using Nethereum.Web3;
 
 public struct Land
 {
     public BigInteger xIndex;
     public BigInteger yIndex;
+}
+public struct Listing
+{
+    public int id;
+    public string sellerAddress;
+    public bool inUSD;
+    public int landId;
+    public int xIndex;
+    public int yIndex;
+    public string price;
+    public int timestamp;
+    public bool isValid;
+    public bool isAuction;
+    public int auctionTime;
+}
+public struct Listings
+{
+    public List<Listing> listings;
 }
 
 public class ContractManager : MonoBehaviour
@@ -52,7 +71,7 @@ public class ContractManager : MonoBehaviour
     string faucetContractAddress = "0x4EE91D3dD15259dDfcf71d9F92e9007812B850f2";
     string faucetContractABI = "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC1155BatchReceived\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC1155Received\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]";
     string marketplaceContractAddress = "0x75E21b9484d857098BA1E83FAE31E60C95f0afE5";
-    string marketplaceContractABI = "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"eth_usd_priceFeedAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"mapAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"utilsAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_linkAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_registrar\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_registryAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_gasLimit\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"AuctionCantBeBought\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"AuctionNotOver\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"AuctionOver\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidBid\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidListing\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidListingId\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidPrice\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidTokenId\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotAuction\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotEnoughFunds\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotHighestBidder\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotListingOwner\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotTokenOwner\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"USDNotSupportedForAuction\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ValidListing\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"auctionBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"balances\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"}],\"name\":\"bid\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"}],\"name\":\"buyListing\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"}],\"name\":\"calculateWinner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"checkData\",\"type\":\"bytes\"}],\"name\":\"checkUpkeep\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"upkeepNeeded\",\"type\":\"bool\"},{\"internalType\":\"bytes\",\"name\":\"performData\",\"type\":\"bytes\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bool\",\"name\":\"inUSD\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isAuction\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"auctionTime\",\"type\":\"uint256\"},{\"internalType\":\"uint96\",\"name\":\"amount\",\"type\":\"uint96\"}],\"name\":\"createListing\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"}],\"name\":\"deleteListing\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"gasLimit\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"}],\"name\":\"getPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"highestBid\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"bidder\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"i_link\",\"outputs\":[{\"internalType\":\"contract LinkTokenInterface\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"i_registry\",\"outputs\":[{\"internalType\":\"contract AutomationRegistryInterface\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"}],\"name\":\"invalidateAuctionBid\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"}],\"name\":\"isListingValid\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"listingCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"listingToUpkeepID\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"listings\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"seller\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"inUSD\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isValid\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isAuction\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"aucionTime\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC1155BatchReceived\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC1155Received\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC721Received\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"performData\",\"type\":\"bytes\"}],\"name\":\"performUpkeep\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"registrar\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]";
+    string marketplaceContractABI = "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"eth_usd_priceFeedAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"mapAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"utilsAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_linkAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_registrar\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_registryAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_gasLimit\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"trustedForwarder\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"AuctionCantBeBought\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"AuctionNotOver\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"AuctionOver\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidBid\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidListing\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidListingId\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidPrice\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidTokenId\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotAuction\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotEnoughFunds\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotHighestBidder\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotListingOwner\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotTokenOwner\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"USDNotSupportedForAuction\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ValidListing\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"auctionBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"balances\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"}],\"name\":\"bid\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"}],\"name\":\"buyListing\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"}],\"name\":\"calculateWinner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"checkData\",\"type\":\"bytes\"}],\"name\":\"checkUpkeep\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"upkeepNeeded\",\"type\":\"bool\"},{\"internalType\":\"bytes\",\"name\":\"performData\",\"type\":\"bytes\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bool\",\"name\":\"inUSD\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isAuction\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"auctionTime\",\"type\":\"uint256\"},{\"internalType\":\"uint96\",\"name\":\"amount\",\"type\":\"uint96\"}],\"name\":\"createListing\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"}],\"name\":\"deleteListing\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"gasLimit\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"}],\"name\":\"getPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"highestBid\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"bidder\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"i_link\",\"outputs\":[{\"internalType\":\"contract LinkTokenInterface\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"i_registry\",\"outputs\":[{\"internalType\":\"contract AutomationRegistryInterface\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"}],\"name\":\"invalidateAuctionBid\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"}],\"name\":\"isListingValid\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"forwarder\",\"type\":\"address\"}],\"name\":\"isTrustedForwarder\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"listingCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"listingToUpkeepID\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"listings\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"seller\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"inUSD\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isValid\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isAuction\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"aucionTime\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC1155BatchReceived\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC1155Received\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC721Received\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"performData\",\"type\":\"bytes\"}],\"name\":\"performUpkeep\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"registrar\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]";
 
     public static ContractManager Instance { get; private set; }
     public MapManager mapManager;
@@ -64,7 +83,7 @@ public class ContractManager : MonoBehaviour
     public RoadManager roadManager;
     public TextMeshProUGUI loadingText;
     public Button utilsFaucetButton, landFaucetButton, marketplaceButton;
-    Contract mapContract, utilsContract, faucetContract;
+    Contract mapContract, utilsContract, faucetContract, marketplaceContract;
     Task initializeMapTask;
     string walletAddress;
     int roadBalance = 0;
@@ -86,6 +105,7 @@ public class ContractManager : MonoBehaviour
     string errorText = "ERROR!!!";
     float timePassed = 0;
     float errorDuration = 5f;
+    Listings[,] listings = null;
 
     public struct Index
     {
@@ -118,38 +138,44 @@ public class ContractManager : MonoBehaviour
         landFaucetButton.gameObject.SetActive(false);
         marketplaceButton.gameObject.SetActive(false);
         loadingText.enabled = false;
-        // OnWalletConnect();
+        // mapContract = ThirdwebManager.Instance.SDK.GetContract(mapContractAddress, mapContractABI);
+        OnWalletConnect();
         // Test();
     }
     private async Task Initialize()
     {
         var chainId = await ThirdwebManager.Instance.SDK.wallet.GetChainId();
-        if(chainId == 80001)
+        if (chainId == 80001)
         {
             mapContractAddress = mapContractAddressMumbai;
             utilsContractAddress = utilsContractAddressMumbai;
             faucetContractAddress = faucetContractAddressMumbai;
-        }else if(chainId == 365)
+        }
+        else if (chainId == 365)
         {
             mapContractAddress = mapContractAddressTheta;
             utilsContractAddress = utilsContractAddressTheta;
             faucetContractAddress = faucetContractAddressTheta;
-        }else if(chainId == 1442)
+        }
+        else if (chainId == 1442)
         {
             mapContractAddress = mapContractAddressPolygonZKEVMTestnet;
             utilsContractAddress = utilsContractAddressPolygonZKEVMTestnet;
             faucetContractAddress = faucetContractAddressPolygonZKEVMTestnet;
-        }else if(chainId == 65)
+        }
+        else if (chainId == 65)
         {
             mapContractAddress = mapContractAddressOkexTestnet;
             utilsContractAddress = utilsContractAddressOkexTestnet;
             faucetContractAddress = faucetContractAddressOkexTestnet;
-        }else if(chainId == 51)
+        }
+        else if (chainId == 51)
         {
             mapContractAddress = mapContractAddressXDCApothem;
             utilsContractAddress = utilsContractAddressXDCApothem;
             faucetContractAddress = faucetContractAddressXDCApothem;
-        }else if(chainId == 11155111)
+        }
+        else if (chainId == 11155111)
         {
             mapContractAddress = mapContractAddressSepolia;
             utilsContractAddress = utilsContractAddressSepolia;
@@ -160,6 +186,7 @@ public class ContractManager : MonoBehaviour
         mapContract = ThirdwebManager.Instance.SDK.GetContract(mapContractAddress, mapContractABI);
         utilsContract = ThirdwebManager.Instance.SDK.GetContract(utilsContractAddress, utilsContractABI);
         faucetContract = ThirdwebManager.Instance.SDK.GetContract(faucetContractAddress, faucetContractABI);
+        marketplaceContract = ThirdwebManager.Instance.SDK.GetContract(marketplaceContractAddress, marketplaceContractABI);
         initializeMapTask = InitializeMap();
     }
 
@@ -421,7 +448,7 @@ public class ContractManager : MonoBehaviour
                 else
                 {
                     // SHOULDN'T COME HERE AS I'VE NOT MINTED MORE ITEMS IN UTILS CONTRACT
-                    Debug.Log("SHOULDN'T COME HERE AS I'VE NOT MINTED MORE ITEMS IN UTILS CONTRACT: " + i + "," + j + "," + map[i,j]);
+                    Debug.Log("SHOULDN'T COME HERE AS I'VE NOT MINTED MORE ITEMS IN UTILS CONTRACT: " + i + "," + j + "," + map[i, j]);
                 }
             }
         }
@@ -431,9 +458,9 @@ public class ContractManager : MonoBehaviour
     {
         mapManager.destroyHighlights();
         Debug.Log("TEST666!!!");
-        walletAddress = await ThirdwebManager.Instance.SDK.wallet.GetAddress();
+        // walletAddress = await ThirdwebManager.Instance.SDK.wallet.GetAddress();
         //
-        // walletAddress = "0x4CA5FE129837E965e49b507cfE36c0dc574e8864";
+        walletAddress = "0x4CA5FE129837E965e49b507cfE36c0dc574e8864";
         //
         Debug.Log("TEST777!!!");
         await setItemBalances();
@@ -446,12 +473,13 @@ public class ContractManager : MonoBehaviour
         landOwnedIds = await getLandOwnedIDs();
         Debug.Log("TEST141414!!!");
         Debug.Log("landOwnedIndexes");
-        landOwnedIndexes = await getLandOwnedIndexes();
+        // landOwnedIndexes = await getLandOwnedIndexes();
         await initializeMapTask; // wait for map to be initialized if not already
         //
-        /*landOwnedIndexes = new Land[1];
-        landOwnedIndexes[0] = new Land { xIndex = 0, yIndex = 0 };
         landOwnedIndexes = new Land[2];
+        landOwnedIndexes[0] = new Land { xIndex = 0, yIndex = 0 };
+        landOwnedIndexes[0] = new Land { xIndex = 2, yIndex = 1 };
+        /*landOwnedIndexes = new Land[2];
         landOwnedIndexes[0] = new Land { xIndex = 0, yIndex = 1 };
         landOwnedIndexes[1] = new Land { xIndex = 2, yIndex = 2 };*/
         //
@@ -459,12 +487,12 @@ public class ContractManager : MonoBehaviour
         updateLandOwned(size, perSize, landOwnedIndexes);
         if (queryMap)
         {
-            await updateMap(size);
+            // await updateMap(size);
             //
-            /*map[2, 7] = 3;
+            map[2, 7] = 3;
             map[3, 8] = 2;
-            map[4, 9] = 1;*/
-            /*map[0, 0] = 1;
+            map[4, 9] = 1;
+            map[0, 0] = 1;
             map[1, 0] = 1;
             map[2, 0] = 1;
             map[3, 0] = 1;
@@ -476,7 +504,7 @@ public class ContractManager : MonoBehaviour
             map[5, 5] = 3;
             map[1, 5] = 3;
             map[2, 5] = 2;
-            map[3, 7] = 1;*/
+            map[3, 7] = 1;
             //
             initializeMapItems();
             // DebugMap();
@@ -589,7 +617,7 @@ public class ContractManager : MonoBehaviour
         {
             for (int j = 0; j < size; j++)
             {
-                editedMap[i,j] = map[i,j];
+                editedMap[i, j] = map[i, j];
             }
         }
     }
@@ -650,7 +678,7 @@ public class ContractManager : MonoBehaviour
             loadingText.enabled = false;
             await setUserData();
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             loadingText.text = "ERROR!!!";
             isError = true;
@@ -659,13 +687,23 @@ public class ContractManager : MonoBehaviour
         canvasManager.AttachClickListeners();
     }
 
+    // x,y are co-ordinates and not land Index
     public bool userOwnsIndex(int x, int y)
     {
-        if(landOwned == null)
+        if (landOwned == null)
         {
             return false;
         }
         return landOwned[x, y];
+    }
+    public bool landListedIndex(int xIndex, int yIndex)
+    {
+        if (listings == null)
+        {
+            return false;
+        }
+
+        return listings[xIndex, yIndex].listings != null && listings[xIndex, yIndex].listings.Count != 0;
     }
     private async Task setData()
     {
@@ -682,7 +720,7 @@ public class ContractManager : MonoBehaviour
         canvasManager.RemoveClickListeners();
         walletAddress = "";
         mapBalance = 0;
-        map = new int[size,size];
+        map = new int[size, size];
         editedMap = new int[size, size];
         initializeMapItems();
         uiController.updateMapBalance(mapBalance);
@@ -779,6 +817,233 @@ public class ContractManager : MonoBehaviour
             Debug.LogError(ex);
         }
         loadingText.enabled = false;
+    }
+
+    public async Task CreateListing(bool inUSD, int xIndex, int yIndex, string price, bool isAuction, string auctionTime, string amount)
+    {
+        try
+        {
+            loadingText.enabled = true;
+            loadingText.text = "Loading: 0%";
+
+            Debug.Log("Details01: " + inUSD);
+            Debug.Log("Details02: " + xIndex);
+            Debug.Log("Details03: " + yIndex);
+            Debug.Log("Details04: " + Web3.Convert.ToWei(price).ToString());
+            Debug.Log("Details05: " + isAuction);
+            Debug.Log("Details06: " + auctionTime);
+            Debug.Log("Details07: " + Web3.Convert.ToWei(amount).ToString());
+            int landId = await mapContract.Read<int>("landIds", xIndex, yIndex);
+            loadingText.text = "Loading: 15%";
+            Debug.Log("LandId: " + landId);
+
+            bool isApproved = await mapContract.Read<bool>("isApprovedForAll", walletAddress, marketplaceContractAddress);
+            loadingText.text = "Loading: 25%";
+            if (!isApproved)
+            {
+                await mapContract.Write("setApprovalForAll", marketplaceContractAddress, true);
+            }
+            loadingText.text = "Loading: 60%";
+            // await mapContract.Write("approve", marketplaceContractAddress, landId);
+            await marketplaceContract.Write("createListing", inUSD, landId, Web3.Convert.ToWei(price).ToString(), isAuction, auctionTime, Web3.Convert.ToWei(amount).ToString());
+            loadingText.text = "Loading: 100%";
+            loadingText.enabled = false;
+        }
+        catch (Exception ex)
+        {
+            loadingText.text = "ERROR!!!";
+            isError = true;
+            Debug.LogError(ex);
+        }
+    }
+
+    public async Task<bool> SetMarketplaceData()
+    {
+        Land[] listingLands = new Land[3];
+        listings = new Listings[size / perSize, size / perSize];
+        {
+            Listings currentListing = listings[0, 0];
+            if (currentListing.listings == null)
+            {
+                currentListing.listings = new List<Listing>();
+            }
+            Listing listingResult = new Listing();
+            listingResult.id = 1;
+            listingResult.price = "1000000000000000000";
+            listingResult.inUSD = false;
+            listingResult.isValid = true;
+            listingResult.isAuction = false;
+            listingResult.auctionTime = 0;
+            listingResult.xIndex = 0;
+            listingResult.yIndex = 0;
+            listingResult.sellerAddress = "0x0";
+            currentListing.listings.Add(listingResult);
+            listings[0, 0] = currentListing;
+        }
+
+        {
+            Listings currentListing = listings[1, 2];
+            if (currentListing.listings == null)
+            {
+                currentListing.listings = new List<Listing>();
+            }
+            Listing listingResult = new Listing();
+            listingResult.price = "5000000000000000000";
+            listingResult.inUSD = true;
+            listingResult.isValid = true;
+            listingResult.isAuction = false;
+            listingResult.auctionTime = 0;
+            listingResult.xIndex = 1;
+            listingResult.yIndex = 2;
+            listingResult.sellerAddress = "0x0";
+            currentListing.listings.Add(listingResult);
+            listings[1, 2] = currentListing;
+        }
+
+        {
+            Listings currentListing = listings[2, 0];
+            if (currentListing.listings == null)
+            {
+                currentListing.listings = new List<Listing>();
+            }
+            Listing listingResult = new Listing();
+            listingResult.price = "80000000000000000000";
+            listingResult.inUSD = false;
+            listingResult.isValid = true;
+            listingResult.isAuction = true;
+            listingResult.auctionTime = 60;
+            listingResult.xIndex = 2;
+            listingResult.yIndex = 0;
+            listingResult.sellerAddress = "0x0";
+            currentListing.listings.Add(listingResult);
+            listings[2, 0] = currentListing;
+        }
+
+        listingLands[0] = new Land { xIndex = 0, yIndex = 0 };
+        listingLands[1] = new Land { xIndex = 1, yIndex = 2 };
+        listingLands[2] = new Land { xIndex = 2, yIndex = 0 };
+        mapManager.highlightListings(listingLands, perSize);
+        return true;
+        /*try
+        {
+            loadingText.enabled = true;
+            loadingText.text = "Loading: 0%";
+            int listingCount = await marketplaceContract.Read<int>("listingCount");
+            listings = new Listings[size / perSize, size / perSize];
+            Debug.Log("ListingCount: " + listingCount);
+            List<Land> listingLands = new List<Land>();
+            for (int i = 1; i <= listingCount; i++)
+            {
+                Debug.Log("ListingID: " + i);
+                List<object> result = await marketplaceContract.Read<List<object>>("listings", i);
+                loadingText.text = "Loading: " + ((2 * i - 1) * 100) / (listingCount * 2) + "%";
+                Debug.Log("seller: " + result[0].ToString());
+                Debug.Log("inUSD: " + result[1].ToString());
+                Debug.Log("tokenId: " + result[2].ToString());
+                Debug.Log("price: " + result[3].ToString());
+                Debug.Log("timestamp: " + result[4].ToString());
+                Debug.Log("isValid: " + result[5].ToString());
+                Debug.Log("isAuction: " + result[6].ToString());
+                Debug.Log("aucionTime: " + result[7].ToString());
+                Listing listingResult = new Listing();
+
+                listingResult.sellerAddress = result[0].ToString();
+                listingResult.inUSD = result[1].ToString() == "True";
+
+                listingResult.landId = Int32.Parse(result[2].ToString());
+                List<object> indexes = await mapContract.Read<List<object>>("land", listingResult.landId);
+                loadingText.text = "Loading: " + ((2 * i) * 100) / (listingCount * 2) + "%";
+                Debug.Log("xIndex: " + indexes[0].ToString());
+                Debug.Log("yIndex: " + indexes[1].ToString());
+                listingResult.xIndex = Int32.Parse(indexes[0].ToString());
+                listingResult.yIndex = Int32.Parse(indexes[1].ToString());
+                if (listingResult.isValid)
+                {
+                    listingLands.Add(new Land { xIndex = listingResult.xIndex, yIndex = listingResult.yIndex });
+                }
+
+                // listingResult.price = await marketplaceContract.Read<string>("getPrice", i);
+                listingResult.price = result[3].ToString();
+                listingResult.timestamp = Int32.Parse(result[4].ToString());
+                listingResult.isValid = result[5].ToString() == "True";
+                listingResult.isAuction = result[6].ToString() == "True";
+                listingResult.auctionTime = Int32.Parse(result[7].ToString());
+
+                Debug.Log("seller1: " + listingResult.sellerAddress);
+                Debug.Log("inUSD1: " + listingResult.inUSD);
+                Debug.Log("tokenId1: " + listingResult.landId);
+                Debug.Log("price1: " + listingResult.price);
+                Debug.Log("timestamp1: " + listingResult.timestamp);
+                Debug.Log("isValid1: " + listingResult.isValid);
+                Debug.Log("isAuction1: " + listingResult.isAuction);
+                Debug.Log("aucionTime1: " + listingResult.auctionTime);
+                Debug.Log("xIndex1: " + listingResult.xIndex);
+                Debug.Log("yIndex1: " + listingResult.yIndex);
+
+                Listings currentListing = listings[listingResult.xIndex, listingResult.yIndex];
+                if (currentListing.listings == null)
+                {
+                    currentListing.listings = new List<Listing>();
+                }
+                currentListing.listings.Add(listingResult);
+                listings[listingResult.xIndex, listingResult.yIndex] = currentListing;
+            }
+            mapManager.highlightListings(listingLands.ToArray(), perSize);
+            loadingText.text = "Loading: 100%";
+            loadingText.enabled = false;
+            return true;
+        }
+        catch (Exception ex)
+        {
+            loadingText.text = "ERROR!!!";
+            isError = true;
+            Debug.LogException(ex);
+            return false;
+        }*/
+    }
+
+    public async Task BuyListing(int listingId, string price)
+    {
+        loadingText.enabled = true;
+        loadingText.text = "Loading: 0%";
+        try
+        {
+            await marketplaceContract.Write("buyListing", new TransactionRequest() { value = price.ToWei() }, listingId);
+            loadingText.text = "Loading: 100%";
+            loadingText.enabled = false;
+        }
+        catch (Exception e)
+        {
+            loadingText.text = "ERROR!!!";
+            isError = true;
+            Debug.LogException(e);
+        }
+    }
+
+    public async Task<string> GetPrice(int listingId)
+    {
+        string price = await marketplaceContract.Read<string>("getPrice", listingId);
+        return price;
+    }
+
+    public async Task<string> GetHighestBid(int listingId)
+    {
+        List<object> highestBid = await mapContract.Read<List<object>>("highestBid", listingId);
+        return highestBid[1].ToString();
+    }
+
+    public List<Listing> GetListingsIndex(int xIndex, int yIndex)
+    {
+        if (listings == null)
+        {
+            return null;
+        }
+        return listings[xIndex, yIndex].listings;
+    }
+
+    public void ResetListingHighlights()
+    {
+        mapManager.destroyListingHighlights();
     }
 
     public async void OnWalletConnect()

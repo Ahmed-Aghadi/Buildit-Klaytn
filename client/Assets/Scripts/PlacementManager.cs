@@ -40,11 +40,20 @@ public class PlacementManager : MonoBehaviour
         return false;
     }
 
-    internal GameObject PlaceObjectOnTheMapHighlight(Vector3Int position, GameObject structurePrefab)
+    internal GameObject PlaceObjectOnTheMapHighlight(Vector3Int position, GameObject structurePrefab, float height = 0.001f)
     {
         var structure = GameObject.Instantiate(structurePrefab);
         structure.transform.SetParent(transform);
-        structure.transform.localPosition = new Vector3(position.x, 0.001f, position.z);
+        structure.transform.localPosition = new Vector3(position.x, height, position.z);
+        return structure;
+    }
+
+    internal GameObject PlaceScaledObjectOnTheMapHighlight(Vector3 position, GameObject structurePrefab, float height, int scale)
+    {
+        var structure = GameObject.Instantiate(structurePrefab);
+        structure.transform.SetParent(transform);
+        structure.transform.localScale = new Vector3(scale, structure.transform.localScale.y, scale);
+        structure.transform.localPosition = new Vector3(position.x, height, position.z);
         return structure;
     }
 
