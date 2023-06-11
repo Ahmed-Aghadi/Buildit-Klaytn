@@ -9744,7 +9744,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000014647841}
+  m_AnchoredPosition: {x: 0, y: -0.000019073486}
   m_SizeDelta: {x: 0, y: 250}
   m_Pivot: {x: 0, y: 1}
 --- !u!1001 &624133247
@@ -13139,8 +13139,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 896122264}
   m_HandleRect: {fileID: 896122263}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -19529,7 +19529,7 @@ PrefabInstance:
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
       propertyPath: supportedChains.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
@@ -19539,32 +19539,32 @@ PrefabInstance:
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
       propertyPath: supportedChains.Array.data[1].chainId
-      value: 80001
+      value: 5001
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
       propertyPath: supportedChains.Array.data[2].chainId
-      value: 1442
+      value: 80001
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
       propertyPath: supportedChains.Array.data[3].chainId
-      value: 65
+      value: 1442
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
       propertyPath: supportedChains.Array.data[4].chainId
-      value: 51
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
       propertyPath: supportedChains.Array.data[5].chainId
-      value: 365
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
       propertyPath: supportedChains.Array.data[6].chainId
-      value: 137
+      value: 365
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
@@ -19624,32 +19624,32 @@ PrefabInstance:
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
       propertyPath: supportedChains.Array.data[1].identifier
-      value: mumbai
+      value: mantle-testnet
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
       propertyPath: supportedChains.Array.data[2].identifier
-      value: polygon-zkevm-testnet
+      value: mumbai
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
       propertyPath: supportedChains.Array.data[3].identifier
-      value: okexchain-testnet
+      value: polygon-zkevm-testnet
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
       propertyPath: supportedChains.Array.data[4].identifier
-      value: xdc-apothem-network
+      value: okexchain-testnet
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
       propertyPath: supportedChains.Array.data[5].identifier
-      value: theta-testnet
+      value: xdc-apothem-network
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
       propertyPath: supportedChains.Array.data[6].identifier
-      value: polygon
+      value: theta-testnet
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
@@ -20337,6 +20337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28a16688026b8964aa6f00b9ad0ce90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUSDCompatible: 0
+  isAuctionCompatible: 0
   mapManager: {fileID: 803335005}
   placementManager: {fileID: 540532163}
   uiController: {fileID: 681313529}

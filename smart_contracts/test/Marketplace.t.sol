@@ -64,8 +64,8 @@ contract MarketplaceTest is Test {
             address(map),
             address(utils),
             address(0x0),
-            address(0x0),
-            address(0x0),
+            address(0x01),
+            address(0x02),
             999999,
             address(forwarder)
         );

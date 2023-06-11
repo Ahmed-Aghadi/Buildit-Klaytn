@@ -18,10 +18,10 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   const transferUtilsAmount = 500;
 
   // marketplace can only be deployed on goerli or sepolia testnet. As price feed is not available on other testnets
-  let registryAddress = "0xE16Df59B887e3Caa439E0b29B42bA2e7976FD8b2"; // mumbai
-  let registrarAddress = "0x57A4a13b35d25EE78e084168aBaC5ad360252467"; // mumbai
-  let eth_usd_priceFeedAddress = "0x694AA1769357215DE4FAC081bf1f309aDC325306"; // sepolia
-  let linkAddress = "0x326C977E6efc84E512bB9C30f76E30c160eD06FB"; // mumbai
+  let registryAddress = "0x0000000000000000000000000000000000000000"; // mumbai
+  let registrarAddress = "0x0000000000000000000000000000000000000000"; // mumbai
+  let eth_usd_priceFeedAddress = "0x0000000000000000000000000000000000000000"; // sepolia
+  let linkAddress = "0x0000000000000000000000000000000000000000"; // mumbai
   let gasLimit = 999999;
   if (chainId == 80001) {
     // mumbai

@@ -27,6 +27,8 @@ interface KeeperRegistrarInterface {
 }
 
 contract Marketplace is ERC2771Context {
+    error USDNotSupported();
+    error AuctioNotSupported();
     error InvalidTokenId();
     error InvalidListingId();
     error InvalidListing();
@@ -57,7 +59,7 @@ contract Marketplace is ERC2771Context {
         address bidder;
         uint256 amount;
     }
-    AggregatorV3Interface internal eth_usd_priceFeed;
+    AggregatorV3Interface public immutable eth_usd_priceFeed;
     IERC721 internal map;
     IERC1155 internal utils;
     uint public listingCount = 0;
@@ -174,6 +176,10 @@ contract Marketplace is ERC2771Context {
         if (tokenId <= 0) revert InvalidTokenId();
         if (map.ownerOf(tokenId) != _msgSender()) revert NotTokenOwner();
         if (isAuction && inUSD) revert USDNotSupportedForAuction();
+        if (inUSD && address(eth_usd_priceFeed) == address(0))
+            revert USDNotSupported();
+        if (isAuction && address(i_link) == address(0))
+            revert AuctioNotSupported();
         listingCount++;
         listings[listingCount] = Listing(
             _msgSender(),

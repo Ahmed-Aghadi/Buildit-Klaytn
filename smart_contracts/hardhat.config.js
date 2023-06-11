@@ -144,6 +144,12 @@ module.exports = {
       saveDeployments: true,
       chainId: 11155111,
     },
+    mantletest: {
+      chainId: 5001,
+      url: "https://rpc.testnet.mantle.xyz",
+      accounts: [PRIVATE_KEY],
+      timeout: 300000, // 300 seconds
+    },
   },
   etherscan: {
     // To list networks supported by default: npx hardhat verify --list-networks

@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Thirdweb.Contracts.DirectListingsLogic.ContractDefinition;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -164,7 +165,7 @@ public class CanvasManager : MonoBehaviour
 
         }
 
-        if (Input.GetMouseButtonDown(0) && EventSystem.current.IsPointerOverGameObject() == false && !marketplacePanel.activeSelf && !listingsPanel.activeSelf)
+        if (isMarketplaceOpen && Input.GetMouseButtonDown(0) && EventSystem.current.IsPointerOverGameObject() == false && !marketplacePanel.activeSelf && !listingsPanel.activeSelf)
         {
             var position = inputManager.RaycastGround();
             if (position != null)
@@ -348,31 +349,45 @@ public class CanvasManager : MonoBehaviour
         listingHandlePanel.SetActive(true);
         bidInput.gameObject.SetActive(false);
         string price = await ContractManager.Instance.GetPrice(listingId);
-        priceText.text = "Price: " + price;
+        priceText.text = "Price: " + Web3.Convert.FromWei(System.Numerics.BigInteger.Parse(price));
         confirmListingButton.onClick.AddListener(delegate
         {
-            ConfirmBuy(listingId);
+            ConfirmBuy(listingId, price);
         });
     }
 
-    async void ConfirmBuy(int listingId)
+    async void ConfirmBuy(int listingId, string price)
     {
-
+        bool success = await ContractManager.Instance.BuyListing(listingId, price);
+        OnCancelListingHandle();
+        ResetListingPanel();
+        if (success)
+        {
+            ToggleMarketplace();
+        }
+        ContractManager.Instance.OnSwitchNetwork();
     }
     async void BidLand(int listingId)
     {
         listingHandlePanel.SetActive(true);
         bidInput.gameObject.SetActive(true);
         string highestBid = await ContractManager.Instance.GetHighestBid(listingId);
-        priceText.text = "Highest Bid: " + highestBid;
+        priceText.text = "Highest Bid: " + Web3.Convert.FromWei(System.Numerics.BigInteger.Parse(highestBid));
         confirmListingButton.onClick.AddListener(delegate
         {
-            ConfirmBid(listingId);
+            ConfirmBid(listingId, highestBid);
         });
     }
-    async void ConfirmBid(int listingId)
+    async void ConfirmBid(int listingId, string highestBid)
     {
-
+        bool success = await ContractManager.Instance.BidListing(listingId, highestBid, bidInput.text);
+        OnCancelListingHandle();
+        ResetListingPanel();
+        if (success)
+        {
+            ToggleMarketplace();
+        }
+        ContractManager.Instance.OnSwitchNetwork();
     }
 
     public void OnCancelListingHandle()

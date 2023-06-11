@@ -39,6 +39,7 @@ public class ThirdwebManager : MonoBehaviour
         new ChainData("theta-testnet", "365", null),
         new ChainData("polygon-zkevm-testnet", "1442", null),
         new ChainData("sepolia", "11155111", null),
+        new ChainData("mantle-testnet", "5001", null),
     };
 
     [Header("APP METADATA")]

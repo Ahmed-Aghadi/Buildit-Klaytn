@@ -60,8 +60,10 @@ public class MapManager : MonoBehaviour
 
     public void highlightListings(Land[] listings, int size)
     {
+        Debug.Log("highlightListings");
         foreach (var land in listings)
         {
+            Debug.Log("highlighting: " + land.xIndex + " | " + land.yIndex);
             float x1 = (float)((int)land.xIndex * size) + ((((float)size) / 2f) - 0.5f);
             float y1 = (float)((int)land.yIndex * size) + ((((float)size) / 2f) - 0.5f);
             GameObject current = placementManager.PlaceScaledObjectOnTheMapHighlight(new Vector3(x1, 0, y1), blueCubeHighlightPrefab, 0.5f, size);
