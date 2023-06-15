@@ -122,7 +122,7 @@ public class ContractManager : MonoBehaviour
     float timePassed = 0;
     float errorDuration = 5f;
     Listings[,] listings = null;
-    List<TMP_Dropdown.OptionData> typeDropDownoptions;
+    // TMP_Dropdown.OptionData typeDropDownoptionAuction;
 
     public struct Index
     {
@@ -145,6 +145,8 @@ public class ContractManager : MonoBehaviour
             Destroy(this.gameObject);
             return;
         }
+        // typeDropDownoptionAuction = canvasManager.typeDropdown.options[1];
+        // Debug.Log("option: " + typeDropDownoptionAuction.text);
     }
 
     // Start is called before the first frame update
@@ -155,7 +157,6 @@ public class ContractManager : MonoBehaviour
         landFaucetButton.gameObject.SetActive(false);
         marketplaceButton.gameObject.SetActive(false);
         loadingText.enabled = false;
-        typeDropDownoptions = canvasManager.typeDropdown.options;
         // mapContract = ThirdwebManager.Instance.SDK.GetContract(mapContractAddress, mapContractABI);
         // OnWalletConnect();
         // Test();
@@ -221,14 +222,19 @@ public class ContractManager : MonoBehaviour
             isAuctionCompatible = false;
             if (canvasManager.typeDropdown.options.Count == 2)
             {
-                canvasManager.typeDropdown.options.Remove(typeDropDownoptions[1]);
+                // canvasManager.typeDropdown.options.Remove(typeDropDownoptionAuction);
+                canvasManager.typeDropdown.options.Remove(canvasManager.typeDropdown.options[1]);
             }
         }
         else
         {
             linkTokenContract = ThirdwebManager.Instance.SDK.GetContract(linkTokenContractAddress, linkTokenContractABI);
             isAuctionCompatible = true;
-            canvasManager.typeDropdown.options = typeDropDownoptions;
+            if (canvasManager.typeDropdown.options.Count == 1)
+            {
+                // canvasManager.typeDropdown.options.Add(typeDropDownoptionAuction);
+                canvasManager.typeDropdown.options.Add(new TMP_Dropdown.OptionData { text = "Auction" });
+            }
         }
 
         string usdPriceFeedAddress = await marketplaceContract.Read<string>("eth_usd_priceFeed");
