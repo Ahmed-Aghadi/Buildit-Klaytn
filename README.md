@@ -36,17 +36,21 @@ Note: Don't forget to make .env file, refer .env.example file.
 
 ## Smart Contracts ( Mantle Testnet )
 
-- [Map.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Map.sol): 0x9f85f13F5FFb3b1dcb7B318F1712b6f42A4CFFd4
-- [Utils.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Utils.sol): 0x8e539DfdA07e5Bb63F6768eaDb800F01FC25C336
-- [Faucet.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Faucet.sol): 0x69A46a7b195eb6C89454C41dE3e5Bd96C694D8FB
-- [Marketplace.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Marketplace.sol): 0xcB82Ac8Ad0cd14DD4d6f6397B66Bf11dA538F12A
+| Contract  | Explorer Link |
+| ------------- | ------------- |
+| [Map.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Map.sol)  | [0x9f85f13F5FFb3b1dcb7B318F1712b6f42A4CFFd4](https://explorer.testnet.mantle.xyz/address/0x9f85f13F5FFb3b1dcb7B318F1712b6f42A4CFFd4)  |
+| [Utils.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Utils.sol)  | [0x8e539DfdA07e5Bb63F6768eaDb800F01FC25C336](https://explorer.testnet.mantle.xyz/address/0x8e539DfdA07e5Bb63F6768eaDb800F01FC25C336)  |
+| [Faucet.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Faucet.sol)  | [0x69A46a7b195eb6C89454C41dE3e5Bd96C694D8FB](https://explorer.testnet.mantle.xyz/address/0x69A46a7b195eb6C89454C41dE3e5Bd96C694D8FB)  |
+| [Marketplace.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Marketplace.sol)  | [0xcB82Ac8Ad0cd14DD4d6f6397B66Bf11dA538F12A](https://explorer.testnet.mantle.xyz/address/0xcB82Ac8Ad0cd14DD4d6f6397B66Bf11dA538F12A)  |
 
 ## Smart Contracts ( Sepolia )
 
-- [Map.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Map.sol): 0x04b3B698D378EBeF564804B933D6CC803ac2aEa3
-- [Utils.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Utils.sol): 0x3717c0A441189d828fFE2bdEc97485098CB1Dda2
-- [Faucet.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Faucet.sol): 0xC07DdbA94611C33882612b8031b2a6AfB65ca545
-- [Marketplace.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Marketplace.sol): 0x2e4dDe518EB8B63C47D388aa129386d9ca110a45
+| Contract  | Explorer Link |
+| ------------- | ------------- |
+| [Map.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Map.sol) |[0x04b3B698D378EBeF564804B933D6CC803ac2aEa3](https://sepolia.etherscan.io/address/0x04b3B698D378EBeF564804B933D6CC803ac2aEa3) |
+| [Utils.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Utils.sol) |[0x3717c0A441189d828fFE2bdEc97485098CB1Dda2](https://sepolia.etherscan.io/address/0x3717c0A441189d828fFE2bdEc97485098CB1Dda2) |
+| [Faucet.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Faucet.sol) |[0xC07DdbA94611C33882612b8031b2a6AfB65ca545](https://sepolia.etherscan.io/address/0xC07DdbA94611C33882612b8031b2a6AfB65ca545) |
+| [Marketplace.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Marketplace.sol) |[0x2e4dDe518EB8B63C47D388aa129386d9ca110a45](https://sepolia.etherscan.io/address/0x2e4dDe518EB8B63C47D388aa129386d9ca110a45) |
 
 ## Table of Contents
 
