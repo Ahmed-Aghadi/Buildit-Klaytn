@@ -21,9 +21,10 @@ export async function GET(request: Request) {
     status: 200,
     headers: {
       "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": "true",
       "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
       "Access-Control-Allow-Headers":
-        "Origin, Content-Type, Authorization, X-Auth-Token",
+        "Origin, Content-Type, Authorization, X-Auth-Token, Accept, X-Access-Token, X-Application-Name, X-Request-Sent-Time",
     },
   });
 }
