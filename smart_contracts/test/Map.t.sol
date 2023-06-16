@@ -31,7 +31,12 @@ contract MapTest is Test {
         utilCount = 3;
         utilAmount = 1000;
         forwarder = new Forwarder();
-        utils = new Utils(utilsBaseUri, address(forwarder));
+        utils = new Utils(
+            utilsBaseUri,
+            address(forwarder),
+            address(1),
+            address(0)
+        );
         map = new Map(size, 5, mapBaseUri, address(utils), address(forwarder));
         for (uint256 i = 0; i < utilCount; i++) {
             utils.mint(utilAmount);

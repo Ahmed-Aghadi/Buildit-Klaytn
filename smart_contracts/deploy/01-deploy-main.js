@@ -23,16 +23,22 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   let eth_usd_priceFeedAddress = "0x0000000000000000000000000000000000000000"; // sepolia
   let linkAddress = "0x0000000000000000000000000000000000000000"; // mumbai
   let gasLimit = 999999;
+  let axelarGateway = "0x0000000000000000000000000000000000000001";
+  let axelarGasReceiver = "0x0000000000000000000000000000000000000000";
   if (chainId == 80001) {
     // mumbai
     registryAddress = "0xE16Df59B887e3Caa439E0b29B42bA2e7976FD8b2";
     registrarAddress = "0x57A4a13b35d25EE78e084168aBaC5ad360252467";
     linkAddress = "0x326C977E6efc84E512bB9C30f76E30c160eD06FB";
+    axelarGateway = "0xBF62ef1486468a6bd26Dd669C06db43dEd5B849B";
+    axelarGasReceiver = "0xbE406F0189A0B4cf3A05C286473D23791Dd44Cc6";
   } else if (chainId == 4002) {
     // fantom testnet
     registryAddress = "0xE16Df59B887e3Caa439E0b29B42bA2e7976FD8b2";
     registrarAddress = "0x57A4a13b35d25EE78e084168aBaC5ad360252467";
     linkAddress = "0xfaFedb041c0DD4fA2Dc0d87a6B0979Ee6FA7af5F";
+    axelarGateway = "0x97837985Ec0494E7b9C71f5D3f9250188477ae14";
+    axelarGasReceiver = "0xbE406F0189A0B4cf3A05C286473D23791Dd44Cc6";
   } else if (chainId == 11155111) {
     // sepolia
     registryAddress = "0xE16Df59B887e3Caa439E0b29B42bA2e7976FD8b2";
@@ -51,7 +57,12 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   });
   console.log("forwarder deployed to:", forwarder.address);
   log("----------------------------------------------------");
-  const utilsArg = [utilsBaseUri, forwarder.address];
+  const utilsArg = [
+    utilsBaseUri,
+    forwarder.address,
+    axelarGateway,
+    axelarGasReceiver,
+  ];
   const utils = await deploy("Utils", {
     from: deployer,
     args: utilsArg,
@@ -153,6 +164,10 @@ const mintUtils = async (account, utilsContractAddress, count, amount) => {
     console.log("Minted Utils " + i + " TX:", tx.hash);
     const receipt = await tx.wait();
     console.log("Minted Utils " + i + " RECEIPT:", receipt.transactionHash);
+
+    // wait for 10 second as in fantom testnet, it throws error (even at 3 seconds):
+    // Error: nonce has already been used [ See: https://links.ethers.org/v5-errors-NONCE_EXPIRED ]
+    await new Promise((r) => setTimeout(r, 10000));
   }
 };
 
@@ -179,6 +194,10 @@ const transferToFaucet = async (
     console.log("Transfered Utils " + i + " TX:", tx.hash);
     const receipt = await tx.wait();
     console.log("Transfered Utils " + i + " RECEIPT:", receipt.transactionHash);
+
+    // wait for 10 second as in fantom testnet, it throws error:
+    // Error: nonce has already been used [ See: https://links.ethers.org/v5-errors-NONCE_EXPIRED ]
+    await new Promise((r) => setTimeout(r, 10000));
   }
 };
 

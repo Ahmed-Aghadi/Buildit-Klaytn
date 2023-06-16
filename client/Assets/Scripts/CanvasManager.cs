@@ -56,7 +56,17 @@ public class CanvasManager : MonoBehaviour
     public Button confirmListingButton;
     public TMP_Text confirmListingButtonText;
 
+    [Header("For Transfer Panel (cross chain)")]
+    public Button transferUtilsButton; // to activate transferPanel
+    public GameObject transferPanel;
+    public TMP_Dropdown chainDropdown;
+    public TMP_Dropdown tokenDropdown;
+    public TMP_InputField amountInput;
+    public Button transferButton;
+    public Button cancelTransferButton;
 
+
+    // for marketplace panel
     bool isError = false;
     string errorTextString = "ERROR!!!";
     float timePassed = 0;
@@ -88,8 +98,78 @@ public class CanvasManager : MonoBehaviour
         listingPrefabs = new List<GameObject>();
         listingsPanel.SetActive(false);
 
+        transferPanel.SetActive(false);
+        transferUtilsButton.onClick.AddListener(delegate
+        {
+            ShowTransferPanel();
+        });
+        transferButton.onClick.AddListener(delegate
+        {
+            OnTransfer();
+        });
+        cancelTransferButton.onClick.AddListener(delegate
+        {
+            HideTransferPanel();
+        });
+
         listingHandlePanel.SetActive(false);
         // SellLand();
+    }
+
+    async void OnTransfer()
+    {
+        string sourceChain = "", destinationChain = "";
+        bool success = false;
+        if (chainDropdown.options[chainDropdown.value].text == "Fantom Testnet")
+        {
+            sourceChain = "Polygon";
+            destinationChain = "Fantom";
+        }
+        else if (chainDropdown.options[chainDropdown.value].text == "Polygon Mumbai")
+        {
+            sourceChain = "Fantom";
+            destinationChain = "Polygon";
+        }
+        if (sourceChain != "" && destinationChain != "")
+        {
+            success = await ContractManager.Instance.TransferUtilsCrossChain(sourceChain, destinationChain, tokenDropdown.value, amountInput.text);
+        }
+        if (success)
+        {
+            HideTransferPanel();
+            await ContractManager.Instance.setItemBalances();
+        }
+    }
+
+    async void ShowTransferPanel()
+    {
+        var chainId = await ThirdwebManager.Instance.SDK.wallet.GetChainId();
+        if (chainId != 80001 && chainId != 4002)
+        {
+            return;
+        }
+        transferPanel.SetActive(true);
+        chainDropdown.ClearOptions();
+        chainDropdown.AddOptions(new List<TMP_Dropdown.OptionData>
+        {
+            new TMP_Dropdown.OptionData(){text= (chainId == 80001 ? "Fantom Testnet" : "Polygon Mumbai")},
+        });
+    }
+
+    void HideTransferPanel()
+    {
+        transferPanel.SetActive(false);
+        chainDropdown.ClearOptions();
+    }
+
+    public void ShowTransferUtilsButton()
+    {
+        transferUtilsButton.gameObject.SetActive(true);
+    }
+
+    public void HideTransferUtilsButton()
+    {
+        transferUtilsButton.gameObject.SetActive(false);
     }
 
     void OnTypeDropdownValueChanged(TMP_Dropdown dropdown)
