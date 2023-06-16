@@ -17,7 +17,7 @@ export async function GET(request: Request) {
   });
   const res = await sdk.estimateGasFee(source, destination, tokenSymbol);
   // return NextResponse.json({ res: res });
-  return new Response(JSON.stringify(res), {
+  return new Response(JSON.stringify({ res: res }), {
     status: 200,
     headers: {
       "Access-Control-Allow-Origin": "*",
