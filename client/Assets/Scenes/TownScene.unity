@@ -10486,7 +10486,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00001944746}
+  m_AnchoredPosition: {x: 0, y: 0.000020981268}
   m_SizeDelta: {x: 0, y: 250}
   m_Pivot: {x: 0, y: 1}
 --- !u!1001 &624133247
@@ -14351,8 +14351,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 896122264}
   m_HandleRect: {fileID: 896122263}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -21325,7 +21325,7 @@ PrefabInstance:
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
       propertyPath: chain
-      value: sepolia
+      value: mantle-testnet
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
@@ -21335,27 +21335,27 @@ PrefabInstance:
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
       propertyPath: supportedChains.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
       propertyPath: supportedChains.Array.data[0].chainId
-      value: 11155111
-      objectReference: {fileID: 0}
-    - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
-        type: 3}
-      propertyPath: supportedChains.Array.data[1].chainId
       value: 5001
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
-      propertyPath: supportedChains.Array.data[2].chainId
+      propertyPath: supportedChains.Array.data[1].chainId
       value: 80001
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
+      propertyPath: supportedChains.Array.data[2].chainId
+      value: 4002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
+        type: 3}
       propertyPath: supportedChains.Array.data[3].chainId
-      value: 1442
+      value: 11155111
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
@@ -21425,22 +21425,22 @@ PrefabInstance:
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
       propertyPath: supportedChains.Array.data[0].identifier
-      value: sepolia
-      objectReference: {fileID: 0}
-    - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
-        type: 3}
-      propertyPath: supportedChains.Array.data[1].identifier
       value: mantle-testnet
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
-      propertyPath: supportedChains.Array.data[2].identifier
+      propertyPath: supportedChains.Array.data[1].identifier
       value: mumbai
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
+      propertyPath: supportedChains.Array.data[2].identifier
+      value: fantom-testnet
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
+        type: 3}
       propertyPath: supportedChains.Array.data[3].identifier
-      value: polygon-zkevm-testnet
+      value: sepolia
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
@@ -35657,6 +35657,33 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1335404546467394145, guid: a6218c0a90161f349bc6bc87fbc624da,
+        type: 3}
+      propertyPath: networkSprites.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1335404546467394145, guid: a6218c0a90161f349bc6bc87fbc624da,
+        type: 3}
+      propertyPath: networkSprites.Array.data[14].chain
+      value: mantle-testnet
+      objectReference: {fileID: 0}
+    - target: {fileID: 1335404546467394145, guid: a6218c0a90161f349bc6bc87fbc624da,
+        type: 3}
+      propertyPath: networkSprites.Array.data[15].chain
+      value: sepolia
+      objectReference: {fileID: 0}
+    - target: {fileID: 1335404546467394145, guid: a6218c0a90161f349bc6bc87fbc624da,
+        type: 3}
+      propertyPath: networkSprites.Array.data[14].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ec4b82ac998440d4f8069b159c008c30,
+        type: 3}
+    - target: {fileID: 1335404546467394145, guid: a6218c0a90161f349bc6bc87fbc624da,
+        type: 3}
+      propertyPath: networkSprites.Array.data[15].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 427f73b440444d3428c9d1101f7c0646,
+        type: 3}
     - target: {fileID: 1335404546467394145, guid: a6218c0a90161f349bc6bc87fbc624da,
         type: 3}
       propertyPath: OnConnectedCallback.m_PersistentCalls.m_Calls.Array.size

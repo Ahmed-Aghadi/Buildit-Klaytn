@@ -41,6 +41,8 @@ const FANTOMSCAN_API_KEY =
   process.env.FANTOMSCAN_API_KEY || "Your polygonscan API key";
 const POLYGONZKEVM_TESTNET_API_KEY =
   process.env.POLYGONZKEVM_TESTNET_API_KEY || "Your polygonscan API key";
+const MANTLE_TESTNET_API_KEY =
+  process.env.MANTLE_TESTNET_API_KEY || "Your polygonscan API key";
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -162,6 +164,7 @@ module.exports = {
       ftmTestnet: FANTOMSCAN_API_KEY,
       polygonzkevmtest: POLYGONZKEVM_TESTNET_API_KEY,
       sepolia: ETHERSCAN_API_KEY,
+      mantletest: MANTLE_TESTNET_API_KEY,
     },
     customChains: [
       {
@@ -170,6 +173,14 @@ module.exports = {
         urls: {
           apiURL: "https://explorer.public.zkevm-test.net/api",
           browserURL: "https://explorer.public.zkevm-test.net",
+        },
+      },
+      {
+        network: "mantletest",
+        chainId: 5001,
+        urls: {
+          apiURL: "https://explorer.testnet.mantle.xyz/api",
+          browserURL: "https://explorer.testnet.mantle.xyz",
         },
       },
     ],

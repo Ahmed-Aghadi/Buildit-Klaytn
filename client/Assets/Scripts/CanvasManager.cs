@@ -132,7 +132,24 @@ public class CanvasManager : MonoBehaviour
         }
         if (sourceChain != "" && destinationChain != "")
         {
-            success = await ContractManager.Instance.TransferUtilsCrossChain(sourceChain, destinationChain, tokenDropdown.value, amountInput.text);
+            int tokenId = ContractManager.EMPTY;
+            if(tokenDropdown.value == 0)
+            {
+                tokenId = ContractManager.ROAD;
+            } else if (tokenDropdown.value == 1)
+            {
+                tokenId = ContractManager.HOUSE;
+            } else if (tokenDropdown.value == 2)
+            {
+                tokenId = ContractManager.SPECIAL;
+            }
+
+            if(tokenId == ContractManager.EMPTY)
+            {
+                return;
+            }
+
+            success = await ContractManager.Instance.TransferUtilsCrossChain(sourceChain, destinationChain, tokenId, amountInput.text);
         }
         if (success)
         {
