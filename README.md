@@ -2,10 +2,10 @@ BuildIt is a metaverse project developed for the hackathon. It provides users wi
 
 ## Installation
 
-Go to `smartcontract` folder and install foundry and hardhat.
+Go to `smart_contracts` folder and install foundry and hardhat.
 
 ```bash
-cd smartcontracts/
+cd smart_contracts/
 forge init
 npm install
 ```
