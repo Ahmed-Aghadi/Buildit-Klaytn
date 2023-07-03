@@ -14,6 +14,8 @@ const SEPOLIA_RPC_URL =
   process.env.SEPOLIA_RPC_URL || "https://rpc-mumbai.matic.today";
 const FANTOM_TESTNET_RPC_URL =
   process.env.FANTOM_TESTNET_RPC_URL || "https://rpc.testnet.fantom.network";
+const FANTOM_RPC_URL =
+  process.env.FANTOM_RPC_URL || "https://rpc.testnet.fantom.network";
 const GOERLI_RPC_URL =
   process.env.GOERLI_RPC_URL ||
   "https://eth-rinkeby.alchemyapi.io/v2/your-api-key";
@@ -31,6 +33,7 @@ const POLYGON_MAINNET_RPC_URL =
   process.env.POLYGON_MAINNET_RPC_URL ||
   "https://polygon-mainnet.alchemyapi.io/v2/your-api-key";
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x";
+const MAIN_PRIVATE_KEY = process.env.MAIN_PRIVATE_KEY || "0x";
 
 // Your API key for Etherscan, obtain one at https://etherscan.io/
 const ETHERSCAN_API_KEY =
@@ -152,6 +155,14 @@ module.exports = {
       accounts: [PRIVATE_KEY],
       timeout: 300000, // 300 seconds
     },
+    // fantom mainnet
+    fantom: {
+      url: FANTOM_RPC_URL,
+      accounts: [MAIN_PRIVATE_KEY],
+      saveDeployments: true,
+      chainId: 250,
+      // gas: 500000,
+    },
   },
   etherscan: {
     // To list networks supported by default: npx hardhat verify --list-networks
@@ -165,6 +176,8 @@ module.exports = {
       polygonzkevmtest: POLYGONZKEVM_TESTNET_API_KEY,
       sepolia: ETHERSCAN_API_KEY,
       mantletest: MANTLE_TESTNET_API_KEY,
+      fantom: FANTOMSCAN_API_KEY,
+      opera: FANTOMSCAN_API_KEY, // fantom opera
     },
     customChains: [
       {

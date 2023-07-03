@@ -45,16 +45,26 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     registrarAddress = "0x9a811502d843E5a03913d5A2cfb646c11463467A";
     eth_usd_priceFeedAddress = "0x694AA1769357215DE4FAC081bf1f309aDC325306";
     linkAddress = "0x779877A7B0D9E8603169DdbD7836e478b4624789";
+  } else if (chainId == 250) {
+    // fantom
+    registryAddress = "0x02777053d6764996e594c3E88AF1D58D5363a2e6";
+    registrarAddress = "0xDb8e8e2ccb5C033938736aa89Fe4fa1eDfD15a1d";
+    linkAddress = "0x6F43FF82CCA38001B6699a8AC47A2d0E66939407";
+    axelarGateway = "0x304acf330bbE08d1e512eefaa92F6a57871fD895";
+    axelarGasReceiver = "0x2d5d7d31F671F86C782533cc367F14109a082712";
   }
 
   log("----------------------------------------------------");
   const forwarderArg = [];
-  const forwarder = await deploy("Forwarder", {
-    from: deployer,
-    args: forwarderArg,
-    log: true,
-    waitConfirmations: waitBlockConfirmations,
-  });
+  //   const forwarder = await deploy("Forwarder", {
+  //     from: deployer,
+  //     args: forwarderArg,
+  //     log: true,
+  //     waitConfirmations: waitBlockConfirmations,
+  //   });
+  const forwarder = {
+    address: "0x65D84C0883e0e0c9c41B044b4523cd07999924Fe",
+  };
   console.log("forwarder deployed to:", forwarder.address);
   log("----------------------------------------------------");
   const utilsArg = [
@@ -63,30 +73,39 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     axelarGateway,
     axelarGasReceiver,
   ];
-  const utils = await deploy("Utils", {
-    from: deployer,
-    args: utilsArg,
-    log: true,
-    waitConfirmations: waitBlockConfirmations,
-  });
+  //   const utils = await deploy("Utils", {
+  //     from: deployer,
+  //     args: utilsArg,
+  //     log: true,
+  //     waitConfirmations: waitBlockConfirmations,
+  //   });
+  const utils = {
+    address: "0x4a4e6cc94507b6ad2c91ad765d3f5b566b15d895",
+  };
   console.log("utils deployed to:", utils.address);
   log("----------------------------------------------------");
   const mapArg = [size, perSize, mapBaseUri, utils.address, forwarder.address];
-  const map = await deploy("Map", {
-    from: deployer,
-    args: mapArg,
-    log: true,
-    waitConfirmations: waitBlockConfirmations,
-  });
+  //   const map = await deploy("Map", {
+  //     from: deployer,
+  //     args: mapArg,
+  //     log: true,
+  //     waitConfirmations: waitBlockConfirmations,
+  //   });
+  const map = {
+    address: "0x91db12f3ea6f4598c982d46e8fdc72b53c333afb",
+  };
   console.log("map deployed to:", map.address);
   log("----------------------------------------------------");
   const faucetArg = [forwarder.address];
-  const faucet = await deploy("Faucet", {
-    from: deployer,
-    args: faucetArg,
-    log: true,
-    waitConfirmations: waitBlockConfirmations,
-  });
+  //   const faucet = await deploy("Faucet", {
+  //     from: deployer,
+  //     args: faucetArg,
+  //     log: true,
+  //     waitConfirmations: waitBlockConfirmations,
+  //   });
+  const faucet = {
+    address: "0x724257edfe7f3bbf8c06a01ae3becb48dc5e220a",
+  };
   console.log("faucet deployed to:", faucet.address);
   log("----------------------------------------------------");
   const marketplaceArg = [
@@ -99,25 +118,28 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     gasLimit,
     forwarder.address,
   ];
-  const marketplace = await deploy("Marketplace", {
-    from: deployer,
-    args: marketplaceArg,
-    log: true,
-    waitConfirmations: waitBlockConfirmations,
-  });
+  //   const marketplace = await deploy("Marketplace", {
+  //     from: deployer,
+  //     args: marketplaceArg,
+  //     log: true,
+  //     waitConfirmations: waitBlockConfirmations,
+  //   });
+  const marketplace = {
+    address: "0x20294525826458177030954af848d783f733a80a",
+  };
   console.log("marketplace deployed to:", marketplace.address);
-  log("----------------------------------------------------");
-  console.log("Minting Utils...");
-  await mintUtils(account, utils.address, utilsMintCount, utilsMintAmount);
-  log("----------------------------------------------------");
-  console.log("Transfering Utils to Faucet...");
-  await transferToFaucet(
-    account,
-    utils.address,
-    faucet.address,
-    utilsMintCount,
-    transferUtilsAmount
-  );
+  //   log("----------------------------------------------------");
+  //   console.log("Minting Utils...");
+  //   await mintUtils(account, utils.address, utilsMintCount, utilsMintAmount);
+  //   log("----------------------------------------------------");
+  //   console.log("Transfering Utils to Faucet...");
+  //   await transferToFaucet(
+  //     account,
+  //     utils.address,
+  //     faucet.address,
+  //     utilsMintCount,
+  //     transferUtilsAmount
+  //   );
   log("----------------------------------------------------");
   try {
     console.log("Verifying for Forwarder...");
