@@ -125,13 +125,14 @@ public class ThirdwebManager : MonoBehaviour
 
     private void Start()
     {
-        gaslessToggle.onValueChanged.AddListener(delegate {
+        gaslessToggle.onValueChanged.AddListener(delegate
+        {
             ToggleValueChanged(gaslessToggle);
         });
     }
     async void ToggleValueChanged(Toggle change)
     {
-        if(!(await SDK.wallet.IsConnected()))
+        if (!(await SDK.wallet.IsConnected()))
         {
             InitializeSDKOnNetworkChange();
         }
@@ -206,18 +207,23 @@ public class ThirdwebManager : MonoBehaviour
 
         Debug.Log("Gasless Toggle: " + gaslessToggle.isOn.ToString());
         Debug.Log("ChainId Check: " + currentChain.chainId);
-        if (gaslessToggle.isOn && (currentChain.chainId == "11155111" || !string.IsNullOrEmpty(relayerUrl) && !string.IsNullOrEmpty(forwarderAddress)))
+        if (gaslessToggle.isOn && (currentChain.chainId == "11155111" || currentChain.chainId == "250" || !string.IsNullOrEmpty(relayerUrl) && !string.IsNullOrEmpty(forwarderAddress)))
         {
-            Debug.Log("Found ChainId Sepolia");
+            Debug.Log("Found ChainId: " + currentChain.chainId);
             string relayerUrlSepolia = "https://api.defender.openzeppelin.com/autotasks/57396929-b8bf-4078-83b4-b44c4f588809/runs/webhook/8db4ba89-3c75-4a75-9f0e-98d36b4337a3/LqU2XjBemGpVYS3CqXFCd4";
             string forwarderAddressSepolia = "0x3EC31e8B991FF0b3FfffD480e2A5F259B51DdF5c";
 
+            string relayerUrlFantom = "https://api.defender.openzeppelin.com/autotasks/6c73d722-9ac6-4e23-b9f2-2d7217c69394/runs/webhook/8db4ba89-3c75-4a75-9f0e-98d36b4337a3/UCeui23vKEPi4b7ZG7zLLg";
+            string forwarderAddressFantom = "0x65D84C0883e0e0c9c41B044b4523cd07999924Fe";
+
+            string relayerUrl = currentChain.chainId == "11155111" ? relayerUrlSepolia : relayerUrlFantom;
+            string forwarderAddress = currentChain.chainId == "11155111" ? forwarderAddressSepolia : forwarderAddressFantom;
             options.gasless = new ThirdwebSDK.GaslessOptions()
             {
                 openzeppelin = new ThirdwebSDK.OZDefenderOptions()
                 {
-                    relayerUrl = currentChain.chainId == "11155111" ? relayerUrlSepolia : this.relayerUrl,
-                    relayerForwarderAddress = currentChain.chainId == "11155111" ? forwarderAddressSepolia : this.forwarderAddress,
+                    relayerUrl = currentChain.chainId == "11155111" || currentChain.chainId == "250" ? relayerUrl : this.relayerUrl,
+                    relayerForwarderAddress = currentChain.chainId == "11155111" || currentChain.chainId == "250" ? forwarderAddress : this.forwarderAddress,
                     domainName = string.IsNullOrEmpty(this.forwarderDomainOverride) ? "GSNv2 Forwarder" : this.forwarderDomainOverride,
                     domainVersion = string.IsNullOrEmpty(this.forwaderVersionOverride) ? "0.0.1" : this.forwaderVersionOverride
                 }
