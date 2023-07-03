@@ -36,6 +36,12 @@ npx hardhat deploy --network $ChainName
 
 Note: Don't forget to make .env file, refer .env.example file.
 
+## Android APK
+
+[Download apk file for Android](https://drive.google.com/drive/folders/1koUt3GFjGn5jITEy1MgrMTs4LI_h77DB?usp=sharing)
+
+Website can also be used which is build for webgl and will works on both desktop and mobile.
+
 ## Smart Contracts ( Fantom Mainnet )
 
 | Contract                                                                                                 | Explorer Link                                                                                                        |

@@ -73,6 +73,8 @@
     <Compile Include="Assets\Thirdweb\Plugins\AsyncAwaitUtil\Tests\AsyncUtilTests.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\AsyncAwaitUtil\Tests\Util\TestButtonHandler.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\MetaMask\Samples\Main\Scripts\CanvasScaler.cs" />
+    <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
+    <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\Properties\AssemblyInfo.cs" />
     <Compile Include="Assets\Thirdweb\Core\Contract Definitions\TokenERC20\TokenERC20Service.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\Models\WCMessageSigned.cs" />
@@ -152,6 +154,7 @@
     <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\Network\WebGLAESCipher.cs" />
     <Compile Include="Assets\Thirdweb\Core\Scripts\Types.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\MetaMask\Samples\Main\Scripts\Visuals\ButtonEffect.cs" />
+    <Compile Include="Assets\Joystick Pack\Examples\JoystickPlayerExample.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\Models\DeepLink\AppEntry.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Events\Model\JsonRpcResponseEvent.cs" />
     <Compile Include="Assets\Scripts\ContractManager.cs" />
@@ -181,6 +184,7 @@
     <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Events\EventDelegator.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Events\EventManager.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\IEventSource.cs" />
+    <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\AsyncAwaitUtil\Source\AwaitExtensions.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\Utils\WaitForTask.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\WalletConnect.Unity\Demo\Full Session\Scripts\DemoSignTypedData.cs" />
@@ -190,6 +194,7 @@
     <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\ErrorResponse.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\MetaMask\Samples\Main\Scripts\Visuals\LookAtCamera.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\MetaMask.NEthereum\Account\MetaMaskAccount.cs" />
+    <Compile Include="Assets\Joystick Pack\Scripts\Base\Joystick.cs" />
     <Compile Include="Assets\Scripts\AudioPlayer.cs" />
     <Compile Include="Assets\Thirdweb\Core\Contract Definitions\Forwarder\ContractDefinition\ForwardRequest.cs" />
     <Compile Include="Assets\Ultimate 10 Plus Shaders\Scripts\U10PS_MouseRotation.cs" />
@@ -229,6 +234,7 @@
     <Compile Include="Assets\Scripts\CanvasManager.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Extensions\JsonRequestMethodExtension.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\AsyncAwaitUtil\Source\Internal\SyncContextUtil.cs" />
+    <Compile Include="Assets\Joystick Pack\Examples\JoystickSetterExample.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\TestRegistrar\ContractDefinition\TestRegistrarDefinition.cs" />
     <Compile Include="Assets\Thirdweb\Core\Contract Definitions\DropERC20\ContractDefinition\DropERC20Definition.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\RegistrarService.cs" />
@@ -265,6 +271,7 @@
     <Compile Include="Assets\Thirdweb\Examples\Scripts\Utils\LoadingSpinner.cs" />
     <Compile Include="Assets\Thirdweb\Examples\Scripts\Prefabs\Prefab_NFTLoader.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\DNSRegisterService.cs" />
+    <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\ENSRegistryWithFallbackService.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\Utils\WaitForTaskResult.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Core\Models\Ethereum\Types\EvmTypedData.cs" />
@@ -315,13 +322,6 @@
     <Compile Include="Assets\Thirdweb\Plugins\Nethereum\Nethereum.ENS\EthRegistrarSubdomainRegistrar\ContractDefinition\EthRegistrarSubdomainRegistrarDefinition.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\AsyncAwaitUtil\Source\WaitForUpdate.cs" />
     <Compile Include="Assets\Thirdweb\Core\Scripts\ERC20.cs" />
-    <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
-    <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
-    <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
-    <Compile Include="Assets\Joystick Pack\Scripts\Base\Joystick.cs" />
-    <Compile Include="Assets\Joystick Pack\Examples\JoystickPlayerExample.cs" />
-    <Compile Include="Assets\Joystick Pack\Examples\JoystickSetterExample.cs" />
-    <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Thirdweb\Plugins\TextMesh Pro\Shaders\TMPro.cginc" />

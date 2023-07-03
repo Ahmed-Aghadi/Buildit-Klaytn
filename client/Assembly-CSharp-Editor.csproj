@@ -56,6 +56,7 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Joystick Pack\Scripts\Editor\VariableJoystickEditor.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\WalletConnectSharp.Unity\Editor\WalletConnectEditor.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\Rotary Heart\SerializableDictionaryLite\Editor\Definer.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\MetaMask\Installer\Editor\MetaMaskInstallerWindow.cs" />
@@ -65,11 +66,10 @@
     <Compile Include="Assets\Thirdweb\Plugins\Rotary Heart\SerializableDictionaryLite\Editor\DictionaryPropertyDrawer.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\Rotary Heart\SerializableDictionaryLite\Editor\SupportWindow.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\Rotary Heart\SerializableDictionaryLite\Editor\PreferencesWindow.cs" />
-    <Compile Include="Assets\Thirdweb\Plugins\MetaMask\Installer\Editor\MetaMaskUnityAnalytics.cs" />
-    <Compile Include="Assets\Joystick Pack\Scripts\Editor\FloatingJoystickEditor.cs" />
-    <Compile Include="Assets\Joystick Pack\Scripts\Editor\JoystickEditor.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Editor\DynamicJoystickEditor.cs" />
-    <Compile Include="Assets\Joystick Pack\Scripts\Editor\VariableJoystickEditor.cs" />
+    <Compile Include="Assets\Joystick Pack\Scripts\Editor\FloatingJoystickEditor.cs" />
+    <Compile Include="Assets\Thirdweb\Plugins\MetaMask\Installer\Editor\MetaMaskUnityAnalytics.cs" />
+    <Compile Include="Assets\Joystick Pack\Scripts\Editor\JoystickEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Thirdweb\Plugins\ExternalDependencyManager\Editor\Google.VersionHandler.dll" />
