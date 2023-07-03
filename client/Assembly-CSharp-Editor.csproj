@@ -66,6 +66,10 @@
     <Compile Include="Assets\Thirdweb\Plugins\Rotary Heart\SerializableDictionaryLite\Editor\SupportWindow.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\Rotary Heart\SerializableDictionaryLite\Editor\PreferencesWindow.cs" />
     <Compile Include="Assets\Thirdweb\Plugins\MetaMask\Installer\Editor\MetaMaskUnityAnalytics.cs" />
+    <Compile Include="Assets\Joystick Pack\Scripts\Editor\FloatingJoystickEditor.cs" />
+    <Compile Include="Assets\Joystick Pack\Scripts\Editor\JoystickEditor.cs" />
+    <Compile Include="Assets\Joystick Pack\Scripts\Editor\DynamicJoystickEditor.cs" />
+    <Compile Include="Assets\Joystick Pack\Scripts\Editor\VariableJoystickEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Thirdweb\Plugins\ExternalDependencyManager\Editor\Google.VersionHandler.dll" />

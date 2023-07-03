@@ -6,6 +6,9 @@ using UnityEngine.EventSystems;
 
 public class InputManager : MonoBehaviour
 {
+
+    public FloatingJoystick floatingJoystick;
+
     public Action<Vector3Int,bool> OnMouseClick, OnMouseHold;
     public Action OnMouseUp;
 	private Vector2 cameraMovementVector;
@@ -43,6 +46,11 @@ public class InputManager : MonoBehaviour
 	private void CheckArrowInput()
 	{
 		cameraMovementVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+		if(cameraMovementVector.magnitude == 0 )
+		{
+			cameraMovementVector = floatingJoystick.Direction;
+
+        }
 	}
 
 	private void CheckClickHoldEvent()
