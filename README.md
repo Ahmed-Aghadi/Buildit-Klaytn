@@ -30,20 +30,22 @@ To deploy smart contracts:
 
 ```bash
 npx hardhat deploy --network $ChainName
+
+# example: npx hardhat deploy --network fantom
 ```
 
 Note: Don't forget to make .env file, refer .env.example file.
 
-## Smart Contracts ( Mantle Testnet )
+## Smart Contracts ( Fantom Mainnet )
 
-| Contract                                                                                                             | Explorer Link                                                                                                                        |
-| -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| [Map.sol](https://github.com/Ahmed-Aghadi/BuildIt-cross-chain/blob/main/smart_contracts/src/Map.sol)                 | [0x9f85f13F5FFb3b1dcb7B318F1712b6f42A4CFFd4](https://explorer.testnet.mantle.xyz/address/0x9f85f13F5FFb3b1dcb7B318F1712b6f42A4CFFd4) |
-| [Utils.sol](https://github.com/Ahmed-Aghadi/BuildIt-cross-chain/blob/main/smart_contracts/src/Utils.sol)             | [0x8e539DfdA07e5Bb63F6768eaDb800F01FC25C336](https://explorer.testnet.mantle.xyz/address/0x8e539DfdA07e5Bb63F6768eaDb800F01FC25C336) |
-| [Faucet.sol](https://github.com/Ahmed-Aghadi/BuildIt-cross-chain/blob/main/smart_contracts/src/Faucet.sol)           | [0x69A46a7b195eb6C89454C41dE3e5Bd96C694D8FB](https://explorer.testnet.mantle.xyz/address/0x69A46a7b195eb6C89454C41dE3e5Bd96C694D8FB) |
-| [Marketplace.sol](https://github.com/Ahmed-Aghadi/BuildIt-cross-chain/blob/main/smart_contracts/src/Marketplace.sol) | [0xcB82Ac8Ad0cd14DD4d6f6397B66Bf11dA538F12A](https://explorer.testnet.mantle.xyz/address/0xcB82Ac8Ad0cd14DD4d6f6397B66Bf11dA538F12A) |
+| Contract                                                                                                 | Explorer Link                                                                                                        |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| [Map.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Map.sol)                 | [0x91db12f3ea6f4598c982d46e8fdc72b53c333afb](https://ftmscan.com/address/0x91db12f3ea6f4598c982d46e8fdc72b53c333afb) |
+| [Utils.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Utils.sol)             | [0x4a4e6cc94507b6ad2c91ad765d3f5b566b15d895](https://ftmscan.com/address/0x4a4e6cc94507b6ad2c91ad765d3f5b566b15d895) |
+| [Faucet.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Faucet.sol)           | [0x724257edfe7f3bbf8c06a01ae3becb48dc5e220a](https://ftmscan.com/address/0x724257edfe7f3bbf8c06a01ae3becb48dc5e220a) |
+| [Marketplace.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Marketplace.sol) | [0x20294525826458177030954af848d783f733a80a](https://ftmscan.com/address/0x20294525826458177030954af848d783f733a80a) |
 
-## Axelar
+## Axelar (Cross Chain Testing)
 
 | Chain                            | AxelarScan Link                                                                                                                                                                |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -51,11 +53,6 @@ Note: Don't forget to make .env file, refer .env.example file.
 | Fantom Testnet to Polygon Mumbai | [0x245ffb0c9f17ef3c677f9ffb20604ec68839f7c3fbb3aa5b3b2cf5f54c8ebcad](https://testnet.axelarscan.io/gmp/0x245ffb0c9f17ef3c677f9ffb20604ec68839f7c3fbb3aa5b3b2cf5f54c8ebcad:2)   |
 | Polygon Mumbai to Fantom Testnet | [0x5e92df374722bda02cde583c6f112421f38450e1a57fd93f4fbfb0e1c166af3e](https://testnet.axelarscan.io/gmp/0x5e92df374722bda02cde583c6f112421f38450e1a57fd93f4fbfb0e1c166af3e:119) |
 | Fantom Testnet to Polygon Mumbai | [0x8591148343c3283188b7c83a9c7949091925868b2cce25c5e9db9932a74f7420](https://testnet.axelarscan.io/gmp/0x8591148343c3283188b7c83a9c7949091925868b2cce25c5e9db9932a74f7420:2)   |
-
-### Experience
-
-- **Simple to implement**: Docs are to the point, thus by just reading the simple example given in docs for General Message Passing (GMP), we're able to implement the logic according to our Game.
-- **AxelarScan API and Explorer**: The API helps to query the gas fees required and status can also be queried which helps a lot to understand the flow. Explorer also helps a lot to understand the flow and makes it simple to test things around.
 
 ## Table of Contents
 
@@ -103,7 +100,7 @@ BuildIt was built using the following technologies and tools:
 
 During the development of BuildIt, we encountered several challenges, including:
 
-- Integrating Unity with the Ethereum blockchain and ensuring secure and efficient interactions between the game and smart contracts.
+- Integrating Unity with the blockchain and ensuring secure and efficient interactions between the game and smart contracts.
 - Implementing ERC721 and ERC1155 token standards and handling the transfer of ownership between users and their land/items.
 - Optimizing gas usage and transaction costs in smart contract deployments.
 - Developing a user-friendly interface and seamless wallet integration for a smooth user experience.
