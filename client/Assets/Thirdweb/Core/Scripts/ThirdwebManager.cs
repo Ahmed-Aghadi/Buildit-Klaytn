@@ -40,6 +40,7 @@ public class ThirdwebManager : MonoBehaviour
         new ChainData("polygon-zkevm-testnet", "1442", null),
         new ChainData("sepolia", "11155111", null),
         new ChainData("mantle-testnet", "5001", null),
+        new ChainData("arbitrum-goerli", "421613", null),
     };
 
     [Header("APP METADATA")]

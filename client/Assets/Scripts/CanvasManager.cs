@@ -339,12 +339,22 @@ public class CanvasManager : MonoBehaviour
         ResetMarketplacePanel();
     }
 
+    async void SetSellerEnsName(string address, TMP_Text ensNameText)
+    {
+        string ensName = await ContractManager.Instance.GetEnsName(address);
+        ensNameText.text = ensName;
+    }
+
     void ShowBuyLandPanel()
     {
         List<Listing> listingsList = ContractManager.Instance.GetListingsIndex(xIndex, yIndex);
         if (listingsList == null) return;
         Listing[] listings = listingsList.ToArray();
         listingsPanel.SetActive(true);
+        var userAddressTransform = listingsPanel.transform.Find("UserAddress_ENS");
+        TMP_Text userAddressText = userAddressTransform.gameObject.GetComponent<TMP_Text>();
+        userAddressText.text = listings[0].sellerAddress;
+        bool isSellerAddressSet = false;
         int i = 1;
         float height = 0;
         for (int j = 1; j <= listings.Length; j++)
@@ -353,6 +363,11 @@ public class CanvasManager : MonoBehaviour
             Listing listing = listings[j - 1];
             if (listing.isValid)
             {
+                if(!isSellerAddressSet)
+                {
+                    SetSellerEnsName(listing.sellerAddress, userAddressText);
+                    isSellerAddressSet = true;
+                }
                 Debug.Log("Listing Valid");
                 Debug.Log("Instantiating: " + i);
                 var listingPanel = GameObject.Instantiate(listingPrefab, listingsContainer.transform);
