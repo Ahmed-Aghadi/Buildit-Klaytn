@@ -42,23 +42,15 @@ Note: Don't forget to make .env file, refer .env.example file.
 
 Website can also be used which is build for webgl and will works on both desktop and mobile.
 
-## Smart Contracts ( Fantom Mainnet )
+## Smart Contracts ( Arbitrum Goerli )
 
-| Contract                                                                                                 | Explorer Link                                                                                                        |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| [Map.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Map.sol)                 | [0x91db12f3ea6f4598c982d46e8fdc72b53c333afb](https://ftmscan.com/address/0x91db12f3ea6f4598c982d46e8fdc72b53c333afb) |
-| [Utils.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Utils.sol)             | [0x4a4e6cc94507b6ad2c91ad765d3f5b566b15d895](https://ftmscan.com/address/0x4a4e6cc94507b6ad2c91ad765d3f5b566b15d895) |
-| [Faucet.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Faucet.sol)           | [0x724257edfe7f3bbf8c06a01ae3becb48dc5e220a](https://ftmscan.com/address/0x724257edfe7f3bbf8c06a01ae3becb48dc5e220a) |
-| [Marketplace.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Marketplace.sol) | [0x20294525826458177030954af848d783f733a80a](https://ftmscan.com/address/0x20294525826458177030954af848d783f733a80a) |
-
-## Axelar (Cross Chain Testing)
-
-| Chain                            | AxelarScan Link                                                                                                                                                                |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Polygon Mumbai to Fantom Testnet | [0x6a75d12c64aa8eee1e747d62ccae645d981564ce32c22166e308bcaf058decb0](https://testnet.axelarscan.io/gmp/0x6a75d12c64aa8eee1e747d62ccae645d981564ce32c22166e308bcaf058decb0:34)  |
-| Fantom Testnet to Polygon Mumbai | [0x245ffb0c9f17ef3c677f9ffb20604ec68839f7c3fbb3aa5b3b2cf5f54c8ebcad](https://testnet.axelarscan.io/gmp/0x245ffb0c9f17ef3c677f9ffb20604ec68839f7c3fbb3aa5b3b2cf5f54c8ebcad:2)   |
-| Polygon Mumbai to Fantom Testnet | [0x5e92df374722bda02cde583c6f112421f38450e1a57fd93f4fbfb0e1c166af3e](https://testnet.axelarscan.io/gmp/0x5e92df374722bda02cde583c6f112421f38450e1a57fd93f4fbfb0e1c166af3e:119) |
-| Fantom Testnet to Polygon Mumbai | [0x8591148343c3283188b7c83a9c7949091925868b2cce25c5e9db9932a74f7420](https://testnet.axelarscan.io/gmp/0x8591148343c3283188b7c83a9c7949091925868b2cce25c5e9db9932a74f7420:2)   |
+| Contract                                                                                                 | Explorer Link                                                                                                               |
+| -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| [Map.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Map.sol)                 | [0x91db12F3eA6F4598c982D46e8Fdc72B53c333AFb](https://goerli.arbiscan.io/address/0x91db12f3ea6f4598c982d46e8fdc72b53c333afb) |
+| [Utils.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Utils.sol)             | [0x4A4e6Cc94507B6aD2c91aD765d3f5B566B15d895](https://goerli.arbiscan.io/address/0x4a4e6cc94507b6ad2c91ad765d3f5b566b15d895) |
+| [Faucet.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Faucet.sol)           | [0x724257edfe7f3bbf8c06a01ae3becb48dc5e220a](https://goerli.arbiscan.io/address/0x724257edfe7f3bbf8c06a01ae3becb48dc5e220a) |
+| [Marketplace.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Marketplace.sol) | [0x20294525826458177030954Af848D783f733A80A](https://goerli.arbiscan.io/address/0x20294525826458177030954af848d783f733a80a) |
+| [Forwarder.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Forwarder.sol)     | [0x65D84C0883e0e0c9c41B044b4523cd07999924Fe](https://goerli.arbiscan.io/address/0x20294525826458177030954af848d783f733a80a) |
 
 ## Table of Contents
 
@@ -87,6 +79,8 @@ When a user connects their wallet, the game fetches data from the smart contract
 
 In addition, BuildIt includes a marketplace where users can sell their land through direct listings or auctions. Chainlink automation can be utilized for auction listings, and if the chain supports Chainlink price feeds, the land can be sold in USD. The marketplace provides an easy and secure way for users to trade their land.
 
+Also, users can transfer their util items from one chain to another ( using Axelar )
+
 ## How We Built It
 
 BuildIt was built using the following technologies and tools:
@@ -101,6 +95,7 @@ BuildIt was built using the following technologies and tools:
 - Item Minting: Three items are minted in the Utils contract: road, house, and special item.
 - Wallet Integration: Users can connect their wallets, such as Metamask, Coinbase, and WalletConnect, to interact with the metaverse.
 - Gasless Transactions: All smart contracts implement ERC2771Context, enabling users to perform gasless transactions when the relayer is funded.
+- Axelar was used facilitate cross chain transfer of util items from one chain to another
 
 ## Challenges We Ran Into
 

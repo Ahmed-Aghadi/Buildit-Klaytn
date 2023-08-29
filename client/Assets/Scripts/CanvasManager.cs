@@ -1,16 +1,37 @@
 using Nethereum.Web3;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Thirdweb.Contracts.DirectListingsLogic.ContractDefinition;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+public class DesignJsonStructure
+{
+    public string label
+    {
+        get;
+        set;
+    }
+    // value can be : 0 - empty, 1 - road, 2 - house, 3 - special
+    public List<int> design // 0th index means 0,0 and from 0,0 to 0,1 , ... 0,n and then 1,0 to 1,1 , ... 1,n and so on
+    {
+        get;
+        set;
+    }
+}
 
 public class CanvasManager : MonoBehaviour
 {
+    [DllImport("__Internal")]
+    private static extern void GetDesigns();
+    [DllImport("__Internal")]
+    private static extern void SaveDesign(string design);
+
     public Canvas canvas;
     public RectTransform buildingMenuRect;
     public Button editButton;
@@ -65,6 +86,20 @@ public class CanvasManager : MonoBehaviour
     public Button transferButton;
     public Button cancelTransferButton;
 
+    [Header("For Saving Land Desing")]
+    public Button landDesignSaveButton;
+    public Text landDesignSaveButtonText;
+    public GameObject landDesignSavePanel;
+    public TMP_Dropdown loadSaveTypeDropdown;
+    public TMP_Dropdown selectDesignDropdown;
+    public Button saveLoadButton;
+    public TMP_Text saveLoadButtonText;
+    public TMP_InputField labelInput;
+    bool isLandDesignSaveOpen = false;
+    bool isLandDesignSaveSelectOpen = false; // probably not needed
+    List<DesignJsonStructure> designs;
+    int xIndexSelected, yIndexSelected;
+
 
     // for marketplace panel
     bool isError = false;
@@ -114,6 +149,90 @@ public class CanvasManager : MonoBehaviour
 
         listingHandlePanel.SetActive(false);
         // SellLand();
+        landDesignSaveButton.gameObject.SetActive(false);
+        landDesignSavePanel.SetActive(false);
+        selectDesignDropdown.gameObject.SetActive(false);
+        loadSaveTypeDropdown.onValueChanged.AddListener(delegate
+        {
+            OnSelectDesignDropdownValueChanged(loadSaveTypeDropdown);
+        });
+        saveLoadButton.onClick.AddListener(delegate
+        {
+            OnSaveLoad();
+        });
+    }
+
+    void OnSaveLoad()
+    {
+        if (loadSaveTypeDropdown.value == 0) // save
+        {
+            if (labelInput.text == "")
+            {
+                // uiController.ShowError("Please enter a label for the design");
+                return;
+            }
+            string label = labelInput.text;
+            DesignJsonStructure design = new DesignJsonStructure();
+            design.label = label;
+            design.design = new List<int>();
+            // int count = 0;
+            for (int i = (xIndex * ContractManager.Instance.perSize) +  0; i < ((xIndex + 1) * ContractManager.Instance.perSize); i++)
+            {
+                for (int j = (yIndex * ContractManager.Instance.perSize) + 0; j < ((yIndex + 1) * ContractManager.Instance.perSize); j++)
+                {
+                    design.design.Add(ContractManager.Instance.editedMap[i, j]);
+                }
+            }
+            string designJson = JsonConvert.SerializeObject(design);
+            Debug.Log("designJson: " + designJson);
+            SaveDesign(designJson);
+            HideLandDesignSaveLoadPanel();
+        }
+        else if (loadSaveTypeDropdown.value == 1) // load
+        {
+            if (selectDesignDropdown.options.Count == 0)
+            {
+                // uiController.ShowError("No designs found");
+                return;
+            }
+            string designLabel = selectDesignDropdown.options[selectDesignDropdown.value].text;
+            Debug.Log("designLabel: " + designLabel);
+            DesignJsonStructure design = designs.Find((currentDesign) => currentDesign.label == designLabel);
+            if(design == null)
+            {
+                Debug.Log("design not found");
+            }
+            Debug.Log("designLabel found: " + design.label);
+            int count = 0;
+            for (int i = (xIndex * ContractManager.Instance.perSize) + 0; i < ((xIndex + 1) * ContractManager.Instance.perSize); i++)
+            {
+                for (int j = (yIndex * ContractManager.Instance.perSize) + 0; j < ((yIndex + 1) * ContractManager.Instance.perSize); j++)
+                {
+                    Vector3Int position = new Vector3Int(i,0,j);
+                    ContractManager.Instance.placeItem(position, design.design[count], true);
+                    count++;
+                }
+            }
+            HideLandDesignSaveLoadPanel();
+        }
+    }
+
+    void OnSelectDesignDropdownValueChanged(TMP_Dropdown change)
+    {
+        Debug.Log("OnSelectDesignDropdownValueChanged: " + change.value);
+        Debug.Log("saveLoadButtonLabel: " + saveLoadButtonText.text);
+        if (change.value == 0) // save
+        {
+            labelInput.gameObject.SetActive(true);
+            selectDesignDropdown.gameObject.SetActive(false);
+            saveLoadButtonText.text = "Save";
+        }
+        else if (change.value == 1) // load
+        {
+            labelInput.gameObject.SetActive(false);
+            selectDesignDropdown.gameObject.SetActive(true);
+            saveLoadButtonText.text = "Load";
+        }
     }
 
     async void OnTransfer()
@@ -235,6 +354,12 @@ public class CanvasManager : MonoBehaviour
         }
 
         // For highlight
+        handleMarketplaceHighlightPanel();
+        handleMapDesignHighlightPanel();
+    }
+
+    private void handleMarketplaceHighlightPanel()
+    {
         if (isMarketplaceOpen && !marketplacePanel.activeSelf && !listingsPanel.activeSelf)
         {
             var position = inputManager.RaycastGround();
@@ -288,6 +413,104 @@ public class CanvasManager : MonoBehaviour
                     {
                         Debug.Log("Sell Land");
                         SellLand();
+                    }
+                }
+            }
+        }
+    }
+
+    private void ShowLandDesignSaveLoadPanel()
+    {
+        landDesignSavePanel.SetActive(true);
+        // load all the designs and add in the dropdown
+#if UNITY_WEBGL == true && UNITY_EDITOR == false
+        GetDesigns();
+#endif
+    }
+
+    public void SetDesigns(string designsJson)
+    {
+        Debug.Log("SetDesigns: " + designsJson);
+        designs = JsonConvert.DeserializeObject<List<DesignJsonStructure>>(designsJson);
+        selectDesignDropdown.ClearOptions();
+        var optionsToAdd = new List<TMP_Dropdown.OptionData>();
+        foreach (var design in designs)
+        {
+            optionsToAdd.Add(new TMP_Dropdown.OptionData() { text = design.label });
+        }
+        selectDesignDropdown.AddOptions(optionsToAdd);
+    }
+
+    public void HideLandDesignSaveLoadPanel()
+    {
+        landDesignSavePanel.SetActive(false);
+        ResetLandDesignSaveLoadPanel();
+    }
+
+    private void ResetLandDesignSaveLoadPanel()
+    {
+        loadSaveTypeDropdown.value = 0;
+        selectDesignDropdown.value = 0;
+        labelInput.text = "";
+    }
+
+    private void SelectLand(int xIndex, int yIndex)
+    {
+        xIndexSelected = xIndex;
+        yIndexSelected = yIndex;
+        ShowLandDesignSaveLoadPanel();
+    }
+
+    private void handleMapDesignHighlightPanel()
+    {
+        if (isLandDesignSaveOpen && !landDesignSavePanel.activeSelf)
+        {
+            var position = inputManager.RaycastGround();
+            if (position != null)
+            {
+                if (placementManager.CheckIfPositionInBound(position.Value) == true)
+                {
+                    if (ContractManager.Instance.userOwnsIndex(position.Value.x, position.Value.z))
+                    {
+                        highlightLand(position.Value.x, position.Value.z, lightBlueHighlightPrefab);
+                    }
+                    else
+                    {
+                        highlightLand(position.Value.x, position.Value.z, redHighlightPrefab);
+                    }
+                }
+            }
+            else
+            {
+                if (highlightPrefabs.Count != 0)
+                {
+                    ResetHighlightPrefabsList();
+                }
+            }
+
+        }
+
+        if (isLandDesignSaveOpen && Input.GetMouseButtonDown(0) && EventSystem.current.IsPointerOverGameObject() == false && !landDesignSavePanel.activeSelf)
+        {
+            var position = inputManager.RaycastGround();
+            if (position != null)
+            {
+                if (placementManager.CheckIfPositionInBound(position.Value) == true)
+                {
+                    Debug.Log("Before Pos" + position.Value.x + ", " + position.Value.z);
+                    int perSize = ContractManager.Instance.perSize;
+                    if (perSize == 0)
+                    {
+                        return;
+                    }
+                    int xIndex = position.Value.x / perSize;
+                    int yIndex = position.Value.z / perSize;
+                    Debug.Log("After Pos" + xIndex + ", " + yIndex);
+                    
+                    if (ContractManager.Instance.userOwnsIndex(position.Value.x, position.Value.z))
+                    {
+                        Debug.Log("Save/Load Land");
+                        SelectLand(xIndex, yIndex);
                     }
                 }
             }
@@ -617,6 +840,7 @@ public class CanvasManager : MonoBehaviour
         editButton.gameObject.SetActive(false);
         confirmButton.gameObject.SetActive(true);
         cancelButton.gameObject.SetActive(true);
+        landDesignSaveButton.gameObject.SetActive(true);
     }
 
     void OnCancelClicked()
@@ -626,6 +850,7 @@ public class CanvasManager : MonoBehaviour
         editButton.gameObject.SetActive(true);
         confirmButton.gameObject.SetActive(false);
         cancelButton.gameObject.SetActive(false);
+        landDesignSaveButton.gameObject.SetActive(false);
         ContractManager.Instance.CancelClicked();
     }
 
@@ -659,5 +884,26 @@ public class CanvasManager : MonoBehaviour
             }
             ContractManager.Instance.ResetListingHighlights();
         }
+    }
+
+    public void ToggleLandDesignSave()
+    {
+        isLandDesignSaveOpen = !isLandDesignSaveOpen;
+        buildingMenu.SetActive(!isLandDesignSaveOpen);
+        faucetButton.SetActive(!isLandDesignSaveOpen);
+        marketplaceButton.gameObject.SetActive(!isLandDesignSaveOpen);
+        landDesignSaveButtonText.text = !isLandDesignSaveOpen ? "Save/Load Design" : "Go Back";
+        if (!isLandDesignSaveOpen)
+        {
+            if (highlightPrefabs.Count != 0)
+            {
+                ResetHighlightPrefabsList();
+            }
+        }
+    }
+
+    public void ToggleLandDesignSaveSelect()
+    {
+        isLandDesignSaveSelectOpen = !isLandDesignSaveSelectOpen;
     }
 }

@@ -52,19 +52,26 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     linkAddress = "0x6F43FF82CCA38001B6699a8AC47A2d0E66939407";
     axelarGateway = "0x304acf330bbE08d1e512eefaa92F6a57871fD895";
     axelarGasReceiver = "0x2d5d7d31F671F86C782533cc367F14109a082712";
+  } else if (chainId == 421613) {
+    // arbitrum goerli
+    registryAddress = "0x291093864bafc9aA517eF90ce954dD7D95D68C80";
+    registrarAddress = "0x263ae9E522707D5A2B317026358d7f33ceC4ccc5";
+    linkAddress = "0xd14838A68E8AFBAdE5efb411d5871ea0011AFd28";
+    axelarGateway = "0xe432150cce91c13a887f7D836923d5597adD8E31";
+    axelarGasReceiver = "0xbE406F0189A0B4cf3A05C286473D23791Dd44Cc6";
   }
 
   log("----------------------------------------------------");
   const forwarderArg = [];
-  //   const forwarder = await deploy("Forwarder", {
-  //     from: deployer,
-  //     args: forwarderArg,
-  //     log: true,
-  //     waitConfirmations: waitBlockConfirmations,
-  //   });
-  const forwarder = {
-    address: "0x65D84C0883e0e0c9c41B044b4523cd07999924Fe",
-  };
+  const forwarder = await deploy("Forwarder", {
+    from: deployer,
+    args: forwarderArg,
+    log: true,
+    waitConfirmations: waitBlockConfirmations,
+  });
+  // const forwarder = {
+  //   address: "0x65D84C0883e0e0c9c41B044b4523cd07999924Fe",
+  // };
   console.log("forwarder deployed to:", forwarder.address);
   log("----------------------------------------------------");
   const utilsArg = [
@@ -73,39 +80,39 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     axelarGateway,
     axelarGasReceiver,
   ];
-  //   const utils = await deploy("Utils", {
-  //     from: deployer,
-  //     args: utilsArg,
-  //     log: true,
-  //     waitConfirmations: waitBlockConfirmations,
-  //   });
-  const utils = {
-    address: "0x4a4e6cc94507b6ad2c91ad765d3f5b566b15d895",
-  };
+  const utils = await deploy("Utils", {
+    from: deployer,
+    args: utilsArg,
+    log: true,
+    waitConfirmations: waitBlockConfirmations,
+  });
+  // const utils = {
+  //   address: "0x4a4e6cc94507b6ad2c91ad765d3f5b566b15d895",
+  // };
   console.log("utils deployed to:", utils.address);
   log("----------------------------------------------------");
   const mapArg = [size, perSize, mapBaseUri, utils.address, forwarder.address];
-  //   const map = await deploy("Map", {
-  //     from: deployer,
-  //     args: mapArg,
-  //     log: true,
-  //     waitConfirmations: waitBlockConfirmations,
-  //   });
-  const map = {
-    address: "0x91db12f3ea6f4598c982d46e8fdc72b53c333afb",
-  };
+  const map = await deploy("Map", {
+    from: deployer,
+    args: mapArg,
+    log: true,
+    waitConfirmations: waitBlockConfirmations,
+  });
+  // const map = {
+  //   address: "0x91db12f3ea6f4598c982d46e8fdc72b53c333afb",
+  // };
   console.log("map deployed to:", map.address);
   log("----------------------------------------------------");
   const faucetArg = [forwarder.address];
-  //   const faucet = await deploy("Faucet", {
-  //     from: deployer,
-  //     args: faucetArg,
-  //     log: true,
-  //     waitConfirmations: waitBlockConfirmations,
-  //   });
-  const faucet = {
-    address: "0x724257edfe7f3bbf8c06a01ae3becb48dc5e220a",
-  };
+  const faucet = await deploy("Faucet", {
+    from: deployer,
+    args: faucetArg,
+    log: true,
+    waitConfirmations: waitBlockConfirmations,
+  });
+  // const faucet = {
+  //   address: "0x724257edfe7f3bbf8c06a01ae3becb48dc5e220a",
+  // };
   console.log("faucet deployed to:", faucet.address);
   log("----------------------------------------------------");
   const marketplaceArg = [
@@ -118,15 +125,15 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     gasLimit,
     forwarder.address,
   ];
-  //   const marketplace = await deploy("Marketplace", {
-  //     from: deployer,
-  //     args: marketplaceArg,
-  //     log: true,
-  //     waitConfirmations: waitBlockConfirmations,
-  //   });
-  const marketplace = {
-    address: "0x20294525826458177030954af848d783f733a80a",
-  };
+  const marketplace = await deploy("Marketplace", {
+    from: deployer,
+    args: marketplaceArg,
+    log: true,
+    waitConfirmations: waitBlockConfirmations,
+  });
+  // const marketplace = {
+  //   address: "0x20294525826458177030954af848d783f733a80a",
+  // };
   console.log("marketplace deployed to:", marketplace.address);
   //   log("----------------------------------------------------");
   //   console.log("Minting Utils...");

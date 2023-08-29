@@ -46,6 +46,8 @@ const POLYGONZKEVM_TESTNET_API_KEY =
   process.env.POLYGONZKEVM_TESTNET_API_KEY || "Your polygonscan API key";
 const MANTLE_TESTNET_API_KEY =
   process.env.MANTLE_TESTNET_API_KEY || "Your polygonscan API key";
+const ARBITRUM_GOERLI_TESTNET_API_KEY =
+  process.env.ARBITRUM_GOERLI_TESTNET_API_KEY || "Your polygonscan API key";
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -163,6 +165,13 @@ module.exports = {
       chainId: 250,
       // gas: 500000,
     },
+    arbitrumGoerli: {
+      url: "https://arbitrum-goerli.blockpi.network/v1/rpc/public",
+      accounts: [PRIVATE_KEY],
+      saveDeployments: true,
+      chainId: 421613,
+      timeout: 300000, // 300 seconds
+    },
   },
   etherscan: {
     // To list networks supported by default: npx hardhat verify --list-networks
@@ -178,6 +187,7 @@ module.exports = {
       mantletest: MANTLE_TESTNET_API_KEY,
       fantom: FANTOMSCAN_API_KEY,
       opera: FANTOMSCAN_API_KEY, // fantom opera
+      arbitrumGoerli: ARBITRUM_GOERLI_TESTNET_API_KEY,
     },
     customChains: [
       {
