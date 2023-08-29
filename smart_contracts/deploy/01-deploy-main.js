@@ -135,18 +135,18 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   //   address: "0x20294525826458177030954af848d783f733a80a",
   // };
   console.log("marketplace deployed to:", marketplace.address);
-  //   log("----------------------------------------------------");
-  //   console.log("Minting Utils...");
-  //   await mintUtils(account, utils.address, utilsMintCount, utilsMintAmount);
-  //   log("----------------------------------------------------");
-  //   console.log("Transfering Utils to Faucet...");
-  //   await transferToFaucet(
-  //     account,
-  //     utils.address,
-  //     faucet.address,
-  //     utilsMintCount,
-  //     transferUtilsAmount
-  //   );
+  log("----------------------------------------------------");
+  console.log("Minting Utils...");
+  await mintUtils(account, utils.address, utilsMintCount, utilsMintAmount);
+  log("----------------------------------------------------");
+  console.log("Transfering Utils to Faucet...");
+  await transferToFaucet(
+    account,
+    utils.address,
+    faucet.address,
+    utilsMintCount,
+    transferUtilsAmount
+  );
   log("----------------------------------------------------");
   try {
     console.log("Verifying for Forwarder...");

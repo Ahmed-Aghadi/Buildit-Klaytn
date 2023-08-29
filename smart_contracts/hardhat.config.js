@@ -167,7 +167,7 @@ module.exports = {
     },
     arbitrumGoerli: {
       url: "https://arbitrum-goerli.blockpi.network/v1/rpc/public",
-      accounts: [PRIVATE_KEY],
+      accounts: [MAIN_PRIVATE_KEY],
       saveDeployments: true,
       chainId: 421613,
       timeout: 300000, // 300 seconds
