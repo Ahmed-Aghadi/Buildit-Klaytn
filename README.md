@@ -31,7 +31,7 @@ To deploy smart contracts:
 ```bash
 npx hardhat deploy --network $ChainName
 
-# example: npx hardhat deploy --network fantom
+# example: npx hardhat deploy --network arbitrumGoerli
 ```
 
 Note: Don't forget to make .env file, refer .env.example file.
