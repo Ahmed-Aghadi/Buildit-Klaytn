@@ -25,12 +25,12 @@ export async function GET(request: Request) {
     if (ensName) {
       ensAvatarUrl = await ethers
         .getDefaultProvider(process.env.GOERLI_PROVIDER_URL)
-        .lookupAddress(ensName);
+        .getAvatar(address);
     }
   } else {
     ensAvatarUrl = await ethers
       .getDefaultProvider(process.env.MAINNET_PROVIDER_URL)
-      .lookupAddress(ensName);
+      .getAvatar(address);
   }
   if (!ensName) {
     ensName = address;
