@@ -68,6 +68,7 @@ public class CanvasManager : MonoBehaviour
     public GameObject listingsPanel;
     public GameObject listingsContainer;
     public GameObject listingPrefab;
+    public Image ensImage;
     List<GameObject> listingPrefabs;
 
     [Header("For Listing Handle Panel")]
@@ -562,10 +563,24 @@ public class CanvasManager : MonoBehaviour
         ResetMarketplacePanel();
     }
 
-    async void SetSellerEnsName(string address, TMP_Text ensNameText)
+    async void SetSellerEnsName(string address, TMP_Text ensNameText, Image ensImage)
     {
-        string ensName = await ContractManager.Instance.GetEnsName(address);
+        (string ensName, string ensAvatarUrl) = await ContractManager.Instance.GetEnsName(address);
         ensNameText.text = ensName;
+        await LoadAvatar(ensAvatarUrl, ensImage);
+    }
+
+    private IEnumerator LoadAvatar(string url, Image ensImage)
+    {
+        Debug.Log("LoadAvatar: " + url);
+        using (WWW www = new WWW(url))
+        {
+            // Wait for download to complete
+            yield return www;
+
+            // assign texture
+            ensImage.material.mainTexture = www.texture;
+        }
     }
 
     void ShowBuyLandPanel()
@@ -588,7 +603,7 @@ public class CanvasManager : MonoBehaviour
             {
                 if(!isSellerAddressSet)
                 {
-                    SetSellerEnsName(listing.sellerAddress, userAddressText);
+                    SetSellerEnsName(listing.sellerAddress, userAddressText, ensImage);
                     isSellerAddressSet = true;
                 }
                 Debug.Log("Listing Valid");

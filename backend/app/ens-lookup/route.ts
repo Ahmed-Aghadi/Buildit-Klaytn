@@ -17,16 +17,29 @@ export async function GET(request: Request) {
   let ensName = await ethers
     .getDefaultProvider(process.env.MAINNET_PROVIDER_URL)
     .lookupAddress(address);
+  let ensAvatarUrl: string | null = "";
   if (!ensName) {
     ensName = await ethers
       .getDefaultProvider(process.env.GOERLI_PROVIDER_URL)
       .lookupAddress(address);
+    if (ensName) {
+      ensAvatarUrl = await ethers
+        .getDefaultProvider(process.env.GOERLI_PROVIDER_URL)
+        .lookupAddress(ensName);
+    }
+  } else {
+    ensAvatarUrl = await ethers
+      .getDefaultProvider(process.env.MAINNET_PROVIDER_URL)
+      .lookupAddress(ensName);
   }
   if (!ensName) {
     ensName = address;
   }
+  if (!ensAvatarUrl) {
+    ensAvatarUrl = "";
+  }
   // return NextResponse.json({ res: res });
-  return new Response(JSON.stringify({ ensName }), {
+  return new Response(JSON.stringify({ ensName, ensAvatarUrl }), {
     status: 200,
     headers: {
       "Access-Control-Allow-Origin": "*",
