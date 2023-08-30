@@ -603,7 +603,11 @@ public class CanvasManager : MonoBehaviour
         if (request.isNetworkError || request.isHttpError)
             Debug.Log(request.error);
         else
+        {
+            Debug.Log("setting texture: " + ((DownloadHandlerTexture)request.downloadHandler).texture);
             ensImage.texture = ((DownloadHandlerTexture)request.downloadHandler).texture;
+            Debug.Log("set texture");
+        }
     }
 
     void ShowBuyLandPanel()

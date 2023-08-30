@@ -17,12 +17,18 @@ const UnityPlayer = () => {
     addEventListener,
     removeEventListener,
     requestFullscreen,
+    isLoaded,
+    initialisationError,
     sendMessage,
   } = useUnityContext({
     loaderUrl: "Build/Build.loader.js",
     dataUrl: "Build/Build.data",
     frameworkUrl: "Build/Build.framework.js",
     codeUrl: "Build/Build.wasm",
+  });
+  console.log("conf", {
+    isLoaded,
+    initialisationError,
   });
 
   return (
@@ -44,11 +50,15 @@ const UnityPlayer = () => {
             devicePixelRatio={window.devicePixelRatio}
           />
           <SSXComponent
+            unityProvider={unityProvider}
+            isLoaded={isLoaded}
             addEventListener={addEventListener}
             removeEventListener={removeEventListener}
             sendMessage={sendMessage}
           />
           <ENSComponent
+            unityProvider={unityProvider}
+            isLoaded={isLoaded}
             addEventListener={addEventListener}
             removeEventListener={removeEventListener}
             sendMessage={sendMessage}

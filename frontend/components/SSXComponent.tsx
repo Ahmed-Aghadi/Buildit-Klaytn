@@ -9,10 +9,15 @@ type Design = { label: string; design: string };
 type Designs = Design[];
 
 const SSXComponent = ({
+  unityProvider,
+
+  isLoaded,
   addEventListener,
   removeEventListener,
   sendMessage,
 }: {
+  unityProvider: any;
+  isLoaded: boolean;
   addEventListener: any;
   removeEventListener: any;
   sendMessage: any;
@@ -76,7 +81,7 @@ const SSXComponent = ({
       const contentName = `content/${label}`;
       await ssxProvider.storage.put(contentName, designString);
     },
-    [ssxProvider]
+    [ssxProvider, unityProvider, isLoaded]
   );
 
   const ssxHandler = useCallback(async () => {
@@ -106,7 +111,7 @@ const SSXComponent = ({
     });
     await ssx.signIn();
     setSSX(ssx);
-  }, [ssxProvider]);
+  }, [ssxProvider, unityProvider, isLoaded]);
 
   const ssxLogoutHandler = async () => {
     ssxProvider?.signOut();
@@ -139,6 +144,8 @@ const SSXComponent = ({
     getDesigns,
     getData,
     saveDesign,
+    unityProvider,
+    isLoaded,
   ]);
 
   async function getDesigns() {
