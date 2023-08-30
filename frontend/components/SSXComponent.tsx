@@ -18,7 +18,6 @@ const SSXComponent = ({
   sendMessage: any;
 }) => {
   const [ssxProvider, setSSX] = useState<SSX | null>(null);
-  const [wasSet, setWasSet] = useState(false);
 
   // const [formattedData, setFormattedData] = useState<Designs>([]);
 
@@ -34,8 +33,6 @@ const SSXComponent = ({
   //     ssxHandler();
   //   }
   // }, [wasSet, ssxProvider]);
-
-  console.log("ssxProvider: ", ssxProvider);
 
   const getData = async () => {
     if (!ssxProvider) {
@@ -88,10 +85,14 @@ const SSXComponent = ({
       return;
     }
     console.log("signing in...");
+    if (!process.env.NEXT_PUBLIC_API_LINK) {
+      console.log("NEXT_PUBLIC_API_LINK not set");
+      return;
+    }
     const ssx = new SSX({
       providers: {
         server: {
-          host: "http://localhost:3000/api",
+          host: process.env.NEXT_PUBLIC_API_LINK,
         },
       },
       modules: {
