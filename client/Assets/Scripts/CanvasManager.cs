@@ -9,6 +9,7 @@ using Thirdweb.Contracts.DirectListingsLogic.ContractDefinition;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 public class DesignJsonStructure
 {
@@ -25,12 +26,28 @@ public class DesignJsonStructure
     }
 }
 
+public class EnsLookupResponse
+{
+    public string ensName
+    {
+        get;
+        set;
+    }
+    public string ensAvatarUrl
+    {
+        get;
+        set;
+    }
+}
+
 public class CanvasManager : MonoBehaviour
 {
     [DllImport("__Internal")]
     private static extern void GetDesigns();
     [DllImport("__Internal")]
     private static extern void SaveDesign(string design);
+    [DllImport("__Internal")]
+    private static extern void GetENS(string address);
 
     public Canvas canvas;
     public RectTransform buildingMenuRect;
@@ -68,7 +85,7 @@ public class CanvasManager : MonoBehaviour
     public GameObject listingsPanel;
     public GameObject listingsContainer;
     public GameObject listingPrefab;
-    public Image ensImage;
+    public RawImage ensImage;
     List<GameObject> listingPrefabs;
 
     [Header("For Listing Handle Panel")]
@@ -563,24 +580,30 @@ public class CanvasManager : MonoBehaviour
         ResetMarketplacePanel();
     }
 
-    async void SetSellerEnsName(string address, TMP_Text ensNameText, Image ensImage)
+    public void SetEnsDetails(string ensDetails)
     {
-        (string ensName, string ensAvatarUrl) = await ContractManager.Instance.GetEnsName(address);
-        ensNameText.text = ensName;
-        await LoadAvatar(ensAvatarUrl, ensImage);
+        Debug.Log("SetEnsDetails: " + ensDetails);
+        var ensDetailsJson = JsonConvert.DeserializeObject<EnsLookupResponse>(ensDetails);
+        SetSellerEnsName(ensDetailsJson.ensName, ensDetailsJson.ensAvatarUrl);
     }
 
-    private IEnumerator LoadAvatar(string url, Image ensImage)
+    void SetSellerEnsName(string ensName, string ensAvatarUrl)
+    {
+        var userAddressTransform = listingsPanel.transform.Find("UserAddress_ENS");
+        TMP_Text userAddressText = userAddressTransform.gameObject.GetComponent<TMP_Text>();
+        userAddressText.text = ensName;
+        StartCoroutine(LoadAvatar(ensAvatarUrl, ensImage));
+    }
+
+    private IEnumerator LoadAvatar(string url, RawImage ensImage)
     {
         Debug.Log("LoadAvatar: " + url);
-        using (WWW www = new WWW(url))
-        {
-            // Wait for download to complete
-            yield return www;
-
-            // assign texture
-            ensImage.material.mainTexture = www.texture;
-        }
+        UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
+        yield return request.SendWebRequest();
+        if (request.isNetworkError || request.isHttpError)
+            Debug.Log(request.error);
+        else
+            ensImage.texture = ((DownloadHandlerTexture)request.downloadHandler).texture;
     }
 
     void ShowBuyLandPanel()
@@ -591,7 +614,8 @@ public class CanvasManager : MonoBehaviour
         listingsPanel.SetActive(true);
         var userAddressTransform = listingsPanel.transform.Find("UserAddress_ENS");
         TMP_Text userAddressText = userAddressTransform.gameObject.GetComponent<TMP_Text>();
-        userAddressText.text = listings[0].sellerAddress;
+        var sellerAddress = listings[0].sellerAddress;
+        userAddressText.text = sellerAddress.Substring(0, 6) + "..." + sellerAddress.Substring(sellerAddress.Length - 4);
         bool isSellerAddressSet = false;
         int i = 1;
         float height = 0;
@@ -603,7 +627,7 @@ public class CanvasManager : MonoBehaviour
             {
                 if(!isSellerAddressSet)
                 {
-                    SetSellerEnsName(listing.sellerAddress, userAddressText, ensImage);
+                    GetENS(listing.sellerAddress);
                     isSellerAddressSet = true;
                 }
                 Debug.Log("Listing Valid");

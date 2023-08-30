@@ -8,4 +8,7 @@ mergeInto(LibraryManager.library, {
   SaveDesign: function (design) {
     window.dispatchReactUnityEvent("SaveDesign", UTF8ToString(design));
   },
+  GetENS: function (address) {
+    window.dispatchReactUnityEvent("GetENS", UTF8ToString(address));
+  },
 });

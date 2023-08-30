@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Unity, useUnityContext } from "react-unity-webgl";
 import Script from "next/script";
 import SSXComponent from "@/components/SSXComponent";
+import ENSComponent from "@/components/ENSComponent";
 
 type Design = { label: string; design: string };
 type Designs = Design[];
@@ -43,6 +44,11 @@ const UnityPlayer = () => {
             devicePixelRatio={window.devicePixelRatio}
           />
           <SSXComponent
+            addEventListener={addEventListener}
+            removeEventListener={removeEventListener}
+            sendMessage={sendMessage}
+          />
+          <ENSComponent
             addEventListener={addEventListener}
             removeEventListener={removeEventListener}
             sendMessage={sendMessage}

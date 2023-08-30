@@ -27,20 +27,6 @@ public class AxelarGasResponse
     }
 }
 
-public class EnsLookupResponse
-{
-    public string ensName
-    {
-        get;
-        set;
-    }
-    public string ensAvatarUrl
-    {
-        get;
-        set;
-    }
-}
-
 public struct Land
 {
     public BigInteger xIndex;
@@ -1350,28 +1336,6 @@ public class ContractManager : MonoBehaviour
             Debug.Log("amount for cross chain transfer: " + amount);
         }
         return amount;
-    }
-    public async Task<(string,string)> GetEnsName(string address)
-    {
-        UnityWebRequest request = UnityWebRequest.Get(ensLookupValueApiURL + "?address=" + address);
-        await Task.Yield();
-        // request.SetRequestHeader("Access-Control-Allow-Origin", "*");
-        var res = await request.SendWebRequest();
-        string ensName = address;
-        string ensAvatarUrl = "";
-        if (request.result == UnityWebRequest.Result.ConnectionError)
-        {
-            Debug.Log(request.error);
-        }
-        else
-        {
-            var ensNameJson = request.downloadHandler.text;
-            var json = JsonConvert.DeserializeObject<EnsLookupResponse>(ensNameJson);
-            ensName = json.ensName;
-            ensAvatarUrl = json.ensAvatarUrl;
-            Debug.Log("amount for cross chain transfer: " + ensName);
-        }
-        return (ensName,ensAvatarUrl);
     }
 
     public async Task<string> GetPrice(int listingId)
