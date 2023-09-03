@@ -160,14 +160,16 @@ module.exports = {
     // fantom mainnet
     fantom: {
       url: FANTOM_RPC_URL,
-      accounts: [MAIN_PRIVATE_KEY],
+      // accounts: [MAIN_PRIVATE_KEY],
+      accounts: [PRIVATE_KEY],
       saveDeployments: true,
       chainId: 250,
       // gas: 500000,
     },
     arbitrumGoerli: {
       url: "https://arbitrum-goerli.blockpi.network/v1/rpc/public",
-      accounts: [MAIN_PRIVATE_KEY],
+      // accounts: [MAIN_PRIVATE_KEY],
+      accounts: [PRIVATE_KEY],
       saveDeployments: true,
       chainId: 421613,
       timeout: 300000, // 300 seconds
