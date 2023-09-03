@@ -272,6 +272,7 @@ public class ContractManager : MonoBehaviour
             utilsContractAddress = utilsContractAddressArbitrumGoerli;
             faucetContractAddress = faucetContractAddressArbitrumGoerli;
             marketplaceContractAddress = marketplaceContractAddressArbitrumGoerli;
+            canvasManager.ShowTransferUtilsButton();
         }
 
         marketplaceButton.gameObject.SetActive(true);
@@ -1318,6 +1319,9 @@ public class ContractManager : MonoBehaviour
         }else if(sourceChain == "Polygon")
         {
             tokenSymbol = "MATIC";
+        }else if (sourceChain == "arbitrum")
+        {
+            tokenSymbol = "AGOR";
         }
         UnityWebRequest request = UnityWebRequest.Get(axelarValueApiURL + "?source=" + sourceChain + "&destination=" + destChain + "&tokenSymbol=" + tokenSymbol);
         await Task.Yield();

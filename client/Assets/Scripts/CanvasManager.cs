@@ -257,15 +257,34 @@ public class CanvasManager : MonoBehaviour
     {
         string sourceChain = "", destinationChain = "";
         bool success = false;
-        if (chainDropdown.options[chainDropdown.value].text == "Fantom Testnet")
+        var chainId = await ThirdwebManager.Instance.SDK.wallet.GetChainId();
+        if (chainId == 80001)
         {
             sourceChain = "Polygon";
+        }
+        else if (chainId == 4002)
+        {
+            sourceChain = "Polygon";
+        }
+        else if (chainId == 421613)
+        {
+            sourceChain = "Fantom";
+        }
+        else
+        {
+            return;
+        }
+        if (chainDropdown.options[chainDropdown.value].text == "Fantom Testnet")
+        {
             destinationChain = "Fantom";
         }
         else if (chainDropdown.options[chainDropdown.value].text == "Polygon Mumbai")
         {
-            sourceChain = "Fantom";
             destinationChain = "Polygon";
+        }
+        else if (chainDropdown.options[chainDropdown.value].text == "Arbitrum Goerli")
+        {
+            destinationChain = "arbitrum";
         }
         if (sourceChain != "" && destinationChain != "")
         {
@@ -298,16 +317,32 @@ public class CanvasManager : MonoBehaviour
     async void ShowTransferPanel()
     {
         var chainId = await ThirdwebManager.Instance.SDK.wallet.GetChainId();
-        if (chainId != 80001 && chainId != 4002)
+        if (chainId != 80001 && chainId != 4002 && chainId != 421613)
         {
             return;
         }
         transferPanel.SetActive(true);
         chainDropdown.ClearOptions();
-        chainDropdown.AddOptions(new List<TMP_Dropdown.OptionData>
+        var optionDatas = new List<TMP_Dropdown.OptionData>();
+        if (chainId == 80001)
         {
-            new TMP_Dropdown.OptionData(){text= (chainId == 80001 ? "Fantom Testnet" : "Polygon Mumbai")},
-        });
+            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Fantom Testnet" });
+            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Arbitrum Goerli" });
+        }else if (chainId == 4002)
+        {
+            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Polygon Mumbai" });
+            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Arbitrum Goerli" });
+        }
+        else if (chainId == 421613)
+        {
+            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Polygon Mumbai" });
+            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Fantom Testnet" });
+        }
+        else
+        {
+            return;
+        }
+        chainDropdown.AddOptions(optionDatas);
     }
 
     void HideTransferPanel()
