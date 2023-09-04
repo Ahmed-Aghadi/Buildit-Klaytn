@@ -264,11 +264,15 @@ public class CanvasManager : MonoBehaviour
         }
         else if (chainId == 4002)
         {
-            sourceChain = "Polygon";
+            sourceChain = "Fantom";
         }
         else if (chainId == 421613)
         {
-            sourceChain = "Fantom";
+            sourceChain = "arbitrum";
+        }
+        else if (chainId == 97)
+        {
+            sourceChain = "binance";
         }
         else
         {
@@ -285,6 +289,10 @@ public class CanvasManager : MonoBehaviour
         else if (chainDropdown.options[chainDropdown.value].text == "Arbitrum Goerli")
         {
             destinationChain = "arbitrum";
+        }
+        else if (chainDropdown.options[chainDropdown.value].text == "Binance Testnet")
+        {
+            destinationChain = "binance";
         }
         if (sourceChain != "" && destinationChain != "")
         {
@@ -317,7 +325,7 @@ public class CanvasManager : MonoBehaviour
     async void ShowTransferPanel()
     {
         var chainId = await ThirdwebManager.Instance.SDK.wallet.GetChainId();
-        if (chainId != 80001 && chainId != 4002 && chainId != 421613)
+        if (chainId != 80001 && chainId != 4002 && chainId != 4216132 && chainId != 97)
         {
             return;
         }
@@ -328,15 +336,25 @@ public class CanvasManager : MonoBehaviour
         {
             optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Fantom Testnet" });
             optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Arbitrum Goerli" });
-        }else if (chainId == 4002)
+            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Binance Testnet" });
+        }
+        else if (chainId == 4002)
         {
             optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Polygon Mumbai" });
             optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Arbitrum Goerli" });
+            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Binance Testnet" });
         }
         else if (chainId == 421613)
         {
             optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Polygon Mumbai" });
             optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Fantom Testnet" });
+            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Binance Testnet" });
+        }
+        else if (chainId == 97)
+        {
+            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Polygon Mumbai" });
+            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Fantom Testnet" });
+            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Arbitrum Goerli" });
         }
         else
         {

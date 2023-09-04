@@ -42,15 +42,15 @@ Note: Don't forget to make .env file, refer .env.example file.
 
 Website can also be used which is build for webgl and will works on both desktop and mobile.
 
-## Smart Contracts ( Arbitrum Goerli )
+## Smart Contracts ( BSC Testnet )
 
-| Contract                                                                                                 | Explorer Link                                                                                                               |
-| -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| [Map.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Map.sol)                 | [0x91db12F3eA6F4598c982D46e8Fdc72B53c333AFb](https://goerli.arbiscan.io/address/0x91db12f3ea6f4598c982d46e8fdc72b53c333afb) |
-| [Utils.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Utils.sol)             | [0x4A4e6Cc94507B6aD2c91aD765d3f5B566B15d895](https://goerli.arbiscan.io/address/0x4a4e6cc94507b6ad2c91ad765d3f5b566b15d895) |
-| [Faucet.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Faucet.sol)           | [0x724257edfe7f3bbf8c06a01ae3becb48dc5e220a](https://goerli.arbiscan.io/address/0x724257edfe7f3bbf8c06a01ae3becb48dc5e220a) |
-| [Marketplace.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Marketplace.sol) | [0x20294525826458177030954Af848D783f733A80A](https://goerli.arbiscan.io/address/0x20294525826458177030954af848d783f733a80a) |
-| [Forwarder.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Forwarder.sol)     | [0x65D84C0883e0e0c9c41B044b4523cd07999924Fe](https://goerli.arbiscan.io/address/0x65D84C0883e0e0c9c41B044b4523cd07999924Fe) |
+| Contract                                                                                                 | Explorer Link                                                                                                                |
+| -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| [Map.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Map.sol)                 | [0x9574E60E8aBeb8062CD3DCC3ed7714E067768a72](https://testnet.bscscan.com/address/0x9574E60E8aBeb8062CD3DCC3ed7714E067768a72) |
+| [Utils.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Utils.sol)             | [0x2e4dDe518EB8B63C47D388aa129386d9ca110a45](https://testnet.bscscan.com/address/0x2e4dDe518EB8B63C47D388aa129386d9ca110a45) |
+| [Faucet.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Faucet.sol)           | [0x816d0366156F406069223D5E454Ab8c98E6D4440](https://testnet.bscscan.com/address/0x816d0366156F406069223D5E454Ab8c98E6D4440) |
+| [Marketplace.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Marketplace.sol) | [0xB20CDCaF8636Efee0730Ac5fe37842afA13909e6](https://testnet.bscscan.com/address/0xB20CDCaF8636Efee0730Ac5fe37842afA13909e6) |
+| [Forwarder.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Forwarder.sol)     | [0xC07DdbA94611C33882612b8031b2a6AfB65ca545](https://testnet.bscscan.com/address/0xC07DdbA94611C33882612b8031b2a6AfB65ca545) |
 
 ## Table of Contents
 
@@ -134,7 +134,7 @@ The development of BuildIt provided us with valuable learning experiences, inclu
 
 ## What's Next for BuildIt
 
-BuildIt is an ongoing project, and we have exciting plans for its future:
+BuildIt is an ongoing project, and we have exciting plans testnet.bscscan.com
 
 - Adding multiple maps with different sizes to expand the metaverse and accommodate more users.
 - Conducting further research on gasless transactions to reduce transaction costs and improve user experience.

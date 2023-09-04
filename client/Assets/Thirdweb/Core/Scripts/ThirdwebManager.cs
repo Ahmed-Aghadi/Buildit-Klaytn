@@ -26,7 +26,7 @@ public class ThirdwebManager : MonoBehaviour
 
     [Header("REQUIRED SETTINGS")]
     [Tooltip("The chain to initialize the SDK with")]
-    public string chain = "goerli";
+    public string chain = "binance-testnet";
 
     [Header("CHAIN DATA")]
     [Tooltip("Support any chain by adding it to this list from the inspector")]
@@ -41,6 +41,7 @@ public class ThirdwebManager : MonoBehaviour
         new ChainData("sepolia", "11155111", null),
         new ChainData("mantle-testnet", "5001", null),
         new ChainData("arbitrum-goerli", "421613", null),
+        new ChainData("binance-testnet", "97", null),
     };
 
     [Header("APP METADATA")]

@@ -59,6 +59,13 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     linkAddress = "0xd14838A68E8AFBAdE5efb411d5871ea0011AFd28";
     axelarGateway = "0xe432150cce91c13a887f7D836923d5597adD8E31";
     axelarGasReceiver = "0xbE406F0189A0B4cf3A05C286473D23791Dd44Cc6";
+  } else if (chainId == 97) {
+    // bsc testnet
+    registryAddress = "0xE16Df59B887e3Caa439E0b29B42bA2e7976FD8b2";
+    registrarAddress = "0x57A4a13b35d25EE78e084168aBaC5ad360252467";
+    linkAddress = "0x84b9B910527Ad5C03A9Ca831909E21e236EA7b06";
+    axelarGateway = "0x4D147dCb984e6affEEC47e44293DA442580A3Ec0";
+    axelarGasReceiver = "0xbE406F0189A0B4cf3A05C286473D23791Dd44Cc6";
   }
 
   log("----------------------------------------------------");
