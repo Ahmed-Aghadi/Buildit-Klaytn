@@ -4,6 +4,7 @@ import { Unity, useUnityContext } from "react-unity-webgl";
 import Script from "next/script";
 import SSXComponent from "@/components/SSXComponent";
 import ENSComponent from "@/components/ENSComponent";
+import Progressbar from "@/components/Progress_bar";
 
 type Design = { label: string; design: string };
 type Designs = Design[];
@@ -20,6 +21,7 @@ const UnityPlayer = () => {
     isLoaded,
     initialisationError,
     sendMessage,
+    loadingProgression,
   } = useUnityContext({
     loaderUrl: "Build/Build.loader.js",
     dataUrl: "Build/Build.data",
@@ -43,6 +45,13 @@ const UnityPlayer = () => {
       />
       {loaded && (
         <>
+          {!isLoaded && (
+            <Progressbar
+              bgcolor="orange"
+              progress={Math.round(loadingProgression * 100)}
+              height={30}
+            />
+          )}
           <Unity
             unityProvider={unityProvider}
             ref={canvasRef}
