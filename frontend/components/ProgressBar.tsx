@@ -1,6 +1,13 @@
 import React from "react";
+import * as CSS from "csstype";
 
-const Progress_bar = ({ bgcolor, progress, height }) => {
+type ProgressBarProps = {
+  bgcolor: string;
+  progress: number;
+  height: number;
+};
+
+const ProgressBar = ({ bgcolor, progress, height }: ProgressBarProps) => {
   const Parentdiv = {
     height: height,
     width: "100%",
@@ -25,11 +32,11 @@ const Progress_bar = ({ bgcolor, progress, height }) => {
 
   return (
     <div style={Parentdiv}>
-      <div style={Childdiv}>
+      <div style={Childdiv as CSS.Properties<string | number>}>
         <span style={progresstext}>{`${progress}%`}</span>
       </div>
     </div>
   );
 };
 
-export default Progress_bar;
+export default ProgressBar;

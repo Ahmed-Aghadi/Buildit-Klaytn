@@ -4,7 +4,7 @@ import { Unity, useUnityContext } from "react-unity-webgl";
 import Script from "next/script";
 import SSXComponent from "@/components/SSXComponent";
 import ENSComponent from "@/components/ENSComponent";
-import Progressbar from "@/components/Progress_bar";
+import Progressbar from "@/components/ProgressBar";
 
 type Design = { label: string; design: string };
 type Designs = Design[];
