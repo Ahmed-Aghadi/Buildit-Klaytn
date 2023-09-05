@@ -11570,7 +11570,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000011065387}
+  m_AnchoredPosition: {x: 0, y: 0.00043723622}
   m_SizeDelta: {x: 0, y: 250}
   m_Pivot: {x: 0, y: 1}
 --- !u!1001 &624133247
@@ -23749,7 +23749,7 @@ PrefabInstance:
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
       propertyPath: supportedChains.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
@@ -23779,12 +23779,12 @@ PrefabInstance:
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
       propertyPath: supportedChains.Array.data[5].chainId
-      value: 97
+      value: 5611
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
       propertyPath: supportedChains.Array.data[6].chainId
-      value: 365
+      value: 97
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
@@ -23864,12 +23864,12 @@ PrefabInstance:
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
       propertyPath: supportedChains.Array.data[5].identifier
-      value: binance-testnet
+      value: opbnb-testnet
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}
       propertyPath: supportedChains.Array.data[6].identifier
-      value: theta-testnet
+      value: binance-testnet
       objectReference: {fileID: 0}
     - target: {fileID: 4404896360829706404, guid: 379ed01658d62a14484f953196ff19db,
         type: 3}

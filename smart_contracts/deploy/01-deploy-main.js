@@ -225,7 +225,8 @@ const transferToFaucet = async (
       faucetContractAddress,
       i,
       amount,
-      "0x"
+      "0x",
+      { gasPrice: 1600000008 }
     );
     console.log("Transfered Utils " + i + " TX:", tx.hash);
     const receipt = await tx.wait();

@@ -35,6 +35,9 @@ const POLYGON_MAINNET_RPC_URL =
 const BSC_TESTNET_RPC_URL =
   process.env.BSC_TESTNET_RPC_URL ||
   "https://polygon-mainnet.alchemyapi.io/v2/your-api-key";
+const OP_BNB_TESTNET_RPC_URL =
+  process.env.OP_BNB_TESTNET_RPC_URL ||
+  "https://polygon-mainnet.alchemyapi.io/v2/your-api-key";
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x";
 const MAIN_PRIVATE_KEY = process.env.MAIN_PRIVATE_KEY || "0x";
 
@@ -52,6 +55,8 @@ const MANTLE_TESTNET_API_KEY =
 const ARBITRUM_GOERLI_TESTNET_API_KEY =
   process.env.ARBITRUM_GOERLI_TESTNET_API_KEY || "Your polygonscan API key";
 const BSCSCAN_API_KEY =
+  process.env.BSCSCAN_API_KEY || "Your polygonscan API key";
+const NODE_REAL_API_KEY =
   process.env.BSCSCAN_API_KEY || "Your polygonscan API key";
 
 /** @type import('hardhat/config').HardhatUserConfig */
@@ -187,6 +192,14 @@ module.exports = {
       chainId: 97,
       timeout: 300000, // 300 seconds
     },
+    opBNBTestnet: {
+      url: OP_BNB_TESTNET_RPC_URL,
+      // accounts: [MAIN_PRIVATE_KEY],
+      accounts: [PRIVATE_KEY],
+      saveDeployments: true,
+      chainId: 5611,
+      timeout: 300000, // 300 seconds
+    },
   },
   etherscan: {
     // To list networks supported by default: npx hardhat verify --list-networks
@@ -204,6 +217,7 @@ module.exports = {
       opera: FANTOMSCAN_API_KEY, // fantom opera
       arbitrumGoerli: ARBITRUM_GOERLI_TESTNET_API_KEY,
       bscTestnet: BSCSCAN_API_KEY,
+      opBNBTestnet: NODE_REAL_API_KEY,
     },
     customChains: [
       {
@@ -220,6 +234,14 @@ module.exports = {
         urls: {
           apiURL: "https://explorer.testnet.mantle.xyz/api",
           browserURL: "https://explorer.testnet.mantle.xyz",
+        },
+      },
+      {
+        network: "opBNBTestnet",
+        chainId: 5611,
+        urls: {
+          apiURL: "https://opbnbscan.com/api",
+          browserURL: "https://opbnbscan.com/",
         },
       },
     ],

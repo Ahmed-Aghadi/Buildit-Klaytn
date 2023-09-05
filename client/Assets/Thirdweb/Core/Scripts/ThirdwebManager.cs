@@ -41,6 +41,7 @@ public class ThirdwebManager : MonoBehaviour
         new ChainData("sepolia", "11155111", null),
         new ChainData("mantle-testnet", "5001", null),
         new ChainData("arbitrum-goerli", "421613", null),
+        new ChainData("opbnb-testnet", "5611", null),
         new ChainData("binance-testnet", "97", null),
     };
 

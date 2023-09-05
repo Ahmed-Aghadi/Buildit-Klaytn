@@ -52,6 +52,16 @@ Website can also be used which is build for webgl and will works on both desktop
 | [Marketplace.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Marketplace.sol) | [0xB20CDCaF8636Efee0730Ac5fe37842afA13909e6](https://testnet.bscscan.com/address/0xB20CDCaF8636Efee0730Ac5fe37842afA13909e6) |
 | [Forwarder.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Forwarder.sol)     | [0xC07DdbA94611C33882612b8031b2a6AfB65ca545](https://testnet.bscscan.com/address/0xC07DdbA94611C33882612b8031b2a6AfB65ca545) |
 
+## Smart Contracts ( OPBNB Testnet )
+
+| Contract                                                                                                 | Explorer Link                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| [Map.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Map.sol)                 | [0xdf78d5a57dcff31ca18978b56760867010aebc2e](https://opbnb-testnet.bscscan.com/address/0xdf78d5a57dcff31ca18978b56760867010aebc2e) |
+| [Utils.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Utils.sol)             | [0x11da0f57086a19977e46b548b64166411d839a30](https://opbnb-testnet.bscscan.com/address/0x11da0f57086a19977e46b548b64166411d839a30) |
+| [Faucet.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Faucet.sol)           | [0x76cfdE04F691B93c9993Be24d5FE7667E7A8782C](https://opbnb-testnet.bscscan.com/address/0x76cfdE04F691B93c9993Be24d5FE7667E7A8782C) |
+| [Marketplace.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Marketplace.sol) | [0x489d47E592639Ba11107E84dd6CCA08F0892E27d](https://opbnb-testnet.bscscan.com/address/0x489d47E592639Ba11107E84dd6CCA08F0892E27d) |
+| [Forwarder.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Forwarder.sol)     | [0xCA34FF4068f042203087D475805c4DD8347cE958](https://opbnb-testnet.bscscan.com/address/0xCA34FF4068f042203087D475805c4DD8347cE958) |
+
 ## Table of Contents
 
 - [Inspiration](#inspiration)
