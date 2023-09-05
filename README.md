@@ -1,6 +1,56 @@
 BuildIt is a metaverse project developed for the hackathon. It provides users with the ability to own virtual land within a map, place items on the land they own, and even sell the land to other users. The land is represented as ERC721 tokens, while the items are represented as ERC1155 tokens. All interactions within the metaverse are secured by smart contracts.
 
+## Pre-requisites
+
+You should have `Unity`, `npm`, `forge` and `foundry` installed.
+
 ## Installation
+
+### Backend
+
+Go to `backend` folder and install dependencies
+
+```bash
+cd backend/
+npm install
+```
+
+To run the project:
+
+```bash
+npm run dev
+```
+
+Visit `localhost:3000` to run the backend api access point.
+
+### Unity Project
+
+Go to `client` folder.
+
+```bash
+cd client/
+```
+
+Open the `client` folder in Unity. Build the project and save build files in `frontend/public` directory.
+
+### Frontend
+
+Go to `frontend` folder and install dependencies
+
+```bash
+cd frontend/
+npm install
+```
+
+To run the project:
+
+```bash
+npm run dev
+```
+
+Visit `localhost:3000` to play the game.
+
+### Smart Contracts
 
 Go to `smart_contracts` folder and install foundry and hardhat.
 
