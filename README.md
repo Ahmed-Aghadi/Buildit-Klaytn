@@ -150,11 +150,12 @@ In marketplace listing, if seller owns an ENS account then it will display it so
 BuildIt was built using the following technologies and tools:
 
 - Unity: The game was developed using Unity and built for Webgl.
-- Smart Contracts: Four smart contracts were developed using Foundry and Hardhat:
+- Smart Contracts: Five smart contracts were developed using Foundry and Hardhat:
   - Map Contract: Responsible for the Lands in the Map, implemented as an ERC721 contract.
   - Utils Contract: Represents the items that can be placed on the land, implemented as an ERC1155 contract.
   - Faucet Contract: Allows users to obtain items for free initially. It is funded to provide items for judges and other participants.
   - Marketplace Contract: Facilitates land sales through direct listings and auctions.
+  - Forwarder Contract: As all contracts implements ERC2771 context, Forwarder is used to provide gasless transactions for users.
 - Map Size: The map size is determined in the smart contract, allowing the deployment of multiple maps with different sizes. The current deployment consists of a map with a size of 15 by 15 tiles, where each land is a 5 by 5 tile.
 - Item Minting: Three items are minted in the Utils contract: road, house, and special item.
 - Wallet Integration: Users can connect their wallets, such as Metamask, Coinbase, and WalletConnect, to interact with the metaverse.
