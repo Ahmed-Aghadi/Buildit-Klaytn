@@ -1,0 +1,2092 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "AlreadyClaimed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "AmountDoesNotMatchMsgValue",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "DestinationNetworkInvalid",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "EtherTransferFailed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "GlobalExitRootInvalid",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidSmtProof",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "MessageFailed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "MsgValueNotZero",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NotValidAmount",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NotValidOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NotValidSignature",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NotValidSpender",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "OnlyPolygonZkEVM",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "activateEmergencyState",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "destinationNetwork",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "destinationAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "forceUpdateGlobalExitRoot",
+          "type": "bool"
+        },
+        {
+          "internalType": "bytes",
+          "name": "permitData",
+          "type": "bytes"
+        }
+      ],
+      "name": "bridgeAsset",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "destinationNetwork",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "destinationAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "forceUpdateGlobalExitRoot",
+          "type": "bool"
+        },
+        {
+          "internalType": "bytes",
+          "name": "metadata",
+          "type": "bytes"
+        }
+      ],
+      "name": "bridgeMessage",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32[32]",
+          "name": "smtProof",
+          "type": "bytes32[32]"
+        },
+        {
+          "internalType": "uint32",
+          "name": "index",
+          "type": "uint32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "mainnetExitRoot",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "rollupExitRoot",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "originNetwork",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "originTokenAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "destinationNetwork",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "destinationAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "metadata",
+          "type": "bytes"
+        }
+      ],
+      "name": "claimAsset",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32[32]",
+          "name": "smtProof",
+          "type": "bytes32[32]"
+        },
+        {
+          "internalType": "uint32",
+          "name": "index",
+          "type": "uint32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "mainnetExitRoot",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "rollupExitRoot",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "originNetwork",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "originAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "destinationNetwork",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "destinationAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "metadata",
+          "type": "bytes"
+        }
+      ],
+      "name": "claimMessage",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "deactivateEmergencyState",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "networkID",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "updateGlobalExitRoot",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "activateEmergencyState()": "2072f6c5",
+    "bridgeAsset(uint32,address,uint256,address,bool,bytes)": "cd586579",
+    "bridgeMessage(uint32,address,bool,bytes)": "240ff378",
+    "claimAsset(bytes32[32],uint32,bytes32,bytes32,uint32,address,uint32,address,uint256,bytes)": "2cffd02e",
+    "claimMessage(bytes32[32],uint32,bytes32,bytes32,uint32,address,uint32,address,uint256,bytes)": "2d2c9d94",
+    "deactivateEmergencyState()": "dbc16976",
+    "networkID()": "bab161bf",
+    "updateGlobalExitRoot()": "79e2cf97"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"AlreadyClaimed\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"AmountDoesNotMatchMsgValue\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"DestinationNetworkInvalid\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"EtherTransferFailed\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"GlobalExitRootInvalid\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidSmtProof\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"MessageFailed\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"MsgValueNotZero\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotValidAmount\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotValidOwner\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotValidSignature\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NotValidSpender\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OnlyPolygonZkEVM\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"activateEmergencyState\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"destinationNetwork\",\"type\":\"uint32\"},{\"internalType\":\"address\",\"name\":\"destinationAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"forceUpdateGlobalExitRoot\",\"type\":\"bool\"},{\"internalType\":\"bytes\",\"name\":\"permitData\",\"type\":\"bytes\"}],\"name\":\"bridgeAsset\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"destinationNetwork\",\"type\":\"uint32\"},{\"internalType\":\"address\",\"name\":\"destinationAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"forceUpdateGlobalExitRoot\",\"type\":\"bool\"},{\"internalType\":\"bytes\",\"name\":\"metadata\",\"type\":\"bytes\"}],\"name\":\"bridgeMessage\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32[32]\",\"name\":\"smtProof\",\"type\":\"bytes32[32]\"},{\"internalType\":\"uint32\",\"name\":\"index\",\"type\":\"uint32\"},{\"internalType\":\"bytes32\",\"name\":\"mainnetExitRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"rollupExitRoot\",\"type\":\"bytes32\"},{\"internalType\":\"uint32\",\"name\":\"originNetwork\",\"type\":\"uint32\"},{\"internalType\":\"address\",\"name\":\"originTokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"destinationNetwork\",\"type\":\"uint32\"},{\"internalType\":\"address\",\"name\":\"destinationAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"metadata\",\"type\":\"bytes\"}],\"name\":\"claimAsset\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32[32]\",\"name\":\"smtProof\",\"type\":\"bytes32[32]\"},{\"internalType\":\"uint32\",\"name\":\"index\",\"type\":\"uint32\"},{\"internalType\":\"bytes32\",\"name\":\"mainnetExitRoot\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"rollupExitRoot\",\"type\":\"bytes32\"},{\"internalType\":\"uint32\",\"name\":\"originNetwork\",\"type\":\"uint32\"},{\"internalType\":\"address\",\"name\":\"originAddress\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"destinationNetwork\",\"type\":\"uint32\"},{\"internalType\":\"address\",\"name\":\"destinationAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"metadata\",\"type\":\"bytes\"}],\"name\":\"claimMessage\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"deactivateEmergencyState\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"networkID\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"updateGlobalExitRoot\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"errors\":{\"AlreadyClaimed()\":[{\"details\":\"Thrown when an index is already claimed\"}],\"AmountDoesNotMatchMsgValue()\":[{\"details\":\"Thrown when the amount does not match msg.value\"}],\"DestinationNetworkInvalid()\":[{\"details\":\"Thrown when the destination network is invalid\"}],\"EtherTransferFailed()\":[{\"details\":\"Thrown when the Ether transfer on claimAsset fails\"}],\"GlobalExitRootInvalid()\":[{\"details\":\"Thrown when the global exit root does not exist\"}],\"InvalidSmtProof()\":[{\"details\":\"Thrown when the smt proof does not match\"}],\"MessageFailed()\":[{\"details\":\"Thrown when the message transaction on claimMessage fails\"}],\"MsgValueNotZero()\":[{\"details\":\"Thrown when user is bridging tokens and is also sending a value\"}],\"NotValidAmount()\":[{\"details\":\"Thrown when the amount of the permit does not match\"}],\"NotValidOwner()\":[{\"details\":\"Thrown when the owner of permit does not match the sender\"}],\"NotValidSignature()\":[{\"details\":\"Thrown when the permit data contains an invalid signature\"}],\"NotValidSpender()\":[{\"details\":\"Thrown when the spender of the permit does not match this contract address\"}],\"OnlyPolygonZkEVM()\":[{\"details\":\"Thrown when sender is not the PolygonZkEVM address\"}]},\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/polygonZKEVMContracts/interfaces/IPolygonZkEVMBridge.sol\":\"IPolygonZkEVMBridge\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@chainlink/=node_modules/@chainlink/\",\":chainlink-brownie-contracts/=lib/chainlink-brownie-contracts/\",\":chainlink/=lib/chainlink-brownie-contracts/contracts/src/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/\",\":openzeppelin/=lib/openzeppelin-contracts/contracts/\",\":solmate/=lib/solmate/src/\"]},\"sources\":{\"src/polygonZKEVMContracts/interfaces/IPolygonZkEVMBridge.sol\":{\"keccak256\":\"0x11b3a03d1707ebc3f36703a367afe8d2e63f74115127ac7527e2c0a1c239448d\",\"license\":\"AGPL-3.0\",\"urls\":[\"bzz-raw://b2d78814de930487ec48ce57a4b4ebc4d0722f54270a2bb3b00b68f9992ff763\",\"dweb:/ipfs/QmWXAx189M85czAgaheoLvUjA75kAGeF2pNw2DuVyCWQcV\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.19+commit.7dd6d404"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "AlreadyClaimed"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "AmountDoesNotMatchMsgValue"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "DestinationNetworkInvalid"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "EtherTransferFailed"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "GlobalExitRootInvalid"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "InvalidSmtProof"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "MessageFailed"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "MsgValueNotZero"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "NotValidAmount"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "NotValidOwner"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "NotValidSignature"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "NotValidSpender"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "OnlyPolygonZkEVM"
+        },
+        {
+          "inputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "activateEmergencyState"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint32",
+              "name": "destinationNetwork",
+              "type": "uint32"
+            },
+            {
+              "internalType": "address",
+              "name": "destinationAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address"
+            },
+            {
+              "internalType": "bool",
+              "name": "forceUpdateGlobalExitRoot",
+              "type": "bool"
+            },
+            {
+              "internalType": "bytes",
+              "name": "permitData",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "payable",
+          "type": "function",
+          "name": "bridgeAsset"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint32",
+              "name": "destinationNetwork",
+              "type": "uint32"
+            },
+            {
+              "internalType": "address",
+              "name": "destinationAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "bool",
+              "name": "forceUpdateGlobalExitRoot",
+              "type": "bool"
+            },
+            {
+              "internalType": "bytes",
+              "name": "metadata",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "payable",
+          "type": "function",
+          "name": "bridgeMessage"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32[32]",
+              "name": "smtProof",
+              "type": "bytes32[32]"
+            },
+            {
+              "internalType": "uint32",
+              "name": "index",
+              "type": "uint32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "mainnetExitRoot",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "rollupExitRoot",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "originNetwork",
+              "type": "uint32"
+            },
+            {
+              "internalType": "address",
+              "name": "originTokenAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint32",
+              "name": "destinationNetwork",
+              "type": "uint32"
+            },
+            {
+              "internalType": "address",
+              "name": "destinationAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bytes",
+              "name": "metadata",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "claimAsset"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32[32]",
+              "name": "smtProof",
+              "type": "bytes32[32]"
+            },
+            {
+              "internalType": "uint32",
+              "name": "index",
+              "type": "uint32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "mainnetExitRoot",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "rollupExitRoot",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "originNetwork",
+              "type": "uint32"
+            },
+            {
+              "internalType": "address",
+              "name": "originAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint32",
+              "name": "destinationNetwork",
+              "type": "uint32"
+            },
+            {
+              "internalType": "address",
+              "name": "destinationAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bytes",
+              "name": "metadata",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "claimMessage"
+        },
+        {
+          "inputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "deactivateEmergencyState"
+        },
+        {
+          "inputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "networkID",
+          "outputs": [
+            {
+              "internalType": "uint32",
+              "name": "",
+              "type": "uint32"
+            }
+          ]
+        },
+        {
+          "inputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "updateGlobalExitRoot"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@chainlink/=node_modules/@chainlink/",
+        ":chainlink-brownie-contracts/=lib/chainlink-brownie-contracts/",
+        ":chainlink/=lib/chainlink-brownie-contracts/contracts/src/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
+        ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+        ":forge-std/=lib/forge-std/src/",
+        ":openzeppelin-contracts/=lib/openzeppelin-contracts/",
+        ":openzeppelin/=lib/openzeppelin-contracts/contracts/",
+        ":solmate/=lib/solmate/src/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "src/polygonZKEVMContracts/interfaces/IPolygonZkEVMBridge.sol": "IPolygonZkEVMBridge"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "src/polygonZKEVMContracts/interfaces/IPolygonZkEVMBridge.sol": {
+        "keccak256": "0x11b3a03d1707ebc3f36703a367afe8d2e63f74115127ac7527e2c0a1c239448d",
+        "urls": [
+          "bzz-raw://b2d78814de930487ec48ce57a4b4ebc4d0722f54270a2bb3b00b68f9992ff763",
+          "dweb:/ipfs/QmWXAx189M85czAgaheoLvUjA75kAGeF2pNw2DuVyCWQcV"
+        ],
+        "license": "AGPL-3.0"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "src/polygonZKEVMContracts/interfaces/IPolygonZkEVMBridge.sol",
+    "id": 10660,
+    "exportedSymbols": {
+      "IPolygonZkEVMBridge": [
+        10659
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "38:2890:44",
+    "nodes": [
+      {
+        "id": 10529,
+        "nodeType": "PragmaDirective",
+        "src": "38:24:44",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".13"
+        ]
+      },
+      {
+        "id": 10659,
+        "nodeType": "ContractDefinition",
+        "src": "64:2863:44",
+        "nodes": [
+          {
+            "id": 10532,
+            "nodeType": "ErrorDefinition",
+            "src": "179:25:44",
+            "nodes": [],
+            "documentation": {
+              "id": 10530,
+              "nodeType": "StructuredDocumentation",
+              "src": "100:74:44",
+              "text": " @dev Thrown when sender is not the PolygonZkEVM address"
+            },
+            "errorSelector": "e2e8106b",
+            "name": "OnlyPolygonZkEVM",
+            "nameLocation": "185:16:44",
+            "parameters": {
+              "id": 10531,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "201:2:44"
+            }
+          },
+          {
+            "id": 10535,
+            "nodeType": "ErrorDefinition",
+            "src": "285:34:44",
+            "nodes": [],
+            "documentation": {
+              "id": 10533,
+              "nodeType": "StructuredDocumentation",
+              "src": "210:70:44",
+              "text": " @dev Thrown when the destination network is invalid"
+            },
+            "errorSelector": "0595ea2e",
+            "name": "DestinationNetworkInvalid",
+            "nameLocation": "291:25:44",
+            "parameters": {
+              "id": 10534,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "316:2:44"
+            }
+          },
+          {
+            "id": 10538,
+            "nodeType": "ErrorDefinition",
+            "src": "401:35:44",
+            "nodes": [],
+            "documentation": {
+              "id": 10536,
+              "nodeType": "StructuredDocumentation",
+              "src": "325:71:44",
+              "text": " @dev Thrown when the amount does not match msg.value"
+            },
+            "errorSelector": "b89240f5",
+            "name": "AmountDoesNotMatchMsgValue",
+            "nameLocation": "407:26:44",
+            "parameters": {
+              "id": 10537,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "433:2:44"
+            }
+          },
+          {
+            "id": 10541,
+            "nodeType": "ErrorDefinition",
+            "src": "534:24:44",
+            "nodes": [],
+            "documentation": {
+              "id": 10539,
+              "nodeType": "StructuredDocumentation",
+              "src": "442:87:44",
+              "text": " @dev Thrown when user is bridging tokens and is also sending a value"
+            },
+            "errorSelector": "798ee6f1",
+            "name": "MsgValueNotZero",
+            "nameLocation": "540:15:44",
+            "parameters": {
+              "id": 10540,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "555:2:44"
+            }
+          },
+          {
+            "id": 10544,
+            "nodeType": "ErrorDefinition",
+            "src": "643:28:44",
+            "nodes": [],
+            "documentation": {
+              "id": 10542,
+              "nodeType": "StructuredDocumentation",
+              "src": "564:74:44",
+              "text": " @dev Thrown when the Ether transfer on claimAsset fails"
+            },
+            "errorSelector": "6747a288",
+            "name": "EtherTransferFailed",
+            "nameLocation": "649:19:44",
+            "parameters": {
+              "id": 10543,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "668:2:44"
+            }
+          },
+          {
+            "id": 10547,
+            "nodeType": "ErrorDefinition",
+            "src": "763:22:44",
+            "nodes": [],
+            "documentation": {
+              "id": 10545,
+              "nodeType": "StructuredDocumentation",
+              "src": "677:81:44",
+              "text": " @dev Thrown when the message transaction on claimMessage fails"
+            },
+            "errorSelector": "37e391c3",
+            "name": "MessageFailed",
+            "nameLocation": "769:13:44",
+            "parameters": {
+              "id": 10546,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "782:2:44"
+            }
+          },
+          {
+            "id": 10550,
+            "nodeType": "ErrorDefinition",
+            "src": "867:30:44",
+            "nodes": [],
+            "documentation": {
+              "id": 10548,
+              "nodeType": "StructuredDocumentation",
+              "src": "791:71:44",
+              "text": " @dev Thrown when the global exit root does not exist"
+            },
+            "errorSelector": "002f6fad",
+            "name": "GlobalExitRootInvalid",
+            "nameLocation": "873:21:44",
+            "parameters": {
+              "id": 10549,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "894:2:44"
+            }
+          },
+          {
+            "id": 10553,
+            "nodeType": "ErrorDefinition",
+            "src": "972:24:44",
+            "nodes": [],
+            "documentation": {
+              "id": 10551,
+              "nodeType": "StructuredDocumentation",
+              "src": "903:64:44",
+              "text": " @dev Thrown when the smt proof does not match"
+            },
+            "errorSelector": "e0417cec",
+            "name": "InvalidSmtProof",
+            "nameLocation": "978:15:44",
+            "parameters": {
+              "id": 10552,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "993:2:44"
+            }
+          },
+          {
+            "id": 10556,
+            "nodeType": "ErrorDefinition",
+            "src": "1070:23:44",
+            "nodes": [],
+            "documentation": {
+              "id": 10554,
+              "nodeType": "StructuredDocumentation",
+              "src": "1002:63:44",
+              "text": " @dev Thrown when an index is already claimed"
+            },
+            "errorSelector": "646cf558",
+            "name": "AlreadyClaimed",
+            "nameLocation": "1076:14:44",
+            "parameters": {
+              "id": 10555,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1090:2:44"
+            }
+          },
+          {
+            "id": 10559,
+            "nodeType": "ErrorDefinition",
+            "src": "1185:22:44",
+            "nodes": [],
+            "documentation": {
+              "id": 10557,
+              "nodeType": "StructuredDocumentation",
+              "src": "1099:81:44",
+              "text": " @dev Thrown when the owner of permit does not match the sender"
+            },
+            "errorSelector": "912ecce7",
+            "name": "NotValidOwner",
+            "nameLocation": "1191:13:44",
+            "parameters": {
+              "id": 10558,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1204:2:44"
+            }
+          },
+          {
+            "id": 10562,
+            "nodeType": "ErrorDefinition",
+            "src": "1316:24:44",
+            "nodes": [],
+            "documentation": {
+              "id": 10560,
+              "nodeType": "StructuredDocumentation",
+              "src": "1213:98:44",
+              "text": " @dev Thrown when the spender of the permit does not match this contract address"
+            },
+            "errorSelector": "750643af",
+            "name": "NotValidSpender",
+            "nameLocation": "1322:15:44",
+            "parameters": {
+              "id": 10561,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1337:2:44"
+            }
+          },
+          {
+            "id": 10565,
+            "nodeType": "ErrorDefinition",
+            "src": "1426:23:44",
+            "nodes": [],
+            "documentation": {
+              "id": 10563,
+              "nodeType": "StructuredDocumentation",
+              "src": "1346:75:44",
+              "text": " @dev Thrown when the amount of the permit does not match"
+            },
+            "errorSelector": "03fffc4b",
+            "name": "NotValidAmount",
+            "nameLocation": "1432:14:44",
+            "parameters": {
+              "id": 10564,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1446:2:44"
+            }
+          },
+          {
+            "id": 10568,
+            "nodeType": "ErrorDefinition",
+            "src": "1541:26:44",
+            "nodes": [],
+            "documentation": {
+              "id": 10566,
+              "nodeType": "StructuredDocumentation",
+              "src": "1455:81:44",
+              "text": " @dev Thrown when the permit data contains an invalid signature"
+            },
+            "errorSelector": "e282c0ba",
+            "name": "NotValidSignature",
+            "nameLocation": "1547:17:44",
+            "parameters": {
+              "id": 10567,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1564:2:44"
+            }
+          },
+          {
+            "id": 10583,
+            "nodeType": "FunctionDefinition",
+            "src": "1573:237:44",
+            "nodes": [],
+            "functionSelector": "cd586579",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "bridgeAsset",
+            "nameLocation": "1582:11:44",
+            "parameters": {
+              "id": 10581,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10570,
+                  "mutability": "mutable",
+                  "name": "destinationNetwork",
+                  "nameLocation": "1610:18:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10583,
+                  "src": "1603:25:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 10569,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1603:6:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10572,
+                  "mutability": "mutable",
+                  "name": "destinationAddress",
+                  "nameLocation": "1646:18:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10583,
+                  "src": "1638:26:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10571,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1638:7:44",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10574,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "1682:6:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10583,
+                  "src": "1674:14:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10573,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1674:7:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10576,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nameLocation": "1706:5:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10583,
+                  "src": "1698:13:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10575,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1698:7:44",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10578,
+                  "mutability": "mutable",
+                  "name": "forceUpdateGlobalExitRoot",
+                  "nameLocation": "1726:25:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10583,
+                  "src": "1721:30:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 10577,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1721:4:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10580,
+                  "mutability": "mutable",
+                  "name": "permitData",
+                  "nameLocation": "1776:10:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10583,
+                  "src": "1761:25:44",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10579,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1761:5:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1593:199:44"
+            },
+            "returnParameters": {
+              "id": 10582,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1809:0:44"
+            },
+            "scope": 10659,
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 10594,
+            "nodeType": "FunctionDefinition",
+            "src": "1816:190:44",
+            "nodes": [],
+            "functionSelector": "240ff378",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "bridgeMessage",
+            "nameLocation": "1825:13:44",
+            "parameters": {
+              "id": 10592,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10585,
+                  "mutability": "mutable",
+                  "name": "destinationNetwork",
+                  "nameLocation": "1855:18:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10594,
+                  "src": "1848:25:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 10584,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1848:6:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10587,
+                  "mutability": "mutable",
+                  "name": "destinationAddress",
+                  "nameLocation": "1891:18:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10594,
+                  "src": "1883:26:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10586,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1883:7:44",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10589,
+                  "mutability": "mutable",
+                  "name": "forceUpdateGlobalExitRoot",
+                  "nameLocation": "1924:25:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10594,
+                  "src": "1919:30:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 10588,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1919:4:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10591,
+                  "mutability": "mutable",
+                  "name": "metadata",
+                  "nameLocation": "1974:8:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10594,
+                  "src": "1959:23:44",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10590,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1959:5:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1838:150:44"
+            },
+            "returnParameters": {
+              "id": 10593,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2005:0:44"
+            },
+            "scope": 10659,
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 10619,
+            "nodeType": "FunctionDefinition",
+            "src": "2012:355:44",
+            "nodes": [],
+            "functionSelector": "2cffd02e",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "claimAsset",
+            "nameLocation": "2021:10:44",
+            "parameters": {
+              "id": 10617,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10598,
+                  "mutability": "mutable",
+                  "name": "smtProof",
+                  "nameLocation": "2062:8:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10619,
+                  "src": "2041:29:44",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes32_$32_calldata_ptr",
+                    "typeString": "bytes32[32]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 10595,
+                      "name": "bytes32",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "2041:7:44",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "id": 10597,
+                    "length": {
+                      "hexValue": "3332",
+                      "id": 10596,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "2049:2:44",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_32_by_1",
+                        "typeString": "int_const 32"
+                      },
+                      "value": "32"
+                    },
+                    "nodeType": "ArrayTypeName",
+                    "src": "2041:11:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes32_$32_storage_ptr",
+                      "typeString": "bytes32[32]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10600,
+                  "mutability": "mutable",
+                  "name": "index",
+                  "nameLocation": "2087:5:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10619,
+                  "src": "2080:12:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 10599,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2080:6:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10602,
+                  "mutability": "mutable",
+                  "name": "mainnetExitRoot",
+                  "nameLocation": "2110:15:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10619,
+                  "src": "2102:23:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 10601,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2102:7:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10604,
+                  "mutability": "mutable",
+                  "name": "rollupExitRoot",
+                  "nameLocation": "2143:14:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10619,
+                  "src": "2135:22:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 10603,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2135:7:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10606,
+                  "mutability": "mutable",
+                  "name": "originNetwork",
+                  "nameLocation": "2174:13:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10619,
+                  "src": "2167:20:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 10605,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2167:6:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10608,
+                  "mutability": "mutable",
+                  "name": "originTokenAddress",
+                  "nameLocation": "2205:18:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10619,
+                  "src": "2197:26:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10607,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2197:7:44",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10610,
+                  "mutability": "mutable",
+                  "name": "destinationNetwork",
+                  "nameLocation": "2240:18:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10619,
+                  "src": "2233:25:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 10609,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2233:6:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10612,
+                  "mutability": "mutable",
+                  "name": "destinationAddress",
+                  "nameLocation": "2276:18:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10619,
+                  "src": "2268:26:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10611,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2268:7:44",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10614,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "2312:6:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10619,
+                  "src": "2304:14:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10613,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2304:7:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10616,
+                  "mutability": "mutable",
+                  "name": "metadata",
+                  "nameLocation": "2343:8:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10619,
+                  "src": "2328:23:44",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10615,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2328:5:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2031:326:44"
+            },
+            "returnParameters": {
+              "id": 10618,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2366:0:44"
+            },
+            "scope": 10659,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 10644,
+            "nodeType": "FunctionDefinition",
+            "src": "2373:352:44",
+            "nodes": [],
+            "functionSelector": "2d2c9d94",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "claimMessage",
+            "nameLocation": "2382:12:44",
+            "parameters": {
+              "id": 10642,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10623,
+                  "mutability": "mutable",
+                  "name": "smtProof",
+                  "nameLocation": "2425:8:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10644,
+                  "src": "2404:29:44",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes32_$32_calldata_ptr",
+                    "typeString": "bytes32[32]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 10620,
+                      "name": "bytes32",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "2404:7:44",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "id": 10622,
+                    "length": {
+                      "hexValue": "3332",
+                      "id": 10621,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "2412:2:44",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_32_by_1",
+                        "typeString": "int_const 32"
+                      },
+                      "value": "32"
+                    },
+                    "nodeType": "ArrayTypeName",
+                    "src": "2404:11:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes32_$32_storage_ptr",
+                      "typeString": "bytes32[32]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10625,
+                  "mutability": "mutable",
+                  "name": "index",
+                  "nameLocation": "2450:5:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10644,
+                  "src": "2443:12:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 10624,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2443:6:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10627,
+                  "mutability": "mutable",
+                  "name": "mainnetExitRoot",
+                  "nameLocation": "2473:15:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10644,
+                  "src": "2465:23:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 10626,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2465:7:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10629,
+                  "mutability": "mutable",
+                  "name": "rollupExitRoot",
+                  "nameLocation": "2506:14:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10644,
+                  "src": "2498:22:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 10628,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2498:7:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10631,
+                  "mutability": "mutable",
+                  "name": "originNetwork",
+                  "nameLocation": "2537:13:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10644,
+                  "src": "2530:20:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 10630,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2530:6:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10633,
+                  "mutability": "mutable",
+                  "name": "originAddress",
+                  "nameLocation": "2568:13:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10644,
+                  "src": "2560:21:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10632,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2560:7:44",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10635,
+                  "mutability": "mutable",
+                  "name": "destinationNetwork",
+                  "nameLocation": "2598:18:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10644,
+                  "src": "2591:25:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 10634,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2591:6:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10637,
+                  "mutability": "mutable",
+                  "name": "destinationAddress",
+                  "nameLocation": "2634:18:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10644,
+                  "src": "2626:26:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10636,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2626:7:44",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10639,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "2670:6:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10644,
+                  "src": "2662:14:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10638,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2662:7:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10641,
+                  "mutability": "mutable",
+                  "name": "metadata",
+                  "nameLocation": "2701:8:44",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10644,
+                  "src": "2686:23:44",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10640,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2686:5:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2394:321:44"
+            },
+            "returnParameters": {
+              "id": 10643,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2724:0:44"
+            },
+            "scope": 10659,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 10647,
+            "nodeType": "FunctionDefinition",
+            "src": "2731:41:44",
+            "nodes": [],
+            "functionSelector": "79e2cf97",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "updateGlobalExitRoot",
+            "nameLocation": "2740:20:44",
+            "parameters": {
+              "id": 10645,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2760:2:44"
+            },
+            "returnParameters": {
+              "id": 10646,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2771:0:44"
+            },
+            "scope": 10659,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 10650,
+            "nodeType": "FunctionDefinition",
+            "src": "2778:43:44",
+            "nodes": [],
+            "functionSelector": "2072f6c5",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "activateEmergencyState",
+            "nameLocation": "2787:22:44",
+            "parameters": {
+              "id": 10648,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2809:2:44"
+            },
+            "returnParameters": {
+              "id": 10649,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2820:0:44"
+            },
+            "scope": 10659,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 10653,
+            "nodeType": "FunctionDefinition",
+            "src": "2827:45:44",
+            "nodes": [],
+            "functionSelector": "dbc16976",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "deactivateEmergencyState",
+            "nameLocation": "2836:24:44",
+            "parameters": {
+              "id": 10651,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2860:2:44"
+            },
+            "returnParameters": {
+              "id": 10652,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2871:0:44"
+            },
+            "scope": 10659,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 10658,
+            "nodeType": "FunctionDefinition",
+            "src": "2878:47:44",
+            "nodes": [],
+            "functionSelector": "bab161bf",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "networkID",
+            "nameLocation": "2887:9:44",
+            "parameters": {
+              "id": 10654,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2896:2:44"
+            },
+            "returnParameters": {
+              "id": 10657,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10656,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10658,
+                  "src": "2917:6:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 10655,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2917:6:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2916:8:44"
+            },
+            "scope": 10659,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IPolygonZkEVMBridge",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          10659
+        ],
+        "name": "IPolygonZkEVMBridge",
+        "nameLocation": "74:19:44",
+        "scope": 10660,
+        "usedErrors": [
+          10532,
+          10535,
+          10538,
+          10541,
+          10544,
+          10547,
+          10550,
+          10553,
+          10556,
+          10559,
+          10562,
+          10565,
+          10568
+        ]
+      }
+    ],
+    "license": "AGPL-3.0"
+  },
+  "id": 44
+}

@@ -1,0 +1,356 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "OnlyAllowedContracts",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "globalExitRootNum",
+          "type": "bytes32"
+        }
+      ],
+      "name": "globalExitRootMap",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "newRollupExitRoot",
+          "type": "bytes32"
+        }
+      ],
+      "name": "updateExitRoot",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "globalExitRootMap(bytes32)": "257b3632",
+    "updateExitRoot(bytes32)": "33d6247d"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"OnlyAllowedContracts\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"globalExitRootNum\",\"type\":\"bytes32\"}],\"name\":\"globalExitRootMap\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"newRollupExitRoot\",\"type\":\"bytes32\"}],\"name\":\"updateExitRoot\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"errors\":{\"OnlyAllowedContracts()\":[{\"details\":\"Thrown when the caller is not the allowed contracts\"}]},\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/polygonZKEVMContracts/interfaces/IBasePolygonZkEVMGlobalExitRoot.sol\":\"IBasePolygonZkEVMGlobalExitRoot\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":chainlink-brownie-contracts/=lib/chainlink-brownie-contracts/\",\":chainlink/=lib/chainlink-brownie-contracts/contracts/src/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/\",\":openzeppelin/=lib/openzeppelin-contracts/contracts/\",\":solmate/=lib/solmate/src/\"],\"viaIR\":true},\"sources\":{\"src/polygonZKEVMContracts/interfaces/IBasePolygonZkEVMGlobalExitRoot.sol\":{\"keccak256\":\"0x67e2b52f58ce699e4bdbe664861deb4bde2e56609ca0a91586f5cc7a5b059450\",\"license\":\"AGPL-3.0\",\"urls\":[\"bzz-raw://071fd7d0e40298d9f90749ccc88be2e88658a1dbac0a05dbf92e39582127d670\",\"dweb:/ipfs/QmY6XCyzAf5WCQeEU4WvKDHasdCht1JAyYRZNB2kTL4Ks1\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.17+commit.8df45f5f"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "OnlyAllowedContracts"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "globalExitRootNum",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "globalExitRootMap",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "newRollupExitRoot",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "updateExitRoot"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":chainlink-brownie-contracts/=lib/chainlink-brownie-contracts/",
+        ":chainlink/=lib/chainlink-brownie-contracts/contracts/src/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
+        ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+        ":forge-std/=lib/forge-std/src/",
+        ":openzeppelin-contracts/=lib/openzeppelin-contracts/",
+        ":openzeppelin/=lib/openzeppelin-contracts/contracts/",
+        ":solmate/=lib/solmate/src/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "src/polygonZKEVMContracts/interfaces/IBasePolygonZkEVMGlobalExitRoot.sol": "IBasePolygonZkEVMGlobalExitRoot"
+      },
+      "libraries": {},
+      "viaIR": true
+    },
+    "sources": {
+      "src/polygonZKEVMContracts/interfaces/IBasePolygonZkEVMGlobalExitRoot.sol": {
+        "keccak256": "0x67e2b52f58ce699e4bdbe664861deb4bde2e56609ca0a91586f5cc7a5b059450",
+        "urls": [
+          "bzz-raw://071fd7d0e40298d9f90749ccc88be2e88658a1dbac0a05dbf92e39582127d670",
+          "dweb:/ipfs/QmY6XCyzAf5WCQeEU4WvKDHasdCht1JAyYRZNB2kTL4Ks1"
+        ],
+        "license": "AGPL-3.0"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "src/polygonZKEVMContracts/interfaces/IBasePolygonZkEVMGlobalExitRoot.sol",
+    "id": 39800,
+    "exportedSymbols": {
+      "IBasePolygonZkEVMGlobalExitRoot": [
+        39799
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "38:352:60",
+    "nodes": [
+      {
+        "id": 39783,
+        "nodeType": "PragmaDirective",
+        "src": "38:23:60",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "0.8",
+          ".17"
+        ]
+      },
+      {
+        "id": 39799,
+        "nodeType": "ContractDefinition",
+        "src": "63:326:60",
+        "nodes": [
+          {
+            "id": 39786,
+            "nodeType": "ErrorDefinition",
+            "src": "191:29:60",
+            "nodes": [],
+            "documentation": {
+              "id": 39784,
+              "nodeType": "StructuredDocumentation",
+              "src": "111:75:60",
+              "text": " @dev Thrown when the caller is not the allowed contracts"
+            },
+            "errorSelector": "b49365dd",
+            "name": "OnlyAllowedContracts",
+            "nameLocation": "197:20:60",
+            "parameters": {
+              "id": 39785,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "217:2:60"
+            }
+          },
+          {
+            "id": 39791,
+            "nodeType": "FunctionDefinition",
+            "src": "226:60:60",
+            "nodes": [],
+            "functionSelector": "33d6247d",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "updateExitRoot",
+            "nameLocation": "235:14:60",
+            "parameters": {
+              "id": 39789,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 39788,
+                  "mutability": "mutable",
+                  "name": "newRollupExitRoot",
+                  "nameLocation": "258:17:60",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 39791,
+                  "src": "250:25:60",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 39787,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "250:7:60",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "249:27:60"
+            },
+            "returnParameters": {
+              "id": 39790,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "285:0:60"
+            },
+            "scope": 39799,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 39798,
+            "nodeType": "FunctionDefinition",
+            "src": "292:95:60",
+            "nodes": [],
+            "functionSelector": "257b3632",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "globalExitRootMap",
+            "nameLocation": "301:17:60",
+            "parameters": {
+              "id": 39794,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 39793,
+                  "mutability": "mutable",
+                  "name": "globalExitRootNum",
+                  "nameLocation": "336:17:60",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 39798,
+                  "src": "328:25:60",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 39792,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "328:7:60",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "318:41:60"
+            },
+            "returnParameters": {
+              "id": 39797,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 39796,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 39798,
+                  "src": "378:7:60",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 39795,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "378:7:60",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "377:9:60"
+            },
+            "scope": 39799,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IBasePolygonZkEVMGlobalExitRoot",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          39799
+        ],
+        "name": "IBasePolygonZkEVMGlobalExitRoot",
+        "nameLocation": "73:31:60",
+        "scope": 39800,
+        "usedErrors": [
+          39786
+        ]
+      }
+    ],
+    "license": "AGPL-3.0"
+  },
+  "id": 60
+}

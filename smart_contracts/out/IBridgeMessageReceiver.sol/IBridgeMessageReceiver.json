@@ -1,0 +1,282 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "originAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "originNetwork",
+          "type": "uint32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "onMessageReceived",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "onMessageReceived(address,uint32,bytes)": "1806b5f2"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"originAddress\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"originNetwork\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"onMessageReceived\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Define interface for PolygonZkEVM Bridge message receiver\",\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/polygonZKEVMContracts/interfaces/IBridgeMessageReceiver.sol\":\"IBridgeMessageReceiver\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@chainlink/=node_modules/@chainlink/\",\":chainlink-brownie-contracts/=lib/chainlink-brownie-contracts/\",\":chainlink/=lib/chainlink-brownie-contracts/contracts/src/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/\",\":openzeppelin/=lib/openzeppelin-contracts/contracts/\",\":solmate/=lib/solmate/src/\"]},\"sources\":{\"src/polygonZKEVMContracts/interfaces/IBridgeMessageReceiver.sol\":{\"keccak256\":\"0x481ee44727ea006426fd866422c50c00421283be057a6809654371712386c8a5\",\"license\":\"AGPL-3.0\",\"urls\":[\"bzz-raw://0979bea65a019b4f493013635038f8cd62ffbeac493e162afe7ca974d613bd6a\",\"dweb:/ipfs/QmVdMYsdjcwStwjo1g5sij7qZjzQyLn5SJpivqLrnQihNe\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.19+commit.7dd6d404"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "originAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint32",
+              "name": "originNetwork",
+              "type": "uint32"
+            },
+            {
+              "internalType": "bytes",
+              "name": "data",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "payable",
+          "type": "function",
+          "name": "onMessageReceived"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@chainlink/=node_modules/@chainlink/",
+        ":chainlink-brownie-contracts/=lib/chainlink-brownie-contracts/",
+        ":chainlink/=lib/chainlink-brownie-contracts/contracts/src/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
+        ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+        ":forge-std/=lib/forge-std/src/",
+        ":openzeppelin-contracts/=lib/openzeppelin-contracts/",
+        ":openzeppelin/=lib/openzeppelin-contracts/contracts/",
+        ":solmate/=lib/solmate/src/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "src/polygonZKEVMContracts/interfaces/IBridgeMessageReceiver.sol": "IBridgeMessageReceiver"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "src/polygonZKEVMContracts/interfaces/IBridgeMessageReceiver.sol": {
+        "keccak256": "0x481ee44727ea006426fd866422c50c00421283be057a6809654371712386c8a5",
+        "urls": [
+          "bzz-raw://0979bea65a019b4f493013635038f8cd62ffbeac493e162afe7ca974d613bd6a",
+          "dweb:/ipfs/QmVdMYsdjcwStwjo1g5sij7qZjzQyLn5SJpivqLrnQihNe"
+        ],
+        "license": "AGPL-3.0"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "src/polygonZKEVMContracts/interfaces/IBridgeMessageReceiver.sol",
+    "id": 10528,
+    "exportedSymbols": {
+      "IBridgeMessageReceiver": [
+        10527
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "38:280:43",
+    "nodes": [
+      {
+        "id": 10516,
+        "nodeType": "PragmaDirective",
+        "src": "38:24:43",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".13"
+        ]
+      },
+      {
+        "id": 10527,
+        "nodeType": "ContractDefinition",
+        "src": "138:179:43",
+        "nodes": [
+          {
+            "id": 10526,
+            "nodeType": "FunctionDefinition",
+            "src": "177:138:43",
+            "nodes": [],
+            "functionSelector": "1806b5f2",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "onMessageReceived",
+            "nameLocation": "186:17:43",
+            "parameters": {
+              "id": 10524,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10519,
+                  "mutability": "mutable",
+                  "name": "originAddress",
+                  "nameLocation": "221:13:43",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10526,
+                  "src": "213:21:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10518,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "213:7:43",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10521,
+                  "mutability": "mutable",
+                  "name": "originNetwork",
+                  "nameLocation": "251:13:43",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10526,
+                  "src": "244:20:43",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 10520,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "244:6:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10523,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nameLocation": "287:4:43",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10526,
+                  "src": "274:17:43",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10522,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "274:5:43",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "203:94:43"
+            },
+            "returnParameters": {
+              "id": 10525,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "314:0:43"
+            },
+            "scope": 10527,
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IBridgeMessageReceiver",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 10517,
+          "nodeType": "StructuredDocumentation",
+          "src": "64:73:43",
+          "text": " @dev Define interface for PolygonZkEVM Bridge message receiver"
+        },
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          10527
+        ],
+        "name": "IBridgeMessageReceiver",
+        "nameLocation": "148:22:43",
+        "scope": 10528,
+        "usedErrors": []
+      }
+    ],
+    "license": "AGPL-3.0"
+  },
+  "id": 43
+}

@@ -1,0 +1,319 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "OnlyAllowedContracts",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "getLastGlobalExitRoot",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "globalExitRootNum",
+          "type": "bytes32"
+        }
+      ],
+      "name": "globalExitRootMap",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "newRollupExitRoot",
+          "type": "bytes32"
+        }
+      ],
+      "name": "updateExitRoot",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "getLastGlobalExitRoot()": "3ed691ef",
+    "globalExitRootMap(bytes32)": "257b3632",
+    "updateExitRoot(bytes32)": "33d6247d"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"OnlyAllowedContracts\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"getLastGlobalExitRoot\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"globalExitRootNum\",\"type\":\"bytes32\"}],\"name\":\"globalExitRootMap\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"newRollupExitRoot\",\"type\":\"bytes32\"}],\"name\":\"updateExitRoot\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"errors\":{\"OnlyAllowedContracts()\":[{\"details\":\"Thrown when the caller is not the allowed contracts\"}]},\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/polygonZKEVMContracts/interfaces/IPolygonZkEVMGlobalExitRoot.sol\":\"IPolygonZkEVMGlobalExitRoot\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":chainlink-brownie-contracts/=lib/chainlink-brownie-contracts/\",\":chainlink/=lib/chainlink-brownie-contracts/contracts/src/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/\",\":openzeppelin/=lib/openzeppelin-contracts/contracts/\",\":solmate/=lib/solmate/src/\"],\"viaIR\":true},\"sources\":{\"src/polygonZKEVMContracts/interfaces/IBasePolygonZkEVMGlobalExitRoot.sol\":{\"keccak256\":\"0x67e2b52f58ce699e4bdbe664861deb4bde2e56609ca0a91586f5cc7a5b059450\",\"license\":\"AGPL-3.0\",\"urls\":[\"bzz-raw://071fd7d0e40298d9f90749ccc88be2e88658a1dbac0a05dbf92e39582127d670\",\"dweb:/ipfs/QmY6XCyzAf5WCQeEU4WvKDHasdCht1JAyYRZNB2kTL4Ks1\"]},\"src/polygonZKEVMContracts/interfaces/IPolygonZkEVMGlobalExitRoot.sol\":{\"keccak256\":\"0xd89ba6e826b9018af00921d59ed478d1392b25c24a9ec8deb6447e0b2d0685a9\",\"license\":\"AGPL-3.0\",\"urls\":[\"bzz-raw://f684f7837884b918b0517274bb27c3f26ff982ec6e44f9234b4a0add326ba765\",\"dweb:/ipfs/QmUEoRwCmcPvNV2bNkCNKRCMJnNeo5CCtY7dz7r3K82Me7\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.17+commit.8df45f5f"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "OnlyAllowedContracts"
+        },
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "getLastGlobalExitRoot",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "globalExitRootNum",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "globalExitRootMap",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "newRollupExitRoot",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "updateExitRoot"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":chainlink-brownie-contracts/=lib/chainlink-brownie-contracts/",
+        ":chainlink/=lib/chainlink-brownie-contracts/contracts/src/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
+        ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+        ":forge-std/=lib/forge-std/src/",
+        ":openzeppelin-contracts/=lib/openzeppelin-contracts/",
+        ":openzeppelin/=lib/openzeppelin-contracts/contracts/",
+        ":solmate/=lib/solmate/src/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "src/polygonZKEVMContracts/interfaces/IPolygonZkEVMGlobalExitRoot.sol": "IPolygonZkEVMGlobalExitRoot"
+      },
+      "libraries": {},
+      "viaIR": true
+    },
+    "sources": {
+      "src/polygonZKEVMContracts/interfaces/IBasePolygonZkEVMGlobalExitRoot.sol": {
+        "keccak256": "0x67e2b52f58ce699e4bdbe664861deb4bde2e56609ca0a91586f5cc7a5b059450",
+        "urls": [
+          "bzz-raw://071fd7d0e40298d9f90749ccc88be2e88658a1dbac0a05dbf92e39582127d670",
+          "dweb:/ipfs/QmY6XCyzAf5WCQeEU4WvKDHasdCht1JAyYRZNB2kTL4Ks1"
+        ],
+        "license": "AGPL-3.0"
+      },
+      "src/polygonZKEVMContracts/interfaces/IPolygonZkEVMGlobalExitRoot.sol": {
+        "keccak256": "0xd89ba6e826b9018af00921d59ed478d1392b25c24a9ec8deb6447e0b2d0685a9",
+        "urls": [
+          "bzz-raw://f684f7837884b918b0517274bb27c3f26ff982ec6e44f9234b4a0add326ba765",
+          "dweb:/ipfs/QmUEoRwCmcPvNV2bNkCNKRCMJnNeo5CCtY7dz7r3K82Me7"
+        ],
+        "license": "AGPL-3.0"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "src/polygonZKEVMContracts/interfaces/IPolygonZkEVMGlobalExitRoot.sol",
+    "id": 39956,
+    "exportedSymbols": {
+      "IBasePolygonZkEVMGlobalExitRoot": [
+        39799
+      ],
+      "IPolygonZkEVMGlobalExitRoot": [
+        39955
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "38:220:63",
+    "nodes": [
+      {
+        "id": 39946,
+        "nodeType": "PragmaDirective",
+        "src": "38:23:63",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "0.8",
+          ".17"
+        ]
+      },
+      {
+        "id": 39947,
+        "nodeType": "ImportDirective",
+        "src": "62:47:63",
+        "nodes": [],
+        "absolutePath": "src/polygonZKEVMContracts/interfaces/IBasePolygonZkEVMGlobalExitRoot.sol",
+        "file": "./IBasePolygonZkEVMGlobalExitRoot.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 39956,
+        "sourceUnit": 39800,
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "id": 39955,
+        "nodeType": "ContractDefinition",
+        "src": "111:146:63",
+        "nodes": [
+          {
+            "id": 39954,
+            "nodeType": "FunctionDefinition",
+            "src": "190:65:63",
+            "nodes": [],
+            "functionSelector": "3ed691ef",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getLastGlobalExitRoot",
+            "nameLocation": "199:21:63",
+            "parameters": {
+              "id": 39950,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "220:2:63"
+            },
+            "returnParameters": {
+              "id": 39953,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 39952,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 39954,
+                  "src": "246:7:63",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 39951,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "246:7:63",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "245:9:63"
+            },
+            "scope": 39955,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 39948,
+              "name": "IBasePolygonZkEVMGlobalExitRoot",
+              "nameLocations": [
+                "152:31:63"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 39799,
+              "src": "152:31:63"
+            },
+            "id": 39949,
+            "nodeType": "InheritanceSpecifier",
+            "src": "152:31:63"
+          }
+        ],
+        "canonicalName": "IPolygonZkEVMGlobalExitRoot",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          39955,
+          39799
+        ],
+        "name": "IPolygonZkEVMGlobalExitRoot",
+        "nameLocation": "121:27:63",
+        "scope": 39956,
+        "usedErrors": [
+          39786
+        ]
+      }
+    ],
+    "license": "AGPL-3.0"
+  },
+  "id": 63
+}
