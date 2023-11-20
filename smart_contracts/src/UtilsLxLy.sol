@@ -7,53 +7,46 @@ import "solmate/utils/LibString.sol";
 // import "solmate/auth/Owned.sol";
 import "openzeppelin/access/Ownable.sol";
 import "openzeppelin/metatx/ERC2771Context.sol";
-import {AxelarExecutable} from "./axelar/AxelarExecutable.sol";
-import {IAxelarGasService} from "./axelar/interfaces/IAxelarGasService.sol";
+import "./polygonZKEVMContracts/interfaces/IBridgeMessageReceiver.sol";
+import "./polygonZKEVMContracts/interfaces/IPolygonZkEVMBridge.sol";
 
-contract Utils is ERC2771Context, ERC1155, Ownable, AxelarExecutable {
-    error CrossChainNotSupported();
+contract Utils is ERC2771Context, ERC1155, Ownable, IBridgeMessageReceiver {
     error InvalidChain();
     error InsufficientBalance();
+    error NotPolygonZkEVMBridge();
     string public baseUri;
     uint256 public utilCount;
-    IAxelarGasService public immutable gasService;
-    mapping(string => string) public chains;
 
-    modifier supportCrossChain() {
-        if (address(gasService) == address(0)) {
-            revert CrossChainNotSupported();
-        }
-        _;
-    }
+    // Global Exit Root address
+    IPolygonZkEVMBridge public immutable polygonZkEVMBridge;
+
+    // Current network identifier
+    uint32 public immutable networkID;
+
+    mapping(uint32 => address) public chains;
 
     constructor(
         string memory _baseUri,
         address trustedForwarder,
-        address gateway_,
-        address gasReceiver_
-    )
-        ERC2771Context(trustedForwarder)
-        ERC1155(_baseUri)
-        AxelarExecutable(gateway_)
-    {
+        IPolygonZkEVMBridge _polygonZkEVMBridge
+    ) ERC2771Context(trustedForwarder) ERC1155(_baseUri) {
         baseUri = _baseUri;
-        gasService = IAxelarGasService(gasReceiver_);
+        polygonZkEVMBridge = _polygonZkEVMBridge;
+        networkID = polygonZkEVMBridge.networkID();
     }
 
-    function setChain(
-        string memory chain,
-        string calldata addr
-    ) public onlyOwner {
+    function setChain(uint32 chain, address addr) public onlyOwner {
         chains[chain] = addr;
     }
 
     function crossChainTransfer(
-        string calldata destinationChain,
+        uint32 destinationChain,
         uint tokenId,
-        uint amount
-    ) public payable supportCrossChain {
-        string memory destinationAddress = chains[destinationChain];
-        if (bytes(destinationAddress).length == 0) {
+        uint amount,
+        bool forceUpdateGlobalExitRoot
+    ) public payable {
+        address destinationAddress = chains[destinationChain];
+        if (destinationAddress == address(0)) {
             revert InvalidChain();
         }
         if (amount > balanceOf(_msgSender(), tokenId)) {
@@ -61,23 +54,24 @@ contract Utils is ERC2771Context, ERC1155, Ownable, AxelarExecutable {
         }
         _burn(_msgSender(), tokenId, amount);
         bytes memory payload = abi.encode(tokenId, amount, _msgSender());
-        if (msg.value > 0) {
-            gasService.payNativeGasForContractCall{value: msg.value}(
-                address(this),
-                destinationChain,
-                destinationAddress,
-                payload,
-                msg.sender
-            );
-        }
-        gateway.callContract(destinationChain, destinationAddress, payload);
+        // Bridge ping message
+        polygonZkEVMBridge.bridgeMessage(
+            destinationChain,
+            destinationAddress,
+            forceUpdateGlobalExitRoot,
+            payload
+        );
     }
 
-    function _execute(
-        string calldata sourceChain,
-        string calldata sourceAddress,
+    function onMessageReceived(
+        address sourceAddress,
+        uint32 sourceChain,
         bytes calldata payload
-    ) internal override supportCrossChain {
+    ) external payable override {
+        // Can only be called by the bridge
+        if (_msgSender() != address(polygonZkEVMBridge)) {
+            revert NotPolygonZkEVMBridge();
+        }
         if (
             keccak256(abi.encodePacked(chains[sourceChain])) !=
             keccak256(abi.encodePacked(sourceAddress))

@@ -25,6 +25,8 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   let gasLimit = 999999;
   let axelarGateway = "0x0000000000000000000000000000000000000001";
   let axelarGasReceiver = "0x0000000000000000000000000000000000000000";
+  let polygonZkevmBridgeAddress = "0x0000000000000000000000000000000000000000";
+  let isPolygonZkvemBridgeRequired = false;
   if (chainId == 80001) {
     // mumbai
     registryAddress = "0xE16Df59B887e3Caa439E0b29B42bA2e7976FD8b2";
@@ -66,6 +68,17 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     linkAddress = "0x84b9B910527Ad5C03A9Ca831909E21e236EA7b06";
     axelarGateway = "0x4D147dCb984e6affEEC47e44293DA442580A3Ec0";
     axelarGasReceiver = "0xbE406F0189A0B4cf3A05C286473D23791Dd44Cc6";
+  } else if (chainId == 5) {
+    // goerli testnet
+    isPolygonZkvemBridgeRequired = true;
+    registryAddress = "0xE16Df59B887e3Caa439E0b29B42bA2e7976FD8b2";
+    registrarAddress = "0x57A4a13b35d25EE78e084168aBaC5ad360252467";
+    linkAddress = "0x326C977E6efc84E512bB9C30f76E30c160eD06FB";
+    polygonZkevmBridgeAddress = "0xF6BEEeBB578e214CA9E23B0e9683454Ff88Ed2A7";
+  } else if (chainId == 1442) {
+    // polygon zkevm testnet
+    isPolygonZkvemBridgeRequired = true;
+    polygonZkevmBridgeAddress = "0xF6BEEeBB578e214CA9E23B0e9683454Ff88Ed2A7";
   }
 
   log("----------------------------------------------------");
@@ -81,18 +94,18 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   // };
   console.log("forwarder deployed to:", forwarder.address);
   log("----------------------------------------------------");
-  const utilsArg = [
-    utilsBaseUri,
-    forwarder.address,
-    axelarGateway,
-    axelarGasReceiver,
-  ];
-  const utils = await deploy("Utils", {
-    from: deployer,
-    args: utilsArg,
-    log: true,
-    waitConfirmations: waitBlockConfirmations,
-  });
+  const utilsArg = isPolygonZkvemBridgeRequired
+    ? [utilsBaseUri, forwarder.address, polygonZkevmBridgeAddress]
+    : [utilsBaseUri, forwarder.address, axelarGateway, axelarGasReceiver];
+  const utils = await deploy(
+    isPolygonZkvemBridgeRequired ? "UtilsLxLy" : "UtilsCCIP",
+    {
+      from: deployer,
+      args: utilsArg,
+      log: true,
+      waitConfirmations: waitBlockConfirmations,
+    }
+  );
   // const utils = {
   //   address: "0x4a4e6cc94507b6ad2c91ad765d3f5b566b15d895",
   // };

@@ -4,7 +4,7 @@ pragma solidity ^0.8.13;
 import "forge-std/Test.sol";
 import "forge-std/console.sol";
 import "../src/Map.sol";
-import "../src/Utils.sol";
+import "../src/UtilsLxLy.sol";
 import "../src/Forwarder.sol";
 
 import {ERC1155TokenReceiver} from "solmate/tokens/ERC1155.sol";
@@ -13,6 +13,7 @@ contract MapTest is Test {
     Map public map;
     Utils public utils;
     Forwarder public forwarder;
+    MockPolygonZkEVMBridge mockPolygonZkEVMBridge;
     string public mapBaseUri;
     string public utilsBaseUri;
     uint256 size;
@@ -31,11 +32,11 @@ contract MapTest is Test {
         utilCount = 3;
         utilAmount = 1000;
         forwarder = new Forwarder();
+        mockPolygonZkEVMBridge = new MockPolygonZkEVMBridge();
         utils = new Utils(
             utilsBaseUri,
             address(forwarder),
-            address(1),
-            address(0)
+            mockPolygonZkEVMBridge
         );
         map = new Map(size, 5, mapBaseUri, address(utils), address(forwarder));
         for (uint256 i = 0; i < utilCount; i++) {
@@ -146,4 +147,56 @@ contract MapTest is Test {
         assertEq(map.map(3, 8), 2);
         assertEq(map.map(4, 9), 1);
     }
+}
+
+contract MockPolygonZkEVMBridge is IPolygonZkEVMBridge {
+    uint32 public networkID = 0;
+
+    function bridgeAsset(
+        uint32 destinationNetwork,
+        address destinationAddress,
+        uint256 amount,
+        address token,
+        bool forceUpdateGlobalExitRoot,
+        bytes calldata permitData
+    ) external payable {}
+
+    function bridgeMessage(
+        uint32 destinationNetwork,
+        address destinationAddress,
+        bool forceUpdateGlobalExitRoot,
+        bytes calldata metadata
+    ) external payable {}
+
+    function claimAsset(
+        bytes32[32] calldata smtProof,
+        uint32 index,
+        bytes32 mainnetExitRoot,
+        bytes32 rollupExitRoot,
+        uint32 originNetwork,
+        address originTokenAddress,
+        uint32 destinationNetwork,
+        address destinationAddress,
+        uint256 amount,
+        bytes calldata metadata
+    ) external {}
+
+    function claimMessage(
+        bytes32[32] calldata smtProof,
+        uint32 index,
+        bytes32 mainnetExitRoot,
+        bytes32 rollupExitRoot,
+        uint32 originNetwork,
+        address originAddress,
+        uint32 destinationNetwork,
+        address destinationAddress,
+        uint256 amount,
+        bytes calldata metadata
+    ) external {}
+
+    function updateGlobalExitRoot() external {}
+
+    function activateEmergencyState() external {}
+
+    function deactivateEmergencyState() external {}
 }
