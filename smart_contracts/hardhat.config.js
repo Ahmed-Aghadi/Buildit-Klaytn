@@ -38,6 +38,9 @@ const BSC_TESTNET_RPC_URL =
 const OP_BNB_TESTNET_RPC_URL =
   process.env.OP_BNB_TESTNET_RPC_URL ||
   "https://polygon-mainnet.alchemyapi.io/v2/your-api-key";
+const POLYGONZKEVM_TESTNET_RPC_URL =
+  process.env.POLYGONZKEVM_TESTNET_RPC_URL ||
+  "https://rpc.public.zkevm-test.net";
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x";
 const MAIN_PRIVATE_KEY = process.env.MAIN_PRIVATE_KEY || "0x";
 
@@ -50,6 +53,8 @@ const FANTOMSCAN_API_KEY =
   process.env.FANTOMSCAN_API_KEY || "Your polygonscan API key";
 const POLYGONZKEVM_TESTNET_API_KEY =
   process.env.POLYGONZKEVM_TESTNET_API_KEY || "Your polygonscan API key";
+const POLYGONSCAN_ZKEVM_API_KEY =
+  process.env.POLYGONSCAN_ZKEVM_API_KEY || "Your polygonscan API key";
 const MANTLE_TESTNET_API_KEY =
   process.env.MANTLE_TESTNET_API_KEY || "Your polygonscan API key";
 const ARBITRUM_GOERLI_TESTNET_API_KEY =
@@ -200,6 +205,14 @@ module.exports = {
       chainId: 5611,
       timeout: 300000, // 300 seconds
     },
+    polygonzkevmtest: {
+      url: POLYGONZKEVM_TESTNET_RPC_URL,
+      // accounts: [MAIN_PRIVATE_KEY],
+      accounts: [PRIVATE_KEY],
+      saveDeployments: true,
+      chainId: 1442,
+      timeout: 300000, // 300 seconds
+    },
   },
   etherscan: {
     // To list networks supported by default: npx hardhat verify --list-networks
@@ -210,7 +223,7 @@ module.exports = {
       polygonMumbai: POLYGONSCAN_API_KEY,
       fantomtest: FANTOMSCAN_API_KEY,
       ftmTestnet: FANTOMSCAN_API_KEY,
-      polygonzkevmtest: POLYGONZKEVM_TESTNET_API_KEY,
+      polygonzkevmtest: POLYGONSCAN_ZKEVM_API_KEY,
       sepolia: ETHERSCAN_API_KEY,
       mantletest: MANTLE_TESTNET_API_KEY,
       fantom: FANTOMSCAN_API_KEY,
@@ -224,8 +237,8 @@ module.exports = {
         network: "polygonzkevmtest",
         chainId: 1442,
         urls: {
-          apiURL: "https://explorer.public.zkevm-test.net/api",
-          browserURL: "https://explorer.public.zkevm-test.net",
+          apiURL: "https://api-testnet-zkevm.polygonscan.com/api",
+          browserURL: "https://testnet-zkevm.polygonscan.com/",
         },
       },
       {

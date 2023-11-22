@@ -32,19 +32,19 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     registryAddress = "0xE16Df59B887e3Caa439E0b29B42bA2e7976FD8b2";
     registrarAddress = "0x57A4a13b35d25EE78e084168aBaC5ad360252467";
     linkAddress = "0x326C977E6efc84E512bB9C30f76E30c160eD06FB";
-  } else if (chainId == 4002) {
+  } /* else if (chainId == 4002) {
     // fantom testnet
     registryAddress = "0xE16Df59B887e3Caa439E0b29B42bA2e7976FD8b2";
     registrarAddress = "0x57A4a13b35d25EE78e084168aBaC5ad360252467";
     linkAddress = "0xfaFedb041c0DD4fA2Dc0d87a6B0979Ee6FA7af5F";
-  } else if (chainId == 11155111) {
+  } */ else if (chainId == 11155111) {
     // sepolia
     routerAddress = "0xd0daae2231e9cb96b94c8512223533293c3693bf";
     registryAddress = "0xE16Df59B887e3Caa439E0b29B42bA2e7976FD8b2";
     registrarAddress = "0x9a811502d843E5a03913d5A2cfb646c11463467A";
     eth_usd_priceFeedAddress = "0x694AA1769357215DE4FAC081bf1f309aDC325306";
     linkAddress = "0x779877A7B0D9E8603169DdbD7836e478b4624789";
-  } else if (chainId == 250) {
+  } /* else if (chainId == 250) {
     // fantom
     registryAddress = "0x02777053d6764996e594c3E88AF1D58D5363a2e6";
     registrarAddress = "0xDb8e8e2ccb5C033938736aa89Fe4fa1eDfD15a1d";
@@ -54,8 +54,9 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     registryAddress = "0x291093864bafc9aA517eF90ce954dD7D95D68C80";
     registrarAddress = "0x263ae9E522707D5A2B317026358d7f33ceC4ccc5";
     linkAddress = "0xd14838A68E8AFBAdE5efb411d5871ea0011AFd28";
-  } else if (chainId == 97) {
+  } */ else if (chainId == 97) {
     // bsc testnet
+    routerAddress = "0x9527e2d01a3064ef6b50c1da1c0cc523803bcff2";
     registryAddress = "0xE16Df59B887e3Caa439E0b29B42bA2e7976FD8b2";
     registrarAddress = "0x57A4a13b35d25EE78e084168aBaC5ad360252467";
     linkAddress = "0x84b9B910527Ad5C03A9Ca831909E21e236EA7b06";
@@ -72,6 +73,11 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     polygonZkevmBridgeAddress = "0xF6BEEeBB578e214CA9E23B0e9683454Ff88Ed2A7";
   }
 
+  console.log(
+    "Is Polygon Zkevm Bridge Required : ",
+    isPolygonZkvemBridgeRequired
+  );
+
   log("----------------------------------------------------");
   const forwarderArg = [];
   const forwarder = await deploy("Forwarder", {
@@ -87,11 +93,14 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   log("----------------------------------------------------");
   const utilsArg = isPolygonZkvemBridgeRequired
     ? [utilsBaseUri, forwarder.address, polygonZkevmBridgeAddress]
-    : [utilsBaseUri, forwarder.address, routerAddress];
+    : [utilsBaseUri, forwarder.address, linkAddress, routerAddress];
   const utils = await deploy(
-    isPolygonZkvemBridgeRequired ? "UtilsLxLy" : "UtilsCCIP",
+    isPolygonZkvemBridgeRequired ? "UtilsLxLy.sol" : "UtilsCCIP.sol",
     {
       from: deployer,
+      contract: isPolygonZkvemBridgeRequired
+        ? "src/UtilsLxLy.sol:Utils"
+        : "src/UtilsCCIP.sol:Utils",
       args: utilsArg,
       log: true,
       waitConfirmations: waitBlockConfirmations,
@@ -148,7 +157,15 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   console.log("marketplace deployed to:", marketplace.address);
   log("----------------------------------------------------");
   console.log("Minting Utils...");
-  await mintUtils(account, utils.address, utilsMintCount, utilsMintAmount);
+  await mintUtils(
+    account,
+    utils.address,
+    utilsMintCount,
+    utilsMintAmount,
+    isPolygonZkvemBridgeRequired
+      ? "src/UtilsLxLy.sol:Utils"
+      : "src/UtilsCCIP.sol:Utils"
+  );
   log("----------------------------------------------------");
   console.log("Transfering Utils to Faucet...");
   await transferToFaucet(
@@ -156,7 +173,10 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     utils.address,
     faucet.address,
     utilsMintCount,
-    transferUtilsAmount
+    transferUtilsAmount,
+    isPolygonZkvemBridgeRequired
+      ? "src/UtilsLxLy.sol:Utils"
+      : "src/UtilsCCIP.sol:Utils"
   );
   log("----------------------------------------------------");
   try {
@@ -193,9 +213,15 @@ const verify = async (contractAddress, args) => {
   }
 };
 
-const mintUtils = async (account, utilsContractAddress, count, amount) => {
+const mintUtils = async (
+  account,
+  utilsContractAddress,
+  count,
+  amount,
+  utilsName
+) => {
   const utilsContract = await hre.ethers.getContractAt(
-    "Utils",
+    utilsName,
     utilsContractAddress,
     account
   );
@@ -216,10 +242,11 @@ const transferToFaucet = async (
   utilsContractAddress,
   faucetContractAddress,
   count,
-  amount
+  amount,
+  utilsName
 ) => {
   const utilsContract = await hre.ethers.getContractAt(
-    "Utils",
+    utilsName,
     utilsContractAddress,
     account
   );
@@ -229,8 +256,8 @@ const transferToFaucet = async (
       faucetContractAddress,
       i,
       amount,
-      "0x",
-      { gasPrice: 1600000008 }
+      "0x"
+      // { gasPrice: 1600000008 }
     );
     console.log("Transfered Utils " + i + " TX:", tx.hash);
     const receipt = await tx.wait();
