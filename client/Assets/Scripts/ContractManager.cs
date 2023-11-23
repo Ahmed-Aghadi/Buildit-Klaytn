@@ -1358,22 +1358,22 @@ public class ContractManager : MonoBehaviour
 
             // Polygon ZKEVM LxLy Bridge uses chainId 1 for Polygon ZKEVM and 0 for Ethereum
             // Chainlink CCIP Bridge uses chainId 12532609583862916517 for Polygon Mumbai and 16015286601757825753 for Sepolia
-            string destChainId = null;
+            BigInteger destChainId = 0;
             if (destChain == 5)
             {
-                destChainId = "0";
+                destChainId = 0;
             }
             else if (destChain == 1442)
             {
-                destChainId = "1";
+                destChainId = 1;
             }
             else if (destChain == 80001)
             {
-                destChainId = "12532609583862916517";
+                destChainId = 12532609583862916517;
             }
             else if (destChain == 11155111)
             {
-                destChainId = "16015286601757825753";
+                destChainId = 16015286601757825753;
             }
 
             if (isChainLxLy)
