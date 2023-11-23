@@ -118,6 +118,33 @@ contract Utils is ERC2771Context, ERC1155, Ownable, CCIPReceiver {
         _mint(_msgSender(), utilCount, amount, "");
     }
 
+    function getLinkFees(
+        uint64 destinationChain,
+        uint tokenId,
+        uint amount,
+        address msgSender
+    ) external view returns (uint256 fees) {
+        address destinationAddress = chains[destinationChain];
+
+        bytes memory payload = abi.encode(tokenId, amount, msgSender);
+
+        // Create an EVM2AnyMessage struct in memory with necessary information for sending a cross-chain message
+        Client.EVM2AnyMessage memory evm2AnyMessage = Client.EVM2AnyMessage({
+            receiver: abi.encode(destinationAddress), // ABI-encoded receiver address
+            data: abi.encode(payload), // ABI-encoded string
+            tokenAmounts: new Client.EVMTokenAmount[](0), // Empty array indicating no tokens are being sent
+            extraArgs: Client._argsToBytes(
+                // Additional arguments, setting gas limit and non-strict sequencing mode
+                Client.EVMExtraArgsV1({gasLimit: 200_000, strict: false})
+            ),
+            // Set the feeToken  address, indicating LINK will be used for fees
+            feeToken: address(i_link)
+        });
+
+        // Get the fee required to send the message
+        fees = IRouterClient(i_router).getFee(destinationChain, evm2AnyMessage);
+    }
+
     // Add `virtual` to function signature of `supportsInterface` function in CCIPReceiver.sol
     function supportsInterface(
         bytes4 interfaceId
