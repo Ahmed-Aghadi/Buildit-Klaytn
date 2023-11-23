@@ -16,6 +16,14 @@ async function addChain() {
   const seopliaChainId = 11155111;
   const goerliChainId = 5;
 
+  // Polygon ZKEVM LxLy Bridge uses chainId 1 for Polygon ZKEVM and 0 for Ethereum
+  const replaceChainId = (_chainId) =>
+    _chainId == polygonZKEVMTestnetChainId
+      ? 1
+      : _chainId == goerliChainId
+      ? 0
+      : _chainId;
+
   // Utils contract addresses
   const mumbaiAddress = "0x4DeD7815977d7F3B0b58F578d6fa18f48DF8dE18";
   const polygonZKEVMTestnetAddress =
@@ -62,7 +70,7 @@ async function addChain() {
     },
   };
 
-  console.log("addresses : ", addresses);
+  console.log("addresses: ", addresses);
 
   const isChainLxLy =
     chainId == polygonZKEVMTestnet.chainId || chainId == goerli.chainId;
@@ -78,8 +86,15 @@ async function addChain() {
   console.log("Connecting user to Utils contract");
   const utils = await utilsContract.connect(deployer);
   console.log("User connected to Utils contract");
+
+  console.log(
+    "transaction arguments: ",
+    replaceChainId(addresses.destination.chainId),
+    addresses.destination.chainAddress
+  );
+
   const tx = await utils.setChain(
-    addresses.destination.chainId,
+    replaceChainId(addresses.destination.chainId),
     addresses.destination.chainAddress
   );
 

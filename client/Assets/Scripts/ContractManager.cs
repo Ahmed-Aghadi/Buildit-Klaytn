@@ -1358,6 +1358,16 @@ public class ContractManager : MonoBehaviour
             if (isChainLxLy)
             {
                 loadingText.text = "Loading: 30%";
+
+                // Polygon ZKEVM LxLy Bridge uses chainId 1 for Polygon ZKEVM and 0 for Ethereum
+                if (destChain == 5)
+                {
+                    destChain = 0;
+                }
+                else if (destChain == 1442)
+                {
+                    destChain = 1;
+                }
                 res = await utilsContract.Write("crossChainTransfer", destChain, tokenId, amount, true /* fast bridge */ );
             }
             else
