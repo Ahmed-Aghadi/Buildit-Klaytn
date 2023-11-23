@@ -227,7 +227,7 @@ public class ContractManager : MonoBehaviour
     private async Task Initialize()
     {
         var chainId = await ThirdwebManager.Instance.SDK.wallet.GetChainId();
-        canvasManager.HideTransferUtilsButton();
+        // canvasManager.HideTransferUtilsButton();
         if (chainsLxLy.Contains(chainId))
         {
             utilsContractABI = utilsLxLyContractABI;
@@ -258,6 +258,7 @@ public class ContractManager : MonoBehaviour
             utilsContractAddress = utilsContractAddressPolygonZKEVMTestnet;
             faucetContractAddress = faucetContractAddressPolygonZKEVMTestnet;
             marketplaceContractAddress = marketplaceContractAddressPolygonZKEVMTestnet;
+            canvasManager.ShowTransferUtilsButton();
         }
         /*else if (chainId == 65)
         {
@@ -277,6 +278,7 @@ public class ContractManager : MonoBehaviour
             utilsContractAddress = utilsContractAddressSepolia;
             faucetContractAddress = faucetContractAddressSepolia;
             marketplaceContractAddress = marketplaceContractAddressSepolia;
+            canvasManager.ShowTransferUtilsButton();
         }
         /*else if (chainId == 5001)
         {
@@ -329,6 +331,7 @@ public class ContractManager : MonoBehaviour
             utilsContractAddress = utilsContractAddressGoerli;
             faucetContractAddress = faucetContractAddressGoerli;
             marketplaceContractAddress = marketplaceContractAddressGoerli;
+            canvasManager.ShowTransferUtilsButton();
         }
 
         marketplaceButton.gameObject.SetActive(true);
