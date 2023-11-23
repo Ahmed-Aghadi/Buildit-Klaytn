@@ -26,7 +26,7 @@ public class ThirdwebManager : MonoBehaviour
 
     [Header("REQUIRED SETTINGS")]
     [Tooltip("The chain to initialize the SDK with")]
-    public string chain = "binance-testnet";
+    public string chain = "mumbai";
 
     [Header("CHAIN DATA")]
     [Tooltip("Support any chain by adding it to this list from the inspector")]
