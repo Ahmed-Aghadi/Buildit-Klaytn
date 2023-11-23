@@ -10,44 +10,65 @@ async function addChain() {
   const chainId = network.config.chainId;
   console.log("Chain ID : " + chainId);
   console.log("Creating Utils contract");
-  const utilsContractFactory = await hre.ethers.getContractFactory("Utils");
 
-  const mumbaiName = "Polygon";
-  const fantomTestnetName = "Fantom";
-  const arbitrumGoerliName = "arbitrum";
-  const bscTestnetName = "binance";
+  const mumbaiChainId = 80001;
+  const polygonZKEVMTestnetChainId = 1442;
+  const seopliaChainId = 11155111;
+  const goerliChainId = 5;
 
-  const mumbaiAddress = "0x1e32B261781Ed5aD7dA316f61074864De0a88eC7";
-  const fantomTestnetAddress = "0x8E10a436eafE80B2388D56e8Bb4435C31C930dbf";
-  const arbitrumGoerliAddress = "0x4A4e6Cc94507B6aD2c91aD765d3f5B566B15d895";
-  const bscTestnetAddress = "0x2e4dDe518EB8B63C47D388aa129386d9ca110a45";
+  const mumbaiAddress = "0x07EE4358Dc25BAD471C56451cE4d11fCB6A7E3EF";
+  const polygonZKEVMTestnetAddress =
+    "0x4f033bF08e610DDeBe5fA9707d5334Ad5c5A893e";
+  const seopliaAddress = "0x11e2e6353492e84605801849E74F3793c3A5251f";
+  const goerliAddress = "0x52Cb4B27503848ABd8dd3629474835299E1E99af";
 
   const mumbai = {
-    chainName: mumbaiName,
+    chainId: mumbaiChainId,
     chainAddress: mumbaiAddress,
   };
-  const fantomTestnet = {
-    chainName: fantomTestnetName,
-    chainAddress: fantomTestnetAddress,
+  const polygonZKEVMTestnet = {
+    chainId: polygonZKEVMTestnetChainId,
+    chainAddress: polygonZKEVMTestnetAddress,
   };
-  const arbitrumGoerli = {
-    chainName: arbitrumGoerliName,
-    chainAddress: arbitrumGoerliAddress,
+  const seoplia = {
+    chainId: seopliaChainId,
+    chainAddress: seopliaAddress,
   };
-  const bscTestnet = {
-    chainName: bscTestnetName,
-    chainAddress: bscTestnetAddress,
+  const goerli = {
+    chainId: goerliChainId,
+    chainAddress: goerliAddress,
   };
 
+  // Bridge is available from mumbai to seoplia and vice versa AND from polygonZKEVMTestnet to goerli and vice versa
   const addresses = {
     source: {
-      ...bscTestnet,
+      ...(chainId == mumbai.chainId
+        ? mumbai
+        : chainId == polygonZKEVMTestnet.chainId
+        ? polygonZKEVMTestnet
+        : chainId == seoplia.chainId
+        ? seoplia
+        : goerli),
     },
     destination: {
-      ...mumbai,
+      ...(chainId == mumbai.chainId
+        ? seoplia
+        : chainId == seoplia.chainId
+        ? mumbai
+        : chainId == polygonZKEVMTestnet.chainId
+        ? goerli
+        : polygonZKEVMTestnet),
     },
   };
 
+  console.log("addresses : ", addresses);
+
+  const isChainLxLy =
+    chainId == polygonZKEVMTestnet.chainId || chainId == goerli.chainId;
+
+  const utilsContractFactory = await hre.ethers.getContractFactory(
+    isChainLxLy ? "src/UtilsLxLy.sol:Utils" : "src/UtilsCCIP.sol:Utils"
+  );
   const utilsContract = await utilsContractFactory.attach(
     addresses.source.chainAddress
   );
@@ -57,7 +78,7 @@ async function addChain() {
   const utils = await utilsContract.connect(deployer);
   console.log("User connected to Utils contract");
   const tx = await utils.setChain(
-    addresses.destination.chainName,
+    addresses.destination.chainId,
     addresses.destination.chainAddress
   );
 

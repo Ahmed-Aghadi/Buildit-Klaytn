@@ -81,7 +81,15 @@ To deploy smart contracts:
 ```bash
 npx hardhat deploy --network $ChainName
 
-# example: npx hardhat deploy --network bscTestnet
+# example: npx hardhat deploy --network mumbai
+```
+
+To add destination chain data for cross chain transfer of utils:
+
+```bash
+npx hardhat run script/addChain.js --network $ChainName
+
+# example: npx hardhat run script/addChain.js --network mumbai
 ```
 
 Note: Don't forget to make .env file, refer .env.example file.
