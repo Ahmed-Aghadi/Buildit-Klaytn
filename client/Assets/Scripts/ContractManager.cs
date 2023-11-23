@@ -1355,24 +1355,35 @@ public class ContractManager : MonoBehaviour
             }
             TransactionResult res;
             // res = await utilsContract.Write("crossChainTransfer", new TransactionRequest() { value = amountNativeToken }, destChain, tokenId, amount);
+
+            // Polygon ZKEVM LxLy Bridge uses chainId 1 for Polygon ZKEVM and 0 for Ethereum
+            // Chainlink CCIP Bridge uses chainId 12532609583862916517 for Polygon Mumbai and 16015286601757825753 for Sepolia
+            string destChainId = null;
+            if (destChain == 5)
+            {
+                destChainId = "0";
+            }
+            else if (destChain == 1442)
+            {
+                destChainId = "1";
+            }
+            else if (destChain == 80001)
+            {
+                destChainId = "12532609583862916517";
+            }
+            else if (destChain == 11155111)
+            {
+                destChainId = "16015286601757825753";
+            }
+
             if (isChainLxLy)
             {
                 loadingText.text = "Loading: 30%";
-
-                // Polygon ZKEVM LxLy Bridge uses chainId 1 for Polygon ZKEVM and 0 for Ethereum
-                if (destChain == 5)
-                {
-                    destChain = 0;
-                }
-                else if (destChain == 1442)
-                {
-                    destChain = 1;
-                }
-                res = await utilsContract.Write("crossChainTransfer", destChain, tokenId, amount, true /* fast bridge */ );
+                res = await utilsContract.Write("crossChainTransfer", destChainId, tokenId, amount, true /* fast bridge */ );
             }
             else
             {
-                int amountLinkToken = await utilsContract.Read<int>("getLinkFees", destChain, tokenId, amount, walletAddress);
+                int amountLinkToken = await utilsContract.Read<int>("getLinkFees", destChainId, tokenId, amount, walletAddress);
                 loadingText.text = "Loading: 20%";
                 // Approve amount
                 int allowance = await linkTokenContract.Read<int>("allowance", walletAddress, utilsContractAddress);
@@ -1382,7 +1393,7 @@ public class ContractManager : MonoBehaviour
                     await linkTokenContract.Write("approve", marketplaceContractAddress, (amountLinkToken).ToString());
                 }
                 loadingText.text = "Loading: 30%";
-                res = await utilsContract.Write("crossChainTransfer", destChain, tokenId, amount);
+                res = await utilsContract.Write("crossChainTransfer", destChainId, tokenId, amount);
             }
             Debug.Log("Transaction Hash: " + res.receipt.transactionHash);
             loadingText.text = "Loading: 100%";

@@ -17,12 +17,15 @@ async function addChain() {
   const goerliChainId = 5;
 
   // Polygon ZKEVM LxLy Bridge uses chainId 1 for Polygon ZKEVM and 0 for Ethereum
+  // Chainlink CCIP Bridge uses chainId 12532609583862916517 for Polygon Mumbai and 16015286601757825753 for Sepolia
   const replaceChainId = (_chainId) =>
     _chainId == polygonZKEVMTestnetChainId
-      ? 1
+      ? "1"
       : _chainId == goerliChainId
-      ? 0
-      : _chainId;
+      ? "0"
+      : _chainId == mumbaiChainId
+      ? "12532609583862916517"
+      : "16015286601757825753";
 
   // Utils contract addresses
   const mumbaiAddress = "0x4DeD7815977d7F3B0b58F578d6fa18f48DF8dE18";
