@@ -1372,7 +1372,7 @@ public class ContractManager : MonoBehaviour
             }
             else
             {
-                int amountLinkToken = await utilsContract.Read<int>("getLinkFees", destChain, tokenId, amount);
+                int amountLinkToken = await utilsContract.Read<int>("getLinkFees", destChain, tokenId, amount, walletAddress);
                 loadingText.text = "Loading: 20%";
                 // Approve amount
                 int allowance = await linkTokenContract.Read<int>("allowance", walletAddress, utilsContractAddress);
