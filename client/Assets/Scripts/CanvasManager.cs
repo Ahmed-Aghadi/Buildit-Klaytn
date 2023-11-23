@@ -255,11 +255,11 @@ public class CanvasManager : MonoBehaviour
 
     async void OnTransfer()
     {
-        int sourceChainId = -1, destinationChainId = -1;
+        int destinationChainId = -1;
         bool success = false;
         var chainId = await ThirdwebManager.Instance.SDK.wallet.GetChainId();
-        sourceChainId = chainId;
-        if (chainId == 80001 || chainId == 11155111 || chainId == 5 || chainId == 1442)
+        int sourceChainId = chainId;
+        if (chainId != 80001 && chainId != 11155111 && chainId != 5 && chainId != 1442)
         {
             return;
         }
@@ -279,7 +279,7 @@ public class CanvasManager : MonoBehaviour
         {
             destinationChainId = 1442;
         }
-        if (sourceChainId != -1 && destinationChainId != -1)
+        if (destinationChainId != -1)
         {
             int tokenId = ContractManager.EMPTY;
             if (tokenDropdown.value == 0)
