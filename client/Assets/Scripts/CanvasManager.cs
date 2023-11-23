@@ -194,7 +194,7 @@ public class CanvasManager : MonoBehaviour
             design.label = label;
             design.design = new List<int>();
             // int count = 0;
-            for (int i = (xIndex * ContractManager.Instance.perSize) +  0; i < ((xIndex + 1) * ContractManager.Instance.perSize); i++)
+            for (int i = (xIndex * ContractManager.Instance.perSize) + 0; i < ((xIndex + 1) * ContractManager.Instance.perSize); i++)
             {
                 for (int j = (yIndex * ContractManager.Instance.perSize) + 0; j < ((yIndex + 1) * ContractManager.Instance.perSize); j++)
                 {
@@ -216,7 +216,7 @@ public class CanvasManager : MonoBehaviour
             string designLabel = selectDesignDropdown.options[selectDesignDropdown.value].text;
             Debug.Log("designLabel: " + designLabel);
             DesignJsonStructure design = designs.Find((currentDesign) => currentDesign.label == designLabel);
-            if(design == null)
+            if (design == null)
             {
                 Debug.Log("design not found");
             }
@@ -226,7 +226,7 @@ public class CanvasManager : MonoBehaviour
             {
                 for (int j = (yIndex * ContractManager.Instance.perSize) + 0; j < ((yIndex + 1) * ContractManager.Instance.perSize); j++)
                 {
-                    Vector3Int position = new Vector3Int(i,0,j);
+                    Vector3Int position = new Vector3Int(i, 0, j);
                     ContractManager.Instance.placeItem(position, design.design[count], true);
                     count++;
                 }
@@ -255,65 +255,56 @@ public class CanvasManager : MonoBehaviour
 
     async void OnTransfer()
     {
-        string sourceChain = "", destinationChain = "";
+        int sourceChainId = -1, destinationChainId = -1;
         bool success = false;
         var chainId = await ThirdwebManager.Instance.SDK.wallet.GetChainId();
-        if (chainId == 80001)
-        {
-            sourceChain = "Polygon";
-        }
-        else if (chainId == 4002)
-        {
-            sourceChain = "Fantom";
-        }
-        else if (chainId == 421613)
-        {
-            sourceChain = "arbitrum";
-        }
-        else if (chainId == 97)
-        {
-            sourceChain = "binance";
-        }
-        else
+        sourceChainId = chainId;
+        if (chainId == 80001 || chainId == 11155111 || chainId == 5 || chainId == 1442)
         {
             return;
         }
-        if (chainDropdown.options[chainDropdown.value].text == "Fantom Testnet")
+        if (chainDropdown.options[chainDropdown.value].text == "Polygon Mumbai")
         {
-            destinationChain = "Fantom";
+            destinationChainId = 80001;
         }
-        else if (chainDropdown.options[chainDropdown.value].text == "Polygon Mumbai")
+        else if (chainDropdown.options[chainDropdown.value].text == "Sepolia")
         {
-            destinationChain = "Polygon";
+            destinationChainId = 11155111;
         }
-        else if (chainDropdown.options[chainDropdown.value].text == "Arbitrum Goerli")
+        else if (chainDropdown.options[chainDropdown.value].text == "Goerli")
         {
-            destinationChain = "arbitrum";
+            destinationChainId = 5;
         }
-        else if (chainDropdown.options[chainDropdown.value].text == "Binance Testnet")
+        else if (chainDropdown.options[chainDropdown.value].text == "Polygon ZKEVM Testnet")
         {
-            destinationChain = "binance";
+            destinationChainId = 1442;
         }
-        if (sourceChain != "" && destinationChain != "")
+        if (sourceChainId != -1 && destinationChainId != -1)
         {
             int tokenId = ContractManager.EMPTY;
-            if(tokenDropdown.value == 0)
+            if (tokenDropdown.value == 0)
             {
                 tokenId = ContractManager.ROAD;
-            } else if (tokenDropdown.value == 1)
+            }
+            else if (tokenDropdown.value == 1)
             {
                 tokenId = ContractManager.HOUSE;
-            } else if (tokenDropdown.value == 2)
+            }
+            else if (tokenDropdown.value == 2)
             {
                 tokenId = ContractManager.SPECIAL;
             }
 
-            if(tokenId == ContractManager.EMPTY)
+            if (tokenId == ContractManager.EMPTY)
             {
                 return;
             }
 
-            success = await ContractManager.Instance.TransferUtilsCrossChain(sourceChain, destinationChain, tokenId, amountInput.text);
+            success = await ContractManager.Instance.TransferUtilsCrossChain(sourceChainId, destinationChainId, tokenId, amountInput.text);
+        }
+        else
+        {
+            return;
         }
         if (success)
         {
@@ -325,7 +316,7 @@ public class CanvasManager : MonoBehaviour
     async void ShowTransferPanel()
     {
         var chainId = await ThirdwebManager.Instance.SDK.wallet.GetChainId();
-        if (chainId != 80001 && chainId != 4002 && chainId != 4216132 && chainId != 97)
+        if (chainId != 80001 && chainId != 5 && chainId != 11155111 && chainId != 1442)
         {
             return;
         }
@@ -334,27 +325,19 @@ public class CanvasManager : MonoBehaviour
         var optionDatas = new List<TMP_Dropdown.OptionData>();
         if (chainId == 80001)
         {
-            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Fantom Testnet" });
-            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Arbitrum Goerli" });
-            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Binance Testnet" });
+            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Sepolia" });
         }
-        else if (chainId == 4002)
+        else if (chainId == 11155111)
         {
             optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Polygon Mumbai" });
-            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Arbitrum Goerli" });
-            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Binance Testnet" });
         }
-        else if (chainId == 421613)
+        else if (chainId == 5)
         {
-            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Polygon Mumbai" });
-            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Fantom Testnet" });
-            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Binance Testnet" });
+            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Polygon ZKEVM Testnet" });
         }
-        else if (chainId == 97)
+        else if (chainId == 1442)
         {
-            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Polygon Mumbai" });
-            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Fantom Testnet" });
-            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Arbitrum Goerli" });
+            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Goerli" });
         }
         else
         {
@@ -577,7 +560,7 @@ public class CanvasManager : MonoBehaviour
                     int xIndex = position.Value.x / perSize;
                     int yIndex = position.Value.z / perSize;
                     Debug.Log("After Pos" + xIndex + ", " + yIndex);
-                    
+
                     if (ContractManager.Instance.userOwnsIndex(position.Value.x, position.Value.z))
                     {
                         Debug.Log("Save/Load Land");
@@ -682,7 +665,7 @@ public class CanvasManager : MonoBehaviour
             Listing listing = listings[j - 1];
             if (listing.isValid)
             {
-                if(!isSellerAddressSet)
+                if (!isSellerAddressSet)
                 {
                     GetENS(listing.sellerAddress);
                     isSellerAddressSet = true;
