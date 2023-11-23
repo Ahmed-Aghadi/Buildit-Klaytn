@@ -26,6 +26,7 @@ contract Utils is ERC2771Context, ERC1155, Ownable, CCIPReceiver {
     LinkTokenInterface public immutable i_link;
     // IRouterClient public immutable i_router;
     mapping(uint64 => address) public chains;
+    mapping(uint64 => uint64) public chainIdToChainSelector;
 
     constructor(
         string memory _baseUri,
@@ -42,12 +43,18 @@ contract Utils is ERC2771Context, ERC1155, Ownable, CCIPReceiver {
         chains[chain] = addr;
     }
 
+    function setChainSelector(uint64 chain, uint64 selector) public onlyOwner {
+        chainIdToChainSelector[chain] = selector;
+    }
+
     function crossChainTransfer(
         uint64 destinationChain,
         uint tokenId,
         uint amount
     ) public payable returns (bytes32 messageId) {
-        address destinationAddress = chains[destinationChain];
+        address destinationAddress = chains[
+            chainIdToChainSelector[destinationChain]
+        ];
         if (destinationAddress != address(0)) {
             revert InvalidChain();
         }
@@ -94,7 +101,13 @@ contract Utils is ERC2771Context, ERC1155, Ownable, CCIPReceiver {
     ) internal override {
         if (
             keccak256(
-                abi.encodePacked(chains[any2EvmMessage.sourceChainSelector])
+                abi.encodePacked(
+                    chains[
+                        chainIdToChainSelector[
+                            any2EvmMessage.sourceChainSelector
+                        ]
+                    ]
+                )
             ) !=
             keccak256(
                 abi.encodePacked(abi.decode(any2EvmMessage.sender, (address)))

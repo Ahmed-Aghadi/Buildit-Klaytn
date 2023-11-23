@@ -86,10 +86,16 @@ npx hardhat deploy --network $ChainName
 
 To add destination chain data for cross chain transfer of utils:
 
+Update addresses to the latest deployed contract addresses in script/addChain.js and script/addChainSelector.js
+
 ```bash
 npx hardhat run script/addChain.js --network $ChainName
+npx hardhat run script/addChainSelector.js --network $ChainName
 
-# example: npx hardhat run script/addChain.js --network mumbai
+# example:
+# npx hardhat run script/addChain.js --network mumbai
+# npx hardhat run script/addChainSelector.js --network mumbai
+
 ```
 
 Note: Don't forget to make .env file, refer .env.example file.
