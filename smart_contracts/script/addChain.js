@@ -16,10 +16,11 @@ async function addChain() {
   const seopliaChainId = 11155111;
   const goerliChainId = 5;
 
-  const mumbaiAddress = "0x07EE4358Dc25BAD471C56451cE4d11fCB6A7E3EF";
+  // Utils contract addresses
+  const mumbaiAddress = "0x4DeD7815977d7F3B0b58F578d6fa18f48DF8dE18";
   const polygonZKEVMTestnetAddress =
     "0x4f033bF08e610DDeBe5fA9707d5334Ad5c5A893e";
-  const seopliaAddress = "0x11e2e6353492e84605801849E74F3793c3A5251f";
+  const seopliaAddress = "0xCb5B8FB3a71C44dEBcF0C0E745CCBdF968682bbB";
   const goerliAddress = "0x52Cb4B27503848ABd8dd3629474835299E1E99af";
 
   const mumbai = {
