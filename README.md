@@ -100,25 +100,45 @@ Note: Don't forget to make .env file, refer .env.example file.
 
 Website can also be used which is build for webgl and will works on both desktop and mobile.
 
-## Smart Contracts ( BSC Testnet )
+## Smart Contracts ( Polygon ZKEVM Testnet )
 
-| Contract                                                                                                             | Explorer Link                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| [Map.sol](https://github.com/Ahmed-Aghadi/BuildIt-cross-chain/blob/main/smart_contracts/src/Map.sol)                 | [0x9574E60E8aBeb8062CD3DCC3ed7714E067768a72](https://testnet.bscscan.com/address/0x9574E60E8aBeb8062CD3DCC3ed7714E067768a72) |
-| [Utils.sol](https://github.com/Ahmed-Aghadi/BuildIt-cross-chain/blob/main/smart_contracts/src/Utils.sol)             | [0x2e4dDe518EB8B63C47D388aa129386d9ca110a45](https://testnet.bscscan.com/address/0x2e4dDe518EB8B63C47D388aa129386d9ca110a45) |
-| [Faucet.sol](https://github.com/Ahmed-Aghadi/BuildIt-cross-chain/blob/main/smart_contracts/src/Faucet.sol)           | [0x816d0366156F406069223D5E454Ab8c98E6D4440](https://testnet.bscscan.com/address/0x816d0366156F406069223D5E454Ab8c98E6D4440) |
-| [Marketplace.sol](https://github.com/Ahmed-Aghadi/BuildIt-cross-chain/blob/main/smart_contracts/src/Marketplace.sol) | [0xB20CDCaF8636Efee0730Ac5fe37842afA13909e6](https://testnet.bscscan.com/address/0xB20CDCaF8636Efee0730Ac5fe37842afA13909e6) |
-| [Forwarder.sol](https://github.com/Ahmed-Aghadi/BuildIt-cross-chain/blob/main/smart_contracts/src/Forwarder.sol)     | [0xC07DdbA94611C33882612b8031b2a6AfB65ca545](https://testnet.bscscan.com/address/0xC07DdbA94611C33882612b8031b2a6AfB65ca545) |
+| Contract                                                                                                 | Explorer Link                                                                                                                          |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| [Map.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Map.sol)                 | [0x9ea48FE0c9b0ae6e3E27Dec076800D9347c2E0D7](https://testnet-zkevm.polygonscan.com/address/0x9ea48FE0c9b0ae6e3E27Dec076800D9347c2E0D7) |
+| [Utils.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Utils.sol)             | [0x4f033bF08e610DDeBe5fA9707d5334Ad5c5A893e](https://testnet-zkevm.polygonscan.com/address/0x4f033bF08e610DDeBe5fA9707d5334Ad5c5A893e) |
+| [Faucet.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Faucet.sol)           | [0x4B03368f666fa7579BfeB49eF1c5E405389b174e](https://testnet-zkevm.polygonscan.com/address/0x4B03368f666fa7579BfeB49eF1c5E405389b174e) |
+| [Marketplace.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Marketplace.sol) | [0x1b62E60b85678F5FF2fd6a8c27FB9dC7d5e1e2D4](https://testnet-zkevm.polygonscan.com/address/0x1b62E60b85678F5FF2fd6a8c27FB9dC7d5e1e2D4) |
+| [Forwarder.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Forwarder.sol)     | [0x53D04942C2861B1FeB79300beAF26D1C10cC769f](https://testnet-zkevm.polygonscan.com/address/0x53D04942C2861B1FeB79300beAF26D1C10cC769f) |
 
-## Smart Contracts ( OPBNB Testnet )
+## Smart Contracts ( Polygon Mumbai )
 
-| Contract                                                                                                             | Explorer Link                                                                                                                      |
-| -------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| [Map.sol](https://github.com/Ahmed-Aghadi/BuildIt-cross-chain/blob/main/smart_contracts/src/Map.sol)                 | [0xdf78d5a57dcff31ca18978b56760867010aebc2e](https://opbnb-testnet.bscscan.com/address/0xdf78d5a57dcff31ca18978b56760867010aebc2e) |
-| [Utils.sol](https://github.com/Ahmed-Aghadi/BuildIt-cross-chain/blob/main/smart_contracts/src/Utils.sol)             | [0x11da0f57086a19977e46b548b64166411d839a30](https://opbnb-testnet.bscscan.com/address/0x11da0f57086a19977e46b548b64166411d839a30) |
-| [Faucet.sol](https://github.com/Ahmed-Aghadi/BuildIt-cross-chain/blob/main/smart_contracts/src/Faucet.sol)           | [0x76cfdE04F691B93c9993Be24d5FE7667E7A8782C](https://opbnb-testnet.bscscan.com/address/0x76cfdE04F691B93c9993Be24d5FE7667E7A8782C) |
-| [Marketplace.sol](https://github.com/Ahmed-Aghadi/BuildIt-cross-chain/blob/main/smart_contracts/src/Marketplace.sol) | [0x489d47E592639Ba11107E84dd6CCA08F0892E27d](https://opbnb-testnet.bscscan.com/address/0x489d47E592639Ba11107E84dd6CCA08F0892E27d) |
-| [Forwarder.sol](https://github.com/Ahmed-Aghadi/BuildIt-cross-chain/blob/main/smart_contracts/src/Forwarder.sol)     | [0xCA34FF4068f042203087D475805c4DD8347cE958](https://opbnb-testnet.bscscan.com/address/0xCA34FF4068f042203087D475805c4DD8347cE958) |
+| Contract                                                                                                 | Explorer Link                                                                                                                   |
+| -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| [Map.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Map.sol)                 | [0xEaC226cF2817F5565d6672A8E0C18410ec450991](https://mumbai.polygonscan.com/address/0xEaC226cF2817F5565d6672A8E0C18410ec450991) |
+| [Utils.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Utils.sol)             | [0x07EE4358Dc25BAD471C56451cE4d11fCB6A7E3EF](https://mumbai.polygonscan.com/address/0x07EE4358Dc25BAD471C56451cE4d11fCB6A7E3EF) |
+| [Faucet.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Faucet.sol)           | [0x2984288408926fe760673767804a8301d7DB6ae3](https://mumbai.polygonscan.com/address/0x2984288408926fe760673767804a8301d7DB6ae3) |
+| [Marketplace.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Marketplace.sol) | [0x1674edA85F0cAd125B8f83383d339bea2E0b773D](https://mumbai.polygonscan.com/address/0x1674edA85F0cAd125B8f83383d339bea2E0b773D) |
+| [Forwarder.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Forwarder.sol)     | [0xd19891D144a8EA7250Ece89560d1E408c11847CC](https://mumbai.polygonscan.com/address/0xd19891D144a8EA7250Ece89560d1E408c11847CC) |
+
+## Smart Contracts ( Goerli )
+
+| Contract                                                                                                 | Explorer Link                                                                                                                |
+| -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| [Map.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Map.sol)                 | [0x5720d7a63FeFf600fAA72A0C97361D490DEab903](https://goerli.etherscan.io/address/0x5720d7a63FeFf600fAA72A0C97361D490DEab903) |
+| [Utils.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Utils.sol)             | [0x52Cb4B27503848ABd8dd3629474835299E1E99af](https://goerli.etherscan.io/address/0x52Cb4B27503848ABd8dd3629474835299E1E99af) |
+| [Faucet.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Faucet.sol)           | [0x574F8B3f91d179F808bdDD879020164a1A317Daa](https://goerli.etherscan.io/address/0x574F8B3f91d179F808bdDD879020164a1A317Daa) |
+| [Marketplace.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Marketplace.sol) | [0x14AADF21340053a7403B0D30625a0289E30bF8CF](https://goerli.etherscan.io/address/0x14AADF21340053a7403B0D30625a0289E30bF8CF) |
+| [Forwarder.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Forwarder.sol)     | [0xbC9Da99F3c34E8e93134129A5466c3F5970cE210](https://goerli.etherscan.io/address/0xbC9Da99F3c34E8e93134129A5466c3F5970cE210) |
+
+## Smart Contracts ( Sepolia )
+
+| Contract                                                                                                 | Explorer Link                                                                                                                 |
+| -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| [Map.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Map.sol)                 | [0xdc915eD51B67EB524119b894e5D75CdA0F674a3E](https://sepolia.etherscan.io/address/0xdc915eD51B67EB524119b894e5D75CdA0F674a3E) |
+| [Utils.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Utils.sol)             | [0x11e2e6353492e84605801849E74F3793c3A5251f](https://sepolia.etherscan.io/address/0x11e2e6353492e84605801849E74F3793c3A5251f) |
+| [Faucet.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Faucet.sol)           | [0xA9b084B2Cc9918C5fF6c66138C1cC5D02954F442](https://sepolia.etherscan.io/address/0xA9b084B2Cc9918C5fF6c66138C1cC5D02954F442) |
+| [Marketplace.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Marketplace.sol) | [0x2D1f1A043b9aBEf45F75Df85F797e1e51923f4A9](https://sepolia.etherscan.io/address/0x2D1f1A043b9aBEf45F75Df85F797e1e51923f4A9) |
+| [Forwarder.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Forwarder.sol)     | [0xAdA21730026A539bDa27C2a2997E71023463C3D1](https://sepolia.etherscan.io/address/0xAdA21730026A539bDa27C2a2997E71023463C3D1) |
 
 ## Table of Contents
 
@@ -147,7 +167,7 @@ When a user connects their wallet, the game fetches data from the smart contract
 
 In addition, BuildIt includes a marketplace where users can sell their land through direct listings or auctions. Chainlink automation can be utilized for auction listings, and if the chain supports Chainlink price feeds, the land can be sold in USD. The marketplace provides an easy and secure way for users to trade their land.
 
-Also, users can transfer their util items from one chain to another ( using Axelar )
+Also, users can transfer their util items from one chain to another ( using Polygon LxLy bridge and CCIP ). Polygon LxLy bridge is used to transfer utils items from Polygon ZKEVM Testnet to Goerli and vice versa whereas Chainlink CCIP is used to transfer utils items from Polygon Mumbai to Sepolia and vice versa
 
 While editing the map, user can also save/load private designs which is saved using sprucekit.
 
@@ -168,7 +188,8 @@ BuildIt was built using the following technologies and tools:
 - Item Minting: Three items are minted in the Utils contract: road, house, and special item.
 - Wallet Integration: Users can connect their wallets, such as Metamask, Coinbase, and WalletConnect, to interact with the metaverse.
 - Gasless Transactions: All smart contracts implement ERC2771Context, enabling users to perform gasless transactions when the relayer is funded.
-- Axelar was used facilitate cross chain transfer of util items from one chain to another
+- Polygon LxLy bridge is used to transfer utils items from Polygon ZKEVM Testnet to Goerli and vice versa.
+- Chainlink CCIP is used to transfer utils items from Polygon Mumbai to Sepolia and vice versa.
 - Sprucekit was used to let User Save/Load private designs
 - ENS was used to resolve custom name for users in marketplace
 
@@ -200,6 +221,7 @@ The development of BuildIt provided us with valuable learning experiences, inclu
 - Understanding the intricacies of token standards like ERC721 and ERC1155.
 - Optimizing gas usage and transaction costs in smart contract deployments.
 - Enhancing user experience through seamless wallet integration and fetching data from smart contracts.
+- Polygon ZKEVM LxLy bridge and Chainlink services.
 
 ## What's Next for BuildIt
 
