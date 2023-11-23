@@ -11,9 +11,8 @@ const ProgressBar = ({ bgcolor, progress, height }: ProgressBarProps) => {
   const Parentdiv = {
     height: height,
     width: "100%",
-    backgroundColor: "whitesmoke",
+    // backgroundColor: "whitesmoke",
     borderRadius: 40,
-    margin: 50,
   };
 
   const Childdiv = {
@@ -31,9 +30,20 @@ const ProgressBar = ({ bgcolor, progress, height }: ProgressBarProps) => {
   };
 
   return (
-    <div style={Parentdiv}>
-      <div style={Childdiv as CSS.Properties<string | number>}>
-        <span style={progresstext}>{`${progress}%`}</span>
+    <div
+      style={{
+        display: "flex",
+        height: "100vh",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 10,
+      }}
+    >
+      <div style={Parentdiv}>
+        <div style={Childdiv as CSS.Properties<string | number>}>
+          <span style={progresstext}>{`${progress}%`}</span>
+        </div>
       </div>
     </div>
   );
