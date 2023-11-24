@@ -1359,7 +1359,7 @@ public class ContractManager : MonoBehaviour
             // Polygon ZKEVM LxLy Bridge uses chainId 1 for Polygon ZKEVM and 0 for Ethereum
             // Chainlink CCIP Bridge uses chainId 12532609583862916517 for Polygon Mumbai and 16015286601757825753 for Sepolia
             // Can't set chain selectors for CCIP as they are very large so have updated smart contract to accomadate this issue
-            int destChainId = 0;
+            BigInteger destChainId = 0;
             if (destChain == 5)
             {
                 destChainId = 0;
@@ -1384,12 +1384,12 @@ public class ContractManager : MonoBehaviour
             }
             else
             {
-                int amountLinkToken = await utilsContract.Read<int>("getLinkFees", destChainId, tokenId, amount, walletAddress);
+                string amountLinkToken = await utilsContract.Read<string>("getLinkFees", destChainId, tokenId, amount, walletAddress);
                 loadingText.text = "Loading: 20%";
                 // Approve amount
                 int allowance = await linkTokenContract.Read<int>("allowance", walletAddress, utilsContractAddress);
                 loadingText.text = "Loading: 25%";
-                if (allowance < amountLinkToken)
+                if (allowance < BigInteger.Parse(amountLinkToken))
                 {
                     await linkTokenContract.Write("approve", marketplaceContractAddress, (amountLinkToken).ToString());
                 }
