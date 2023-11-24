@@ -28,10 +28,10 @@ async function addChain() {
       : "16015286601757825753";
 
   // Utils contract addresses
-  const mumbaiAddress = "0x654fa74aDF2b6A71B0191E4445A774eE0C2D2C1E";
+  const mumbaiAddress = "0x82BFe300311f0324423406382fC6bdccbC2BaB47";
   const polygonZKEVMTestnetAddress =
     "0x4f033bF08e610DDeBe5fA9707d5334Ad5c5A893e";
-  const seopliaAddress = "0x14AADF21340053a7403B0D30625a0289E30bF8CF";
+  const seopliaAddress = "0xE9cEAe69B724F4340Ca3D6D2F0D147b0Bc3E1978";
   const goerliAddress = "0x52Cb4B27503848ABd8dd3629474835299E1E99af";
 
   const mumbai = {

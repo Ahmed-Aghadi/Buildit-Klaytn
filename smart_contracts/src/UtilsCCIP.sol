@@ -80,7 +80,7 @@ contract Utils is ERC2771Context, ERC1155, Ownable, CCIPReceiver {
 
         // Get the fee required to send the message
         uint256 fees = IRouterClient(i_router).getFee(
-            destinationChain,
+            chainIdToChainSelector[destinationChain],
             evm2AnyMessage
         );
 
@@ -137,7 +137,9 @@ contract Utils is ERC2771Context, ERC1155, Ownable, CCIPReceiver {
         uint amount,
         address msgSender
     ) external view returns (uint256 fees) {
-        address destinationAddress = chains[destinationChain];
+        address destinationAddress = chains[
+            chainIdToChainSelector[destinationChain]
+        ];
 
         bytes memory payload = abi.encode(tokenId, amount, msgSender);
 
@@ -155,7 +157,10 @@ contract Utils is ERC2771Context, ERC1155, Ownable, CCIPReceiver {
         });
 
         // Get the fee required to send the message
-        fees = IRouterClient(i_router).getFee(destinationChain, evm2AnyMessage);
+        fees = IRouterClient(i_router).getFee(
+            chainIdToChainSelector[destinationChain],
+            evm2AnyMessage
+        );
     }
 
     // Add `virtual` to function signature of `supportsInterface` function in CCIPReceiver.sol

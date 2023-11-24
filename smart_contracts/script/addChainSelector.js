@@ -19,8 +19,8 @@ async function addChain() {
     _chainId == mumbaiChainId ? "12532609583862916517" : "16015286601757825753";
 
   // Utils contract addresses
-  const mumbaiAddress = "0x654fa74aDF2b6A71B0191E4445A774eE0C2D2C1E";
-  const seopliaAddress = "0x14AADF21340053a7403B0D30625a0289E30bF8CF";
+  const mumbaiAddress = "0x82BFe300311f0324423406382fC6bdccbC2BaB47";
+  const seopliaAddress = "0xE9cEAe69B724F4340Ca3D6D2F0D147b0Bc3E1978";
 
   const mumbai = {
     chainId: mumbaiChainId,

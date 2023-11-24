@@ -77,15 +77,15 @@ public class ContractManager : MonoBehaviour
         string utilsContractAddressTheta = "0x3EC31e8B991FF0b3FfffD480e2A5F259B51DdF5c";
         string faucetContractAddressTheta = "0xc32Fb0cb3D6CcfD111146a2CA26A3FC774F3ECd2";*/
 
-    string mapContractAddressMumbai = "0x63fe2Ed5763dEA282208661EC9cE847E26f3E8e2";
-    string utilsContractAddressMumbai = "0x654fa74aDF2b6A71B0191E4445A774eE0C2D2C1E";
+    string mapContractAddressMumbai = "0x21148779871A17056025C93bdC9E83334b93fe3d";
+    string utilsContractAddressMumbai = "0x82BFe300311f0324423406382fC6bdccbC2BaB47";
     string faucetContractAddressMumbai = "0x2984288408926fe760673767804a8301d7DB6ae3";
-    string marketplaceContractAddressMumbai = "0x99a06421222752888f22AEbb8BF90b1c58550FA4";
+    string marketplaceContractAddressMumbai = "0xf4EeB57859a5b2e98f747E918d414D74CecE0D6b";
 
-    string mapContractAddressSepolia = "0xd10bdF933e89E94B04A5B4Cc489DeDbDcf028839";
-    string utilsContractAddressSepolia = "0x14AADF21340053a7403B0D30625a0289E30bF8CF";
+    string mapContractAddressSepolia = "0x5452fD02e04Abc7101588014BB7A44d1e761e261";
+    string utilsContractAddressSepolia = "0xE9cEAe69B724F4340Ca3D6D2F0D147b0Bc3E1978";
     string faucetContractAddressSepolia = "0xA9b084B2Cc9918C5fF6c66138C1cC5D02954F442";
-    string marketplaceContractAddressSepolia = "0x1b54e075E3Ee8F7916E6E7f9aEF50d770BC706CF";
+    string marketplaceContractAddressSepolia = "0xf20017025433b14295CF630a8392B31A2A39c00B";
 
     /*    string mapContractAddressMantleTestnet = "0x9f85f13F5FFb3b1dcb7B318F1712b6f42A4CFFd4";
         string utilsContractAddressMantleTestnet = "0x8e539DfdA07e5Bb63F6768eaDb800F01FC25C336";
