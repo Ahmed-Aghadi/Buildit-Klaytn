@@ -26,24 +26,13 @@ public class ThirdwebManager : MonoBehaviour
 
     [Header("REQUIRED SETTINGS")]
     [Tooltip("The chain to initialize the SDK with")]
-    public string chain = "mumbai";
+    public string chain = "klaytn-testnet-baobab";
 
     [Header("CHAIN DATA")]
     [Tooltip("Support any chain by adding it to this list from the inspector")]
     public List<ChainData> supportedChains = new List<ChainData>()
     {
-        new ChainData("mumbai", "80001", null),
-/*        new ChainData("fantom-testnet", "4002", null),
-        new ChainData("okexchain-testnet", "65", null),
-        new ChainData("xdc-apothem-network", "51", null),
-        new ChainData("theta-testnet", "365", null),*/
-        new ChainData("polygon-zkevm-testnet", "1442", null),
-        new ChainData("sepolia", "11155111", null),
-/*        new ChainData("mantle-testnet", "5001", null),
-        new ChainData("arbitrum-goerli", "421613", null),
-        new ChainData("opbnb-testnet", "5611", null),
-        new ChainData("binance-testnet", "97", null),*/
-        new ChainData("goerli", "5", null),
+        new ChainData("klaytn-testnet-baobab", "1001", null),
     };
 
     [Header("APP METADATA")]

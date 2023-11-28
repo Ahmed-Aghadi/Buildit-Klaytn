@@ -9,7 +9,10 @@ import { ethers } from "ethers";
 type Design = { label: string; design: string };
 type Designs = Design[];
 
-const ENSComponent = ({
+const REVERSE_RECORDS_ADDRESS = "0x87f4483E4157a6592dd1d1546f145B5EE22c790a";
+const REVERSE_RECORDS_ABI = ["function getName(address) view returns (string)"];
+
+const KNSComponent = ({
   unityProvider,
   isLoaded,
   addEventListener,
@@ -28,33 +31,26 @@ const ENSComponent = ({
         return;
       }
 
-      let ensName = await ethers
-        .getDefaultProvider(process.env.NEXT_PUBLIC_MAINNET_PROVIDER_URL)
-        .lookupAddress(address);
-      let ensAvatarUrl: string | null = "";
-      if (!ensName) {
-        ensName = await ethers
-          .getDefaultProvider(process.env.NEXT_PUBLIC_GOERLI_PROVIDER_URL)
-          .lookupAddress(address);
-        if (ensName) {
-          ensAvatarUrl = await ethers
-            .getDefaultProvider(process.env.NEXT_PUBLIC_GOERLI_PROVIDER_URL)
-            .getAvatar(address);
-        }
-      } else {
-        ensAvatarUrl = await ethers
-          .getDefaultProvider(process.env.NEXT_PUBLIC_MAINNET_PROVIDER_URL)
-          .getAvatar(address);
-      }
-      if (!ensName) {
+      const provider = new ethers.providers.JsonRpcProvider(
+        process.env.NEXT_PUBLIC_KLAYTN_MAINNET_PROVIDER_URL // Klaytn mainnet RPC URL
+      );
+
+      let reverseRecords = new ethers.Contract(
+        REVERSE_RECORDS_ADDRESS,
+        REVERSE_RECORDS_ABI,
+        provider
+      );
+
+      let ensName = await reverseRecords.getName(address);
+
+      if (!ensName || ensName === "") {
         ensName = address.slice(0, 6) + "..." + address.slice(-4);
       }
-      if (!ensAvatarUrl) {
-        ensAvatarUrl =
-          "https://cdn.pixabay.com/photo/2014/04/02/10/25/man-303792_1280.png";
-      }
 
-      console.log("ens", {
+      let ensAvatarUrl =
+        "https://cdn.pixabay.com/photo/2014/04/02/10/25/man-303792_1280.png";
+
+      console.log("kns", {
         ensName,
         ensAvatarUrl,
       });
@@ -90,4 +86,4 @@ const ENSComponent = ({
   return <></>;
 };
 
-export default ENSComponent;
+export default KNSComponent;

@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Unity, useUnityContext } from "react-unity-webgl";
 import Script from "next/script";
 import SSXComponent from "@/components/SSXComponent";
-import ENSComponent from "@/components/ENSComponent";
+import KNSComponent from "@/components/KNSComponent";
 import Progressbar from "@/components/ProgressBar";
 
 type Design = { label: string; design: string };
@@ -65,7 +65,7 @@ const UnityPlayer = () => {
             removeEventListener={removeEventListener}
             sendMessage={sendMessage}
           />
-          <ENSComponent
+          <KNSComponent
             unityProvider={unityProvider}
             isLoaded={isLoaded}
             addEventListener={addEventListener}
