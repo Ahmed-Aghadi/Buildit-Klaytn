@@ -32,7 +32,7 @@ const KNSComponent = ({
       }
 
       const provider = new ethers.providers.JsonRpcProvider(
-        process.env.NEXT_PUBLIC_KLAYTN_MAINNET_PROVIDER_URL // Klaytn mainnet RPC URL
+        process.env.NEXT_PUBLIC_MAINNET_PROVIDER_URL // Klaytn mainnet RPC URL
       );
 
       let reverseRecords = new ethers.Contract(
