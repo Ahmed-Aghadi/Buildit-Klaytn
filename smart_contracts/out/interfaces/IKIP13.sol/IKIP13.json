@@ -1,0 +1,51 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "ast": {
+    "absolutePath": "lib/klaytn-contracts/contracts/KIP/interfaces/IKIP13.sol",
+    "id": 480,
+    "exportedSymbols": {
+      "IKIP13": [
+        1764
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "95:69:7",
+    "nodes": [
+      {
+        "id": 478,
+        "nodeType": "PragmaDirective",
+        "src": "95:23:7",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ]
+      },
+      {
+        "id": 479,
+        "nodeType": "ImportDirective",
+        "src": "120:43:7",
+        "nodes": [],
+        "absolutePath": "lib/klaytn-contracts/contracts/KIP/utils/introspection/IKIP13.sol",
+        "file": "../utils/introspection/IKIP13.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 480,
+        "sourceUnit": 1765,
+        "symbolAliases": [],
+        "unitAlias": ""
+      }
+    ],
+    "license": "MIT"
+  },
+  "id": 7
+}

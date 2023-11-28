@@ -4,25 +4,23 @@ pragma solidity ^0.8.13;
 import "forge-std/Test.sol";
 import "forge-std/console.sol";
 import "../src/Map.sol";
-import "../src/UtilsLxLy.sol";
+import "../src/Utils.sol";
 import "../src/Marketplace.sol";
 import "../src/Forwarder.sol";
 
-import {ERC1155TokenReceiver} from "solmate/tokens/ERC1155.sol";
-import {ERC721TokenReceiver} from "solmate/tokens/ERC721.sol";
+import {IKIP37Receiver} from "klaytn/KIP/token/KIP37/IKIP37Receiver.sol";
+import {IKIP37Receiver} from "klaytn/KIP/token/KIP37/IKIP37Receiver.sol";
 
 contract MarketplaceTest is Test {
+    MockWitnetRouter mockWitnetRouter;
     Forwarder forwarder;
     Marketplace marketplace;
-    MockAggregatorV3 mockAggregatorV3;
-    MockPolygonZkEVMBridge mockPolygonZkEVMBridge;
     Map map;
     Utils utils;
     uint80 roundId;
-    int256 answer;
-    uint256 startedAt;
-    uint256 updatedAt;
-    uint80 answeredInRound;
+    int256 value;
+    uint256 timestamp;
+    uint256 status;
     uint8 decimals;
     string mapBaseUri;
     string utilsBaseUri;
@@ -34,13 +32,13 @@ contract MarketplaceTest is Test {
 
     bytes4 constant ERC1155_RECEIVED = 0xf23a6e61;
     bytes4 constant ERC1155_BATCH_RECEIVED = 0xbc197c81;
+    bytes4 constant witnetPriceRouterUsdId4 = 0x00000001;
 
     function setUp() public {
         roundId = 1;
-        answer = 2000_0000_0000;
-        startedAt = 1;
-        updatedAt = 1;
-        answeredInRound = 1;
+        value = 2000_0000_0000;
+        timestamp = 1623931200;
+        status = 1;
         decimals = 8;
         mapBaseUri = "https://example1.com/";
         utilsBaseUri = "https://example2.com/";
@@ -50,23 +48,17 @@ contract MarketplaceTest is Test {
         utilCount = 3;
         utilAmount = 1000;
         forwarder = new Forwarder();
-        mockAggregatorV3 = new MockAggregatorV3(
-            roundId,
-            answer,
-            startedAt,
-            updatedAt,
-            answeredInRound,
+        utils = new Utils(utilsBaseUri, address(forwarder));
+        map = new Map(size, 5, mapBaseUri, address(utils), address(forwarder));
+        mockWitnetRouter = new MockWitnetRouter(
+            value,
+            timestamp,
+            status,
             decimals
         );
-        mockPolygonZkEVMBridge = new MockPolygonZkEVMBridge();
-        utils = new Utils(
-            utilsBaseUri,
-            address(forwarder),
-            mockPolygonZkEVMBridge
-        );
-        map = new Map(size, 5, mapBaseUri, address(utils), address(forwarder));
         marketplace = new Marketplace(
-            address(mockAggregatorV3),
+            address(mockWitnetRouter),
+            witnetPriceRouterUsdId4,
             address(map),
             address(utils),
             address(0x0),
@@ -98,33 +90,33 @@ contract MarketplaceTest is Test {
         }
     }
 
-    function onERC721Received(
+    function onKIP17Received(
         address,
         address,
         uint256,
         bytes calldata
     ) external virtual returns (bytes4) {
-        return ERC721TokenReceiver.onERC721Received.selector;
+        return IKIP17Receiver.onKIP17Received.selector;
     }
 
-    function onERC1155Received(
+    function onKIP37Received(
         address,
         address,
         uint256,
         uint256,
         bytes memory
     ) public virtual returns (bytes4) {
-        return ERC1155TokenReceiver.onERC1155Received.selector;
+        return IKIP37Receiver.onKIP37Received.selector;
     }
 
-    function onERC1155BatchReceived(
+    function onKIP37BatchReceived(
         address,
         address,
         uint256[] memory,
         uint256[] memory,
         bytes memory
     ) public virtual returns (bytes4) {
-        return ERC1155TokenReceiver.onERC1155BatchReceived.selector;
+        return IKIP37Receiver.onKIP37BatchReceived.selector;
     }
 
     function testCreateListing1(uint256 _tokenId) public {
@@ -193,7 +185,7 @@ contract MarketplaceTest is Test {
         assertEq(isAuction, _isAuction, "isAuction is not correct");
         assertEq(auctionTime, _auctionTime, "auctionEndTime is not correct");
         uint256 priceInETH = marketplace.getPrice(1);
-        uint256 expectedPriceInETH = (_price * 10 ** (decimals)) / uint(answer);
+        uint256 expectedPriceInETH = (_price * 10 ** (decimals)) / uint(value);
         if (_inUSD) {
             assertEq(
                 priceInETH,
@@ -287,54 +279,35 @@ contract MockAggregatorV3 {
     }
 }
 
-contract MockPolygonZkEVMBridge is IPolygonZkEVMBridge {
-    uint32 public networkID = 0;
+contract MockWitnetRouter {
+    int256 immutable i_value;
+    uint256 immutable i_timestamp;
+    uint256 immutable i_status;
+    uint8 immutable i_decimals;
 
-    function bridgeAsset(
-        uint32 destinationNetwork,
-        address destinationAddress,
-        uint256 amount,
-        address token,
-        bool forceUpdateGlobalExitRoot,
-        bytes calldata permitData
-    ) external payable {}
+    constructor(
+        int256 _value,
+        uint256 _timestamp,
+        uint256 _status,
+        uint8 _decimals
+    ) {
+        i_value = _value;
+        i_timestamp = _timestamp;
+        i_status = _status;
+        i_decimals = _decimals;
+    }
 
-    function bridgeMessage(
-        uint32 destinationNetwork,
-        address destinationAddress,
-        bool forceUpdateGlobalExitRoot,
-        bytes calldata metadata
-    ) external payable {}
+    function valueFor(
+        bytes32 /* feedId */
+    )
+        external
+        view
+        returns (int256 _value, uint256 _timestamp, uint256 _status)
+    {
+        return (i_value, i_timestamp, i_status);
+    }
 
-    function claimAsset(
-        bytes32[32] calldata smtProof,
-        uint32 index,
-        bytes32 mainnetExitRoot,
-        bytes32 rollupExitRoot,
-        uint32 originNetwork,
-        address originTokenAddress,
-        uint32 destinationNetwork,
-        address destinationAddress,
-        uint256 amount,
-        bytes calldata metadata
-    ) external {}
-
-    function claimMessage(
-        bytes32[32] calldata smtProof,
-        uint32 index,
-        bytes32 mainnetExitRoot,
-        bytes32 rollupExitRoot,
-        uint32 originNetwork,
-        address originAddress,
-        uint32 destinationNetwork,
-        address destinationAddress,
-        uint256 amount,
-        bytes calldata metadata
-    ) external {}
-
-    function updateGlobalExitRoot() external {}
-
-    function activateEmergencyState() external {}
-
-    function deactivateEmergencyState() external {}
+    function lookupDecimals(bytes4 /* feedId */) external view returns (uint8) {
+        return i_decimals;
+    }
 }

@@ -20,63 +20,15 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   // marketplace can only be deployed on goerli or sepolia testnet. As price feed is not available on other testnets
   let registryAddress = "0x0000000000000000000000000000000000000000";
   let registrarAddress = "0x0000000000000000000000000000000000000000";
-  let eth_usd_priceFeedAddress = "0x0000000000000000000000000000000000000000";
   let linkAddress = "0x0000000000000000000000000000000000000000";
+  let witnetPriceRouterAddress = "0x0000000000000000000000000000000000000000";
+  let witnetPriceRouterUsdId4 = "0x00000000";
   let gasLimit = 999999;
-  let routerAddress = "0x0000000000000000000000000000000000000000";
-  let polygonZkevmBridgeAddress = "0x0000000000000000000000000000000000000000";
-  let isPolygonZkvemBridgeRequired = false;
-  if (chainId == 80001) {
-    // mumbai
-    routerAddress = "0x70499c328e1e2a3c41108bd3730f6670a44595d1";
-    registryAddress = "0xE16Df59B887e3Caa439E0b29B42bA2e7976FD8b2";
-    registrarAddress = "0x57A4a13b35d25EE78e084168aBaC5ad360252467";
-    linkAddress = "0x326C977E6efc84E512bB9C30f76E30c160eD06FB";
-  } /* else if (chainId == 4002) {
-    // fantom testnet
-    registryAddress = "0xE16Df59B887e3Caa439E0b29B42bA2e7976FD8b2";
-    registrarAddress = "0x57A4a13b35d25EE78e084168aBaC5ad360252467";
-    linkAddress = "0xfaFedb041c0DD4fA2Dc0d87a6B0979Ee6FA7af5F";
-  } */ else if (chainId == 11155111) {
-    // sepolia
-    routerAddress = "0xd0daae2231e9cb96b94c8512223533293c3693bf";
-    registryAddress = "0xE16Df59B887e3Caa439E0b29B42bA2e7976FD8b2";
-    registrarAddress = "0x9a811502d843E5a03913d5A2cfb646c11463467A";
-    eth_usd_priceFeedAddress = "0x694AA1769357215DE4FAC081bf1f309aDC325306";
-    linkAddress = "0x779877A7B0D9E8603169DdbD7836e478b4624789";
-  } /* else if (chainId == 250) {
-    // fantom
-    registryAddress = "0x02777053d6764996e594c3E88AF1D58D5363a2e6";
-    registrarAddress = "0xDb8e8e2ccb5C033938736aa89Fe4fa1eDfD15a1d";
-    linkAddress = "0x6F43FF82CCA38001B6699a8AC47A2d0E66939407";
-  } else if (chainId == 421613) {
-    // arbitrum goerli
-    registryAddress = "0x291093864bafc9aA517eF90ce954dD7D95D68C80";
-    registrarAddress = "0x263ae9E522707D5A2B317026358d7f33ceC4ccc5";
-    linkAddress = "0xd14838A68E8AFBAdE5efb411d5871ea0011AFd28";
-  } */ else if (chainId == 97) {
-    // bsc testnet
-    routerAddress = "0x9527e2d01a3064ef6b50c1da1c0cc523803bcff2";
-    registryAddress = "0xE16Df59B887e3Caa439E0b29B42bA2e7976FD8b2";
-    registrarAddress = "0x57A4a13b35d25EE78e084168aBaC5ad360252467";
-    linkAddress = "0x84b9B910527Ad5C03A9Ca831909E21e236EA7b06";
-  } else if (chainId == 5) {
-    // goerli testnet
-    isPolygonZkvemBridgeRequired = true;
-    registryAddress = "0xE16Df59B887e3Caa439E0b29B42bA2e7976FD8b2";
-    registrarAddress = "0x57A4a13b35d25EE78e084168aBaC5ad360252467";
-    linkAddress = "0x326C977E6efc84E512bB9C30f76E30c160eD06FB";
-    polygonZkevmBridgeAddress = "0xF6BEEeBB578e214CA9E23B0e9683454Ff88Ed2A7";
-  } else if (chainId == 1442) {
-    // polygon zkevm testnet
-    isPolygonZkvemBridgeRequired = true;
-    polygonZkevmBridgeAddress = "0xF6BEEeBB578e214CA9E23B0e9683454Ff88Ed2A7";
+  if (chainId == 1001) {
+    // Klaytn Baobab testnet
+    witnetPriceRouterAddress = "0xeD074DA2A76FD2Ca90C1508930b4FB4420e413B0";
+    witnetPriceRouterUsdId4 = "0x6cc828d1";
   }
-
-  console.log(
-    "Is Polygon Zkevm Bridge Required : ",
-    isPolygonZkvemBridgeRequired
-  );
 
   log("----------------------------------------------------");
   const forwarderArg = [];
@@ -86,29 +38,15 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     log: true,
     waitConfirmations: waitBlockConfirmations,
   });
-  // const forwarder = {
-  //   address: "0x65D84C0883e0e0c9c41B044b4523cd07999924Fe",
-  // };
   console.log("forwarder deployed to:", forwarder.address);
   log("----------------------------------------------------");
-  const utilsArg = isPolygonZkvemBridgeRequired
-    ? [utilsBaseUri, forwarder.address, polygonZkevmBridgeAddress]
-    : [utilsBaseUri, forwarder.address, linkAddress, routerAddress];
-  const utils = await deploy(
-    isPolygonZkvemBridgeRequired ? "UtilsLxLy.sol" : "UtilsCCIP.sol",
-    {
-      from: deployer,
-      contract: isPolygonZkvemBridgeRequired
-        ? "src/UtilsLxLy.sol:Utils"
-        : "src/UtilsCCIP.sol:Utils",
-      args: utilsArg,
-      log: true,
-      waitConfirmations: waitBlockConfirmations,
-    }
-  );
-  // const utils = {
-  //   address: "0x4a4e6cc94507b6ad2c91ad765d3f5b566b15d895",
-  // };
+  const utilsArg = [utilsBaseUri, forwarder.address];
+  const utils = await deploy("Utils", {
+    from: deployer,
+    args: utilsArg,
+    log: true,
+    waitConfirmations: waitBlockConfirmations,
+  });
   console.log("utils deployed to:", utils.address);
   log("----------------------------------------------------");
   const mapArg = [size, perSize, mapBaseUri, utils.address, forwarder.address];
@@ -118,9 +56,6 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     log: true,
     waitConfirmations: waitBlockConfirmations,
   });
-  // const map = {
-  //   address: "0x91db12f3ea6f4598c982d46e8fdc72b53c333afb",
-  // };
   console.log("map deployed to:", map.address);
   log("----------------------------------------------------");
   const faucetArg = [forwarder.address];
@@ -130,13 +65,11 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     log: true,
     waitConfirmations: waitBlockConfirmations,
   });
-  // const faucet = {
-  //   address: "0x724257edfe7f3bbf8c06a01ae3becb48dc5e220a",
-  // };
   console.log("faucet deployed to:", faucet.address);
   log("----------------------------------------------------");
   const marketplaceArg = [
-    eth_usd_priceFeedAddress,
+    witnetPriceRouterAddress,
+    witnetPriceRouterUsdId4,
     map.address,
     utils.address,
     linkAddress,
@@ -151,21 +84,10 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     log: true,
     waitConfirmations: waitBlockConfirmations,
   });
-  // const marketplace = {
-  //   address: "0x20294525826458177030954af848d783f733a80a",
-  // };
   console.log("marketplace deployed to:", marketplace.address);
   log("----------------------------------------------------");
   console.log("Minting Utils...");
-  await mintUtils(
-    account,
-    utils.address,
-    utilsMintCount,
-    utilsMintAmount,
-    isPolygonZkvemBridgeRequired
-      ? "src/UtilsLxLy.sol:Utils"
-      : "src/UtilsCCIP.sol:Utils"
-  );
+  await mintUtils(account, utils.address, utilsMintCount, utilsMintAmount);
   log("----------------------------------------------------");
   console.log("Transfering Utils to Faucet...");
   await transferToFaucet(
@@ -173,10 +95,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     utils.address,
     faucet.address,
     utilsMintCount,
-    transferUtilsAmount,
-    isPolygonZkvemBridgeRequired
-      ? "src/UtilsLxLy.sol:Utils"
-      : "src/UtilsCCIP.sol:Utils"
+    transferUtilsAmount
   );
   log("----------------------------------------------------");
   try {
@@ -213,15 +132,9 @@ const verify = async (contractAddress, args) => {
   }
 };
 
-const mintUtils = async (
-  account,
-  utilsContractAddress,
-  count,
-  amount,
-  utilsName
-) => {
+const mintUtils = async (account, utilsContractAddress, count, amount) => {
   const utilsContract = await hre.ethers.getContractAt(
-    utilsName,
+    "Utils",
     utilsContractAddress,
     account
   );
@@ -242,11 +155,10 @@ const transferToFaucet = async (
   utilsContractAddress,
   faucetContractAddress,
   count,
-  amount,
-  utilsName
+  amount
 ) => {
   const utilsContract = await hre.ethers.getContractAt(
-    utilsName,
+    "Utils",
     utilsContractAddress,
     account
   );

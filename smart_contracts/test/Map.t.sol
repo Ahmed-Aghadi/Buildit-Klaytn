@@ -4,16 +4,15 @@ pragma solidity ^0.8.13;
 import "forge-std/Test.sol";
 import "forge-std/console.sol";
 import "../src/Map.sol";
-import "../src/UtilsLxLy.sol";
+import "../src/Utils.sol";
 import "../src/Forwarder.sol";
 
-import {ERC1155TokenReceiver} from "solmate/tokens/ERC1155.sol";
+import {IKIP37Receiver} from "klaytn/KIP/token/KIP37/IKIP37Receiver.sol";
 
 contract MapTest is Test {
     Map public map;
     Utils public utils;
     Forwarder public forwarder;
-    MockPolygonZkEVMBridge mockPolygonZkEVMBridge;
     string public mapBaseUri;
     string public utilsBaseUri;
     uint256 size;
@@ -32,36 +31,31 @@ contract MapTest is Test {
         utilCount = 3;
         utilAmount = 1000;
         forwarder = new Forwarder();
-        mockPolygonZkEVMBridge = new MockPolygonZkEVMBridge();
-        utils = new Utils(
-            utilsBaseUri,
-            address(forwarder),
-            mockPolygonZkEVMBridge
-        );
+        utils = new Utils(utilsBaseUri, address(forwarder));
         map = new Map(size, 5, mapBaseUri, address(utils), address(forwarder));
         for (uint256 i = 0; i < utilCount; i++) {
             utils.mint(utilAmount);
         }
     }
 
-    function onERC1155Received(
+    function onKIP37Received(
         address,
         address,
         uint256,
         uint256,
         bytes memory
     ) public virtual returns (bytes4) {
-        return ERC1155TokenReceiver.onERC1155Received.selector;
+        return IKIP37Receiver.onKIP37Received.selector;
     }
 
-    function onERC1155BatchReceived(
+    function onKIP37BatchReceived(
         address,
         address,
         uint256[] memory,
         uint256[] memory,
         bytes memory
     ) public virtual returns (bytes4) {
-        return ERC1155TokenReceiver.onERC1155BatchReceived.selector;
+        return IKIP37Receiver.onKIP37BatchReceived.selector;
     }
 
     function testMint(uint256 x, uint256 y) public {
@@ -147,56 +141,4 @@ contract MapTest is Test {
         assertEq(map.map(3, 8), 2);
         assertEq(map.map(4, 9), 1);
     }
-}
-
-contract MockPolygonZkEVMBridge is IPolygonZkEVMBridge {
-    uint32 public networkID = 0;
-
-    function bridgeAsset(
-        uint32 destinationNetwork,
-        address destinationAddress,
-        uint256 amount,
-        address token,
-        bool forceUpdateGlobalExitRoot,
-        bytes calldata permitData
-    ) external payable {}
-
-    function bridgeMessage(
-        uint32 destinationNetwork,
-        address destinationAddress,
-        bool forceUpdateGlobalExitRoot,
-        bytes calldata metadata
-    ) external payable {}
-
-    function claimAsset(
-        bytes32[32] calldata smtProof,
-        uint32 index,
-        bytes32 mainnetExitRoot,
-        bytes32 rollupExitRoot,
-        uint32 originNetwork,
-        address originTokenAddress,
-        uint32 destinationNetwork,
-        address destinationAddress,
-        uint256 amount,
-        bytes calldata metadata
-    ) external {}
-
-    function claimMessage(
-        bytes32[32] calldata smtProof,
-        uint32 index,
-        bytes32 mainnetExitRoot,
-        bytes32 rollupExitRoot,
-        uint32 originNetwork,
-        address originAddress,
-        uint32 destinationNetwork,
-        address destinationAddress,
-        uint256 amount,
-        bytes calldata metadata
-    ) external {}
-
-    function updateGlobalExitRoot() external {}
-
-    function activateEmergencyState() external {}
-
-    function deactivateEmergencyState() external {}
 }

@@ -12,8 +12,8 @@ pragma solidity ^0.8.0;
 //   \$$$$  |$$ |  $$ |$$ |$$ |      \$$$$$$$ |\$$$$$\$$$$  |\$$$$$$$\ $$$$$$$  |
 //    \____/ \__|  \__|\__|\__|       \_______| \_____\____/  \_______|\_______/
 
-import "openzeppelin/utils/cryptography/ECDSA.sol";
-import "openzeppelin/utils/cryptography/draft-EIP712.sol";
+import "klaytn/utils/cryptography/ECDSA.sol";
+import "klaytn/utils/cryptography/draft-EIP712.sol";
 
 /*
  * @dev Minimal forwarder for GSNv2

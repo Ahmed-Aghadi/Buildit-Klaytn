@@ -1,16 +1,17 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
-import {ERC1155TokenReceiver} from "solmate/tokens/ERC1155.sol";
-import "openzeppelin/token/ERC1155/IERC1155.sol";
-import {ERC721TokenReceiver} from "solmate/tokens/ERC721.sol";
-import "openzeppelin/token/ERC721/IERC721.sol";
+import {IKIP37Receiver} from "klaytn/KIP/token/KIP37/IKIP37Receiver.sol";
+import "klaytn/KIP/token/KIP37/IKIP37.sol";
+import {IKIP17Receiver} from "klaytn/KIP/token/KIP17/IKIP17Receiver.sol";
+import "klaytn/KIP/token/KIP17/IKIP17.sol";
 import "solmate/utils/LibString.sol";
 import "chainlink/v0.8/interfaces/AggregatorV3Interface.sol";
 import {KeeperRegistryInterface, State, Config} from "chainlink/v0.8/interfaces/KeeperRegistryInterface1_2.sol";
 import {LinkTokenInterface} from "chainlink/v0.8/interfaces/LinkTokenInterface.sol";
 import "chainlink/v0.8/interfaces/AutomationCompatibleInterface.sol";
-import "openzeppelin/metatx/ERC2771Context.sol";
+import "klaytn/metatx/ERC2771Context.sol";
+import "./interfaces/IWitnetPriceRouter.sol";
 
 interface KeeperRegistrarInterface {
     function register(
@@ -59,9 +60,10 @@ contract Marketplace is ERC2771Context {
         address bidder;
         uint256 amount;
     }
-    AggregatorV3Interface public immutable eth_usd_priceFeed;
-    IERC721 internal map;
-    IERC1155 internal utils;
+    IWitnetPriceRouter public immutable i_witnetPriceRouter;
+    bytes4 public immutable i_witnetPriceRouterUsdId4;
+    IKIP17 internal map;
+    IKIP37 internal utils;
     uint public listingCount = 0;
 
     mapping(uint256 => Listing) public listings;
@@ -78,7 +80,8 @@ contract Marketplace is ERC2771Context {
     uint256 public gasLimit;
 
     constructor(
-        address eth_usd_priceFeedAddress,
+        address _witnetPriceRouterAddress,
+        bytes4 _witnetPriceRouterUsdId4,
         address mapAddress,
         address utilsAddress,
         address _linkAddress,
@@ -87,9 +90,10 @@ contract Marketplace is ERC2771Context {
         uint256 _gasLimit,
         address trustedForwarder
     ) ERC2771Context(trustedForwarder) {
-        eth_usd_priceFeed = AggregatorV3Interface(eth_usd_priceFeedAddress);
-        map = IERC721(mapAddress);
-        utils = IERC1155(utilsAddress);
+        i_witnetPriceRouter = IWitnetPriceRouter(_witnetPriceRouterAddress);
+        i_witnetPriceRouterUsdId4 = _witnetPriceRouterUsdId4;
+        map = IKIP17(mapAddress);
+        utils = IKIP37(utilsAddress);
         i_link = LinkTokenInterface(_linkAddress);
         registrar = _registrar;
         i_registry = KeeperRegistryInterface(_registryAddress);
@@ -176,7 +180,7 @@ contract Marketplace is ERC2771Context {
         if (tokenId <= 0) revert InvalidTokenId();
         if (map.ownerOf(tokenId) != _msgSender()) revert NotTokenOwner();
         if (isAuction && inUSD) revert USDNotSupportedForAuction();
-        if (inUSD && address(eth_usd_priceFeed) == address(0))
+        if (inUSD && bytes4(i_witnetPriceRouterUsdId4) == bytes4(0x00))
             revert USDNotSupported();
         if (isAuction && address(i_link) == address(0))
             revert AuctioNotSupported();
@@ -331,14 +335,11 @@ contract Marketplace is ERC2771Context {
         if (listingId <= 0 || listingId > listingCount)
             revert InvalidListingId();
         if (listings[listingId].inUSD) {
-            uint decimals = eth_usd_priceFeed.decimals();
-            (
-                ,
-                /* uint80 roundID */ int answer /*uint startedAt*/ /*uint timeStamp*/ /*uint80 answeredInRound*/,
-                ,
-                ,
-
-            ) = eth_usd_priceFeed.latestRoundData();
+            uint decimals = i_witnetPriceRouter.lookupDecimals(
+                i_witnetPriceRouterUsdId4
+            );
+            (int answer /*uint _lastTimestamp*/, , ) = i_witnetPriceRouter
+                .valueFor(bytes32(i_witnetPriceRouterUsdId4));
             uint256 priceInEth = (listings[listingId].price *
                 10 ** (decimals)) / uint(answer);
             return priceInEth;
@@ -359,32 +360,32 @@ contract Marketplace is ERC2771Context {
         return listings[listingId].isValid;
     }
 
-    function onERC1155Received(
+    function onKIP37Received(
         address,
         address,
         uint256,
         uint256,
         bytes memory
     ) public virtual returns (bytes4) {
-        return ERC1155TokenReceiver.onERC1155Received.selector;
+        return IKIP37Receiver.onKIP37Received.selector;
     }
 
-    function onERC1155BatchReceived(
+    function onKIP37BatchReceived(
         address,
         address,
         uint256[] memory,
         uint256[] memory,
         bytes memory
     ) public virtual returns (bytes4) {
-        return ERC1155TokenReceiver.onERC1155BatchReceived.selector;
+        return IKIP37Receiver.onKIP37BatchReceived.selector;
     }
 
-    function onERC721Received(
+    function onKIP17Received(
         address,
         address,
         uint256,
         bytes calldata
     ) external virtual returns (bytes4) {
-        return ERC721TokenReceiver.onERC721Received.selector;
+        return IKIP17Receiver.onKIP17Received.selector;
     }
 }

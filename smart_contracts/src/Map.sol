@@ -1,16 +1,11 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
-// import "solmate/tokens/ERC721.sol";
-import "openzeppelin/token/ERC721/ERC721.sol";
-// import "solmate/tokens/ERC1155.sol";
-import "openzeppelin/token/ERC1155/IERC1155.sol";
-import "solmate/utils/LibString.sol";
-// import "solmate/auth/Owned.sol";
-
-import {ERC1155TokenReceiver} from "solmate/tokens/ERC1155.sol";
-
-import "openzeppelin/metatx/ERC2771Context.sol";
+import "klaytn/utils/Strings.sol";
+import "klaytn/metatx/ERC2771Context.sol";
+import "klaytn/KIP/token/KIP17/KIP17.sol";
+import "klaytn/KIP/token/KIP37/IKIP37.sol";
+import {IKIP37Receiver} from "klaytn/KIP/token/KIP37/IKIP37Receiver.sol";
 
 error ZeroSize();
 error ZeroPerSize();
@@ -22,7 +17,7 @@ error NotOwner();
 
 error InvalidLength();
 
-contract Map is ERC2771Context, ERC721 {
+contract Map is ERC2771Context, KIP17 {
     // // rectangular land with coordinates of corners as (x,y), (x,y+perSize), (x+perSize,y), (x+perSize,y+perSize)
     struct Land {
         uint256 xIndex;
@@ -50,7 +45,7 @@ contract Map is ERC2771Context, ERC721 {
         string memory _baseUri,
         address _utilsAddress,
         address trustedForwarder
-    ) ERC2771Context(trustedForwarder) ERC721("Map", "MAP") {
+    ) ERC2771Context(trustedForwarder) KIP17("Map", "MAP") {
         if (_size == 0) revert ZeroSize();
         if (_perSize == 0) revert ZeroPerSize();
         size = _size;
@@ -75,7 +70,7 @@ contract Map is ERC2771Context, ERC721 {
     function placeItem(uint256 x, uint256 y, uint256 utilId) public {
         if (_msgSender() != ownerOf(landIds[x / perSize][y / perSize]))
             revert NotOwner();
-        IERC1155 utils = IERC1155(utilsAddress);
+        IKIP37 utils = IKIP37(utilsAddress);
         if (map[x][y] != 0) {
             utils.safeTransferFrom(
                 address(this),
@@ -92,7 +87,7 @@ contract Map is ERC2771Context, ERC721 {
     function removeItem(uint256 x, uint256 y) public {
         if (_msgSender() != ownerOf(landIds[x / perSize][y / perSize]))
             revert NotOwner();
-        IERC1155 utils = IERC1155(utilsAddress);
+        IKIP37 utils = IKIP37(utilsAddress);
         if (map[x][y] != 0) {
             utils.safeTransferFrom(
                 address(this),
@@ -140,27 +135,27 @@ contract Map is ERC2771Context, ERC721 {
     function tokenURI(
         uint256 id
     ) public view virtual override returns (string memory) {
-        return string.concat(baseUri, LibString.toString(id));
+        return string.concat(baseUri, Strings.toString(id));
     }
 
-    function onERC1155Received(
+    function onKIP37Received(
         address,
         address,
         uint256,
         uint256,
         bytes memory
     ) public virtual returns (bytes4) {
-        return ERC1155TokenReceiver.onERC1155Received.selector;
+        return IKIP37Receiver.onKIP37Received.selector;
     }
 
-    function onERC1155BatchReceived(
+    function onKIP37BatchReceived(
         address,
         address,
         uint256[] memory,
         uint256[] memory,
         bytes memory
     ) public virtual returns (bytes4) {
-        return ERC1155TokenReceiver.onERC1155BatchReceived.selector;
+        return IKIP37Receiver.onKIP37BatchReceived.selector;
     }
 
     function _msgSender()

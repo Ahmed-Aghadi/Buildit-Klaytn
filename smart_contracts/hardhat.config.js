@@ -41,6 +41,9 @@ const OP_BNB_TESTNET_RPC_URL =
 const POLYGONZKEVM_TESTNET_RPC_URL =
   process.env.POLYGONZKEVM_TESTNET_RPC_URL ||
   "https://rpc.public.zkevm-test.net";
+const KLAYTN_BAOBAB_TESTNET_RPC_URL =
+  process.env.KLAYTN_BAOBAB_TESTNET_RPC_URL ||
+  "https://klaytn-baobab-rpc.allthatnode.com:8551";
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x";
 const MAIN_PRIVATE_KEY = process.env.MAIN_PRIVATE_KEY || "0x";
 
@@ -61,6 +64,9 @@ const ARBITRUM_GOERLI_TESTNET_API_KEY =
   process.env.ARBITRUM_GOERLI_TESTNET_API_KEY || "Your polygonscan API key";
 const BSCSCAN_API_KEY =
   process.env.BSCSCAN_API_KEY || "Your polygonscan API key";
+const KLAYTN_BAOBAB_TESTNET_API_KEY =
+  process.env.KLAYTN_BAOBAB_TESTNET_API_KEY ||
+  "Your boaboab klaytnscope API key";
 const NODE_REAL_API_KEY =
   process.env.BSCSCAN_API_KEY || "Your polygonscan API key";
 
@@ -213,6 +219,14 @@ module.exports = {
       chainId: 1442,
       timeout: 300000, // 300 seconds
     },
+    klaytnBaobab: {
+      url: KLAYTN_BAOBAB_TESTNET_RPC_URL,
+      // accounts: [MAIN_PRIVATE_KEY],
+      accounts: [PRIVATE_KEY],
+      saveDeployments: true,
+      chainId: 1001,
+      timeout: 300000, // 300 seconds
+    },
   },
   etherscan: {
     // To list networks supported by default: npx hardhat verify --list-networks
@@ -231,6 +245,7 @@ module.exports = {
       arbitrumGoerli: ARBITRUM_GOERLI_TESTNET_API_KEY,
       bscTestnet: BSCSCAN_API_KEY,
       opBNBTestnet: NODE_REAL_API_KEY,
+      klaytnBaobab: KLAYTN_BAOBAB_TESTNET_API_KEY,
     },
     customChains: [
       {
@@ -255,6 +270,14 @@ module.exports = {
         urls: {
           apiURL: "https://opbnbscan.com/api",
           browserURL: "https://opbnbscan.com/",
+        },
+      },
+      {
+        network: "klaytnBaobab",
+        chainId: 1001,
+        urls: {
+          apiURL: "https://baobab.klaytnscope.com/api",
+          browserURL: "https://baobab.klaytnscope.com/",
         },
       },
     ],

@@ -63,7 +63,7 @@
   "methodIdentifiers": {
     "eip712Domain()": "84b0196e"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[],\"name\":\"EIP712DomainChanged\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"eip712Domain\",\"outputs\":[{\"internalType\":\"bytes1\",\"name\":\"fields\",\"type\":\"bytes1\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"version\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"chainId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"verifyingContract\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"salt\",\"type\":\"bytes32\"},{\"internalType\":\"uint256[]\",\"name\":\"extensions\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"events\":{\"EIP712DomainChanged()\":{\"details\":\"MAY be emitted to signal that the domain could have changed.\"}},\"kind\":\"dev\",\"methods\":{\"eip712Domain()\":{\"details\":\"returns the fields and values that describe the domain separator used by this contract for EIP-712 signature.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"lib/openzeppelin-contracts/contracts/interfaces/IERC5267.sol\":\"IERC5267\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@chainlink/=node_modules/@chainlink/\",\":chainlink-brownie-contracts/=lib/chainlink-brownie-contracts/\",\":chainlink/=lib/chainlink-brownie-contracts/contracts/src/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/\",\":openzeppelin/=lib/openzeppelin-contracts/contracts/\",\":solmate/=lib/solmate/src/\"]},\"sources\":{\"lib/openzeppelin-contracts/contracts/interfaces/IERC5267.sol\":{\"keccak256\":\"0xac6c2efc64baccbde4904ae18ed45139c9aa8cff96d6888344d1e4d2eb8b659f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6e416a280c610b6b7a5f158e4a41aacfaec01ef14d5d1de13b46be9e090265fc\",\"dweb:/ipfs/QmYZP2KrdyccBbhLZT42auhvBTMkwiwUS3V6HWb42rbwbG\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[],\"name\":\"EIP712DomainChanged\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"eip712Domain\",\"outputs\":[{\"internalType\":\"bytes1\",\"name\":\"fields\",\"type\":\"bytes1\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"version\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"chainId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"verifyingContract\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"salt\",\"type\":\"bytes32\"},{\"internalType\":\"uint256[]\",\"name\":\"extensions\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"events\":{\"EIP712DomainChanged()\":{\"details\":\"MAY be emitted to signal that the domain could have changed.\"}},\"kind\":\"dev\",\"methods\":{\"eip712Domain()\":{\"details\":\"returns the fields and values that describe the domain separator used by this contract for EIP-712 signature.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"lib/openzeppelin-contracts/contracts/interfaces/IERC5267.sol\":\"IERC5267\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@chainlink/=node_modules/@chainlink/\",\":chainlink-brownie-contracts/=lib/chainlink-brownie-contracts/\",\":chainlink/=lib/chainlink-brownie-contracts/contracts/src/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/forge-std/src/\",\":klaytn-contracts/=lib/klaytn-contracts/\",\":klaytn/=lib/klaytn-contracts/contracts/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/\",\":openzeppelin/=lib/openzeppelin-contracts/contracts/\",\":solmate/=lib/solmate/src/\"]},\"sources\":{\"lib/openzeppelin-contracts/contracts/interfaces/IERC5267.sol\":{\"keccak256\":\"0xac6c2efc64baccbde4904ae18ed45139c9aa8cff96d6888344d1e4d2eb8b659f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6e416a280c610b6b7a5f158e4a41aacfaec01ef14d5d1de13b46be9e090265fc\",\"dweb:/ipfs/QmYZP2KrdyccBbhLZT42auhvBTMkwiwUS3V6HWb42rbwbG\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.8.19+commit.7dd6d404"
@@ -144,6 +144,8 @@
         ":ds-test/=lib/forge-std/lib/ds-test/src/",
         ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
         ":forge-std/=lib/forge-std/src/",
+        ":klaytn-contracts/=lib/klaytn-contracts/",
+        ":klaytn/=lib/klaytn-contracts/contracts/",
         ":openzeppelin-contracts/=lib/openzeppelin-contracts/",
         ":openzeppelin/=lib/openzeppelin-contracts/contracts/",
         ":solmate/=lib/solmate/src/"
@@ -174,19 +176,19 @@
   },
   "ast": {
     "absolutePath": "lib/openzeppelin-contracts/contracts/interfaces/IERC5267.sol",
-    "id": 615,
+    "id": 2567,
     "exportedSymbols": {
       "IERC5267": [
-        614
+        2566
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "107:631:8",
+    "src": "107:631:22",
     "nodes": [
       {
-        "id": 591,
+        "id": 2543,
         "nodeType": "PragmaDirective",
-        "src": "107:23:8",
+        "src": "107:23:22",
         "nodes": [],
         "literals": [
           "solidity",
@@ -196,41 +198,41 @@
         ]
       },
       {
-        "id": 614,
+        "id": 2566,
         "nodeType": "ContractDefinition",
-        "src": "132:605:8",
+        "src": "132:605:22",
         "nodes": [
           {
-            "id": 594,
+            "id": 2546,
             "nodeType": "EventDefinition",
-            "src": "246:28:8",
+            "src": "246:28:22",
             "nodes": [],
             "anonymous": false,
             "documentation": {
-              "id": 592,
+              "id": 2544,
               "nodeType": "StructuredDocumentation",
-              "src": "157:84:8",
+              "src": "157:84:22",
               "text": " @dev MAY be emitted to signal that the domain could have changed."
             },
             "eventSelector": "0a6387c9ea3628b88a633bb4f3b151770f70085117a15f9bf3787cda53f13d31",
             "name": "EIP712DomainChanged",
-            "nameLocation": "252:19:8",
+            "nameLocation": "252:19:22",
             "parameters": {
-              "id": 593,
+              "id": 2545,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "271:2:8"
+              "src": "271:2:22"
             }
           },
           {
-            "id": 613,
+            "id": 2565,
             "nodeType": "FunctionDefinition",
-            "src": "425:310:8",
+            "src": "425:310:22",
             "nodes": [],
             "documentation": {
-              "id": 595,
+              "id": 2547,
               "nodeType": "StructuredDocumentation",
-              "src": "280:140:8",
+              "src": "280:140:22",
               "text": " @dev returns the fields and values that describe the domain separator used by this contract for EIP-712\n signature."
             },
             "functionSelector": "84b0196e",
@@ -238,26 +240,26 @@
             "kind": "function",
             "modifiers": [],
             "name": "eip712Domain",
-            "nameLocation": "434:12:8",
+            "nameLocation": "434:12:22",
             "parameters": {
-              "id": 596,
+              "id": 2548,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "446:2:8"
+              "src": "446:2:22"
             },
             "returnParameters": {
-              "id": 612,
+              "id": 2564,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 598,
+                  "id": 2550,
                   "mutability": "mutable",
                   "name": "fields",
-                  "nameLocation": "516:6:8",
+                  "nameLocation": "516:6:22",
                   "nodeType": "VariableDeclaration",
-                  "scope": 613,
-                  "src": "509:13:8",
+                  "scope": 2565,
+                  "src": "509:13:22",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -265,10 +267,10 @@
                     "typeString": "bytes1"
                   },
                   "typeName": {
-                    "id": 597,
+                    "id": 2549,
                     "name": "bytes1",
                     "nodeType": "ElementaryTypeName",
-                    "src": "509:6:8",
+                    "src": "509:6:22",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes1",
                       "typeString": "bytes1"
@@ -278,13 +280,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 600,
+                  "id": 2552,
                   "mutability": "mutable",
                   "name": "name",
-                  "nameLocation": "550:4:8",
+                  "nameLocation": "550:4:22",
                   "nodeType": "VariableDeclaration",
-                  "scope": 613,
-                  "src": "536:18:8",
+                  "scope": 2565,
+                  "src": "536:18:22",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -292,10 +294,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 599,
+                    "id": 2551,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "536:6:8",
+                    "src": "536:6:22",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -305,13 +307,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 602,
+                  "id": 2554,
                   "mutability": "mutable",
                   "name": "version",
-                  "nameLocation": "582:7:8",
+                  "nameLocation": "582:7:22",
                   "nodeType": "VariableDeclaration",
-                  "scope": 613,
-                  "src": "568:21:8",
+                  "scope": 2565,
+                  "src": "568:21:22",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -319,10 +321,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 601,
+                    "id": 2553,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "568:6:8",
+                    "src": "568:6:22",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -332,13 +334,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 604,
+                  "id": 2556,
                   "mutability": "mutable",
                   "name": "chainId",
-                  "nameLocation": "611:7:8",
+                  "nameLocation": "611:7:22",
                   "nodeType": "VariableDeclaration",
-                  "scope": 613,
-                  "src": "603:15:8",
+                  "scope": 2565,
+                  "src": "603:15:22",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -346,10 +348,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 603,
+                    "id": 2555,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "603:7:8",
+                    "src": "603:7:22",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -359,13 +361,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 606,
+                  "id": 2558,
                   "mutability": "mutable",
                   "name": "verifyingContract",
-                  "nameLocation": "640:17:8",
+                  "nameLocation": "640:17:22",
                   "nodeType": "VariableDeclaration",
-                  "scope": 613,
-                  "src": "632:25:8",
+                  "scope": 2565,
+                  "src": "632:25:22",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -373,10 +375,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 605,
+                    "id": 2557,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "632:7:8",
+                    "src": "632:7:22",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -387,13 +389,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 608,
+                  "id": 2560,
                   "mutability": "mutable",
                   "name": "salt",
-                  "nameLocation": "679:4:8",
+                  "nameLocation": "679:4:22",
                   "nodeType": "VariableDeclaration",
-                  "scope": 613,
-                  "src": "671:12:8",
+                  "scope": 2565,
+                  "src": "671:12:22",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -401,10 +403,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 607,
+                    "id": 2559,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "671:7:8",
+                    "src": "671:7:22",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -414,13 +416,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 611,
+                  "id": 2563,
                   "mutability": "mutable",
                   "name": "extensions",
-                  "nameLocation": "714:10:8",
+                  "nameLocation": "714:10:22",
                   "nodeType": "VariableDeclaration",
-                  "scope": 613,
-                  "src": "697:27:8",
+                  "scope": 2565,
+                  "src": "697:27:22",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -429,18 +431,18 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 609,
+                      "id": 2561,
                       "name": "uint256",
                       "nodeType": "ElementaryTypeName",
-                      "src": "697:7:8",
+                      "src": "697:7:22",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "id": 610,
+                    "id": 2562,
                     "nodeType": "ArrayTypeName",
-                    "src": "697:9:8",
+                    "src": "697:9:22",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
                       "typeString": "uint256[]"
@@ -449,9 +451,9 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "495:239:8"
+              "src": "495:239:22"
             },
-            "scope": 614,
+            "scope": 2566,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -464,15 +466,15 @@
         "contractKind": "interface",
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          614
+          2566
         ],
         "name": "IERC5267",
-        "nameLocation": "142:8:8",
-        "scope": 615,
+        "nameLocation": "142:8:22",
+        "scope": 2567,
         "usedErrors": []
       }
     ],
     "license": "MIT"
   },
-  "id": 8
+  "id": 22
 }
