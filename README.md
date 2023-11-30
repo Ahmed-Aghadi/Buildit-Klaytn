@@ -131,7 +131,7 @@ In addition, BuildIt includes a marketplace where users can sell their land thro
 
 While editing the map, user can also save/load private designs which is saved using sprucekit.
 
-In marketplace listing, if seller owns an ENS account then it will display it so that it add more credibility about seller.
+In marketplace listing, if seller owns an KNS account then it will display it so that it add more credibility about seller.
 
 ## How We Built It
 
@@ -150,7 +150,7 @@ BuildIt was built using the following technologies and tools:
 - Gasless Transactions: All smart contracts implement ERC2771Context, enabling users to perform gasless transactions when the relayer is funded.
 - Witnet is used to get price feeds for USD so that land can also be sold in marketplace at the current rate of USD.
 - Sprucekit was used to let User Save/Load private designs
-- ENS was used to resolve custom name for users in marketplace
+- KNS was used to resolve custom name for users in marketplace
 
 ## Challenges We Ran Into
 
